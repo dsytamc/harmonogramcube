@@ -218,19 +218,77 @@ function markAsDirty() {
   if (docDirtyStar) docDirtyStar.classList.remove('hidden');
 }
 
+function initStartScreenVideo() {
+  const startVideo = document.getElementById('startScreenVideo');
+  if (!startVideo) return;
+
+  const LOOP_START_SEC = 1.0; // Odtwarzanie od 0:01 sekundy
+
+  const setLoopStart = () => {
+    try {
+      if (startVideo.currentTime < LOOP_START_SEC) {
+        startVideo.currentTime = LOOP_START_SEC;
+      }
+    } catch (err) {}
+    startVideo.play().catch(() => {});
+  };
+
+  startVideo.addEventListener('loadedmetadata', setLoopStart);
+  startVideo.addEventListener('canplay', () => {
+    if (startVideo.currentTime < LOOP_START_SEC) {
+      try {
+        startVideo.currentTime = LOOP_START_SEC;
+      } catch (err) {}
+    }
+  });
+
+  // Przy zapętlaniu wracaj do 0:01s zamiast 0:00s
+  startVideo.addEventListener('timeupdate', () => {
+    if (startVideo.duration && startVideo.currentTime >= startVideo.duration - 0.25) {
+      startVideo.currentTime = LOOP_START_SEC;
+      startVideo.play().catch(() => {});
+    }
+  });
+
+  startVideo.addEventListener('ended', () => {
+    startVideo.currentTime = LOOP_START_SEC;
+    startVideo.play().catch(() => {});
+  });
+
+  setLoopStart();
+}
+
 function showEmptyWorkspace() {
   hasLoadedSchedule = false;
+  const appEl = document.getElementById('app');
+  if (appEl) appEl.classList.add('is-start-screen');
   if (emptyWorkspaceState) emptyWorkspaceState.classList.remove('hidden');
   if (artboardWrapper) artboardWrapper.classList.add('hidden');
   setDocumentName(null);
   deselectTile();
   closeHeaderEditor();
+
+  const startVideo = document.getElementById('startScreenVideo');
+  if (startVideo) {
+    try {
+      startVideo.currentTime = 1.0;
+    } catch(e) {}
+    startVideo.play().catch(() => {});
+  }
 }
 
 function showScheduleWorkspace(filename = null) {
   hasLoadedSchedule = true;
+  const appEl = document.getElementById('app');
+  if (appEl) appEl.classList.remove('is-start-screen');
   if (emptyWorkspaceState) emptyWorkspaceState.classList.add('hidden');
   if (artboardWrapper) artboardWrapper.classList.remove('hidden');
+
+  const startVideo = document.getElementById('startScreenVideo');
+  if (startVideo) {
+    startVideo.pause();
+  }
+
   if (filename) {
     setDocumentName(filename);
   }
@@ -302,6 +360,7 @@ let activeTileDraft = {
 function init() {
   buildCategoriesPicker();
   setupEventListeners();
+  initStartScreenVideo();
 
   // Subskrypcja zmian w store
   store.subscribe((state) => {

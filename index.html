@@ -12,7 +12,7 @@
   <link rel="stylesheet" href="src/app.css">
 </head>
 <body>
-  <div id="app" class="app-container">
+  <div id="app" class="app-container is-start-screen">
     <!-- LEWY PANEL STEROWANIA (CARBON DESIGN SYSTEM SIDEBAR) -->
     <aside class="sidebar">
       <header class="sidebar-header">
@@ -312,6 +312,14 @@
       <div class="artboard-scroll-area" id="artboardScrollArea">
         <!-- EKRAN STARTOWY / PUSTY OBSZAR ROBOCZY -->
         <div id="emptyWorkspaceState" class="empty-workspace-state">
+          <!-- WIDEO W TLE (FILMWTLE_25FPS) Z PRZYCIEMNIENIEM I BLUREM -->
+          <div class="empty-state-video-wrap">
+            <video id="startScreenVideo" class="empty-state-bg-video" autoplay muted loop playsinline preload="auto">
+              <source src="filmwtle_25fps.mp4#t=1" type="video/mp4">
+            </video>
+            <div class="empty-state-video-overlay"></div>
+          </div>
+
           <div class="empty-state-card">
             <div class="empty-state-logo-wrap">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 244.371 76.862" fill="currentColor" class="empty-state-logo-svg">
@@ -341,6 +349,11 @@
             <button type="button" id="emptyCreateBlankBtn" class="empty-state-secondary-link" title="Zacznij od czystego szablonu grafiku">
               lub rozpocznij z pustym wzorcem
             </button>
+          </div>
+
+          <!-- NAPIS NA DOLE EKRANU: by Damian and Antigravity -->
+          <div class="empty-state-footer-credits">
+            by Damian and Antigravity
           </div>
         </div>
 
