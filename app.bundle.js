@@ -732,8 +732,8 @@ class ScheduleStore {
   moveOrSwapTile(sourceRowId, sourceDayId, targetRowId, targetDayId) {
     if (sourceRowId === targetRowId && sourceDayId === targetDayId) return;
 
-    const sourceKey = ${sourceRowId}_;
-    const targetKey = ${targetRowId}_;
+    const sourceKey = `${sourceRowId}_${sourceDayId}`;
+    const targetKey = `${targetRowId}_${targetDayId}`;
 
     const sourceTile = this.state.tiles[sourceKey];
     const targetTile = this.state.tiles[targetKey];
@@ -1846,7 +1846,7 @@ async function fetchEfitnessSchedule(calendarUrl, statusCallback = null) {
       if (statusCallback) statusCallback(`Pobieranie grafiku przez serwer proxy...`);
       
       const controller = new AbortController();
-      const timeoutId = setTimeout(() => controller.abort(), 12000);
+      const timeoutId = setTimeout(() => controller.abort(), 5000);
 
       const response = await fetch(endpoint, { signal: controller.signal });
       clearTimeout(timeoutId);
@@ -1868,7 +1868,10 @@ async function fetchEfitnessSchedule(calendarUrl, statusCallback = null) {
   // Ostateczna próba - bezpośredni fetch
   try {
     if (statusCallback) statusCallback('Próba połączenia bezpośredniego...');
-    const directRes = await fetch(targetUrl);
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 4000);
+    const directRes = await fetch(targetUrl, { signal: controller.signal });
+    clearTimeout(timeoutId);
     if (directRes.ok) {
       const html = await directRes.text();
       if (html && html.includes('calendar_table')) {
@@ -1879,7 +1882,7 @@ async function fetchEfitnessSchedule(calendarUrl, statusCallback = null) {
     // ignoruj błąd CORS
   }
 
-  throw new Error(`Nie udało się automatycznie pobrać strony (${lastError?.message || 'Błąd połączenia'}). Możesz wkleić kod HTML bezpośrednio w pole poniżej.`);
+  throw new Error(`Serwer eFitness zablokował bezpośrednie pobieranie (zabezpieczenie Cloudflare). Skorzystaj z Opcji 2 poniżej: otwórz stronę kalendarza w przeglądarce, naciśnij Ctrl + U, skopiuj kod (Ctrl + A, Ctrl + C) i wklej go w pole tekstowe.`);
 }
 
 /**
@@ -2748,6 +2751,7 @@ const formatSelect = document.getElementById('formatSelect');
 
 // Ekran startowy / pusty obszar roboczy
 const emptyWorkspaceState = document.getElementById('emptyWorkspaceState');
+const emptyLoadBtn = document.getElementById('emptyLoadBtn');
 const emptyLoadFileInput = document.getElementById('emptyLoadFileInput');
 const emptyImportBtn = document.getElementById('emptyImportBtn');
 const emptyCreateBlankBtn = document.getElementById('emptyCreateBlankBtn');
@@ -2808,6 +2812,7 @@ let beforeUnloadWarnCount = 0;
 
 const topImportBtn = document.getElementById('topImportBtn');
 const topSaveBtn = document.getElementById('topSaveBtn');
+const topLoadBtn = document.getElementById('topLoadBtn');
 const topLoadProjectInput = document.getElementById('topLoadProjectInput');
 const topExportBtn = document.getElementById('topExportBtn');
 const docTabIndicator = document.getElementById('docTabIndicator');
@@ -3587,6 +3592,12 @@ function setupEventListeners() {
   }
 
   // Obsługa przycisków pustego obszaru roboczego (start screen)
+  if (emptyLoadBtn && emptyLoadFileInput) {
+    emptyLoadBtn.addEventListener('click', () => {
+      emptyLoadFileInput.click();
+    });
+  }
+
   if (emptyLoadFileInput) {
     emptyLoadFileInput.addEventListener('change', (e) => {
       const file = e.target.files && e.target.files[0];
@@ -4080,6 +4091,12 @@ function setupEventListeners() {
   }
 
   // Wczytywanie z górnego paska (Wczytaj)
+  if (topLoadBtn && topLoadProjectInput) {
+    topLoadBtn.addEventListener('click', () => {
+      topLoadProjectInput.click();
+    });
+  }
+
   if (topLoadProjectInput) {
     topLoadProjectInput.addEventListener('change', (e) => {
       const file = e.target.files[0];

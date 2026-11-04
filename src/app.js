@@ -28,6 +28,7 @@ const formatSelect = document.getElementById('formatSelect');
 
 // Ekran startowy / pusty obszar roboczy
 const emptyWorkspaceState = document.getElementById('emptyWorkspaceState');
+const emptyLoadBtn = document.getElementById('emptyLoadBtn');
 const emptyLoadFileInput = document.getElementById('emptyLoadFileInput');
 const emptyImportBtn = document.getElementById('emptyImportBtn');
 const emptyCreateBlankBtn = document.getElementById('emptyCreateBlankBtn');
@@ -88,6 +89,7 @@ let beforeUnloadWarnCount = 0;
 
 const topImportBtn = document.getElementById('topImportBtn');
 const topSaveBtn = document.getElementById('topSaveBtn');
+const topLoadBtn = document.getElementById('topLoadBtn');
 const topLoadProjectInput = document.getElementById('topLoadProjectInput');
 const topExportBtn = document.getElementById('topExportBtn');
 const docTabIndicator = document.getElementById('docTabIndicator');
@@ -867,6 +869,12 @@ function setupEventListeners() {
   }
 
   // Obsługa przycisków pustego obszaru roboczego (start screen)
+  if (emptyLoadBtn && emptyLoadFileInput) {
+    emptyLoadBtn.addEventListener('click', () => {
+      emptyLoadFileInput.click();
+    });
+  }
+
   if (emptyLoadFileInput) {
     emptyLoadFileInput.addEventListener('change', (e) => {
       const file = e.target.files && e.target.files[0];
@@ -1360,6 +1368,12 @@ function setupEventListeners() {
   }
 
   // Wczytywanie z górnego paska (Wczytaj)
+  if (topLoadBtn && topLoadProjectInput) {
+    topLoadBtn.addEventListener('click', () => {
+      topLoadProjectInput.click();
+    });
+  }
+
   if (topLoadProjectInput) {
     topLoadProjectInput.addEventListener('change', (e) => {
       const file = e.target.files[0];

@@ -430,7 +430,7 @@ export async function fetchEfitnessSchedule(calendarUrl, statusCallback = null) 
       if (statusCallback) statusCallback(`Pobieranie grafiku przez serwer proxy...`);
       
       const controller = new AbortController();
-      const timeoutId = setTimeout(() => controller.abort(), 12000);
+      const timeoutId = setTimeout(() => controller.abort(), 5000);
 
       const response = await fetch(endpoint, { signal: controller.signal });
       clearTimeout(timeoutId);
@@ -452,7 +452,10 @@ export async function fetchEfitnessSchedule(calendarUrl, statusCallback = null) 
   // Ostateczna próba - bezpośredni fetch
   try {
     if (statusCallback) statusCallback('Próba połączenia bezpośredniego...');
-    const directRes = await fetch(targetUrl);
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 4000);
+    const directRes = await fetch(targetUrl, { signal: controller.signal });
+    clearTimeout(timeoutId);
     if (directRes.ok) {
       const html = await directRes.text();
       if (html && html.includes('calendar_table')) {
@@ -463,7 +466,7 @@ export async function fetchEfitnessSchedule(calendarUrl, statusCallback = null) 
     // ignoruj błąd CORS
   }
 
-  throw new Error(`Nie udało się automatycznie pobrać strony (${lastError?.message || 'Błąd połączenia'}). Możesz wkleić kod HTML bezpośrednio w pole poniżej.`);
+  throw new Error(`Serwer eFitness zablokował bezpośrednie pobieranie (zabezpieczenie Cloudflare). Skorzystaj z Opcji 2 poniżej: otwórz stronę kalendarza w przeglądarce, naciśnij Ctrl + U, skopiuj kod (Ctrl + A, Ctrl + C) i wklej go w pole tekstowe.`);
 }
 
 /**

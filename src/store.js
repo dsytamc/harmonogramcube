@@ -264,8 +264,8 @@ export class ScheduleStore {
   moveOrSwapTile(sourceRowId, sourceDayId, targetRowId, targetDayId) {
     if (sourceRowId === targetRowId && sourceDayId === targetDayId) return;
 
-    const sourceKey = ${sourceRowId}_;
-    const targetKey = ${targetRowId}_;
+    const sourceKey = `${sourceRowId}_${sourceDayId}`;
+    const targetKey = `${targetRowId}_${targetDayId}`;
 
     const sourceTile = this.state.tiles[sourceKey];
     const targetTile = this.state.tiles[targetKey];
