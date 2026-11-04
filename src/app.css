@@ -3185,51 +3185,47 @@ body {
   z-index: 15;
 }
 
-/* 6. Upuszczenie kafelka: animacja 150% do 100% + dynamiczny shake / wibracja w miejscu docelowym */
+/* 6. Upuszczenie kafelka: najpierw czysty upadek (150% do 100%), a dopiero po nim lekki wiggle w miejscu docelowym */
 @keyframes tileDropLand {
   0% {
-    transform: scale(1.5);
-    box-shadow: 0 14px 36px rgba(255, 204, 0, 0.85);
-    z-index: 100;
-  }
-  25% {
-    transform: scale(1.0);
-    box-shadow: 0 6px 18px rgba(255, 204, 0, 0.5);
+    transform: scale(1.5) rotate(0deg);
+    box-shadow: 0 16px 36px rgba(255, 204, 0, 0.85);
     z-index: 100;
   }
   35% {
-    transform: scale(1.06) translate(-6px, 2px) rotate(-3deg);
+    transform: scale(1.0) rotate(0deg);
+    box-shadow: 0 4px 14px rgba(255, 204, 0, 0.45);
     z-index: 100;
   }
   48% {
-    transform: scale(0.97) translate(6px, -2px) rotate(3deg);
+    transform: scale(1.0) rotate(-2deg);
     z-index: 100;
   }
-  60% {
-    transform: scale(1.03) translate(-4px, 1px) rotate(-2deg);
+  62% {
+    transform: scale(1.0) rotate(2deg);
     z-index: 100;
   }
-  72% {
-    transform: scale(0.99) translate(4px, -1px) rotate(1.5deg);
+  75% {
+    transform: scale(1.0) rotate(-1.2deg);
     z-index: 100;
   }
-  84% {
-    transform: scale(1.01) translate(-2px, 0) rotate(-0.5deg);
+  88% {
+    transform: scale(1.0) rotate(0.8deg);
     z-index: 100;
   }
-  94% {
-    transform: scale(1.0) translate(1px, 0) rotate(0.2deg);
+  96% {
+    transform: scale(1.0) rotate(-0.3deg);
     z-index: 100;
   }
   100% {
-    transform: scale(1.0) translate(0, 0) rotate(0deg);
+    transform: scale(1.0) rotate(0deg);
     box-shadow: none;
     z-index: 5;
   }
 }
 
 .schedule-tile.just-dropped {
-  animation: tileDropLand 0.55s cubic-bezier(0.18, 0.9, 0.3, 1) forwards !important;
+  animation: tileDropLand 0.5s cubic-bezier(0.2, 0.8, 0.25, 1) forwards !important;
   z-index: 100 !important;
   transform-origin: center center !important;
   will-change: transform, box-shadow;
