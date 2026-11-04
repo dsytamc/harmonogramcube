@@ -696,7 +696,7 @@ function renderRowsList(rows, forceRebuild = false) {
       item.innerHTML = `
         <span class="row-item-type type-hour" title="Godzina">G</span>
         <input type="text" class="row-time-input" value="${escapeHtml(row.time || '')}" placeholder="9:00">
-        <input type="text" class="row-note-input row-hour-note" value="${escapeHtml(row.note || '')}" placeholder="Dopisek">
+        <input type="text" class="row-note-input row-hour-note" value="${escapeHtml(row.note || '')}" placeholder="Rodzaj sali">
         <div class="row-actions">
           <button type="button" class="btn-icon up" title="Przesuń w górę">
             <svg viewBox="0 0 16 16" width="12" height="12" fill="currentColor"><path d="M8 5L2 11l1.4 1.4L8 7.8l4.6 4.6L14 11z"/></svg>
@@ -844,7 +844,8 @@ function setupEventListeners() {
       store.updateRow(selectedRowId, { note: e.target.value });
     });
     hourNoteInput.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter') {
+      // Klawisz Escape zamyka edytor, a Enter / Shift+Enter tworzy nową linię (linebreak)
+      if (e.key === 'Escape') {
         closeHourEditor();
       }
     });

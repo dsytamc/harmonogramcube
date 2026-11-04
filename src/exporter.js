@@ -201,15 +201,33 @@ ${FONT_EMBED_CSS}
       if (state.slimHours) {
         const displayTime = (row.time || '').replace(/:00$/, '');
         if (row.note) {
-          svg += `        <text x="${spec.hourColWidth / 2}" y="${rowY + 36}" text-anchor="middle" style="text-anchor: middle; text-align: center;" font-family="${FONT_BLACK}" font-weight="900" font-size="28" fill="#1F2327">${escapeXml(displayTime)}</text>\n`;
-          svg += `        <text x="${spec.hourColWidth / 2}" y="${rowY + 54}" text-anchor="middle" style="text-anchor: middle; text-align: center;" font-family="${FONT_HEAVY}" font-weight="800" font-size="8.5" fill="#1F2327" letter-spacing="0.04em">${escapeXml(row.note)}</text>\n`;
+          const noteLines = (row.note || '').split('\n').map(s => s.trim()).filter(Boolean);
+          if (noteLines.length > 1) {
+            svg += `        <text x="${spec.hourColWidth / 2}" y="${rowY + 30}" text-anchor="middle" style="text-anchor: middle; text-align: center;" font-family="${FONT_BLACK}" font-weight="900" font-size="26" fill="#1F2327">${escapeXml(displayTime)}</text>\n`;
+            noteLines.forEach((line, lIdx) => {
+              svg += `        <text x="${spec.hourColWidth / 2}" y="${rowY + 46 + lIdx * 10}" text-anchor="middle" style="text-anchor: middle; text-align: center;" font-family="${FONT_HEAVY}" font-weight="800" font-size="7.5" fill="#1F2327" letter-spacing="0.03em">${escapeXml(line)}</text>\n`;
+            });
+          } else {
+            svg += `        <text x="${spec.hourColWidth / 2}" y="${rowY + 36}" text-anchor="middle" style="text-anchor: middle; text-align: center;" font-family="${FONT_BLACK}" font-weight="900" font-size="28" fill="#1F2327">${escapeXml(displayTime)}</text>\n`;
+            svg += `        <text x="${spec.hourColWidth / 2}" y="${rowY + 54}" text-anchor="middle" style="text-anchor: middle; text-align: center;" font-family="${FONT_HEAVY}" font-weight="800" font-size="8.5" fill="#1F2327" letter-spacing="0.04em">${escapeXml(row.note)}</text>\n`;
+          }
         } else {
           svg += `        <text x="${spec.hourColWidth / 2}" y="${rowY + spec.baseTileHeight / 2 + 10}" text-anchor="middle" style="text-anchor: middle; text-align: center;" font-family="${FONT_BLACK}" font-weight="900" font-size="32" fill="#1F2327">${escapeXml(displayTime)}</text>\n`;
         }
       } else {
-        svg += `        <text x="${spec.hourColWidth / 2}" y="${rowY + (row.note ? 28 : spec.baseTileHeight / 2 + 5)}" text-anchor="middle" style="text-anchor: middle; text-align: center;" font-family="${FONT_HEAVY}" font-weight="800" font-size="15" fill="#1F2327">${escapeXml(row.time || '')}</text>\n`;
         if (row.note) {
-          svg += `        <text x="${spec.hourColWidth / 2}" y="${rowY + 48}" text-anchor="middle" style="text-anchor: middle; text-align: center;" font-family="${FONT_DEMI}" font-weight="600" font-size="10" fill="#1F2327">${escapeXml(row.note)}</text>\n`;
+          const noteLines = (row.note || '').split('\n').map(s => s.trim()).filter(Boolean);
+          if (noteLines.length > 1) {
+            svg += `        <text x="${spec.hourColWidth / 2}" y="${rowY + 24}" text-anchor="middle" style="text-anchor: middle; text-align: center;" font-family="${FONT_HEAVY}" font-weight="800" font-size="15" fill="#1F2327">${escapeXml(row.time || '')}</text>\n`;
+            noteLines.forEach((line, lIdx) => {
+              svg += `        <text x="${spec.hourColWidth / 2}" y="${rowY + 39 + lIdx * 11}" text-anchor="middle" style="text-anchor: middle; text-align: center;" font-family="${FONT_DEMI}" font-weight="600" font-size="8.5" fill="#1F2327">${escapeXml(line)}</text>\n`;
+            });
+          } else {
+            svg += `        <text x="${spec.hourColWidth / 2}" y="${rowY + 28}" text-anchor="middle" style="text-anchor: middle; text-align: center;" font-family="${FONT_HEAVY}" font-weight="800" font-size="15" fill="#1F2327">${escapeXml(row.time || '')}</text>\n`;
+            svg += `        <text x="${spec.hourColWidth / 2}" y="${rowY + 48}" text-anchor="middle" style="text-anchor: middle; text-align: center;" font-family="${FONT_DEMI}" font-weight="600" font-size="10" fill="#1F2327">${escapeXml(row.note)}</text>\n`;
+          }
+        } else {
+          svg += `        <text x="${spec.hourColWidth / 2}" y="${rowY + spec.baseTileHeight / 2 + 5}" text-anchor="middle" style="text-anchor: middle; text-align: center;" font-family="${FONT_HEAVY}" font-weight="800" font-size="15" fill="#1F2327">${escapeXml(row.time || '')}</text>\n`;
         }
       }
       svg += `      </g>\n`;

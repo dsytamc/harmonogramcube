@@ -1471,6 +1471,17 @@ body {
   font-weight: 700;
   margin-top: 2px;
   text-transform: uppercase;
+  white-space: pre-line;
+  line-height: 1.15;
+  text-align: center;
+  word-break: break-word;
+}
+
+#hourNoteInput {
+  resize: vertical;
+  min-height: 52px;
+  line-height: 1.35;
+  font-family: inherit;
 }
 
 .theme-dark .hour-header-cell {
@@ -1485,7 +1496,7 @@ body {
 
 /* WERSJA SLIM DLA GODZIN (TYLKO CYFRA + DOPISEK) */
 .hour-header-cell.is-slim-hour {
-  padding: 12px 6px;
+  padding: 8px 4px;
   justify-content: center;
 }
 .hour-header-cell.is-slim-hour .hour-text {
@@ -1495,14 +1506,15 @@ body {
   letter-spacing: -0.02em;
 }
 .hour-header-cell.is-slim-hour .hour-note {
-  font-size: 8px;
+  font-size: 7.5px;
   font-weight: 800;
-  margin-top: 4px;
-  letter-spacing: 0.03em;
+  margin-top: 3px;
+  letter-spacing: 0.02em;
   max-width: 100%;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  white-space: pre-line;
+  line-height: 1.1;
+  text-align: center;
+  word-break: break-word;
 }
 
 

@@ -507,7 +507,7 @@ const SHORT_DAY_NAMES = {
         : (row.time || '');
       hourCell.innerHTML = `
         <span class="hour-text">${escapeHtml(displayTime)}</span>
-        ${row.note ? `<span class="hour-note">${escapeHtml(row.note)}</span>` : ''}
+        ${row.note ? `<span class="hour-note">${escapeHtml(row.note).replace(/\n/g, '<br>')}</span>` : ''}
       `;
 
       if (options && options.onHourClick) {
