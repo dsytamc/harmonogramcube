@@ -12,7 +12,11 @@ carbon-builder/
 # Pliki robocze projektowe i duże zrzuty testowe
 *.ai
 *.zip
-Asset*
+Asset\ [0-9]*
 post_zielna*
 przykład*
 Generator Harmonogramów Cube.bat
+
+# Upewnij się, że katalog produkcyjny assets/ jest zawsze śledzony
+!assets/
+!assets/**

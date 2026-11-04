@@ -494,6 +494,7 @@ const SHORT_DAY_NAMES = {
     } else {
       const hourRow = document.createElement('div');
       hourRow.className = 'schedule-grid-row';
+      hourRow.dataset.rowId = row.id;
       hourRow.style.gridTemplateColumns = `${spec.hourColWidth}px repeat(${activeCount}, 1fr)`;
       hourRow.style.gap = `${spec.gap}px`;
 

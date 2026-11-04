@@ -2985,9 +2985,12 @@ body {
 }
 
 /* 3. Pływająca belka przyczepiona do kursora (czysty podgląd, bez glow na całej belce) */
+.break-bar-drag-floating,
+.break-bar-drag-floating * {
+  pointer-events: none !important;
+}
 .break-bar-drag-floating {
   position: fixed;
-  pointer-events: none;
   z-index: 999999;
   border-radius: 8px;
   overflow: visible !important;

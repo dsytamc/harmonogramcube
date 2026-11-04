@@ -23,7 +23,13 @@ const files = [
   'src/app.js'
 ];
 
+const htmlToImageCode = fs.existsSync('assets/js/html-to-image.js')
+  ? fs.readFileSync('assets/js/html-to-image.js', 'utf-8')
+  : '';
+
 let bundleContent = `/* Generator Grafiku Fitness Cube - Standalone Bundle (działa bezpośrednio przez file://) */
+${htmlToImageCode}
+
 (function() {
 'use strict';
 
