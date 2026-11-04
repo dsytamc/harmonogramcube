@@ -2952,27 +2952,10 @@ body {
 }
 
 /* ==========================================================================
-   DRAG & DROP KAFELKÓW (WIGGLE, FLOATING BADGE, GHOST BREATHE, LANDING)
+   DRAG & DROP KAFELKÓW I BELKI (PŁYNNE PRZENOSZENIE BEZ WIBRACJI)
    ========================================================================== */
 
-/* 1. Animacja Wiggle (przytrzymanie przez 1.5s) */
-@keyframes tileWiggle {
-  0% { transform: rotate(0deg); }
-  20% { transform: rotate(-2deg) scale(1.02); }
-  40% { transform: rotate(2deg) scale(1.02); }
-  60% { transform: rotate(-1.5deg) scale(1.02); }
-  80% { transform: rotate(1.5deg) scale(1.02); }
-  100% { transform: rotate(0deg) scale(1.02); }
-}
-
-.schedule-tile.is-wiggling,
-.schedule-grid-row.break-row.is-wiggling {
-  animation: tileWiggle 0.25s ease-in-out infinite;
-  box-shadow: 0 0 16px rgba(255, 204, 0, 0.7) !important;
-  z-index: 20;
-}
-
-/* 2. Puste miejsce po zabraniu kafelka (dziura w tabeli) */
+/* 1. Puste miejsce po zabraniu kafelka lub belki (ciemny slot w tabeli) */
 .schedule-tile.is-drag-origin,
 .schedule-grid-row.break-row.is-drag-origin {
   opacity: 0.15 !important;
@@ -2980,19 +2963,20 @@ body {
   border: 1px dashed rgba(255, 255, 255, 0.25) !important;
   box-shadow: inset 0 0 12px rgba(0, 0, 0, 0.8) !important;
 }
-.theme-light .schedule-tile.is-drag-origin {
+.theme-light .schedule-tile.is-drag-origin,
+.theme-light .schedule-grid-row.break-row.is-drag-origin {
   background: #e2e5ea !important;
   border: 1px dashed rgba(0, 0, 0, 0.25) !important;
 }
 
-/* 3. Pływający kafelek przyczepiony do kursora */
+/* 2. Pływający kafelek przyczepiony do kursora (zmniejszony o 40%) */
 .tile-drag-floating {
   position: fixed;
   pointer-events: none;
   z-index: 999999;
   border-radius: 8px;
   overflow: hidden;
-  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.75), 0 0 20px rgba(255, 204, 0, 0.45);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.75);
   transform-origin: 0 0;
   transform: translate(10px, 10px) scale(0.6);
   opacity: 0.95;
@@ -3000,7 +2984,35 @@ body {
   user-select: none;
 }
 
-/* 4. Podgląd docelowy (Ghost 50% + efekt breathe) */
+/* 3. Pływająca belka przyczepiona do kursora (czysty podgląd, bez glow na całej belce) */
+.break-bar-drag-floating {
+  position: fixed;
+  pointer-events: none;
+  z-index: 999999;
+  border-radius: 8px;
+  overflow: visible !important;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.65) !important;
+  transform-origin: 0 0;
+  transform: translate(14px, 14px) scale(0.6);
+  opacity: 0.95;
+  user-select: none;
+}
+
+/* 4. Żółte kółko zaznaczające przyczepienie belki do kursora */
+.break-drag-pin-circle {
+  position: absolute;
+  left: -7px;
+  top: -7px;
+  width: 14px;
+  height: 14px;
+  background: #FFCC00;
+  border: 2px solid #000000;
+  border-radius: 50%;
+  box-shadow: 0 0 8px #FFCC00;
+  z-index: 1000000;
+}
+
+/* 5. Podgląd docelowy kafelka (Ghost 50% + efekt breathe) */
 @keyframes tileGhostBreathe {
   0% {
     transform: scale(0.97);
@@ -3027,75 +3039,49 @@ body {
   z-index: 15;
 }
 
-/* 5. Animacja upadku (lądowania) - 130% do 100% (0.4s) + wibracja 0.3s */
+/* 6. Płynne osadzenie po upuszczeniu (bez drgań) */
 @keyframes tileDropBounce {
-  0% {
-    transform: scale(1.3);
-    box-shadow: 0 0 24px rgba(255, 204, 0, 0.9);
-  }
-  40% {
-    transform: scale(0.96);
-  }
-  70% {
-    transform: scale(1.03);
-  }
-  100% {
-    transform: scale(1);
-    box-shadow: none;
-  }
+  0% { transform: scale(1.04); }
+  100% { transform: scale(1); }
 }
 
 .schedule-tile.just-dropped,
 .schedule-grid-row.break-row.just-dropped {
-  animation: tileDropBounce 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+  animation: tileDropBounce 0.25s ease-out forwards;
   z-index: 25;
 }
 
-/* Pływająca belka przyczepiona do kursora - zmniejszona o 40% (scale 0.6) */
-.break-bar-drag-floating {
-  position: fixed;
-  pointer-events: none;
-  z-index: 999999;
-  border-radius: 8px;
-  overflow: visible !important;
-  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.75), 0 0 20px rgba(255, 204, 0, 0.45);
-  transform-origin: 0 0;
-  transform: translate(14px, 14px) scale(0.6);
-  opacity: 0.95;
-  user-select: none;
-}
-
-/* Żółte kółko zaznaczające przyczepienie belki do kursora */
-.break-drag-pin-circle {
-  position: absolute;
-  left: -8px;
-  top: -8px;
-  width: 16px;
-  height: 16px;
-  background: #FFCC00;
-  border: 2.5px solid #161616;
-  border-radius: 50%;
-  box-shadow: 0 0 10px #FFCC00, 0 0 20px rgba(255, 204, 0, 0.85);
-  z-index: 1000000;
-  animation: pinPulse 0.6s ease-in-out infinite alternate;
-}
-
-@keyframes pinPulse {
-  0% { transform: scale(0.9); box-shadow: 0 0 6px #FFCC00; }
-  100% { transform: scale(1.25); box-shadow: 0 0 14px #FFCC00, 0 0 22px rgba(255, 204, 0, 0.9); }
-}
-
-/* Podświetlenie wiersza docelowego przy przeciąganiu belki */
-.schedule-grid-row.is-drag-over {
-  position: relative;
-  outline: 2px dashed #FFCC00 !important;
-  outline-offset: 2px;
-  border-radius: 6px;
-  z-index: 15;
-}
+/* Precyzyjny żółty wskaźnik wstawienia belki pomiędzy wierszami */
 .schedule-grid-row.is-drag-over-top {
-  box-shadow: 0 -4px 10px rgba(255, 204, 0, 0.8) !important;
+  position: relative;
 }
+.schedule-grid-row.is-drag-over-top::before {
+  content: '';
+  position: absolute;
+  top: -6px;
+  left: 0;
+  right: 0;
+  height: 6px;
+  background: #FFCC00;
+  border-radius: 4px;
+  box-shadow: 0 0 14px #FFCC00, 0 0 4px #FFCC00;
+  z-index: 100;
+  pointer-events: none;
+}
+
 .schedule-grid-row.is-drag-over-bottom {
-  box-shadow: 0 4px 10px rgba(255, 204, 0, 0.8) !important;
+  position: relative;
+}
+.schedule-grid-row.is-drag-over-bottom::after {
+  content: '';
+  position: absolute;
+  bottom: -6px;
+  left: 0;
+  right: 0;
+  height: 6px;
+  background: #FFCC00;
+  border-radius: 4px;
+  box-shadow: 0 0 14px #FFCC00, 0 0 4px #FFCC00;
+  z-index: 100;
+  pointer-events: none;
 }

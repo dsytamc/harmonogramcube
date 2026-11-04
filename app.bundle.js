@@ -1175,7 +1175,7 @@ const SHORT_DAY_NAMES = {
       breakRow.appendChild(breakBar);
 
       // ======================================================================
-      // DRAG & DROP BELKI: 0.5s PRZYTRZYMANIA, WIGGLE OD RAZU, ŻÓŁTE KÓŁKO PRZY KURSORZE
+      // DRAG & DROP BELKI: 0.5s PRZYTRZYMANIA, ŻÓŁTE KÓŁKO PRZY KURSORZE, PODGLĄD MIĘDZY WIERSZAMI
       // ======================================================================
       let pressTimer = null;
       let startX = 0;
@@ -1192,7 +1192,6 @@ const SHORT_DAY_NAMES = {
           clearTimeout(pressTimer);
           pressTimer = null;
         }
-        breakRow.classList.remove('is-wiggling');
       };
 
       const onPointerMove = (moveEvt) => {
@@ -1211,11 +1210,11 @@ const SHORT_DAY_NAMES = {
           floatingBadge.style.top = moveEvt.clientY + 'px';
         }
 
-        // Wykrywanie wiersza pod kursorem (ignorując pływający element)
+        // Wykrywanie wiersza pod kursorem (dowolny wiersz tabeli)
         const elementsUnderPoint = document.elementsFromPoint(moveEvt.clientX, moveEvt.clientY);
         const hoveredRow = elementsUnderPoint.find(el => {
           const rowEl = el.closest && el.closest('.schedule-grid-row');
-          return rowEl && !rowEl.classList.contains('break-bar-drag-floating') && rowEl.dataset.rowId;
+          return rowEl && !rowEl.classList.contains('break-bar-drag-floating') && Boolean(rowEl.dataset.rowId);
         });
 
         const targetRowEl = hoveredRow ? hoveredRow.closest('.schedule-grid-row') : null;
@@ -1226,11 +1225,11 @@ const SHORT_DAY_NAMES = {
 
           if (targetRowEl !== currentTargetRow) {
             if (currentTargetRow) {
-              currentTargetRow.classList.remove('is-drag-over', 'is-drag-over-top', 'is-drag-over-bottom');
+              currentTargetRow.classList.remove('is-drag-over-top', 'is-drag-over-bottom');
             }
             currentTargetRow = targetRowEl;
           }
-          currentTargetRow.classList.add('is-drag-over');
+
           if (dropPosition === 'after') {
             currentTargetRow.classList.add('is-drag-over-bottom');
             currentTargetRow.classList.remove('is-drag-over-top');
@@ -1239,7 +1238,7 @@ const SHORT_DAY_NAMES = {
             currentTargetRow.classList.remove('is-drag-over-bottom');
           }
         } else if (currentTargetRow) {
-          currentTargetRow.classList.remove('is-drag-over', 'is-drag-over-top', 'is-drag-over-bottom');
+          currentTargetRow.classList.remove('is-drag-over-top', 'is-drag-over-bottom');
           currentTargetRow = null;
         }
       };
@@ -1263,13 +1262,11 @@ const SHORT_DAY_NAMES = {
         }
 
         if (currentTargetRow) {
-          currentTargetRow.classList.remove('is-drag-over', 'is-drag-over-top', 'is-drag-over-bottom');
+          currentTargetRow.classList.remove('is-drag-over-top', 'is-drag-over-bottom');
           const targetRowId = currentTargetRow.dataset.rowId;
 
-          if (targetRowId && (targetRowId !== row.id || dropPosition === 'after')) {
-            if (options && options.onRowDrop) {
-              options.onRowDrop(row.id, targetRowId, dropPosition);
-            }
+          if (targetRowId && options && options.onRowDrop) {
+            options.onRowDrop(row.id, targetRowId, dropPosition);
           }
           currentTargetRow = null;
         }
@@ -1285,28 +1282,24 @@ const SHORT_DAY_NAMES = {
 
         cancelPress();
 
-        // 1. Wiggle startuje OD RAZU po wciśnięciu lewego przycisku myszy
-        breakRow.classList.add('is-wiggling');
-
-        // 2. Po 0.5s przytrzymania belka odskakuje i przyczepia się do kursora
+        // Po 0.5s płynnego przytrzymania (bez drgań) belka odskakuje do kursora
         pressTimer = setTimeout(() => {
           pressTimer = null;
-          breakRow.classList.remove('is-wiggling');
           isDragging = true;
 
-          // Pierwotne miejsce staje się ciemną szczeliną
+          // Pierwotne miejsce staje się pustą szczeliną
           breakRow.classList.add('is-drag-origin');
 
           // Tworzenie pływającego klonu belki
           floatingBadge = breakRow.cloneNode(true);
-          floatingBadge.classList.remove('is-drag-origin', 'is-wiggling', 'just-dropped');
+          floatingBadge.classList.remove('is-drag-origin', 'just-dropped');
           floatingBadge.className = 'schedule-grid-row break-row break-bar-drag-floating';
           floatingBadge.style.width = breakRow.offsetWidth + 'px';
           floatingBadge.style.height = breakRow.offsetHeight + 'px';
           floatingBadge.style.left = currentX + 'px';
           floatingBadge.style.top = currentY + 'px';
 
-          // Żółte kółko zaznaczające przyczepienie belki do kursora
+          // Żółte kółko zaznaczające przyczepienie belki do kursora (bez glow na całej belce)
           const pinCircle = document.createElement('div');
           pinCircle.className = 'break-drag-pin-circle';
           floatingBadge.appendChild(pinCircle);
@@ -1399,7 +1392,7 @@ const SHORT_DAY_NAMES = {
             clearTimeout(pressTimer);
             pressTimer = null;
           }
-          tileEl.classList.remove('is-wiggling');
+          
         };
 
         const onPointerMove = (moveEvt) => {
@@ -1481,12 +1474,12 @@ const SHORT_DAY_NAMES = {
             cancelPress();
 
             // 1. Animacja wiggle zaczyna się OD RAZU po wciśnięciu lewego przycisku myszy
-            tileEl.classList.add('is-wiggling');
+            
 
             // 2. Po 0.5s przytrzymania kafelek odskakuje i przyczepia się do kursora
             pressTimer = setTimeout(() => {
               pressTimer = null;
-              tileEl.classList.remove('is-wiggling');
+              
               isDragging = true;
 
               // Miejsce pierwotne staje się ciemną dziurą w tabeli
@@ -1494,7 +1487,7 @@ const SHORT_DAY_NAMES = {
 
               // Tworzenie pływającego kafelka przyczepionego do kursora
               floatingBadge = tileEl.cloneNode(true);
-              floatingBadge.classList.remove('is-drag-origin', 'is-wiggling', 'is-selected');
+              floatingBadge.classList.remove('is-drag-origin', 'is-selected');
               const existingAnts = floatingBadge.querySelector('.selection-ants-box');
               if (existingAnts) existingAnts.remove();
 
@@ -2647,6 +2640,7 @@ async function exportArtboardToPng(artboardEl, state, statusCallback = null, cus
 
   // Całkowite ukrycie obrysów zaznaczenia UI i efektów glow na czas eksportu
   artboardEl.classList.add('is-exporting');
+  const selectedExportElements = Array.from(artboardEl.querySelectorAll('.is-selected, .is-editing'));
   artboardEl.querySelectorAll('.is-selected, .is-editing').forEach(el => el.classList.remove('is-selected', 'is-editing'));
   artboardEl.querySelectorAll('.selection-ants-box').forEach(el => el.remove());
 
@@ -2704,7 +2698,7 @@ async function exportArtboardToPng(artboardEl, state, statusCallback = null, cus
 
   } finally {
     artboardEl.classList.remove('is-exporting');
-    selectedTiles.forEach(t => t.classList.add('is-selected'));
+    selectedExportElements.forEach(t => t.classList.add('is-selected'));
   }
 }
 
@@ -2740,6 +2734,7 @@ async function exportArtboardToPdf(artboardEl, state, statusCallback = null, cus
 
   // Całkowite ukrycie obrysów zaznaczenia UI i efektów glow na czas eksportu
   artboardEl.classList.add('is-exporting');
+  const selectedExportElements = Array.from(artboardEl.querySelectorAll('.is-selected, .is-editing'));
   artboardEl.querySelectorAll('.is-selected, .is-editing').forEach(el => el.classList.remove('is-selected', 'is-editing'));
   artboardEl.querySelectorAll('.selection-ants-box').forEach(el => el.remove());
 
@@ -2800,7 +2795,7 @@ async function exportArtboardToPdf(artboardEl, state, statusCallback = null, cus
 
   } finally {
     artboardEl.classList.remove('is-exporting');
-    selectedTiles.forEach(t => t.classList.add('is-selected'));
+    selectedExportElements.forEach(t => t.classList.add('is-selected'));
   }
 }
 

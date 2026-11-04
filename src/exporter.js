@@ -569,6 +569,7 @@ export async function exportArtboardToPng(artboardEl, state, statusCallback = nu
 
   // Całkowite ukrycie obrysów zaznaczenia UI i efektów glow na czas eksportu
   artboardEl.classList.add('is-exporting');
+  const selectedExportElements = Array.from(artboardEl.querySelectorAll('.is-selected, .is-editing'));
   artboardEl.querySelectorAll('.is-selected, .is-editing').forEach(el => el.classList.remove('is-selected', 'is-editing'));
   artboardEl.querySelectorAll('.selection-ants-box').forEach(el => el.remove());
 
@@ -626,7 +627,7 @@ export async function exportArtboardToPng(artboardEl, state, statusCallback = nu
 
   } finally {
     artboardEl.classList.remove('is-exporting');
-    selectedTiles.forEach(t => t.classList.add('is-selected'));
+    selectedExportElements.forEach(t => t.classList.add('is-selected'));
   }
 }
 
@@ -662,6 +663,7 @@ export async function exportArtboardToPdf(artboardEl, state, statusCallback = nu
 
   // Całkowite ukrycie obrysów zaznaczenia UI i efektów glow na czas eksportu
   artboardEl.classList.add('is-exporting');
+  const selectedExportElements = Array.from(artboardEl.querySelectorAll('.is-selected, .is-editing'));
   artboardEl.querySelectorAll('.is-selected, .is-editing').forEach(el => el.classList.remove('is-selected', 'is-editing'));
   artboardEl.querySelectorAll('.selection-ants-box').forEach(el => el.remove());
 
@@ -722,7 +724,7 @@ export async function exportArtboardToPdf(artboardEl, state, statusCallback = nu
 
   } finally {
     artboardEl.classList.remove('is-exporting');
-    selectedTiles.forEach(t => t.classList.add('is-selected'));
+    selectedExportElements.forEach(t => t.classList.add('is-selected'));
   }
 }
 
