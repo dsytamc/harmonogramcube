@@ -1395,7 +1395,7 @@ const SHORT_DAY_NAMES = {
             clearTimeout(pressTimer);
             pressTimer = null;
           }
-          
+          tileEl.classList.remove('is-wiggling');
         };
 
         const onPointerMove = (moveEvt) => {
@@ -1477,11 +1477,12 @@ const SHORT_DAY_NAMES = {
             cancelPress();
 
             // 1. Animacja wiggle zaczyna się OD RAZU po wciśnięciu lewego przycisku myszy
-            
+            tileEl.classList.add('is-wiggling');
 
             // 2. Po 0.5s przytrzymania kafelek odskakuje i przyczepia się do kursora
             pressTimer = setTimeout(() => {
               pressTimer = null;
+              tileEl.classList.remove('is-wiggling');
               
               isDragging = true;
 

@@ -3139,6 +3139,25 @@ body {
   z-index: 1000000;
 }
 
+/* Animacja wiggle (delikatne drżenie) przy przytrzymaniu kafelka z zajęciami */
+@keyframes tileWiggle {
+  0% { transform: rotate(0deg) scale(1); }
+  15% { transform: rotate(-2deg) scale(1.02); }
+  30% { transform: rotate(2deg) scale(1.03); }
+  45% { transform: rotate(-2.5deg) scale(1.03); }
+  60% { transform: rotate(2.5deg) scale(1.04); }
+  75% { transform: rotate(-1.5deg) scale(1.03); }
+  90% { transform: rotate(1.5deg) scale(1.02); }
+  100% { transform: rotate(0deg) scale(1.02); }
+}
+
+.schedule-tile.is-wiggling {
+  animation: tileWiggle 0.45s ease-in-out infinite !important;
+  z-index: 20 !important;
+  box-shadow: 0 4px 16px rgba(255, 204, 0, 0.5) !important;
+  cursor: grabbing !important;
+}
+
 /* 5. Podgląd docelowy kafelka (Ghost 50% + efekt breathe) */
 @keyframes tileGhostBreathe {
   0% {
@@ -3166,16 +3185,40 @@ body {
   z-index: 15;
 }
 
-/* 6. Płynne osadzenie po upuszczeniu (bez drgań) */
-@keyframes tileDropBounce {
-  0% { transform: scale(1.04); }
-  100% { transform: scale(1); }
+/* 6. Upuszczenie kafelka: animacja 0.4s (od 130% do 100% z lekką wibracją w miejscu docelowym 0.3s) */
+@keyframes tileDropLand {
+  0% {
+    transform: scale(1.3);
+    box-shadow: 0 10px 26px rgba(255, 204, 0, 0.6);
+  }
+  40% {
+    transform: scale(1.0);
+    box-shadow: 0 4px 12px rgba(255, 204, 0, 0.3);
+  }
+  55% {
+    transform: translate(-3px, 1px) scale(1.02);
+  }
+  70% {
+    transform: translate(3px, -1px) scale(0.99);
+  }
+  85% {
+    transform: translate(-1.5px, 0.5px) scale(1.01);
+  }
+  100% {
+    transform: translate(0, 0) scale(1.0);
+    box-shadow: none;
+  }
 }
 
-.schedule-tile.just-dropped,
+.schedule-tile.just-dropped {
+  animation: tileDropLand 0.4s ease-out forwards !important;
+  z-index: 25 !important;
+}
+
+/* Belka (break-row) bez drgań po upuszczeniu - czyste, płynne osadzenie */
 .schedule-grid-row.break-row.just-dropped {
-  animation: tileDropBounce 0.25s ease-out forwards;
-  z-index: 25;
+  animation: none !important;
+  transition: opacity 0.2s ease;
 }
 
 /* Precyzyjny żółty wskaźnik wstawienia belki pomiędzy wierszami */
