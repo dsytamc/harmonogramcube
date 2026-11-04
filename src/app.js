@@ -486,19 +486,29 @@ function updateArtboard(state) {
 }
 
 function handleTileDrop(sourceRowId, sourceDayId, targetRowId, targetDayId) {
-  // Przeniesienie lub zamiana kafelków
+  // 1. Najpierw ustaw flagę justDroppedCoord, aby pierwszy render ze store już ją posiadał
+  justDroppedCoord = { rowId: targetRowId, dayId: targetDayId };
+
+  // 2. Przeniesienie lub zamiana kafelków
   store.moveOrSwapTile(sourceRowId, sourceDayId, targetRowId, targetDayId);
   
-  // Zaznaczenie w nowym miejscu
-  justDroppedCoord = { rowId: targetRowId, dayId: targetDayId };
+  // 3. Zaznaczenie w nowym miejscu
   selectTile(targetRowId, targetDayId);
 
-  // Wyczyszczenie flagi animacji po 450ms
+  // 4. Bezpośrednie wymuszenie reflow i uruchomienie animacji lądowania w DOM
+  const targetTileEl = artboard.querySelector('.schedule-tile[data-row-id="' + targetRowId + '"][data-day-id="' + targetDayId + '"]');
+  if (targetTileEl) {
+    targetTileEl.classList.remove('just-dropped');
+    void targetTileEl.offsetWidth; // force browser layout reflow
+    targetTileEl.classList.add('just-dropped');
+  }
+
+  // 5. Wyczyszczenie flagi animacji po zakończeniu animacji (600ms)
   setTimeout(() => {
     justDroppedCoord = null;
     const tileEl = artboard.querySelector('.schedule-tile[data-row-id="' + targetRowId + '"][data-day-id="' + targetDayId + '"]');
     if (tileEl) tileEl.classList.remove('just-dropped');
-  }, 450);
+  }, 600);
 }
 
 function handleRowDrop(sourceRowId, targetRowId, position = 'before') {
