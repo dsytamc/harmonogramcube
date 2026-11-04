@@ -259,95 +259,173 @@ function createScheduleGrid(state, selectedCoord, onTileClick, format, options =
   state.rows.forEach(row => {
     H_base += spec.gap;
     if (row.type === 'break') {
-      H_base += spec.breakRowHeight;
-    } else {
-      H_base += spec.baseTileHeight;
-    }
-  });
-
-  // Skalowanie proporcjonalne:
-  // Sw - skala, aby rozszerzyć do pełnej szerokości między marginesami
-  // Sh - maksymalna skala, aby nie wyjść poza dostępną wysokość
-  const Sw = spec.targetWidth / W_base;
-  const Sh = spec.availableHeight / H_base;
-  const scale = Number(Math.min(Sw, Sh).toFixed(4));
-
-  const gridContainer = document.createElement('div');
-  gridContainer.className = 'schedule-grid-container';
-  gridContainer.style.width = `${W_base}px`;
-
-  // 0. Belka nagłówka z nazwą siłowni – stanowiąca integralną część tabeli
-  const isHeaderSelected = Boolean(options && options.isHeaderEditing);
-  const headerBar = document.createElement('div');
-  headerBar.className = `artboard-header-bar${isHeaderSelected ? ' is-selected' : ''}`;
-  headerBar.textContent = state.gymTitle || 'GRAFIK FITNESS';
-  headerBar.title = 'Kliknij, aby edytować nagłówek tabeli';
-  if (options && options.onHeaderClick) {
-    headerBar.addEventListener('click', (e) => {
-      e.stopPropagation();
-      options.onHeaderClick(state.gymTitle);
-    });
-  }
-  if (isHeaderSelected) {
-    const antsSvg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-    antsSvg.setAttribute('class', 'selection-ants-box');
-    const antsRect = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
-    antsRect.setAttribute('class', 'selection-ants-rect');
-    antsRect.setAttribute('x', '1.5');
-    antsRect.setAttribute('y', '1.5');
-    antsRect.setAttribute('width', 'calc(100% - 3px)');
-    antsRect.setAttribute('height', 'calc(100% - 3px)');
-    antsRect.setAttribute('rx', '10');
-    antsRect.setAttribute('ry', '10');
-    antsSvg.appendChild(antsRect);
-    headerBar.appendChild(antsSvg);
-  }
-  gridContainer.appendChild(headerBar);
-
-  // 1. Wiersz nagłówka z dniami tygodnia
-  const headerRow = document.createElement('div');
-  headerRow.className = 'schedule-grid-row header-row';
-  headerRow.style.gridTemplateColumns = `${spec.hourColWidth}px repeat(${activeCount}, 1fr)`;
-  headerRow.style.gap = `${spec.gap}px`;
-
-  const cornerCell = document.createElement('div');
-  cornerCell.className = 'day-header-corner';
-  headerRow.appendChild(cornerCell);
-
-const SHORT_DAY_NAMES = {
-  mon: 'PON.',
-  tue: 'WT.',
-  wed: 'ŚR.',
-  thu: 'CZW.',
-  fri: 'PT.',
-  sat: 'SOB.',
-  sun: 'ND.'
-};
-
-  activeDays.forEach(day => {
-    const dayCell = document.createElement('div');
-    dayCell.className = `day-header-cell${state.slimDays ? ' is-slim-day' : ''}`;
-    dayCell.textContent = state.slimDays ? (SHORT_DAY_NAMES[day.id] || day.name) : day.name;
-    headerRow.appendChild(dayCell);
-  });
-  gridContainer.appendChild(headerRow);
-
-  // 2. Wiersze godzin lub belki przerw
-  state.rows.forEach(row => {
-    if (row.type === 'break') {
       const breakRow = document.createElement('div');
       breakRow.className = 'schedule-grid-row break-row';
+      breakRow.dataset.rowId = row.id;
       breakRow.style.gap = `${spec.gap}px`;
+
+      const isJustDropped = Boolean(options && options.justDroppedRowId === row.id);
+      if (isJustDropped) {
+        breakRow.classList.add('just-dropped');
+      }
+
       const breakBar = document.createElement('div');
       breakBar.className = 'break-bar';
+      breakBar.title = 'Przytrzymaj 0.5s lewym przyciskiem myszy, aby przesunąć belkę';
       if (row.label) {
         breakBar.textContent = row.label;
       }
       breakRow.appendChild(breakBar);
+
+      // ======================================================================
+      // DRAG & DROP BELKI: 0.5s PRZYTRZYMANIA, WIGGLE OD RAZU, ŻÓŁTE KÓŁKO PRZY KURSORZE
+      // ======================================================================
+      let pressTimer = null;
+      let startX = 0;
+      let startY = 0;
+      let currentX = 0;
+      let currentY = 0;
+      let isDragging = false;
+      let floatingBadge = null;
+      let currentTargetRow = null;
+      let dropPosition = 'before';
+
+      const cancelPress = () => {
+        if (pressTimer) {
+          clearTimeout(pressTimer);
+          pressTimer = null;
+        }
+        breakRow.classList.remove('is-wiggling');
+      };
+
+      const onPointerMove = (moveEvt) => {
+        currentX = moveEvt.clientX;
+        currentY = moveEvt.clientY;
+
+        if (!isDragging) {
+          return;
+        }
+
+        moveEvt.preventDefault();
+
+        // Przesuwanie pływającej belki pod kursorem
+        if (floatingBadge) {
+          floatingBadge.style.left = moveEvt.clientX + 'px';
+          floatingBadge.style.top = moveEvt.clientY + 'px';
+        }
+
+        // Wykrywanie wiersza pod kursorem (ignorując pływający element)
+        const elementsUnderPoint = document.elementsFromPoint(moveEvt.clientX, moveEvt.clientY);
+        const hoveredRow = elementsUnderPoint.find(el => {
+          const rowEl = el.closest && el.closest('.schedule-grid-row');
+          return rowEl && !rowEl.classList.contains('break-bar-drag-floating') && rowEl.dataset.rowId;
+        });
+
+        const targetRowEl = hoveredRow ? hoveredRow.closest('.schedule-grid-row') : null;
+
+        if (targetRowEl) {
+          const rect = targetRowEl.getBoundingClientRect();
+          dropPosition = moveEvt.clientY > (rect.top + rect.height / 2) ? 'after' : 'before';
+
+          if (targetRowEl !== currentTargetRow) {
+            if (currentTargetRow) {
+              currentTargetRow.classList.remove('is-drag-over', 'is-drag-over-top', 'is-drag-over-bottom');
+            }
+            currentTargetRow = targetRowEl;
+          }
+          currentTargetRow.classList.add('is-drag-over');
+          if (dropPosition === 'after') {
+            currentTargetRow.classList.add('is-drag-over-bottom');
+            currentTargetRow.classList.remove('is-drag-over-top');
+          } else {
+            currentTargetRow.classList.add('is-drag-over-top');
+            currentTargetRow.classList.remove('is-drag-over-bottom');
+          }
+        } else if (currentTargetRow) {
+          currentTargetRow.classList.remove('is-drag-over', 'is-drag-over-top', 'is-drag-over-bottom');
+          currentTargetRow = null;
+        }
+      };
+
+      const onPointerUp = (upEvt) => {
+        cancelPress();
+        window.removeEventListener('pointermove', onPointerMove);
+        window.removeEventListener('pointerup', onPointerUp);
+
+        if (!isDragging) return;
+
+        setTimeout(() => {
+          isDragging = false;
+        }, 60);
+
+        breakRow.classList.remove('is-drag-origin');
+
+        if (floatingBadge && floatingBadge.parentNode) {
+          floatingBadge.parentNode.removeChild(floatingBadge);
+          floatingBadge = null;
+        }
+
+        if (currentTargetRow) {
+          currentTargetRow.classList.remove('is-drag-over', 'is-drag-over-top', 'is-drag-over-bottom');
+          const targetRowId = currentTargetRow.dataset.rowId;
+
+          if (targetRowId && (targetRowId !== row.id || dropPosition === 'after')) {
+            if (options && options.onRowDrop) {
+              options.onRowDrop(row.id, targetRowId, dropPosition);
+            }
+          }
+          currentTargetRow = null;
+        }
+      };
+
+      breakRow.addEventListener('pointerdown', (downEvt) => {
+        if (downEvt.button !== 0) return;
+
+        startX = downEvt.clientX;
+        startY = downEvt.clientY;
+        currentX = startX;
+        currentY = startY;
+
+        cancelPress();
+
+        // 1. Wiggle startuje OD RAZU po wciśnięciu lewego przycisku
+        breakRow.classList.add('is-wiggling');
+
+        // 2. Po 0.5s przytrzymania belka odskakuje do kursora
+        pressTimer = setTimeout(() => {
+          pressTimer = null;
+          breakRow.classList.remove('is-wiggling');
+          isDragging = true;
+
+          // Pierwotne miejsce staje się pustą szczeliną
+          breakRow.classList.add('is-drag-origin');
+
+          // Tworzenie pływającego klonu belki
+          floatingBadge = breakRow.cloneNode(true);
+          floatingBadge.classList.remove('is-drag-origin', 'is-wiggling', 'just-dropped');
+          floatingBadge.className = 'schedule-grid-row break-row break-bar-drag-floating';
+          floatingBadge.style.width = breakRow.offsetWidth + 'px';
+          floatingBadge.style.height = breakRow.offsetHeight + 'px';
+          floatingBadge.style.left = currentX + 'px';
+          floatingBadge.style.top = currentY + 'px';
+
+          // Żółte kółko zaznaczające przyczepienie belki do kursora (zgodnie z życzeniem)
+          const pinCircle = document.createElement('div');
+          pinCircle.className = 'break-drag-pin-circle';
+          floatingBadge.appendChild(pinCircle);
+
+          document.body.appendChild(floatingBadge);
+        }, 500); // 0.5s przytrzymania
+
+        window.addEventListener('pointermove', onPointerMove, { passive: false });
+        window.addEventListener('pointerup', onPointerUp);
+      });
+
       gridContainer.appendChild(breakRow);
     } else {
       const hourRow = document.createElement('div');
       hourRow.className = 'schedule-grid-row';
+      hourRow.dataset.rowId = row.id;
       hourRow.style.gridTemplateColumns = `${spec.hourColWidth}px repeat(${activeCount}, 1fr)`;
       hourRow.style.gap = `${spec.gap}px`;
 

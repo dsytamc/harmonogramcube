@@ -82,7 +82,8 @@ let hasLoadedSchedule = false;
 let isEditingHeader = false;
 let selectedRowId = null;
 let tileClipboard = null; // Przechowuje skopiowany kafelek (Ctrl+C / Ctrl+V)
-let justDroppedCoord = null; // Współrzędne kafelka tuż po upuszczeniu (dla animacji lądowania)
+let justDroppedCoord = null;
+let justDroppedRowId = null; // Współrzędne kafelka tuż po upuszczeniu (dla animacji lądowania)
 let lastSavedAt = null;
 let hasUnsavedChanges = false;
 let beforeUnloadWarnCount = 0;
@@ -409,6 +410,7 @@ function updateArtboard(state) {
     isHeaderEditing: isEditingHeader,
     selectedRowId: selectedRowId,
     justDroppedCoord: justDroppedCoord,
+    justDroppedRowId: justDroppedRowId,
     onHeaderClick: (title) => {
       openHeaderEditor(title);
     },
@@ -417,6 +419,9 @@ function updateArtboard(state) {
     },
     onTileDrop: (sourceRowId, sourceDayId, targetRowId, targetDayId) => {
       handleTileDrop(sourceRowId, sourceDayId, targetRowId, targetDayId);
+    },
+    onRowDrop: (sourceRowId, targetRowId, position) => {
+      handleRowDrop(sourceRowId, targetRowId, position);
     }
   });
 }
@@ -436,6 +441,21 @@ function handleTileDrop(sourceRowId, sourceDayId, targetRowId, targetDayId) {
     if (tileEl) tileEl.classList.remove('just-dropped');
   }, 450);
 }
+
+function handleRowDrop(sourceRowId, targetRowId, position = 'before') {
+  store.moveRowToTarget(sourceRowId, targetRowId, position);
+  justDroppedRowId = sourceRowId;
+  updateArtboard(store.getState());
+  renderRowsList();
+  showToast('✓ Przesunięto belkę w nową pozycję');
+
+  setTimeout(() => {
+    justDroppedRowId = null;
+    const rowEl = artboard.querySelector('.schedule-grid-row[data-row-id="' + sourceRowId + '"]');
+    if (rowEl) rowEl.classList.remove('just-dropped');
+  }, 450);
+}
+
 
 // ============================================================================
 // 3. OBSŁUGA EDYTORA KAFELKA

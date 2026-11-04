@@ -173,6 +173,26 @@ export class ScheduleStore {
     this.notify();
   }
 
+  // Przeniesienie wiersza (np. belki) na wybraną pozycję docelową (Drag & Drop)
+  moveRowToTarget(sourceRowId, targetRowId, position = 'before') {
+    if (sourceRowId === targetRowId) return;
+    const sourceIdx = this.state.rows.findIndex(r => r.id === sourceRowId);
+    if (sourceIdx < 0) return;
+
+    const [moved] = this.state.rows.splice(sourceIdx, 1);
+    const targetIdx = this.state.rows.findIndex(r => r.id === targetRowId);
+    if (targetIdx < 0) {
+      this.state.rows.push(moved);
+      this.notify();
+      return;
+    }
+
+    const insertIdx = position === 'after' ? targetIdx + 1 : targetIdx;
+    this.state.rows.splice(insertIdx, 0, moved);
+    this.notify();
+  }
+
+
   // Sortowanie wierszy chronologicznie od najwcześniejszej do najpóźniejszej godziny
   sortRowsChronologically() {
     const parseMin = (str) => {
