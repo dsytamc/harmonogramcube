@@ -2934,9 +2934,7 @@ body {
   letter-spacing: 0.04em;
   text-transform: uppercase;
   margin: 0 0 14px 0;
-  background: linear-gradient(180deg, #ffffff 15%, #aba9a9 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: #ffffff;
   filter: drop-shadow(0 0 16px rgba(255, 255, 255, 0.45));
   text-align: center;
 }
