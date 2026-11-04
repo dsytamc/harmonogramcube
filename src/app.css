@@ -2949,3 +2949,98 @@ body {
   filter: drop-shadow(0 0 16px rgba(255, 255, 255, 0.45));
   text-align: center;
 }
+
+/* ==========================================================================
+   DRAG & DROP KAFELKÓW (WIGGLE, FLOATING BADGE, GHOST BREATHE, LANDING)
+   ========================================================================== */
+
+/* 1. Animacja Wiggle (przytrzymanie przez 1.5s) */
+@keyframes tileWiggle {
+  0% { transform: rotate(0deg); }
+  20% { transform: rotate(-2deg) scale(1.02); }
+  40% { transform: rotate(2deg) scale(1.02); }
+  60% { transform: rotate(-1.5deg) scale(1.02); }
+  80% { transform: rotate(1.5deg) scale(1.02); }
+  100% { transform: rotate(0deg) scale(1.02); }
+}
+
+.schedule-tile.is-wiggling {
+  animation: tileWiggle 0.5s ease-in-out infinite;
+  box-shadow: 0 0 16px rgba(255, 204, 0, 0.6) !important;
+  z-index: 20;
+}
+
+/* 2. Puste miejsce po zabraniu kafelka (dziura w tabeli) */
+.schedule-tile.is-drag-origin {
+  opacity: 0.15 !important;
+  background: #0a0c10 !important;
+  border: 1px dashed rgba(255, 255, 255, 0.25) !important;
+  box-shadow: inset 0 0 12px rgba(0, 0, 0, 0.8) !important;
+}
+.theme-light .schedule-tile.is-drag-origin {
+  background: #e2e5ea !important;
+  border: 1px dashed rgba(0, 0, 0, 0.25) !important;
+}
+
+/* 3. Pływający kafelek przyczepiony do kursora */
+.tile-drag-floating {
+  position: fixed;
+  pointer-events: none;
+  z-index: 999999;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 18px 36px rgba(0, 0, 0, 0.65), 0 0 20px rgba(255, 204, 0, 0.4);
+  transform: translate(-50%, -50%) scale(1.05);
+  transition: opacity 0.15s ease;
+  user-select: none;
+}
+
+/* 4. Podgląd docelowy (Ghost 50% + efekt breathe) */
+@keyframes tileGhostBreathe {
+  0% {
+    transform: scale(0.97);
+    box-shadow: 0 0 6px rgba(255, 204, 0, 0.4);
+    opacity: 0.45;
+  }
+  50% {
+    transform: scale(1.02);
+    box-shadow: 0 0 16px rgba(255, 204, 0, 0.85);
+    opacity: 0.65;
+  }
+  100% {
+    transform: scale(0.97);
+    box-shadow: 0 0 6px rgba(255, 204, 0, 0.4);
+    opacity: 0.45;
+  }
+}
+
+.schedule-tile.is-drag-over {
+  position: relative;
+  animation: tileGhostBreathe 1s ease-in-out infinite !important;
+  outline: 2px dashed #FFCC00 !important;
+  outline-offset: -2px;
+  z-index: 15;
+}
+
+/* 5. Animacja upadku (lądowania) - 130% do 100% (0.4s) + wibracja 0.3s */
+@keyframes tileDropBounce {
+  0% {
+    transform: scale(1.3);
+    box-shadow: 0 0 24px rgba(255, 204, 0, 0.9);
+  }
+  40% {
+    transform: scale(0.96);
+  }
+  70% {
+    transform: scale(1.03);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: none;
+  }
+}
+
+.schedule-tile.just-dropped {
+  animation: tileDropBounce 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+  z-index: 25;
+}

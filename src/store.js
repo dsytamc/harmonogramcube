@@ -260,6 +260,35 @@ export class ScheduleStore {
     this.notify();
   }
 
+  // Przeniesienie lub zamiana kafelków miejscami (Drag & Drop)
+  moveOrSwapTile(sourceRowId, sourceDayId, targetRowId, targetDayId) {
+    if (sourceRowId === targetRowId && sourceDayId === targetDayId) return;
+
+    const sourceKey = ${sourceRowId}_;
+    const targetKey = ${targetRowId}_;
+
+    const sourceTile = this.state.tiles[sourceKey];
+    const targetTile = this.state.tiles[targetKey];
+
+    if (!sourceTile) return;
+
+    // Klonujemy dane źródłowe
+    const clonedSource = JSON.parse(JSON.stringify(sourceTile));
+
+    if (targetTile) {
+      // Zamiana miejscami (Swap)
+      const clonedTarget = JSON.parse(JSON.stringify(targetTile));
+      this.state.tiles[targetKey] = clonedSource;
+      this.state.tiles[sourceKey] = clonedTarget;
+    } else {
+      // Przeniesienie na puste miejsce
+      this.state.tiles[targetKey] = clonedSource;
+      delete this.state.tiles[sourceKey];
+    }
+
+    this.notify();
+  }
+
   // Kopiowanie kafelka
   duplicateTile(srcRowId, srcDayId, destRowId, destDayId) {
     const src = this.getTile(srcRowId, srcDayId);

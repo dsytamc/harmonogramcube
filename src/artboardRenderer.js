@@ -391,17 +391,161 @@ const SHORT_DAY_NAMES = {
 
       activeDays.forEach(day => {
         const isSelected = selectedCoord && selectedCoord.rowId === row.id && selectedCoord.dayId === day.id;
+        const isJustDropped = Boolean(
+          options && 
+          options.justDroppedCoord && 
+          options.justDroppedCoord.rowId === row.id && 
+          options.justDroppedCoord.dayId === day.id
+        );
         const tileData = state.tiles[`${row.id}_${day.id}`] || null;
         const tileEl = renderTileElement(tileData, row.id, day.id, theme, isSelected, {
           slimTiles: Boolean(state.slimTiles)
         });
 
+        if (isJustDropped) {
+          tileEl.classList.add('just-dropped');
+        }
+
+        // ======================================================================
+        // DRAG & DROP: OBSŁUGA PRZYTRZYMANIA 1.5s, WIGGLE, PRZECIĄGANIA I DROP
+        // ======================================================================
+        let pressTimer = null;
+        let wiggleTimer = null;
+        let startX = 0;
+        let startY = 0;
+        let isDragging = false;
+        let floatingBadge = null;
+        let currentTargetTile = null;
+
+        const hasContent = Boolean(tileData && (tileData.name || tileData.instructor || (tileData.categories && tileData.categories.length > 0)));
+
+        const cancelPress = () => {
+          if (pressTimer) {
+            clearTimeout(pressTimer);
+            pressTimer = null;
+          }
+          if (wiggleTimer) {
+            clearTimeout(wiggleTimer);
+            wiggleTimer = null;
+          }
+          tileEl.classList.remove('is-wiggling');
+        };
+
+        const onPointerMove = (moveEvt) => {
+          if (!isDragging) {
+            const dist = Math.hypot(moveEvt.clientX - startX, moveEvt.clientY - startY);
+            if (dist > 6) {
+              cancelPress();
+            }
+            return;
+          }
+
+          moveEvt.preventDefault();
+
+          // Przesuwanie pływającej plakietki pod kursorem
+          if (floatingBadge) {
+            floatingBadge.style.left = moveEvt.clientX + 'px';
+            floatingBadge.style.top = moveEvt.clientY + 'px';
+          }
+
+          // Wykrywanie komórki pod kursorem
+          const elementsUnderPoint = document.elementsFromPoint(moveEvt.clientX, moveEvt.clientY);
+          const hoveredTile = elementsUnderPoint.find(el => el.classList && el.classList.contains('schedule-tile'));
+
+          if (hoveredTile && hoveredTile !== currentTargetTile) {
+            if (currentTargetTile) {
+              currentTargetTile.classList.remove('is-drag-over');
+            }
+            currentTargetTile = hoveredTile;
+            currentTargetTile.classList.add('is-drag-over');
+          } else if (!hoveredTile && currentTargetTile) {
+            currentTargetTile.classList.remove('is-drag-over');
+            currentTargetTile = null;
+          }
+        };
+
+        const onPointerUp = (upEvt) => {
+          cancelPress();
+          window.removeEventListener('pointermove', onPointerMove);
+          window.removeEventListener('pointerup', onPointerUp);
+
+          if (!isDragging) return;
+
+          isDragging = false;
+          tileEl.classList.remove('is-drag-origin');
+
+          if (floatingBadge && floatingBadge.parentNode) {
+            floatingBadge.parentNode.removeChild(floatingBadge);
+            floatingBadge = null;
+          }
+
+          if (currentTargetTile) {
+            currentTargetTile.classList.remove('is-drag-over');
+            const targetRowId = currentTargetTile.dataset.rowId;
+            const targetDayId = currentTargetTile.dataset.dayId;
+
+            if (targetRowId && targetDayId && (targetRowId !== row.id || targetDayId !== day.id)) {
+              if (options && options.onTileDrop) {
+                options.onTileDrop(row.id, day.id, targetRowId, targetDayId);
+              }
+            }
+            currentTargetTile = null;
+          }
+        };
+
+        // Rozpoczęcie przytrzymania tylko dla kafelków z zajęciami
+        if (hasContent) {
+          tileEl.addEventListener('pointerdown', (downEvt) => {
+            // Reaguj tylko na lewy przycisk myszy
+            if (downEvt.button !== 0) return;
+
+            startX = downEvt.clientX;
+            startY = downEvt.clientY;
+
+            cancelPress();
+
+            // Krok 1: Po 1.5 sekundy przytrzymania włącz animację wiggle
+            pressTimer = setTimeout(() => {
+              tileEl.classList.add('is-wiggling');
+
+              // Krok 2: Po 0.5s wiggle kafelek przyczepia się do kursora
+              wiggleTimer = setTimeout(() => {
+                tileEl.classList.remove('is-wiggling');
+                isDragging = true;
+
+                // Miejsce pierwotne staje się ciemną dziurą
+                tileEl.classList.add('is-drag-origin');
+
+                // Tworzenie pływającego kafelka przyczepionego do kursora
+                floatingBadge = tileEl.cloneNode(true);
+                floatingBadge.classList.remove('is-drag-origin', 'is-wiggling', 'is-selected');
+                const existingAnts = floatingBadge.querySelector('.selection-ants-box');
+                if (existingAnts) existingAnts.remove();
+
+                floatingBadge.className = 'schedule-tile has-content tile-drag-floating';
+                floatingBadge.style.width = tileEl.offsetWidth + 'px';
+                floatingBadge.style.height = tileEl.offsetHeight + 'px';
+                floatingBadge.style.left = startX + 'px';
+                floatingBadge.style.top = startY + 'px';
+                document.body.appendChild(floatingBadge);
+
+              }, 500); // 0.5s wiggle
+            }, 1500); // 1.5s long-press
+
+            window.addEventListener('pointermove', onPointerMove, { passive: false });
+            window.addEventListener('pointerup', onPointerUp);
+          });
+        }
+
+        // Zwykłe kliknięcie (jeśli nie było przeciągania)
         if (onTileClick) {
           tileEl.addEventListener('click', (e) => {
+            if (isDragging) return;
             e.stopPropagation();
             onTileClick(row.id, day.id, tileData);
           });
         }
+
         hourRow.appendChild(tileEl);
       });
 

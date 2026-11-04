@@ -80,6 +80,8 @@ let currentDocName = '';
 let hasLoadedSchedule = false;
 let isEditingHeader = false;
 let selectedRowId = null;
+let tileClipboard = null; // Przechowuje skopiowany kafelek (Ctrl+C / Ctrl+V)
+let justDroppedCoord = null; // Współrzędne kafelka tuż po upuszczeniu (dla animacji lądowania)
 let lastSavedAt = null;
 let hasUnsavedChanges = false;
 let beforeUnloadWarnCount = 0;
@@ -404,13 +406,33 @@ function updateArtboard(state) {
   }, {
     isHeaderEditing: isEditingHeader,
     selectedRowId: selectedRowId,
+    justDroppedCoord: justDroppedCoord,
     onHeaderClick: (title) => {
       openHeaderEditor(title);
     },
     onHourClick: (rowId, row) => {
       openHourEditor(rowId, row);
+    },
+    onTileDrop: (sourceRowId, sourceDayId, targetRowId, targetDayId) => {
+      handleTileDrop(sourceRowId, sourceDayId, targetRowId, targetDayId);
     }
   });
+}
+
+function handleTileDrop(sourceRowId, sourceDayId, targetRowId, targetDayId) {
+  // Przeniesienie lub zamiana kafelków
+  store.moveOrSwapTile(sourceRowId, sourceDayId, targetRowId, targetDayId);
+  
+  // Zaznaczenie w nowym miejscu
+  justDroppedCoord = { rowId: targetRowId, dayId: targetDayId };
+  selectTile(targetRowId, targetDayId);
+
+  // Wyczyszczenie flagi animacji po 450ms
+  setTimeout(() => {
+    justDroppedCoord = null;
+    const tileEl = artboard.querySelector('.schedule-tile[data-row-id="' + targetRowId + '"][data-day-id="' + targetDayId + '"]');
+    if (tileEl) tileEl.classList.remove('just-dropped');
+  }, 450);
 }
 
 // ============================================================================
@@ -669,6 +691,22 @@ function renderRowsList(rows, forceRebuild = false) {
       const timeInput = item.querySelector('.row-time-input');
       timeInput.addEventListener('input', (e) => {
         store.updateRow(row.id, { time: e.target.value });
+        if (hourSortTimeout) clearTimeout(hourSortTimeout);
+        hourSortTimeout = setTimeout(() => {
+          lastRowsStructureKey = '';
+          store.sortRowsChronologically();
+        }, 800);
+      });
+      timeInput.addEventListener('blur', () => {
+        lastRowsStructureKey = '';
+        store.sortRowsChronologically();
+      });
+      timeInput.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+          lastRowsStructureKey = '';
+          store.sortRowsChronologically();
+          timeInput.blur();
+        }
       });
 
       const noteInput = item.querySelector('.row-note-input');
@@ -748,14 +786,30 @@ function setupEventListeners() {
   }
 
   // Obsługa formularza edycji godziny (po kliknięciu w kafelek godziny na artboardzie)
+  let hourSortTimeout = null;
+  const triggerAutoSort = () => {
+    if (hourSortTimeout) clearTimeout(hourSortTimeout);
+    hourSortTimeout = setTimeout(() => {
+      lastRowsStructureKey = '';
+      store.sortRowsChronologically();
+    }, 800);
+  };
+
   if (hourTimeInput) {
     hourTimeInput.addEventListener('input', (e) => {
       if (!selectedRowId) return;
       lastRowsStructureKey = '';
       store.updateRow(selectedRowId, { time: e.target.value });
+      triggerAutoSort();
+    });
+    hourTimeInput.addEventListener('blur', () => {
+      lastRowsStructureKey = '';
+      store.sortRowsChronologically();
     });
     hourTimeInput.addEventListener('keydown', (e) => {
       if (e.key === 'Enter') {
+        lastRowsStructureKey = '';
+        store.sortRowsChronologically();
         closeHourEditor();
       }
     });
@@ -1079,6 +1133,60 @@ function setupEventListeners() {
       }
     });
   }
+
+
+  // ==========================================================================
+  // SKRÓTY KLAWISZOWE: CTRL+C / CTRL+V DLA KAFELKÓW
+  // ==========================================================================
+  window.addEventListener('keydown', (e) => {
+    // Jeśli użytkownik pisze w polu tekstowym (input / textarea), zachowaj standardowe kopiowanie tekstu
+    const activeEl = document.activeElement;
+    const isTyping = activeEl && (
+      activeEl.tagName === 'INPUT' || 
+      activeEl.tagName === 'TEXTAREA' || 
+      activeEl.isContentEditable
+    );
+
+    const isCtrl = e.ctrlKey || e.metaKey;
+
+    // CTRL + C: Kopiowanie kafelka
+    if (isCtrl && (e.key === 'c' || e.key === 'C')) {
+      if (isTyping) return; // Pozwól na kopiowanie zaznaczonego tekstu w inputach
+      if (!selectedCoord) return;
+
+      const tile = store.getTile(selectedCoord.rowId, selectedCoord.dayId);
+      if (!tile || (!tile.name && !tile.instructor && (!tile.categories || tile.categories.length === 0))) {
+        showToast('Kafelek jest pusty — brak danych do skopiowania', 'warning');
+        return;
+      }
+
+      tileClipboard = JSON.parse(JSON.stringify(tile));
+      const tileTitle = tile.name ? tile.name.replace(/\n/g, ' ') : 'zajęcia';
+      showToast('✓ Skopiowano kafelek: ' + tileTitle);
+      
+      // Opcjonalnie kopiujemy też do schowka systemowego w formacie JSON
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(JSON.stringify({ type: 'cube-tile', data: tileClipboard })).catch(() => {});
+      }
+    }
+
+    // CTRL + V: Wklejanie kafelka
+    if (isCtrl && (e.key === 'v' || e.key === 'V')) {
+      if (isTyping) return; // Pozwól na wklejanie tekstu w inputach
+      if (!selectedCoord) return;
+      if (!tileClipboard) {
+        showToast('Schowek jest pusty. Najpierw zaznacz kafelek i wciśnij Ctrl+C', 'warning');
+        return;
+      }
+
+      // Wklejamy dane ze schowka do aktualnie zaznaczonego kafelka
+      store.updateTile(selectedCoord.rowId, selectedCoord.dayId, tileClipboard);
+      selectTile(selectedCoord.rowId, selectedCoord.dayId);
+      
+      const tileTitle = tileClipboard.name ? tileClipboard.name.replace(/\n/g, ' ') : 'zajęcia';
+      showToast('✓ Wklejono kafelek: ' + tileTitle);
+    }
+  });
 
   // Przyciski zoomu
   zoomBtns.forEach(btn => {
