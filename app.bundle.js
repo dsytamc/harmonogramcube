@@ -1123,8 +1123,10 @@ const SHORT_DAY_NAMES = {
       hourRow.style.gridTemplateColumns = `${spec.hourColWidth}px repeat(${activeCount}, 1fr)`;
       hourRow.style.gap = `${spec.gap}px`;
 
+      const isHourSelected = Boolean(options && options.selectedRowId === row.id);
       const hourCell = document.createElement('div');
-      hourCell.className = `hour-header-cell${state.slimHours ? ' is-slim-hour' : ''}`;
+      hourCell.className = `hour-header-cell${state.slimHours ? ' is-slim-hour' : ''}${isHourSelected ? ' is-selected' : ''}`;
+      hourCell.dataset.rowId = row.id;
       const displayTime = state.slimHours 
         ? (row.time || '').replace(/:00$/, '') 
         : (row.time || '');
@@ -1132,6 +1134,31 @@ const SHORT_DAY_NAMES = {
         <span class="hour-text">${escapeHtml(displayTime)}</span>
         ${row.note ? `<span class="hour-note">${escapeHtml(row.note)}</span>` : ''}
       `;
+
+      if (options && options.onHourClick) {
+        hourCell.style.cursor = 'pointer';
+        hourCell.title = 'Kliknij, aby edytować tę godzinę';
+        hourCell.addEventListener('click', (e) => {
+          e.stopPropagation();
+          options.onHourClick(row.id, row);
+        });
+      }
+
+      if (isHourSelected) {
+        const antsSvg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+        antsSvg.setAttribute('class', 'selection-ants-box');
+        const antsRect = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+        antsRect.setAttribute('class', 'selection-ants-rect');
+        antsRect.setAttribute('x', '1.5');
+        antsRect.setAttribute('y', '1.5');
+        antsRect.setAttribute('width', 'calc(100% - 3px)');
+        antsRect.setAttribute('height', 'calc(100% - 3px)');
+        antsRect.setAttribute('rx', '8');
+        antsRect.setAttribute('ry', '8');
+        antsSvg.appendChild(antsRect);
+        hourCell.appendChild(antsSvg);
+      }
+
       hourRow.appendChild(hourCell);
 
       activeDays.forEach(day => {
@@ -2536,9 +2563,14 @@ let selectedCoord = null; // { rowId, dayId }
 let currentZoom = 0.75; // Skala artboardu
 
 // Referencje do elementów DOM
+const brandHomeBtn = document.getElementById('brandHomeBtn');
 const gymTitleInput = document.getElementById('gymTitleInput');
 const headerEditorSection = document.getElementById('headerEditorSection');
 const closeHeaderEditorBtn = document.getElementById('closeHeaderEditorBtn');
+const hourEditorSection = document.getElementById('hourEditorSection');
+const closeHourEditorBtn = document.getElementById('closeHourEditorBtn');
+const hourTimeInput = document.getElementById('hourTimeInput');
+const hourNoteInput = document.getElementById('hourNoteInput');
 const formatSelect = document.getElementById('formatSelect');
 
 // Ekran startowy / pusty obszar roboczy
@@ -2594,6 +2626,7 @@ const exportStatus = document.getElementById('exportStatus');
 let currentDocName = '';
 let hasLoadedSchedule = false;
 let isEditingHeader = false;
+let selectedRowId = null;
 let lastSavedAt = null;
 let hasUnsavedChanges = false;
 let beforeUnloadWarnCount = 0;
@@ -2750,12 +2783,16 @@ function showScheduleWorkspace(filename = null) {
 }
 
 function openHeaderEditor(currentTitle) {
-  // Odznacz kafelek jeśli był aktywny (zasada: tylko 1 zaznaczenie na artboardzie)
+  // Odznacz kafelek i godzinę jeśli były aktywne (tylko 1 zaznaczenie na artboardzie)
   if (selectedCoord) {
     selectedCoord = null;
     if (selectedTileCoord) selectedTileCoord.textContent = 'Wybierz kafelek';
     if (tileEditorEmptyMessage) tileEditorEmptyMessage.classList.remove('hidden');
     if (tileEditorForm) tileEditorForm.classList.add('hidden');
+  }
+  if (selectedRowId) {
+    selectedRowId = null;
+    if (hourEditorSection) hourEditorSection.classList.add('hidden');
   }
 
   isEditingHeader = true;
@@ -2913,8 +2950,12 @@ function updateArtboard(state) {
     selectTile(rowId, dayId);
   }, {
     isHeaderEditing: isEditingHeader,
+    selectedRowId: selectedRowId,
     onHeaderClick: (title) => {
       openHeaderEditor(title);
+    },
+    onHourClick: (rowId, row) => {
+      openHourEditor(rowId, row);
     }
   });
 }
@@ -2926,6 +2967,7 @@ function updateArtboard(state) {
 function deselectAll() {
   selectedCoord = null;
   isEditingHeader = false;
+  selectedRowId = null;
 
   if (selectedTileCoord) selectedTileCoord.textContent = 'Wybierz kafelek';
   if (tileEditorEmptyMessage) tileEditorEmptyMessage.classList.remove('hidden');
@@ -2934,15 +2976,61 @@ function deselectAll() {
   if (headerEditorSection) {
     headerEditorSection.classList.add('hidden');
   }
+  if (hourEditorSection) {
+    hourEditorSection.classList.add('hidden');
+  }
 
   updateArtboard(store.getState());
 }
 
-function selectTile(rowId, dayId) {
-  // Zamknij edycję nagłówka jeśli była aktywna (zasada: tylko 1 zaznaczenie na artboardzie)
+function openHourEditor(rowId, rowData) {
+  // Odznacz kafelek i nagłówek (zasada: tylko 1 zaznaczenie na artboardzie)
+  if (selectedCoord) {
+    selectedCoord = null;
+    if (selectedTileCoord) selectedTileCoord.textContent = 'Wybierz kafelek';
+    if (tileEditorEmptyMessage) tileEditorEmptyMessage.classList.remove('hidden');
+    if (tileEditorForm) tileEditorForm.classList.add('hidden');
+  }
   if (isEditingHeader) {
     isEditingHeader = false;
     if (headerEditorSection) headerEditorSection.classList.add('hidden');
+  }
+
+  selectedRowId = rowId;
+  const row = rowData || store.getState().rows.find(r => r.id === rowId);
+
+  if (hourEditorSection) {
+    hourEditorSection.classList.remove('hidden');
+  }
+  if (hourTimeInput && row) {
+    hourTimeInput.value = row.time || '';
+    hourTimeInput.focus();
+    hourTimeInput.select();
+  }
+  if (hourNoteInput && row) {
+    hourNoteInput.value = row.note || '';
+  }
+
+  updateArtboard(store.getState());
+}
+
+function closeHourEditor() {
+  selectedRowId = null;
+  if (hourEditorSection) {
+    hourEditorSection.classList.add('hidden');
+  }
+  updateArtboard(store.getState());
+}
+
+function selectTile(rowId, dayId) {
+  // Zamknij edycję nagłówka oraz godziny jeśli były aktywne (tylko 1 zaznaczenie na artboardzie)
+  if (isEditingHeader) {
+    isEditingHeader = false;
+    if (headerEditorSection) headerEditorSection.classList.add('hidden');
+  }
+  if (selectedRowId) {
+    selectedRowId = null;
+    if (hourEditorSection) hourEditorSection.classList.add('hidden');
   }
 
   selectedCoord = { rowId, dayId };
@@ -3193,15 +3281,61 @@ function applyZoom(zoom) {
 // ============================================================================
 
 function setupEventListeners() {
+  // Kliknięcie w logo Cube w lewym górnym rogu przenosi do ekranu głównego (welcome screen)
+  if (brandHomeBtn) {
+    brandHomeBtn.addEventListener('click', () => {
+      if (hasLoadedSchedule && hasUnsavedChanges) {
+        if (!confirm('Czy na pewno chcesz wrócić do ekranu powitalnego? Niezapisane zmiany w bieżącym projekcie mogą zostać utracone.')) {
+          return;
+        }
+      }
+      showEmptyWorkspace();
+      showToast('Powrócono do ekranu głównego');
+    });
+  }
+
+  // Obsługa formularza edycji godziny (po kliknięciu w kafelek godziny na artboardzie)
+  if (hourTimeInput) {
+    hourTimeInput.addEventListener('input', (e) => {
+      if (!selectedRowId) return;
+      lastRowsStructureKey = '';
+      store.updateRow(selectedRowId, { time: e.target.value });
+    });
+    hourTimeInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        closeHourEditor();
+      }
+    });
+  }
+
+  if (hourNoteInput) {
+    hourNoteInput.addEventListener('input', (e) => {
+      if (!selectedRowId) return;
+      lastRowsStructureKey = '';
+      store.updateRow(selectedRowId, { note: e.target.value });
+    });
+    hourNoteInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        closeHourEditor();
+      }
+    });
+  }
+
+  if (closeHourEditorBtn) {
+    closeHourEditorBtn.addEventListener('click', () => {
+      closeHourEditor();
+    });
+  }
+
   // Odznaczanie kafelka lub nagłówka przy kliknięciu w tło / poza kafelki na artboardzie
   if (artboardScrollArea) {
     artboardScrollArea.addEventListener('click', (e) => {
-      // Jeśli kliknięto w kafelek z zajęciami lub w belkę nagłówka, nie odznaczamy (obsługują własne listenery)
-      if (e.target.closest('.schedule-tile') || e.target.closest('.artboard-header-bar')) {
+      // Jeśli kliknięto w kafelek z zajęciami, belkę nagłówka lub kafelek godziny, nie odznaczamy
+      if (e.target.closest('.schedule-tile') || e.target.closest('.artboard-header-bar') || e.target.closest('.hour-header-cell')) {
         return;
       }
       // Jeśli kliknięto w wolną przestrzeń artboardu (tło canvasu, puste marginesy, wiersz dni itp.), odznacz wszystko
-      if (selectedCoord !== null || isEditingHeader) {
+      if (selectedCoord !== null || isEditingHeader || selectedRowId !== null) {
         deselectAll();
       }
     });

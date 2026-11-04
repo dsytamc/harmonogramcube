@@ -351,8 +351,10 @@ const SHORT_DAY_NAMES = {
       hourRow.style.gridTemplateColumns = `${spec.hourColWidth}px repeat(${activeCount}, 1fr)`;
       hourRow.style.gap = `${spec.gap}px`;
 
+      const isHourSelected = Boolean(options && options.selectedRowId === row.id);
       const hourCell = document.createElement('div');
-      hourCell.className = `hour-header-cell${state.slimHours ? ' is-slim-hour' : ''}`;
+      hourCell.className = `hour-header-cell${state.slimHours ? ' is-slim-hour' : ''}${isHourSelected ? ' is-selected' : ''}`;
+      hourCell.dataset.rowId = row.id;
       const displayTime = state.slimHours 
         ? (row.time || '').replace(/:00$/, '') 
         : (row.time || '');
@@ -360,6 +362,31 @@ const SHORT_DAY_NAMES = {
         <span class="hour-text">${escapeHtml(displayTime)}</span>
         ${row.note ? `<span class="hour-note">${escapeHtml(row.note)}</span>` : ''}
       `;
+
+      if (options && options.onHourClick) {
+        hourCell.style.cursor = 'pointer';
+        hourCell.title = 'Kliknij, aby edytować tę godzinę';
+        hourCell.addEventListener('click', (e) => {
+          e.stopPropagation();
+          options.onHourClick(row.id, row);
+        });
+      }
+
+      if (isHourSelected) {
+        const antsSvg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+        antsSvg.setAttribute('class', 'selection-ants-box');
+        const antsRect = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+        antsRect.setAttribute('class', 'selection-ants-rect');
+        antsRect.setAttribute('x', '1.5');
+        antsRect.setAttribute('y', '1.5');
+        antsRect.setAttribute('width', 'calc(100% - 3px)');
+        antsRect.setAttribute('height', 'calc(100% - 3px)');
+        antsRect.setAttribute('rx', '8');
+        antsRect.setAttribute('ry', '8');
+        antsSvg.appendChild(antsRect);
+        hourCell.appendChild(antsSvg);
+      }
+
       hourRow.appendChild(hourCell);
 
       activeDays.forEach(day => {

@@ -61,11 +61,13 @@ body {
   justify-content: center;
   box-shadow: 0 2px 8px rgba(253, 196, 0, 0.3);
   flex-shrink: 0;
-  transition: transform 0.15s ease;
+  cursor: pointer;
+  transition: transform 0.15s ease, filter 0.15s ease;
 }
 
 .brand-logo-cube:hover {
-  transform: scale(1.02);
+  transform: scale(1.05);
+  filter: brightness(1.12);
 }
 
 .brand-logo-cube .cube-sidebar-svg {
@@ -1439,6 +1441,8 @@ body {
 
 /* Kafelki godzin po lewej stronie */
 .hour-header-cell {
+  position: relative;
+  cursor: pointer;
   border-radius: 8px;
   display: flex;
   flex-direction: column;
@@ -1448,6 +1452,13 @@ body {
   font-weight: 800;
   padding: 4px;
   text-align: center;
+  transition: filter 0.15s ease;
+}
+.hour-header-cell:hover {
+  filter: brightness(1.08);
+}
+.hour-header-cell.is-selected {
+  z-index: 5;
 }
 
 .hour-text {
