@@ -81,10 +81,10 @@ body {
 }
 
 .brand-title {
-  font-family: var(--font-ui);
-  font-size: 14px;
-  font-weight: 700;
-  color: var(--cds-text-primary);
+  font-family: var(--font-display, var(--font-ui));
+  font-size: 15px;
+  font-weight: 800;
+  color: #ffffff;
   line-height: 1.25;
   letter-spacing: -0.01em;
 }
@@ -2925,4 +2925,18 @@ body {
   display: none !important;
   outline: none !important;
   box-shadow: none !important;
+}
+
+.empty-state-app-title {
+  font-family: var(--font-display, sans-serif);
+  font-size: 20px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin: 0 0 14px 0;
+  background: linear-gradient(180deg, #ffffff 15%, #aba9a9 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 16px rgba(255, 255, 255, 0.45));
+  text-align: center;
 }
