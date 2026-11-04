@@ -1080,6 +1080,82 @@ function createScheduleGrid(state, selectedCoord, onTileClick, format, options =
   state.rows.forEach(row => {
     H_base += spec.gap;
     if (row.type === 'break') {
+      H_base += spec.breakRowHeight;
+    } else {
+      H_base += spec.baseTileHeight;
+    }
+  });
+
+  // Skalowanie proporcjonalne:
+  // Sw - skala, aby rozszerzyć do pełnej szerokości między marginesami
+  // Sh - maksymalna skala, aby nie wyjść poza dostępną wysokość
+  const Sw = spec.targetWidth / W_base;
+  const Sh = spec.availableHeight / H_base;
+  const scale = Number(Math.min(Sw, Sh).toFixed(4));
+
+  const gridContainer = document.createElement('div');
+  gridContainer.className = 'schedule-grid-container';
+  gridContainer.style.width = `${W_base}px`;
+
+  // 0. Belka nagłówka z nazwą siłowni – stanowiąca integralną część tabeli
+  const isHeaderSelected = Boolean(options && options.isHeaderEditing);
+  const headerBar = document.createElement('div');
+  headerBar.className = `artboard-header-bar${isHeaderSelected ? ' is-selected' : ''}`;
+  headerBar.textContent = state.gymTitle || 'GRAFIK FITNESS';
+  headerBar.title = 'Kliknij, aby edytować nagłówek tabeli';
+  if (options && options.onHeaderClick) {
+    headerBar.addEventListener('click', (e) => {
+      e.stopPropagation();
+      options.onHeaderClick(state.gymTitle);
+    });
+  }
+  if (isHeaderSelected) {
+    const antsSvg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    antsSvg.setAttribute('class', 'selection-ants-box');
+    const antsRect = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+    antsRect.setAttribute('class', 'selection-ants-rect');
+    antsRect.setAttribute('x', '1.5');
+    antsRect.setAttribute('y', '1.5');
+    antsRect.setAttribute('width', 'calc(100% - 3px)');
+    antsRect.setAttribute('height', 'calc(100% - 3px)');
+    antsRect.setAttribute('rx', '10');
+    antsRect.setAttribute('ry', '10');
+    antsSvg.appendChild(antsRect);
+    headerBar.appendChild(antsSvg);
+  }
+  gridContainer.appendChild(headerBar);
+
+  // 1. Wiersz nagłówka z dniami tygodnia
+  const headerRow = document.createElement('div');
+  headerRow.className = 'schedule-grid-row header-row';
+  headerRow.style.gridTemplateColumns = `${spec.hourColWidth}px repeat(${activeCount}, 1fr)`;
+  headerRow.style.gap = `${spec.gap}px`;
+
+  const cornerCell = document.createElement('div');
+  cornerCell.className = 'day-header-corner';
+  headerRow.appendChild(cornerCell);
+
+const SHORT_DAY_NAMES = {
+  mon: 'PON.',
+  tue: 'WT.',
+  wed: 'ŚR.',
+  thu: 'CZW.',
+  fri: 'PT.',
+  sat: 'SOB.',
+  sun: 'ND.'
+};
+
+  activeDays.forEach(day => {
+    const dayCell = document.createElement('div');
+    dayCell.className = `day-header-cell${state.slimDays ? ' is-slim-day' : ''}`;
+    dayCell.textContent = state.slimDays ? (SHORT_DAY_NAMES[day.id] || day.name) : day.name;
+    headerRow.appendChild(dayCell);
+  });
+  gridContainer.appendChild(headerRow);
+
+    // 2. Wiersze godzin lub belki przerw
+  state.rows.forEach(row => {
+    if (row.type === 'break') {
       const breakRow = document.createElement('div');
       breakRow.className = 'schedule-grid-row break-row';
       breakRow.dataset.rowId = row.id;
@@ -1209,16 +1285,16 @@ function createScheduleGrid(state, selectedCoord, onTileClick, format, options =
 
         cancelPress();
 
-        // 1. Wiggle startuje OD RAZU po wciśnięciu lewego przycisku
+        // 1. Wiggle startuje OD RAZU po wciśnięciu lewego przycisku myszy
         breakRow.classList.add('is-wiggling');
 
-        // 2. Po 0.5s przytrzymania belka odskakuje do kursora
+        // 2. Po 0.5s przytrzymania belka odskakuje i przyczepia się do kursora
         pressTimer = setTimeout(() => {
           pressTimer = null;
           breakRow.classList.remove('is-wiggling');
           isDragging = true;
 
-          // Pierwotne miejsce staje się pustą szczeliną
+          // Pierwotne miejsce staje się ciemną szczeliną
           breakRow.classList.add('is-drag-origin');
 
           // Tworzenie pływającego klonu belki
@@ -1230,7 +1306,7 @@ function createScheduleGrid(state, selectedCoord, onTileClick, format, options =
           floatingBadge.style.left = currentX + 'px';
           floatingBadge.style.top = currentY + 'px';
 
-          // Żółte kółko zaznaczające przyczepienie belki do kursora (zgodnie z życzeniem)
+          // Żółte kółko zaznaczające przyczepienie belki do kursora
           const pinCircle = document.createElement('div');
           pinCircle.className = 'break-drag-pin-circle';
           floatingBadge.appendChild(pinCircle);
@@ -1246,7 +1322,6 @@ function createScheduleGrid(state, selectedCoord, onTileClick, format, options =
     } else {
       const hourRow = document.createElement('div');
       hourRow.className = 'schedule-grid-row';
-      hourRow.dataset.rowId = row.id;
       hourRow.style.gridTemplateColumns = `${spec.hourColWidth}px repeat(${activeCount}, 1fr)`;
       hourRow.style.gap = `${spec.gap}px`;
 
