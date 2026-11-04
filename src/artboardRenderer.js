@@ -406,13 +406,14 @@ const SHORT_DAY_NAMES = {
           tileEl.classList.add('just-dropped');
         }
 
-        // ======================================================================
-        // DRAG & DROP: OBSŁUGA PRZYTRZYMANIA 1.5s, WIGGLE, PRZECIĄGANIA I DROP
+                // ======================================================================
+        // DRAG & DROP: OBSŁUGA PRZYTRZYMANIA 0.5s, WIGGLE OD RAZU, TRZYMANIE ZA LEWY GÓRNY RÓG
         // ======================================================================
         let pressTimer = null;
-        let wiggleTimer = null;
         let startX = 0;
         let startY = 0;
+        let currentX = 0;
+        let currentY = 0;
         let isDragging = false;
         let floatingBadge = null;
         let currentTargetTile = null;
@@ -424,19 +425,14 @@ const SHORT_DAY_NAMES = {
             clearTimeout(pressTimer);
             pressTimer = null;
           }
-          if (wiggleTimer) {
-            clearTimeout(wiggleTimer);
-            wiggleTimer = null;
-          }
           tileEl.classList.remove('is-wiggling');
         };
 
         const onPointerMove = (moveEvt) => {
+          currentX = moveEvt.clientX;
+          currentY = moveEvt.clientY;
+
           if (!isDragging) {
-            const dist = Math.hypot(moveEvt.clientX - startX, moveEvt.clientY - startY);
-            if (dist > 6) {
-              cancelPress();
-            }
             return;
           }
 
@@ -448,9 +444,9 @@ const SHORT_DAY_NAMES = {
             floatingBadge.style.top = moveEvt.clientY + 'px';
           }
 
-          // Wykrywanie komórki pod kursorem
+          // Wykrywanie komórki pod kursorem (ignorując pływający kafelek)
           const elementsUnderPoint = document.elementsFromPoint(moveEvt.clientX, moveEvt.clientY);
-          const hoveredTile = elementsUnderPoint.find(el => el.classList && el.classList.contains('schedule-tile'));
+          const hoveredTile = elementsUnderPoint.find(el => el.classList && el.classList.contains('schedule-tile') && !el.classList.contains('tile-drag-floating'));
 
           if (hoveredTile && hoveredTile !== currentTargetTile) {
             if (currentTargetTile) {
@@ -471,7 +467,11 @@ const SHORT_DAY_NAMES = {
 
           if (!isDragging) return;
 
-          isDragging = false;
+          // Krótkie opóźnienie wyzerowania isDragging, aby zapobiec wywołaniu zwykłego kliknięcia
+          setTimeout(() => {
+            isDragging = false;
+          }, 60);
+
           tileEl.classList.remove('is-drag-origin');
 
           if (floatingBadge && floatingBadge.parentNode) {
@@ -493,7 +493,7 @@ const SHORT_DAY_NAMES = {
           }
         };
 
-        // Rozpoczęcie przytrzymania tylko dla kafelków z zajęciami
+        // Rozpoczęcie przytrzymania dla kafelków z zajęciami (nie wymaga wcześniejszego zaznaczenia)
         if (hasContent) {
           tileEl.addEventListener('pointerdown', (downEvt) => {
             // Reaguj tylko na lewy przycisk myszy
@@ -501,36 +501,36 @@ const SHORT_DAY_NAMES = {
 
             startX = downEvt.clientX;
             startY = downEvt.clientY;
+            currentX = startX;
+            currentY = startY;
 
             cancelPress();
 
-            // Krok 1: Po 1.5 sekundy przytrzymania włącz animację wiggle
+            // 1. Animacja wiggle zaczyna się OD RAZU po wciśnięciu lewego przycisku myszy
+            tileEl.classList.add('is-wiggling');
+
+            // 2. Po 0.5s przytrzymania kafelek odskakuje i przyczepia się do kursora
             pressTimer = setTimeout(() => {
-              tileEl.classList.add('is-wiggling');
+              pressTimer = null;
+              tileEl.classList.remove('is-wiggling');
+              isDragging = true;
 
-              // Krok 2: Po 0.5s wiggle kafelek przyczepia się do kursora
-              wiggleTimer = setTimeout(() => {
-                tileEl.classList.remove('is-wiggling');
-                isDragging = true;
+              // Miejsce pierwotne staje się ciemną dziurą w tabeli
+              tileEl.classList.add('is-drag-origin');
 
-                // Miejsce pierwotne staje się ciemną dziurą
-                tileEl.classList.add('is-drag-origin');
+              // Tworzenie pływającego kafelka przyczepionego do kursora
+              floatingBadge = tileEl.cloneNode(true);
+              floatingBadge.classList.remove('is-drag-origin', 'is-wiggling', 'is-selected');
+              const existingAnts = floatingBadge.querySelector('.selection-ants-box');
+              if (existingAnts) existingAnts.remove();
 
-                // Tworzenie pływającego kafelka przyczepionego do kursora
-                floatingBadge = tileEl.cloneNode(true);
-                floatingBadge.classList.remove('is-drag-origin', 'is-wiggling', 'is-selected');
-                const existingAnts = floatingBadge.querySelector('.selection-ants-box');
-                if (existingAnts) existingAnts.remove();
-
-                floatingBadge.className = 'schedule-tile has-content tile-drag-floating';
-                floatingBadge.style.width = tileEl.offsetWidth + 'px';
-                floatingBadge.style.height = tileEl.offsetHeight + 'px';
-                floatingBadge.style.left = startX + 'px';
-                floatingBadge.style.top = startY + 'px';
-                document.body.appendChild(floatingBadge);
-
-              }, 500); // 0.5s wiggle
-            }, 1500); // 1.5s long-press
+              floatingBadge.className = 'schedule-tile has-content tile-drag-floating';
+              floatingBadge.style.width = tileEl.offsetWidth + 'px';
+              floatingBadge.style.height = tileEl.offsetHeight + 'px';
+              floatingBadge.style.left = currentX + 'px';
+              floatingBadge.style.top = currentY + 'px';
+              document.body.appendChild(floatingBadge);
+            }, 500); // 0.5 sekundy przytrzymania
 
             window.addEventListener('pointermove', onPointerMove, { passive: false });
             window.addEventListener('pointerup', onPointerUp);
