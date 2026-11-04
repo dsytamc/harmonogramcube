@@ -1,0 +1,347 @@
+{
+  "version": "1.0",
+  "gymTitle": "GRAFIK FITNESS - CUBE WLOCLAWEK",
+  "rows": [
+    {
+      "id": "row_1",
+      "type": "hour",
+      "time": "9:00",
+      "note": ""
+    },
+    {
+      "id": "row_2",
+      "type": "hour",
+      "time": "10:00",
+      "note": ""
+    },
+    {
+      "id": "row_break_imported_2",
+      "type": "break",
+      "label": ""
+    },
+    {
+      "id": "row_3",
+      "type": "hour",
+      "time": "17:00",
+      "note": ""
+    },
+    {
+      "id": "row_4",
+      "type": "hour",
+      "time": "18:00",
+      "note": ""
+    },
+    {
+      "id": "row_5",
+      "type": "hour",
+      "time": "19:00",
+      "note": ""
+    },
+    {
+      "id": "row_6",
+      "type": "hour",
+      "time": "20:00",
+      "note": ""
+    }
+  ],
+  "tiles": {
+    "row_1_mon": {
+      "name": "FULL BODY\nWORKOUT",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Marta Klińska",
+      "categories": [
+        "modelujace"
+      ]
+    },
+    "row_1_tue": {
+      "name": "SEXY PUPA",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Natalia Deskiewicz",
+      "categories": [
+        "modelujace"
+      ]
+    },
+    "row_1_wed": {
+      "name": "RZEŹBA &\nKONDYCJA",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Marta Klińska",
+      "categories": [
+        "wzmacniajace"
+      ]
+    },
+    "row_1_thu": {
+      "name": "BRZUCH +\nPOŚLADKI",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Natalia Deskiewicz",
+      "categories": [
+        "modelujace"
+      ]
+    },
+    "row_1_fri": {
+      "name": "FIT SYLWETKA",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Julia Skwara",
+      "categories": [
+        "modelujace"
+      ]
+    },
+    "row_1_sat": {
+      "name": "RZEŹBA &\nKONDYCJA",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Julia Szwankowska",
+      "categories": [
+        "modelujace"
+      ]
+    },
+    "row_1_sun": {
+      "name": "PILATES",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Marta Dudzińska",
+      "categories": [
+        "prozdrowotne"
+      ]
+    },
+    "row_2_thu": {
+      "name": "PILATES",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Natalia Deskiewicz",
+      "categories": [
+        "prozdrowotne"
+      ]
+    },
+    "row_2_fri": {
+      "name": "STRETCHING",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Julia Skwara",
+      "categories": [
+        "modelujace"
+      ]
+    },
+    "row_2_sat": {
+      "name": "ZDROWY\nKRĘGOSŁUP",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Julia Szwankowska",
+      "categories": [
+        "prozdrowotne"
+      ]
+    },
+    "row_2_sun": {
+      "name": "FULL BODY\nWORKOUT",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Marta Dudzińska",
+      "categories": [
+        "modelujace"
+      ]
+    },
+    "row_3_mon": {
+      "name": "BRAZUCA",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Klaudia Jędrzjeczak",
+      "categories": [
+        "taneczne"
+      ]
+    },
+    "row_3_tue": {
+      "name": "RAMIONA I\nBRZUCH",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Natalia Deskiewicz",
+      "categories": [
+        "modelujace"
+      ]
+    },
+    "row_3_wed": {
+      "name": "TRENING\nOBWODOWY",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Marta Klińska",
+      "categories": [
+        "spalajace"
+      ]
+    },
+    "row_3_thu": {
+      "name": "FIT SYLWETKA",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Julia Szwankowska",
+      "categories": [
+        "modelujace"
+      ]
+    },
+    "row_3_fri": {
+      "name": "PILATES",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Natalia Deskiewicz",
+      "categories": [
+        "prozdrowotne"
+      ]
+    },
+    "row_4_mon": {
+      "name": "SPALANIE +\nPŁASKI BRZUCH",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Julia Skwara",
+      "categories": [
+        "spalajace"
+      ]
+    },
+    "row_4_tue": {
+      "name": "ZUMBA ®",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Marta Dudzińska",
+      "categories": [
+        "taneczne"
+      ]
+    },
+    "row_4_wed": {
+      "name": "ENERGY FIT\nBALL",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Nikola Zielińska",
+      "categories": [
+        "wzmacniajace"
+      ]
+    },
+    "row_4_thu": {
+      "name": "ZDROWY\nKRĘGOSŁUP",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Julia Szwankowska",
+      "categories": [
+        "prozdrowotne"
+      ]
+    },
+    "row_4_fri": {
+      "name": "PŁASKI\nBRZUCH+STRECHING",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Natalia Deskiewicz",
+      "categories": [
+        "rozciagajace"
+      ]
+    },
+    "row_4_sun": {
+      "name": "YOGA",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Jacek Kmieć",
+      "categories": [
+        "rozciagajace"
+      ]
+    },
+    "row_5_mon": {
+      "name": "BODY SHAPE",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Marta Dudzińska",
+      "categories": [
+        "modelujace"
+      ]
+    },
+    "row_5_tue": {
+      "name": "FIT SYLWETKA",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Julia Szwankowska",
+      "categories": [
+        "modelujace"
+      ]
+    },
+    "row_5_wed": {
+      "name": "BUP",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Nikola Zielińska",
+      "categories": [
+        "modelujace"
+      ]
+    },
+    "row_5_thu": {
+      "name": "SEXY PUPA",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Natalia Deskiewicz",
+      "categories": [
+        "modelujace"
+      ]
+    },
+    "row_5_fri": {
+      "name": "ZUMBA ®",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Marta Dudzińska",
+      "categories": [
+        "taneczne"
+      ]
+    },
+    "row_6_mon": {
+      "name": "ZDROWY\nKRĘGOSŁUP",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Marta Dudzińska",
+      "categories": [
+        "prozdrowotne"
+      ]
+    },
+    "row_6_tue": {
+      "name": "STEP\nFUNKCJONALNY",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Julia Szwankowska",
+      "categories": [
+        "spalajace"
+      ]
+    },
+    "row_6_wed": {
+      "name": "STRETCHING",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Nikola Zielińska",
+      "categories": [
+        "rozciagajace"
+      ]
+    },
+    "row_6_thu": {
+      "name": "YOGA",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Jacek Kmieć",
+      "categories": [
+        "rozciagajace"
+      ]
+    },
+    "row_6_fri": {
+      "name": "STRETCH &\nRELAX",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Natalia Deskiewicz",
+      "categories": [
+        "rozciagajace"
+      ]
+    }
+  },
+  "formatId": "post_portrait",
+  "activeDays": [
+    "mon",
+    "tue",
+    "wed",
+    "thu",
+    "fri",
+    "sat",
+    "sun"
+  ]
+}

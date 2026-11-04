@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Generator Grafiku Fitness - Cube</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="src/theme.css">
+  <link rel="stylesheet" href="src/app.css">
+</head>
+<body>
+  <div id="app" class="app-container">
+    <!-- LEWY PANEL STEROWANIA (CARBON DESIGN SYSTEM SIDEBAR) -->
+    <aside class="sidebar">
+      <header class="sidebar-header">
+        <div class="brand">
+          <div class="brand-logo-cube" title="Cube Fitness">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 244.371 76.862" fill="currentColor" class="cube-sidebar-svg">
+              <path fill-rule="evenodd" d="M 38.492 61.067 C 44.459 61.067, 50.426 61.070, 56.393 61.066 C 59.304 61.063, 61.183 59.201, 61.184 56.297 C 61.190 44.388, 61.190 32.479, 61.185 20.570 C 61.184 17.626, 59.310 15.774, 56.351 15.773 C 44.440 15.771, 32.530 15.771, 20.620 15.773 C 17.668 15.774, 15.795 17.633, 15.793 20.577 C 15.789 32.462, 15.789 44.348, 15.793 56.233 C 15.794 59.221, 17.658 61.065, 20.661 61.066 C 26.605 61.069, 32.548 61.067, 38.492 61.067 M 5.000 60.209 L 5.000 16.630 C 5.044 16.476, 5.104 16.323, 5.130 16.165 C 5.992 11.030, 8.877 7.543, 13.751 5.723 C 14.680 5.376, 15.685 5.236, 16.655 5.000 L 60.325 5.000 C 60.456 5.042, 60.584 5.104, 60.718 5.122 C 66.069 5.855, 70.296 9.637, 71.595 14.867 C 71.739 15.451, 71.852 16.042, 71.979 16.630 L 71.979 60.209 C 71.937 60.340, 71.875 60.468, 71.856 60.602 C 70.957 67.027, 65.613 71.810, 59.157 71.827 C 45.380 71.862, 31.602 71.858, 17.825 71.828 C 12.044 71.815, 6.975 67.870, 5.463 62.318 C 5.274 61.625, 5.153 60.913, 5.000 60.209 Z M 42.753 24.467 C 44.410 24.472, 45.725 25.789, 45.727 27.443 C 45.728 29.091, 44.406 30.423, 42.757 30.435 C 41.089 30.447, 39.715 29.071, 39.738 27.413 C 39.761 25.764, 41.094 24.462, 42.753 24.467 Z M 54.469 32.963 C 54.454 34.610, 53.110 35.940, 51.472 35.930 C 49.800 35.920, 48.478 34.556, 48.504 32.867 C 48.530 31.223, 49.878 29.921, 51.533 29.943 C 53.177 29.965, 54.484 31.310, 54.469 32.963 Z M 190.828 41.565 C 190.852 34.058, 184.750 27.926, 177.219 27.885 C 169.609 27.844, 163.427 33.933, 163.402 41.496 C 163.378 49.034, 169.501 55.194, 177.044 55.221 C 184.646 55.248, 190.805 49.146, 190.828 41.565 M 175.453 61.378 C 174.133 61.104, 172.792 60.905, 171.496 60.545 C 163.745 58.388, 157.911 51.235, 157.336 43.225 C 157.273 42.342, 157.240 41.455, 157.240 40.569 C 157.234 30.862, 157.235 21.156, 157.235 11.449 L 157.235 10.587 L 163.386 10.587 L 163.386 27.084 C 164.586 26.221, 165.669 25.340, 166.849 24.613 C 178.620 17.355, 194.302 24.421, 196.656 38.026 C 198.599 49.249, 191.039 59.631, 179.779 61.206 C 179.411 61.257, 179.045 61.320, 178.678 61.378 L 175.453 61.378 Z M 81.317 39.253 C 81.582 37.955, 81.760 36.632, 82.125 35.363 C 84.727 26.298, 93.369 20.375, 102.778 21.155 C 105.342 21.368, 107.767 22.039, 110.158 23.241 C 109.034 24.358, 107.874 25.352, 106.915 26.511 C 106.005 27.612, 105.114 27.800, 103.701 27.502 C 96.074 25.892, 88.559 31.368, 87.607 39.101 C 86.527 47.874, 93.656 55.260, 102.470 54.500 C 110.876 53.775, 116.666 45.404, 114.364 37.272 C 114.223 36.774, 114.290 36.473, 114.657 36.118 C 116.063 34.754, 117.436 33.357, 118.861 31.933 C 119.923 33.953, 120.556 36.040, 120.849 38.223 C 122.133 47.776, 116.433 56.798, 107.270 59.750 C 95.354 63.589, 82.755 55.456, 81.447 43.082 C 81.425 42.877, 81.361 42.676, 81.317 42.474 L 81.317 39.253 Z M 206.091 48.386 C 212.410 42.078, 218.697 35.802, 224.978 29.532 C 220.885 26.491, 213.350 25.920, 207.926 31.085 C 203.251 35.536, 202.411 43.379, 206.091 48.386 M 233.161 28.836 C 225.380 36.606, 217.615 44.359, 209.810 52.152 C 211.414 53.337, 213.200 54.035, 215.125 54.353 C 222.358 55.547, 229.091 51.065, 230.782 43.949 C 231.232 42.060, 231.234 40.161, 230.871 38.255 C 230.828 38.032, 230.825 37.697, 230.956 37.562 C 232.470 36.008, 234.013 34.482, 235.560 32.937 C 239.371 40.744, 236.961 52.027, 228.077 57.648 C 219.025 63.376, 206.832 60.826, 200.992 51.981 C 194.982 42.880, 197.242 30.748, 206.056 24.664 C 215.317 18.272, 227.094 20.855, 233.161 28.836 Z M 122.038 22.652 L 128.177 22.652 L 128.177 23.507 C 128.177 30.414, 128.167 37.321, 128.180 44.228 C 128.190 49.597, 132.162 54.181, 137.420 54.927 C 143.103 55.734, 148.337 52.518, 149.820 47.225 C 150.123 46.142, 150.228 44.973, 150.234 43.843 C 150.271 37.076, 150.252 30.309, 150.252 23.542 L 150.252 22.666 L 156.375 22.666 C 156.387 22.923, 156.410 23.171, 156.410 23.418 C 156.411 30.302, 156.355 37.186, 156.425 44.069 C 156.516 53.111, 149.361 60.306, 140.725 60.994 C 131.944 61.694, 124.160 56.061, 122.365 47.613 C 122.144 46.571, 122.030 45.487, 122.026 44.421 C 121.996 37.351, 122.010 30.281, 122.011 23.210 C 122.011 23.049, 122.026 22.887, 122.038 22.652 Z"/>
+            </svg>
+          </div>
+          <div class="brand-text-wrap">
+            <h1 class="brand-title">Generator grafiku fitness</h1>
+            <span class="brand-subtitle">Cube Studio • Carbon UI</span>
+          </div>
+        </div>
+      </header>
+
+      <div class="sidebar-content">
+        <!-- 1. UKŁAD & WYGLĄD (ROZWIJANY PANEL CARBON) -->
+        <section class="panel-section cds-accordion-section" id="layoutAppearanceSection">
+          <button type="button" class="accordion-header" id="layoutAccordionBtn" aria-expanded="true">
+            <div class="accordion-title-group">
+              <svg class="accordion-icon" viewBox="0 0 16 16" width="16" height="16" fill="currentColor">
+                <path d="M14 2H2C1.4 2 1 2.4 1 3v10c0 .6.4 1 1 1h12c.6 0 1-.4 1-1V3c0-.6-.4-1-1-1zm-6 1h6v4H8V3zM2 3h5v4H2V3zm0 5h5v5H2V8zm6 5V8h6v5H8z"/>
+              </svg>
+              <span class="section-title-main">1. Układ & Wygląd</span>
+            </div>
+            <svg class="chevron-icon" viewBox="0 0 16 16" width="14" height="14" fill="currentColor">
+              <path d="M8 11L3 6l.7-.7L8 9.6l4.3-4.3.7.7z"/>
+            </svg>
+          </button>
+
+          <div class="accordion-body" id="layoutAccordionBody">
+            <!-- DNI W GRAFIKU -->
+            <div class="form-group">
+              <div class="flex-between">
+                <label>Dni w grafiku</label>
+                <div class="days-quick-actions">
+                  <button type="button" id="daysAllBtn" class="btn-link" title="Włącz wszystkie 7 dni">Wszystkie</button>
+                  <span class="divider">/</span>
+                  <button type="button" id="daysMonFriBtn" class="btn-link" title="Włącz tylko Poniedziałek – Piątek">Pon – Pt</button>
+                </div>
+              </div>
+              <div class="days-toggle-grid" id="daysToggleGrid">
+                <!-- Przyciski dni generowane dynamicznie w app.js -->
+              </div>
+            </div>
+
+            <div class="section-divider"></div>
+
+            <!-- PRZEŁĄCZNIKI WERSJI SLIM (JEDNA LINIA: NAZWA + SWITCH PO PRAWEJ) -->
+            <div class="slim-options-group">
+              <div class="slim-group-title">Wersje kompaktowe (Slim)</div>
+
+              <label class="switch-row" for="slimDaysCheck">
+                <span class="switch-row-label">Mniejsze dni tygodnia</span>
+                <input type="checkbox" id="slimDaysCheck">
+                <span class="switch-slider"></span>
+              </label>
+
+              <label class="switch-row" for="slimHoursCheck">
+                <span class="switch-row-label">Mniejsze godziny</span>
+                <input type="checkbox" id="slimHoursCheck">
+                <span class="switch-slider"></span>
+              </label>
+
+              <label class="switch-row" for="slimTilesCheck">
+                <span class="switch-row-label">Mniejsze kafelki</span>
+                <input type="checkbox" id="slimTilesCheck">
+                <span class="switch-slider"></span>
+              </label>
+            </div>
+          </div>
+        </section>
+
+        <!-- EDYTOR NAGŁÓWKA TABELI (AKTYWOWANY PO KLIKNIĘCIU W BELKĘ TYTUŁOWĄ) -->
+        <section class="panel-section header-editor-section hidden" id="headerEditorSection">
+          <div class="section-title flex-between">
+            <span class="section-title-main">Nagłówek tabeli</span>
+            <button type="button" class="btn-link" id="closeHeaderEditorBtn" title="Zamknij edycję nagłówka">✕ Zamknij</button>
+          </div>
+          <div class="form-group" style="margin-top: 10px;">
+            <label for="gymTitleInput">Treść nagłówka tabeli</label>
+            <input type="text" id="gymTitleInput" class="form-input font-display" placeholder="np. GRAFIK FITNESS - CUBE CZECHÓW">
+            <span class="input-help">Zmiana nazwy grafiku widoczna jest od razu na artboardzie.</span>
+          </div>
+        </section>
+
+        <!-- 2. EDYTOR WYBRANEGO KAFELKA (GŁÓWNY PUNKT UWAGI - TIER 1) -->
+        <section class="panel-section tile-editor-section" id="tileEditorSection">
+          <div class="section-title flex-between">
+            <span class="section-title-main">2. Edycja kafelka</span>
+            <span id="selectedTileCoord" class="badge-coord">Wybierz kafelek</span>
+          </div>
+
+          <div id="tileEditorEmptyMessage" class="hint-box">
+            <svg class="hint-icon" viewBox="0 0 16 16" width="16" height="16" fill="currentColor">
+              <path d="M8 1C4.1 1 1 4.1 1 8s3.1 7 7 7 7-3.1 7-7-3.1-7-7-7zm0 13c-3.3 0-6-2.7-6-6s2.7-6 6-6 6 2.7 6 6-2.7 6-6 6z"/>
+              <path d="M7.5 7h1v4h-1zm0-3h1v1.5h-1z"/>
+            </svg>
+            <span>Kliknij dowolny kafelek w tabeli po prawej stronie, aby rozpocząć edycję jego parametrów.</span>
+          </div>
+
+          <div id="tileEditorForm" class="hidden">
+            <div class="form-group">
+              <label for="tileNameInput">Nazwa zajęć <span class="hint-inline">(Enter = nowa linia)</span></label>
+              <textarea id="tileNameInput" rows="2" class="form-textarea font-display" placeholder="np. CUBE CROSS&#10;NA BRAMACH"></textarea>
+            </div>
+
+            <!-- CARBON DESIGN SYSTEM HIGH-CONTRAST SWITCH / TOGGLE -->
+            <label class="switch-row" for="tileCustomStartCheck" style="margin-bottom: 12px;">
+              <span class="switch-row-label">Inna godzina rozpoczęcia</span>
+              <input type="checkbox" id="tileCustomStartCheck">
+              <span class="switch-slider"></span>
+            </label>
+
+            <div class="form-group hidden" id="tileStartTimeGroup">
+              <label for="tileStartTimeInput">Godzina startu zajęć</label>
+              <input type="text" id="tileStartTimeInput" class="form-input" placeholder="np. 9:10">
+              <span class="input-help">W kafelku pojawi się: „Start o 9:10”</span>
+            </div>
+
+            <div class="form-group">
+              <label for="tileInstructorInput">Prowadzący / Instruktor <span class="hint-inline">(Enter / Shift+Enter = nowa linia)</span></label>
+              <textarea id="tileInstructorInput" rows="2" class="form-textarea font-body" placeholder="np. Marlena W.&#10;lub Iryna Nowikowa&#10;-Sobańska"></textarea>
+            </div>
+
+            <div class="form-group">
+              <div class="flex-between">
+                <label>Kategorie zajęć <span class="hint-inline">(max 2)</span></label>
+                <span id="categoryCountHint" class="cat-hint">0/2 wybrane</span>
+              </div>
+              <div class="categories-picker" id="categoriesPicker">
+                <!-- Pigułki kategorii generowane dynamicznie -->
+              </div>
+              <div id="diagonalSplitHint" class="diagonal-split-hint hidden">
+                <svg class="cds-inline-icon" viewBox="0 0 16 16" width="14" height="14" fill="currentColor">
+                  <path d="M14 1H2C1.4 1 1 1.4 1 2v12c0 .6.4 1 1 1h12c.6 0 1-.4 1-1V2c0-.6-.4-1-1-1zM2 2h12v1.5L2 14.5V2zm12 12H2.5L14 3.5V14z"/>
+                </svg>
+                <span><strong>Podział ukośny:</strong> kafelek zostanie podzielony po przekątnej na dwa kolory.</span>
+              </div>
+            </div>
+
+            <div class="tile-actions">
+              <button type="button" id="clearTileBtn" class="btn btn-outline-danger">
+                <svg viewBox="0 0 16 16" width="14" height="14" fill="currentColor">
+                  <path d="M6 6h1v6H6zm3 0h1v6H9z"/>
+                  <path d="M2 3v1h1v10c0 .6.4 1 1 1h8c.6 0 1-.4 1-1V4h1V3H2zm2 11V4h8v10H4z"/>
+                  <path d="M6 1h4v1H6z"/>
+                </svg>
+                <span>Wyczyść kafelek</span>
+              </button>
+              <button type="button" id="deselectTileBtn" class="btn btn-secondary">
+                <svg viewBox="0 0 16 16" width="14" height="14" fill="currentColor">
+                  <path d="M12 4.7L11.3 4 8 7.3 4.7 4 4 4.7 7.3 8 4 11.3 4.7 12 8 8.7l3.3 3.3.7-.7L8.7 8z"/>
+                </svg>
+                <span>Zamknij</span>
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <!-- 3. ZARZĄDZANIE WIERSZAMI I PRZERWAMI -->
+        <section class="panel-section">
+          <div class="section-title">3. Godziny & Przerwy</div>
+          
+          <div class="rows-toolbar-grid">
+            <button type="button" id="sortRowsBtn" class="btn btn-sm btn-outline-warning" title="Sortuj godziny od najwcześniejszej do najpóźniejszej">
+              <svg viewBox="0 0 16 16" width="13" height="13" fill="currentColor">
+                <path d="M8 1C4.1 1 1 4.1 1 8s3.1 7 7 7 7-3.1 7-7-3.1-7-7-7zm0 13c-3.3 0-6-2.7-6-6s2.7-6 6-6 6 2.7 6 6-2.7 6-6 6z"/>
+                <path d="M7.5 4h1v4.3l3 1.8-.5.9L7.5 8.8z"/>
+              </svg>
+              <span>Sortuj</span>
+            </button>
+            <button type="button" id="addHourRowBtn" class="btn btn-sm btn-primary" title="Dodaj nowy wiersz z godziną">
+              <svg viewBox="0 0 16 16" width="13" height="13" fill="currentColor">
+                <path d="M8 2v5H3v2h5v5h2V9h5V7h-5V2z"/>
+              </svg>
+              <span>Godzina</span>
+            </button>
+            <button type="button" id="addBreakRowBtn" class="btn btn-sm btn-warning" title="Dodaj belkę podziału dnia">
+              <svg viewBox="0 0 16 16" width="13" height="13" fill="currentColor">
+                <path d="M8 2v5H3v2h5v5h2V9h5V7h-5V2z"/>
+              </svg>
+              <span>Belka</span>
+            </button>
+          </div>
+
+          <div class="rows-list" id="rowsList">
+            <!-- Dynamiczna lista wierszy z opcjami góra/dół/usuń -->
+          </div>
+        </section>
+
+        <!-- SUBTELNA OPCJA PRZYWRACANIA WZORCA -->
+        <div class="sidebar-footer-action">
+          <button type="button" id="resetProjectBtn" class="btn-sidebar-reset" title="Przywróć domyślny układ grafiku">
+            <svg class="reset-icon" viewBox="0 0 16 16" width="13" height="13" fill="currentColor">
+              <path d="M13.5 8c0 3-2.5 5.5-5.5 5.5S2.5 11 2.5 8 5 2.5 8 2.5c1.6 0 3 .7 4 1.8V2h1v3.5H9.5V4.5h2.8C11.4 3.6 10 3 8 3 5.2 3 3 5.2 3 8s2.2 5 5 5 5-2.2 5-5h1.5z"/>
+            </svg>
+            <span>Przywróć domyślny wzorzec</span>
+          </button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- PRAWY OBSZAR ROBOCZY (ARTBOARD) -->
+    <main class="main-workspace">
+      <!-- PASEK KONTROLI WIDOKU / GŁÓWNY TOOLBAR -->
+      <div class="workspace-toolbar">
+        <!-- LEWA STRONA: PRZYCISKI AKCJI PROJEKTU -->
+        <div class="toolbar-left-actions">
+          <button type="button" id="topImportBtn" class="btn-tb" title="Importuj grafik z eFitness">
+            <svg class="tb-icon" viewBox="0 0 16 16" width="15" height="15" fill="currentColor">
+              <path d="M12.5 6.2C12.1 3.8 10.2 2 8 2 6.1 2 4.4 3.4 4 5.3 2.3 5.7 1 7.2 1 9c0 2.2 1.8 4 4 4h7.5c1.9 0 3.5-1.6 3.5-3.5 0-1.8-1.4-3.2-3.5-3.3zM12.5 12H5c-1.7 0-3-1.3-3-3 0-1.5 1.1-2.7 2.6-2.9l.5-.1.1-.5C5.6 3.7 6.7 3 8 3c1.7 0 3.1 1.2 3.4 2.8l.2.8.8.1c1.5.2 2.6 1.4 2.6 2.8 0 1.7-1.3 2.5-2.5 2.5z"/>
+              <path d="M7.5 6v3.1L6.3 7.9l-.7.7 2.4 2.4 2.4-2.4-.7-.7-1.2 1.2V6z"/>
+            </svg>
+            <span>Importuj</span>
+          </button>
+          
+          <button type="button" id="topSaveBtn" class="btn-tb" title="Zapisz projekt">
+            <svg class="tb-icon" viewBox="0 0 16 16" width="15" height="15" fill="currentColor">
+              <path d="M13.7 4.3L11.7 2.3C11.5 2.1 11.3 2 11 2H3C2.4 2 2 2.4 2 3v10c0 .6.4 1 1 1h10c.6 0 1-.4 1-1V5c0-.3-.1-.5-.3-.7zM6 3h4v3H6V3zm5 10H5v-4h6v4zm2 0h-1V8c0-.6-.4-1-1-1H5c-.6 0-1 .4-1 1v5H3V3h2v4h6V3.4l2 2V13z"/>
+            </svg>
+            <span>Zapisz</span>
+          </button>
+          
+          <label class="btn-tb file-upload-tb" title="Wczytaj projekt z pliku JSON">
+            <svg class="tb-icon" viewBox="0 0 16 16" width="15" height="15" fill="currentColor">
+              <path d="M14 6V4c0-.6-.4-1-1-1H7.4L5.7 1.3C5.5 1.1 5.3 1 5 1H3c-.6 0-1 .4-1 1v12c0 .6.4 1 1 1h10c.6 0 1-.4 1-1V6zm-1 8H3V2h1.6l1.7 1.7c.2.2.4.3.7.3H13v2H6c-.6 0-1 .4-1 1v1H3v1h2v5h8zm0-6v5H6V8h7z"/>
+            </svg>
+            <span>Wczytaj</span>
+            <input type="file" id="topLoadProjectInput" accept=".json" class="hidden">
+          </label>
+          
+          <!-- NAJWAŻNIEJSZA AKCJA W PASKU (PRIMARY CTA - TIER 1) -->
+          <button type="button" id="topExportBtn" class="btn-tb btn-tb-export" title="Eksportuj grafik do gotowych plików">
+            <svg class="tb-icon" viewBox="0 0 16 16" width="15" height="15" fill="currentColor">
+              <path d="M13 12v2H3v-2H2v2c0 .6.4 1 1 1h10c.6 0 1-.4 1-1v-2h-1z"/>
+              <path d="M7.5 1.5v7.1L5.3 6.4 4.6 7.1l3.4 3.4 3.4-3.4-.7-.7-2.2 2.2V1.5z"/>
+            </svg>
+            <span>Eksportuj</span>
+          </button>
+        </div>
+
+        <!-- ŚRODEK: NAZWA WCZYTANEGO PLIKU / ZAPISU (CARBON DOCUMENT TAB) -->
+        <div class="toolbar-center-doc">
+          <div class="doc-tab-indicator is-empty-doc" id="docTabIndicator" title="Podwójne kliknięcie, aby edytować nazwę projektu">
+            <svg class="doc-tab-icon" viewBox="0 0 16 16" width="14" height="14" fill="currentColor">
+              <path d="M10.7 2H3C2.4 2 2 2.4 2 3v10c0 .6.4 1 1 1h10c.6 0 1-.4 1-1V5.3L10.7 2zM10 3l3 3h-3V3zM3 13V3h6v4h4v6H3z"/>
+            </svg>
+            <span class="doc-tab-name is-empty-doc" id="currentDocName">brak wczytanego grafiku</span>
+            <span class="doc-tab-dirty hidden" id="docDirtyStar" title="Niezapisane zmiany">*</span>
+          </div>
+        </div>
+
+        <!-- PRAWA STRONA: FORMAT ("TRYB WYŚWIETLANIA") I POWIĘKSZENIE (CARBON SEGMENTED / BADGES) -->
+        <div class="toolbar-right-controls">
+          <div class="display-mode-wrap">
+            <label for="formatSelect" class="display-mode-label">Tryb wyświetlania</label>
+            <select id="formatSelect" class="display-mode-select">
+              <optgroup label="Social Media (Wersja ciemna)">
+                <option value="post_portrait" selected>Social Media - Instagram Pion (1080x1350 px)</option>
+                <option value="post_square">Social Media - Kwadrat (1200x1200 px)</option>
+              </optgroup>
+              <optgroup label="Druk (Wersja jasna, 300 DPI)">
+                <option value="a4_print">Druk A4 Poziomo (300 DPI)</option>
+                <option value="a3_print">Druk A3 Poziomo (300 DPI)</option>
+              </optgroup>
+            </select>
+          </div>
+          <div class="toolbar-controls">
+            <span class="zoom-label">Zoom:</span>
+            <div class="zoom-button-group">
+              <button type="button" class="btn-zoom" data-zoom="fit" title="Dopasuj do ekranu">Fit</button>
+              <button type="button" class="btn-zoom" data-zoom="0.5">50%</button>
+              <button type="button" class="btn-zoom active" data-zoom="0.75">75%</button>
+              <button type="button" class="btn-zoom" data-zoom="1.0">100%</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- KONTENER PRZEWIJALNY ARTBOARDU -->
+      <div class="artboard-scroll-area" id="artboardScrollArea">
+        <!-- EKRAN STARTOWY / PUSTY OBSZAR ROBOCZY -->
+        <div id="emptyWorkspaceState" class="empty-workspace-state">
+          <div class="empty-state-card">
+            <div class="empty-state-logo-wrap">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 244.371 76.862" fill="currentColor" class="empty-state-logo-svg">
+                <path fill-rule="evenodd" d="M 38.492 61.067 C 44.459 61.067, 50.426 61.070, 56.393 61.066 C 59.304 61.063, 61.183 59.201, 61.184 56.297 C 61.190 44.388, 61.190 32.479, 61.185 20.570 C 61.184 17.626, 59.310 15.774, 56.351 15.773 C 44.440 15.771, 32.530 15.771, 20.620 15.773 C 17.668 15.774, 15.795 17.633, 15.793 20.577 C 15.789 32.462, 15.789 44.348, 15.793 56.233 C 15.794 59.221, 17.658 61.065, 20.661 61.066 C 26.605 61.069, 32.548 61.067, 38.492 61.067 M 5.000 60.209 L 5.000 16.630 C 5.044 16.476, 5.104 16.323, 5.130 16.165 C 5.992 11.030, 8.877 7.543, 13.751 5.723 C 14.680 5.376, 15.685 5.236, 16.655 5.000 L 60.325 5.000 C 60.456 5.042, 60.584 5.104, 60.718 5.122 C 66.069 5.855, 70.296 9.637, 71.595 14.867 C 71.739 15.451, 71.852 16.042, 71.979 16.630 L 71.979 60.209 C 71.937 60.340, 71.875 60.468, 71.856 60.602 C 70.957 67.027, 65.613 71.810, 59.157 71.827 C 45.380 71.862, 31.602 71.858, 17.825 71.828 C 12.044 71.815, 6.975 67.870, 5.463 62.318 C 5.274 61.625, 5.153 60.913, 5.000 60.209 Z M 42.753 24.467 C 44.410 24.472, 45.725 25.789, 45.727 27.443 C 45.728 29.091, 44.406 30.423, 42.757 30.435 C 41.089 30.447, 39.715 29.071, 39.738 27.413 C 39.761 25.764, 41.094 24.462, 42.753 24.467 Z M 54.469 32.963 C 54.454 34.610, 53.110 35.940, 51.472 35.930 C 49.800 35.920, 48.478 34.556, 48.504 32.867 C 48.530 31.223, 49.878 29.921, 51.533 29.943 C 53.177 29.965, 54.484 31.310, 54.469 32.963 Z M 190.828 41.565 C 190.852 34.058, 184.750 27.926, 177.219 27.885 C 169.609 27.844, 163.427 33.933, 163.402 41.496 C 163.378 49.034, 169.501 55.194, 177.044 55.221 C 184.646 55.248, 190.805 49.146, 190.828 41.565 M 175.453 61.378 C 174.133 61.104, 172.792 60.905, 171.496 60.545 C 163.745 58.388, 157.911 51.235, 157.336 43.225 C 157.273 42.342, 157.240 41.455, 157.240 40.569 C 157.234 30.862, 157.235 21.156, 157.235 11.449 L 157.235 10.587 L 163.386 10.587 L 163.386 27.084 C 164.586 26.221, 165.669 25.340, 166.849 24.613 C 178.620 17.355, 194.302 24.421, 196.656 38.026 C 198.599 49.249, 191.039 59.631, 179.779 61.206 C 179.411 61.257, 179.045 61.320, 178.678 61.378 L 175.453 61.378 Z M 81.317 39.253 C 81.582 37.955, 81.760 36.632, 82.125 35.363 C 84.727 26.298, 93.369 20.375, 102.778 21.155 C 105.342 21.368, 107.767 22.039, 110.158 23.241 C 109.034 24.358, 107.874 25.352, 106.915 26.511 C 106.005 27.612, 105.114 27.800, 103.701 27.502 C 96.074 25.892, 88.559 31.368, 87.607 39.101 C 86.527 47.874, 93.656 55.260, 102.470 54.500 C 110.876 53.775, 116.666 45.404, 114.364 37.272 C 114.223 36.774, 114.290 36.473, 114.657 36.118 C 116.063 34.754, 117.436 33.357, 118.861 31.933 C 119.923 33.953, 120.556 36.040, 120.849 38.223 C 122.133 47.776, 116.433 56.798, 107.270 59.750 C 95.354 63.589, 82.755 55.456, 81.447 43.082 C 81.425 42.877, 81.361 42.676, 81.317 42.474 L 81.317 39.253 Z M 206.091 48.386 C 212.410 42.078, 218.697 35.802, 224.978 29.532 C 220.885 26.491, 213.350 25.920, 207.926 31.085 C 203.251 35.536, 202.411 43.379, 206.091 48.386 M 233.161 28.836 C 225.380 36.606, 217.615 44.359, 209.810 52.152 C 211.414 53.337, 213.200 54.035, 215.125 54.353 C 222.358 55.547, 229.091 51.065, 230.782 43.949 C 231.232 42.060, 231.234 40.161, 230.871 38.255 C 230.828 38.032, 230.825 37.697, 230.956 37.562 C 232.470 36.008, 234.013 34.482, 235.560 32.937 C 239.371 40.744, 236.961 52.027, 228.077 57.648 C 219.025 63.376, 206.832 60.826, 200.992 51.981 C 194.982 42.880, 197.242 30.748, 206.056 24.664 C 215.317 18.272, 227.094 20.855, 233.161 28.836 Z M 122.038 22.652 L 128.177 22.652 L 128.177 23.507 C 128.177 30.414, 128.167 37.321, 128.180 44.228 C 128.190 49.597, 132.162 54.181, 137.420 54.927 C 143.103 55.734, 148.337 52.518, 149.820 47.225 C 150.123 46.142, 150.228 44.973, 150.234 43.843 C 150.271 37.076, 150.252 30.309, 150.252 23.542 L 150.252 22.666 L 156.375 22.666 C 156.387 22.923, 156.410 23.171, 156.410 23.418 C 156.411 30.302, 156.355 37.186, 156.425 44.069 C 156.516 53.111, 149.361 60.306, 140.725 60.994 C 131.944 61.694, 124.160 56.061, 122.365 47.613 C 122.144 46.571, 122.030 45.487, 122.026 44.421 C 121.996 37.351, 122.010 30.281, 122.011 23.210 C 122.011 23.049, 122.026 22.887, 122.038 22.652 Z"/>
+              </svg>
+            </div>
+            <div class="empty-state-message">
+              Wczytaj tabelę z pliku, lub importuj ją ze strony eFitness.
+            </div>
+            <div class="empty-state-actions">
+              <label class="btn empty-state-btn" for="emptyLoadFileInput" title="Wczytaj zapisany plik projektu (.json)">
+                <svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor">
+                  <path d="M14 6V4c0-.6-.4-1-1-1H7.4L5.7 1.3C5.5 1.1 5.3 1 5 1H3c-.6 0-1 .4-1 1v12c0 .6.4 1 1 1h10c.6 0 1-.4 1-1V6zm-1 8H3V2h1.6l1.7 1.7c.2.2.4.3.7.3H13v2H6c-.6 0-1 .4-1 1v1H3v1h2v5h8zm0-6v5H6V8h7z"/>
+                </svg>
+                <span>Wczytaj zapis</span>
+                <input type="file" id="emptyLoadFileInput" accept=".json" class="hidden">
+              </label>
+              <button type="button" id="emptyImportBtn" class="btn empty-state-btn" title="Importuj grafik bezpośrednio z panelu eFitness">
+                <svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor">
+                  <path d="M12.5 6.2C12.1 3.8 10.2 2 8 2 6.1 2 4.4 3.4 4 5.3 2.3 5.7 1 7.2 1 9c0 2.2 1.8 4 4 4h7.5c1.9 0 3.5-1.6 3.5-3.5 0-1.8-1.4-3.2-3.5-3.3zM12.5 12H5c-1.7 0-3-1.3-3-3 0-1.5 1.1-2.7 2.6-2.9l.5-.1.1-.5C5.6 3.7 6.7 3 8 3c1.7 0 3.1 1.2 3.4 2.8l.2.8.8.1c1.5.2 2.6 1.4 2.6 2.8 0 1.7-1.3 2.5-2.5 2.5z"/>
+                  <path d="M7.5 6v3.1L6.3 7.9l-.7.7 2.4 2.4 2.4-2.4-.7-.7-1.2 1.2V6z"/>
+                </svg>
+                <span>Importuj z eFitness</span>
+              </button>
+            </div>
+            <button type="button" id="emptyCreateBlankBtn" class="empty-state-secondary-link" title="Zacznij od czystego szablonu grafiku">
+              lub rozpocznij z pustym wzorcem
+            </button>
+          </div>
+        </div>
+
+        <div class="artboard-wrapper hidden" id="artboardWrapper">
+          <div id="artboard" class="artboard-canvas theme-dark format-post-portrait">
+            <!-- Dynamicznie renderowana zawartość grafiku -->
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- ========================================================================
+       MODALE APLIKACJI (CARBON DESIGN SYSTEM DIALOGS)
+       ======================================================================== -->
+
+  <!-- MODAL 1: IMPORT Z EFITNESS -->
+  <div id="importModal" class="modal-backdrop hidden">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <div class="modal-title-wrap">
+          <svg class="modal-title-icon" viewBox="0 0 16 16" width="18" height="18" fill="currentColor">
+            <path d="M12.5 6.2C12.1 3.8 10.2 2 8 2 6.1 2 4.4 3.4 4 5.3 2.3 5.7 1 7.2 1 9c0 2.2 1.8 4 4 4h7.5c1.9 0 3.5-1.6 3.5-3.5 0-1.8-1.4-3.2-3.5-3.3zM12.5 12H5c-1.7 0-3-1.3-3-3 0-1.5 1.1-2.7 2.6-2.9l.5-.1.1-.5C5.6 3.7 6.7 3 8 3c1.7 0 3.1 1.2 3.4 2.8l.2.8.8.1c1.5.2 2.6 1.4 2.6 2.8 0 1.7-1.3 2.5-2.5 2.5z"/>
+            <path d="M7.5 6v3.1L6.3 7.9l-.7.7 2.4 2.4 2.4-2.4-.7-.7-1.2 1.2V6z"/>
+          </svg>
+          <h3 class="modal-title">Importuj grafik z eFitness</h3>
+        </div>
+        <button type="button" class="modal-close-btn" data-close-modal="importModal" title="Zamknij">
+          <svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor">
+            <path d="M12 4.7L11.3 4 8 7.3 4.7 4 4 4.7 7.3 8 4 11.3 4.7 12 8 8.7l3.3 3.3.7-.7L8.7 8z"/>
+          </svg>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p class="modal-desc">Wybierz preferowany sposób importu grafiku ze strony CMS eFitness:</p>
+        
+        <div class="modal-section-card">
+          <div class="modal-card-title">Opcja 1: Pobierz bezpośrednio przez link</div>
+          <div class="form-group" style="margin-bottom: 10px;">
+            <input type="url" id="modalEfitnessUrlInput" class="form-input" value="https://cubefitness-garwolin.cms.efitness.com.pl/kalendarz-zajec" placeholder="https://...efitness.com.pl/kalendarz-zajec">
+          </div>
+          <button type="button" id="modalImportUrlBtn" class="btn btn-primary w-100">
+            <svg viewBox="0 0 16 16" width="15" height="15" fill="currentColor">
+              <path d="M12.5 6.2C12.1 3.8 10.2 2 8 2 6.1 2 4.4 3.4 4 5.3 2.3 5.7 1 7.2 1 9c0 2.2 1.8 4 4 4h7.5c1.9 0 3.5-1.6 3.5-3.5 0-1.8-1.4-3.2-3.5-3.3zM12.5 12H5c-1.7 0-3-1.3-3-3 0-1.5 1.1-2.7 2.6-2.9l.5-.1.1-.5C5.6 3.7 6.7 3 8 3c1.7 0 3.1 1.2 3.4 2.8l.2.8.8.1c1.5.2 2.6 1.4 2.6 2.8 0 1.7-1.3 2.5-2.5 2.5z"/>
+              <path d="M7.5 6v3.1L6.3 7.9l-.7.7 2.4 2.4 2.4-2.4-.7-.7-1.2 1.2V6z"/>
+            </svg>
+            <span>Pobierz grafik ze strony</span>
+          </button>
+        </div>
+
+        <div class="modal-section-card" style="margin-top: 14px;">
+          <div class="modal-card-title">Opcja 2: Wklej kod HTML ze strony (Ctrl+U)</div>
+          <textarea id="modalEfitnessHtmlInput" rows="3" class="form-textarea" placeholder="Wklej tutaj kod źródłowy strony..."></textarea>
+          <button type="button" id="modalImportHtmlBtn" class="btn btn-outline-warning w-100" style="margin-top: 10px;">
+            <svg viewBox="0 0 16 16" width="15" height="15" fill="currentColor">
+              <path d="M5.7 3.3L1 8l4.7 4.7.7-.7L2.4 8l4-4-.7-.7zm4.6 0l-.7.7 4 4-4 4 .7.7L15 8l-4.7-4.7z"/>
+            </svg>
+            <span>Zaimportuj z kodu HTML</span>
+          </button>
+        </div>
+
+        <div id="modalImportStatus" class="modal-status-text"></div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-close-modal="importModal">Anuluj</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL 2: ZAPIS PROJEKTU -->
+  <div id="saveModal" class="modal-backdrop hidden">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <div class="modal-title-wrap">
+          <svg class="modal-title-icon" viewBox="0 0 16 16" width="18" height="18" fill="currentColor">
+            <path d="M13.7 4.3L11.7 2.3C11.5 2.1 11.3 2 11 2H3C2.4 2 2 2.4 2 3v10c0 .6.4 1 1 1h10c.6 0 1-.4 1-1V5c0-.3-.1-.5-.3-.7zM6 3h4v3H6V3zm5 10H5v-4h6v4zm2 0h-1V8c0-.6-.4-1-1-1H5c-.6 0-1 .4-1 1v5H3V3h2v4h6V3.4l2 2V13z"/>
+          </svg>
+          <h3 class="modal-title">Zapis projektu</h3>
+        </div>
+        <button type="button" class="modal-close-btn" data-close-modal="saveModal" title="Zamknij">
+          <svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor">
+            <path d="M12 4.7L11.3 4 8 7.3 4.7 4 4 4.7 7.3 8 4 11.3 4.7 12 8 8.7l3.3 3.3.7-.7L8.7 8z"/>
+          </svg>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p class="modal-desc">Wpisz nazwę pliku lub wybierz sposób zapisu:</p>
+        <div class="form-group">
+          <label for="saveFileNameInput">Nazwa pliku projektu (.json)</label>
+          <input type="text" id="saveFileNameInput" class="form-input" value="grafik_cube_garwolin.json">
+        </div>
+        <div class="save-actions-grid">
+          <button type="button" id="modalSaveDirectBtn" class="btn btn-primary">
+            <svg viewBox="0 0 16 16" width="15" height="15" fill="currentColor">
+              <path d="M13.7 4.3L11.7 2.3C11.5 2.1 11.3 2 11 2H3C2.4 2 2 2.4 2 3v10c0 .6.4 1 1 1h10c.6 0 1-.4 1-1V5c0-.3-.1-.5-.3-.7zM6 3h4v3H6V3zm5 10H5v-4h6v4zm2 0h-1V8c0-.6-.4-1-1-1H5c-.6 0-1 .4-1 1v5H3V3h2v4h6V3.4l2 2V13z"/>
+            </svg>
+            <span>Zapisz plik</span>
+          </button>
+          <button type="button" id="modalSaveAsBtn" class="btn btn-outline">
+            <svg viewBox="0 0 16 16" width="15" height="15" fill="currentColor">
+              <path d="M14 6V4c0-.6-.4-1-1-1H7.4L5.7 1.3C5.5 1.1 5.3 1 5 1H3c-.6 0-1 .4-1 1v12c0 .6.4 1 1 1h10c.6 0 1-.4 1-1V6zm-1 8H3V2h1.6l1.7 1.7c.2.2.4.3.7.3H13v2H6c-.6 0-1 .4-1 1v1H3v1h2v5h8zm0-6v5H6V8h7z"/>
+            </svg>
+            <span>Zapisz jako...</span>
+          </button>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-close-modal="saveModal">Zamknij</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL 3: EKSPORT WSADOWY (CARBON MODAL) -->
+  <div id="exportModal" class="modal-backdrop hidden">
+    <div class="modal-dialog modal-dialog-lg">
+      <div class="modal-header">
+        <div class="modal-title-wrap">
+          <svg class="modal-title-icon" viewBox="0 0 16 16" width="18" height="18" fill="currentColor">
+            <path d="M13 12v2H3v-2H2v2c0 .6.4 1 1 1h10c.6 0 1-.4 1-1v-2h-1z"/>
+            <path d="M7.5 1.5v7.1L5.3 6.4 4.6 7.1l3.4 3.4 3.4-3.4-.7-.7-2.2 2.2V1.5z"/>
+          </svg>
+          <h3 class="modal-title">Eksport gotowych plików grafiku</h3>
+        </div>
+        <button type="button" class="modal-close-btn" data-close-modal="exportModal" title="Zamknij">
+          <svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor">
+            <path d="M12 4.7L11.3 4 8 7.3 4.7 4 4 4.7 7.3 8 4 11.3 4.7 12 8 8.7l3.3 3.3.7-.7L8.7 8z"/>
+          </svg>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p class="modal-desc">Wybierz formaty, które chcesz wyeksportować w pełnej rozdzielczości produkcyjnej:</p>
+        
+        <div class="export-formats-list">
+          <!-- SOCIAL MEDIA: KWADRAT (1200x1200 px) -->
+          <label class="export-format-item">
+            <input type="checkbox" name="exportFormatCheckbox" value="post_square" class="export-checkbox" checked>
+            <div class="format-item-info">
+              <div class="format-item-title">Social Media - Kwadrat (1200x1200 px) <span class="format-badge-type">PNG • RGB</span></div>
+              <div class="format-item-sub">Wersja ciemna • Facebook & Instagram Feed</div>
+            </div>
+          </label>
+
+          <label class="export-format-item">
+            <input type="checkbox" name="exportFormatCheckbox" value="post_square_svg" class="export-checkbox">
+            <div class="format-item-info">
+              <div class="format-item-title">Wektorowy SVG - Kwadrat (1200x1200 px) <span class="format-badge-type svg">SVG • Illustrator</span></div>
+              <div class="format-item-sub">Wektorowy plik .svg • W pełni edytowalne teksty, grupy i kształty w Adobe Illustrator</div>
+            </div>
+          </label>
+
+          <!-- SOCIAL MEDIA: PION (1080x1350 px) -->
+          <label class="export-format-item">
+            <input type="checkbox" name="exportFormatCheckbox" value="post_portrait" class="export-checkbox" checked>
+            <div class="format-item-info">
+              <div class="format-item-title">Social Media - Instagram Pion (1080x1350 px) <span class="format-badge-type">PNG • RGB</span></div>
+              <div class="format-item-sub">Wersja ciemna • Instagram Post (4:5)</div>
+            </div>
+          </label>
+
+          <label class="export-format-item">
+            <input type="checkbox" name="exportFormatCheckbox" value="post_portrait_svg" class="export-checkbox">
+            <div class="format-item-info">
+              <div class="format-item-title">Wektorowy SVG - Instagram Pion (1080x1350 px) <span class="format-badge-type svg">SVG • Illustrator</span></div>
+              <div class="format-item-sub">Wektorowy plik .svg • W pełni edytowalne teksty, grupy i kształty w Adobe Illustrator</div>
+            </div>
+          </label>
+
+          <!-- DRUK (A4 / A3) -->
+          <label class="export-format-item">
+            <input type="checkbox" name="exportFormatCheckbox" value="a4_print" class="export-checkbox" checked>
+            <div class="format-item-info">
+              <div class="format-item-title">Druk A4 Poziomo (297x210 mm) <span class="format-badge-type print">PDF • Druk 300 DPI</span></div>
+              <div class="format-item-sub">Wersja jasna • Spłaszczony PDF do druku (recepcja / gablota)</div>
+            </div>
+          </label>
+
+          <label class="export-format-item">
+            <input type="checkbox" name="exportFormatCheckbox" value="a3_print" class="export-checkbox">
+            <div class="format-item-info">
+              <div class="format-item-title">Druk A3 Poziomo (420x297 mm) <span class="format-badge-type print">PDF • Druk 300 DPI</span></div>
+              <div class="format-item-sub">Wersja jasna • Spłaszczony PDF do druku (plakat ścienny)</div>
+            </div>
+          </label>
+        </div>
+
+        <div class="export-quick-select">
+          <button type="button" id="selectAllFormatsBtn" class="btn-link">Zaznacz wszystkie</button>
+          <span>/</span>
+          <button type="button" id="deselectAllFormatsBtn" class="btn-link">Odznacz wszystkie</button>
+        </div>
+
+        <div class="export-naming-hint">
+          <svg viewBox="0 0 16 16" width="14" height="14" fill="currentColor" style="flex-shrink:0;">
+            <path d="M8 1C4.1 1 1 4.1 1 8s3.1 7 7 7 7-3.1 7-7-3.1-7-7-7zm0 13c-3.3 0-6-2.7-6-6s2.7-6 6-6 6 2.7 6 6-2.7 6-6 6z"/>
+            <path d="M7.5 7h1v4h-1zm0-3h1v1.5h-1z"/>
+          </svg>
+          <span><strong>Formaty plików:</strong> Social Media: <code>.png</code> (sRGB) / <code>.svg</code> (Wektorowy Illustrator) | Druk: <code>.pdf</code> (spłaszczony 300 DPI)</span>
+        </div>
+
+        <div id="modalExportProgress" class="modal-export-progress hidden">
+          <div class="progress-bar-track">
+            <div id="modalExportProgressBar" class="progress-bar-fill"></div>
+          </div>
+          <div id="modalExportStatusText" class="progress-status-text">Generowanie obrazów...</div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-close-modal="exportModal">Anuluj</button>
+        <button type="button" id="modalRunExportBtn" class="btn btn-export-modal">
+          <svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor">
+            <path d="M13 12v2H3v-2H2v2c0 .6.4 1 1 1h10c.6 0 1-.4 1-1v-2h-1z"/>
+            <path d="M7.5 1.5v7.1L5.3 6.4 4.6 7.1l3.4 3.4 3.4-3.4-.7-.7-2.2 2.2V1.5z"/>
+          </svg>
+          <span>Eksportuj zaznaczone formaty</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- KONTENER POWIADOMIEŃ TOAST -->
+  <div id="toastContainer" class="toast-container"></div>
+
+  <!-- Biblioteka eksportu do PNG -->
+  <script src="assets/js/html-to-image.js"></script>
+
+  <!-- Samodzielny skrypt aplikacji (działa bezpośrednio przy otwarciu z dysku przez file://) -->
+  <script src="app.bundle.js"></script>
+</body>
+</html>

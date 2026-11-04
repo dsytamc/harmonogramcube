@@ -1,0 +1,293 @@
+{
+  "version": "1.0",
+  "gymTitle": "GRAFIK FITNESS - CUBE ŁÓDŹ",
+  "rows": [
+    {
+      "id": "row_1",
+      "type": "hour",
+      "time": "9:00",
+      "note": ""
+    },
+    {
+      "id": "row_2",
+      "type": "hour",
+      "time": "10:00",
+      "note": ""
+    },
+    {
+      "id": "row_break_imported_2",
+      "type": "break",
+      "label": ""
+    },
+    {
+      "id": "row_3",
+      "type": "hour",
+      "time": "17:00",
+      "note": ""
+    },
+    {
+      "id": "row_4",
+      "type": "hour",
+      "time": "18:00",
+      "note": ""
+    },
+    {
+      "id": "row_5",
+      "type": "hour",
+      "time": "19:00",
+      "note": ""
+    },
+    {
+      "id": "row_6",
+      "type": "hour",
+      "time": "20:00",
+      "note": ""
+    }
+  ],
+  "tiles": {
+    "row_1_mon": {
+      "name": "FULL BODY\nWORKOUT",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Joanna Nazar",
+      "categories": [
+        "modelujace"
+      ]
+    },
+    "row_1_tue": {
+      "name": "BRAZYLIJSKIE\nPOŚLADKI",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Maja Polak",
+      "categories": [
+        "modelujace"
+      ]
+    },
+    "row_1_wed": {
+      "name": "TBC",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Natalia Korytkowska",
+      "categories": [
+        "wzmacniajace"
+      ]
+    },
+    "row_1_thu": {
+      "name": "BRZUCH +\nPOŚLADKI",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Iwona Przybylska",
+      "categories": [
+        "modelujace"
+      ]
+    },
+    "row_1_fri": {
+      "name": "TRENING\nOBWODOWY",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Joanna Nazar",
+      "categories": [
+        "spalajace"
+      ]
+    },
+    "row_1_sat": {
+      "name": "FULL BODY\nWORKOUT",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Natalia Korytkowska",
+      "categories": [
+        "modelujace"
+      ]
+    },
+    "row_1_sun": {
+      "name": "RZEŹBA &\nKONDYCJA",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Aleksandra Kwasiborska",
+      "categories": [
+        "modelujace"
+      ]
+    },
+    "row_2_thu": {
+      "name": "ZDROWY\nKRĘGOSŁUP",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Iwona Przybylska",
+      "categories": [
+        "prozdrowotne"
+      ]
+    },
+    "row_2_sat": {
+      "name": "ZDROWY\nKRĘGOSŁUP",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Natalia Korytkowska",
+      "categories": [
+        "prozdrowotne"
+      ]
+    },
+    "row_2_sun": {
+      "name": "PILATES",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Aleksandra Kwasiborska",
+      "categories": [
+        "prozdrowotne"
+      ]
+    },
+    "row_3_mon": {
+      "name": "SHAPE",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Aleksandra Kwasiborska",
+      "categories": [
+        "wzmacniajace"
+      ]
+    },
+    "row_3_tue": {
+      "name": "SALSATION ®",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Natalia Korytkowska",
+      "categories": [
+        "taneczne"
+      ]
+    },
+    "row_3_wed": {
+      "name": "FIT SYLWETKA",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Natalia Korytkowska",
+      "categories": [
+        "modelujace"
+      ]
+    },
+    "row_3_thu": {
+      "name": "MINIBAND",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Joanna Nazar",
+      "categories": [
+        "modelujace"
+      ]
+    },
+    "row_3_fri": {
+      "name": "ZUMBA ®",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Natalia Korytkowska",
+      "categories": [
+        "taneczne"
+      ]
+    },
+    "row_4_mon": {
+      "name": "BRAZYLIJSKIE\nPOŚLADKI",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Aleksandra Kwasiborska",
+      "categories": [
+        "modelujace"
+      ]
+    },
+    "row_4_tue": {
+      "name": "STEP CARDIO",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Joanna Nazar",
+      "categories": [
+        "spalajace"
+      ]
+    },
+    "row_4_wed": {
+      "name": "BUP",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Maja Polak",
+      "categories": [
+        "modelujace"
+      ]
+    },
+    "row_4_thu": {
+      "name": "POWER PUMP",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Joanna Nazar",
+      "categories": [
+        "spalajace"
+      ]
+    },
+    "row_4_fri": {
+      "name": "POWER PILATES",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Natalia Korytkowska",
+      "categories": [
+        "wzmacniajace"
+      ]
+    },
+    "row_5_mon": {
+      "name": "SPALANIE +\nPŁASKI BRZUCH",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Karolina Foszczyńska",
+      "categories": [
+        "spalajace"
+      ]
+    },
+    "row_5_tue": {
+      "name": "RAMIONA I\nBRZUCH",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Joanna Nazar",
+      "categories": [
+        "modelujace"
+      ]
+    },
+    "row_5_wed": {
+      "name": "PILATES",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Maja Polak",
+      "categories": [
+        "prozdrowotne"
+      ]
+    },
+    "row_5_thu": {
+      "name": "FIT SYLWETKA",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Aleksandra Kwasiborska",
+      "categories": [
+        "modelujace"
+      ]
+    },
+    "row_5_fri": {
+      "name": "SEXY PUPA",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Iwona Przybylska",
+      "categories": [
+        "modelujace"
+      ]
+    },
+    "row_6_mon": {
+      "name": "ZDROWY\nKRĘGOSŁUP",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Karolina Foszczyńska",
+      "categories": [
+        "prozdrowotne"
+      ]
+    },
+    "row_6_thu": {
+      "name": "PILATES",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Aleksandra Kwasiborska",
+      "categories": [
+        "prozdrowotne"
+      ]
+    }
+  },
+  "formatId": "post_square"
+}

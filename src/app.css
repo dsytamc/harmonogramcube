@@ -1,0 +1,2928 @@
+/* src/app.css - Główne style interfejsu aplikacji (IBM Carbon Design System) */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-ui);
+  background-color: var(--cds-background);
+  color: var(--cds-text-primary);
+  height: 100vh;
+  overflow: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.app-container {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
+
+/* ==========================================================================
+   1. LEWY PANEL STEROWANIA (SIDEBAR - IBM CARBON DESIGN SYSTEM)
+   ========================================================================== */
+
+.sidebar {
+  width: 410px;
+  min-width: 380px;
+  background-color: var(--cds-layer-01);
+  border-right: 1px solid var(--cds-border-subtle);
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  z-index: 10;
+  box-shadow: 4px 0 20px rgba(0, 0, 0, 0.45);
+}
+
+.sidebar-header {
+  padding: 16px 20px;
+  background: var(--cds-background);
+  border-bottom: 1px solid var(--cds-border-subtle);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.brand-logo-cube {
+  background: var(--cds-brand-gold);
+  color: #111111;
+  padding: 6px 12px;
+  border-radius: 4px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(253, 196, 0, 0.3);
+  flex-shrink: 0;
+  transition: transform 0.15s ease;
+}
+
+.brand-logo-cube:hover {
+  transform: scale(1.02);
+}
+
+.brand-logo-cube .cube-sidebar-svg {
+  width: 76px;
+  height: 24px;
+  display: block;
+}
+
+.brand-text-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.brand-title {
+  font-family: var(--font-ui);
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--cds-text-primary);
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+}
+
+.brand-subtitle {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--cds-text-helper);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.sidebar-content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 16px 18px 24px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* Przewijanie sidebara w stylu Carbon */
+.sidebar-content::-webkit-scrollbar {
+  width: 6px;
+}
+.sidebar-content::-webkit-scrollbar-thumb {
+  background: var(--cds-layer-03);
+  border-radius: 3px;
+}
+.sidebar-content::-webkit-scrollbar-thumb:hover {
+  background: var(--cds-border-strong);
+}
+
+/* KARTA SEKCJI (CARBON LAYER CARD) */
+.panel-section {
+  background: var(--cds-layer-01);
+  border: 1px solid var(--cds-border-subtle);
+  border-radius: 6px;
+  padding: 14px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  transition: border-color 0.15s ease;
+  flex-shrink: 0;
+}
+.panel-section:focus-within {
+  border-color: var(--cds-border-strong);
+}
+
+/* TIER 1: EDYTOR WYBRANEGO KAFELKA - NAJWYŻSZA HIERARCHIA WIZUALNA */
+.panel-section.tile-editor-section {
+  background: var(--cds-layer-02);
+  border: 1px solid var(--cds-border-strong);
+  border-left: 4px solid var(--cds-brand-gold);
+  border-radius: 6px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
+}
+
+.section-title {
+  font-family: var(--font-ui);
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--cds-text-helper);
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+}
+
+.tile-editor-section .section-title {
+  color: var(--cds-text-primary);
+}
+
+.section-title-main {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.flex-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Wskaźnik koordynatów wybranego kafelka (Carbon Tag / Badge) */
+.badge-coord {
+  font-family: var(--font-ui);
+  font-size: 11px;
+  font-weight: 700;
+  background: rgba(253, 196, 0, 0.12);
+  color: var(--cds-brand-gold);
+  padding: 3px 8px;
+  border-radius: 4px;
+  border: 1px solid rgba(253, 196, 0, 0.35);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+/* Carbon Callout / Hint box */
+.hint-box {
+  padding: 12px 14px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--cds-border-subtle);
+  border-radius: 6px;
+  font-size: 12px;
+  color: var(--cds-text-helper);
+  line-height: 1.45;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.hint-icon {
+  color: var(--cds-brand-gold);
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.hint-inline {
+  font-size: 11px;
+  color: var(--cds-text-helper);
+  font-weight: normal;
+  text-transform: none;
+}
+
+.form-group {
+  margin-bottom: 12px;
+}
+.form-group:last-child {
+  margin-bottom: 0;
+}
+
+.form-group label {
+  display: block;
+  font-family: var(--font-ui);
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--cds-text-secondary);
+  margin-bottom: 6px;
+}
+
+/* POLA FORMULARZA (CARBON TEXTINPUT / SELECT / TEXTAREA) */
+.form-input, .form-select, .form-textarea {
+  width: 100%;
+  padding: 8px 12px;
+  background: var(--cds-field-01);
+  border: 1px solid var(--cds-border-subtle);
+  border-bottom: 2px solid var(--cds-border-strong);
+  border-radius: 4px;
+  color: var(--cds-text-primary);
+  font-family: var(--font-ui);
+  font-size: 13px;
+  outline: none;
+  transition: all 0.15s ease;
+}
+
+.form-textarea {
+  resize: vertical;
+  min-height: 54px;
+  line-height: 1.35;
+}
+
+.form-input:focus, .form-select:focus, .form-textarea:focus {
+  border-color: var(--cds-border-strong);
+  border-bottom-color: var(--cds-brand-gold);
+  background: var(--cds-field-02);
+  box-shadow: 0 0 0 1px rgba(253, 196, 0, 0.25);
+}
+
+.form-select {
+  cursor: pointer;
+}
+
+.input-help {
+  display: block;
+  font-size: 11px;
+  color: var(--cds-brand-gold);
+  margin-top: 4px;
+}
+
+/* ==========================================================================
+   CARBON DESIGN SYSTEM HIGH-CONTRAST TOGGLE / SWITCH
+   ========================================================================== */
+.checkbox-group {
+  margin-top: 8px;
+  margin-bottom: 12px;
+}
+
+.switch-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 8px 12px;
+  background: var(--cds-field-01);
+  border: 1px solid var(--cds-border-subtle);
+  border-radius: 6px;
+  cursor: pointer;
+  user-select: none;
+  gap: 12px;
+  transition: all 0.15s ease;
+}
+
+.switch-container:hover {
+  background: var(--cds-field-02);
+  border-color: var(--cds-border-strong);
+}
+
+.switch-container:has(input:checked) {
+  background: rgba(253, 196, 0, 0.06);
+  border-color: rgba(253, 196, 0, 0.35);
+}
+
+.switch-label {
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--cds-text-primary);
+  flex: 1;
+  line-height: 1.3;
+}
+
+.switch-container input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+}
+
+/* Tor przełącznika (Carbon Switch Track) */
+.switch-slider {
+  width: 44px;
+  height: 24px;
+  min-width: 44px;
+  background: #393946;
+  border: 1.5px solid #6b6b7d;
+  border-radius: 12px;
+  position: relative;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  flex-shrink: 0;
+}
+
+/* Uchwyt przełącznika (Carbon Switch Thumb) */
+.switch-slider:before {
+  content: "";
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #ffffff;
+  top: 2.5px;
+  left: 3px;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.45);
+}
+
+/* Stan WŁĄCZONY (Checked) - wyrazisty złoty Cube */
+.switch-container input:checked + .switch-slider,
+.switch-row input:checked + .switch-slider {
+  background: var(--cds-brand-gold);
+  border-color: var(--cds-brand-gold);
+}
+
+.switch-container input:checked + .switch-slider:before,
+.switch-row input:checked + .switch-slider:before {
+  transform: translateX(20px);
+  background: #111114;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Dostępność: widoczny obrys fokusowy klawiatury */
+.switch-container input:focus-visible + .switch-slider,
+.switch-row input:focus-visible + .switch-slider {
+  outline: 2px solid var(--cds-focus);
+  outline-offset: 2px;
+}
+
+/* JEDNOLINIOWY WIERSZ PRZEŁĄCZNIKA CARBON: [NAZWA] [SWITCH PO PRAWEJ] */
+.switch-row {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  width: 100% !important;
+  padding: 10px 14px !important;
+  background: var(--cds-field-01) !important;
+  border: 1px solid var(--cds-border-subtle) !important;
+  border-radius: 6px !important;
+  cursor: pointer !important;
+  user-select: none !important;
+  box-sizing: border-box !important;
+  transition: all 0.15s ease !important;
+}
+
+.switch-row:hover {
+  background: var(--cds-field-02) !important;
+  border-color: var(--cds-border-strong) !important;
+}
+
+.switch-row:has(input:checked) {
+  background: var(--cds-field-01) !important;
+  border-color: var(--cds-border-subtle) !important;
+}
+
+.switch-row-label {
+  font-family: var(--font-ui) !important;
+  font-size: 11.5px !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.04em !important;
+  color: var(--cds-text-primary) !important;
+  flex: 1 !important;
+  margin-right: 14px !important;
+  line-height: 1.2 !important;
+}
+
+.switch-row:has(input:checked) .switch-row-label {
+  color: var(--cds-text-primary) !important;
+}
+
+.switch-row input,
+.switch-container input {
+  position: absolute !important;
+  opacity: 0 !important;
+  width: 0 !important;
+  height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  appearance: none !important;
+  -webkit-appearance: none !important;
+  pointer-events: none !important;
+}
+
+/* SEKCJA ROZWIJANA: UKŁAD & WYGLĄD (CARBON ACCORDION) */
+.cds-accordion-section {
+  padding: 0 !important;
+  flex-shrink: 0;
+}
+
+.accordion-header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 16px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: var(--cds-text-primary);
+  font-family: var(--font-ui);
+  text-align: left;
+  transition: background 0.15s ease;
+  border-radius: 6px;
+}
+
+.accordion-header:hover {
+  background: var(--cds-field-01);
+}
+
+.accordion-header[aria-expanded="true"] {
+  border-radius: 6px 6px 0 0;
+}
+
+.accordion-title-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.accordion-icon {
+  color: var(--cds-brand-gold);
+  flex-shrink: 0;
+}
+
+.chevron-icon {
+  color: var(--cds-text-secondary);
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  flex-shrink: 0;
+}
+
+.accordion-header[aria-expanded="false"] .chevron-icon {
+  transform: rotate(-90deg);
+}
+
+.accordion-body {
+  padding: 0 16px 16px 16px;
+  transition: max-height 0.25s ease, opacity 0.2s ease;
+}
+
+.accordion-body.is-collapsed {
+  display: none;
+}
+
+.section-divider {
+  height: 1px;
+  background: var(--cds-border-subtle);
+  margin: 14px 0 12px 0;
+}
+
+.slim-options-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.slim-group-title {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--cds-brand-gold);
+  margin-bottom: 2px;
+}
+
+/* PRZEŁĄCZNIKI WIDOCZNOŚCI DNI TYGODNIA (CARBON CONTENT SWITCHER / TAGS) */
+.days-quick-actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+}
+
+.days-quick-actions .btn-link {
+  background: none;
+  border: none;
+  color: var(--cds-brand-gold);
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.days-quick-actions .btn-link:hover {
+  color: #ffe082;
+}
+.days-quick-actions .divider {
+  color: var(--cds-border-strong);
+}
+
+.days-toggle-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+  margin-top: 6px;
+}
+
+.day-toggle-btn {
+  height: 32px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  font-family: var(--font-ui);
+  font-size: 11px;
+  font-weight: 700;
+  background: var(--cds-field-01);
+  color: var(--cds-text-helper);
+  border: 1px solid var(--cds-border-subtle);
+  cursor: pointer;
+  transition: all 0.15s ease;
+  user-select: none;
+}
+
+.day-toggle-btn:hover {
+  border-color: var(--cds-border-strong);
+  color: var(--cds-text-primary);
+  background: var(--cds-field-02);
+}
+
+.day-toggle-btn.is-active {
+  background: var(--cds-brand-gold);
+  color: #111114;
+  border-color: var(--cds-brand-gold);
+  font-weight: 800;
+  box-shadow: 0 1px 4px rgba(253, 196, 0, 0.25);
+}
+
+/* WYBÓR KATEGORII W FORMULARZU */
+.cat-hint {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--cds-brand-gold);
+}
+
+.categories-picker {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 6px;
+  margin-top: 6px;
+}
+
+.category-pill {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 10px;
+  border-radius: 4px;
+  border: 1px solid var(--cds-border-subtle);
+  background: var(--cds-field-01);
+  color: var(--cds-text-secondary);
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  user-select: none;
+}
+
+.category-pill:hover {
+  background: var(--cds-field-02);
+  border-color: var(--cds-border-strong);
+  color: var(--cds-text-primary);
+}
+
+.category-pill.selected {
+  border-color: #ffffff;
+  color: #111111;
+  font-weight: 700;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+}
+
+.cat-color-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+.diagonal-split-hint {
+  margin-top: 8px;
+  padding: 8px 10px;
+  background: rgba(253, 196, 0, 0.08);
+  border: 1px solid rgba(253, 196, 0, 0.3);
+  border-radius: 4px;
+  font-size: 11.5px;
+  color: #fce798;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.cds-inline-icon {
+  flex-shrink: 0;
+  color: var(--cds-brand-gold);
+}
+
+.tile-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+/* PRZYCISKI CARBON (BUTTONS) */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  padding: 8px 14px;
+  border-radius: 4px;
+  font-family: var(--font-ui);
+  font-size: 12.5px;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  transition: all 0.15s ease;
+  text-decoration: none;
+  user-select: none;
+}
+
+.btn-sm {
+  padding: 6px 10px;
+  font-size: 11px;
+  border-radius: 4px;
+}
+
+.btn-primary {
+  background: var(--cds-brand-gold);
+  color: #111114;
+  font-weight: 700;
+}
+.btn-primary:hover {
+  background: var(--cds-brand-gold-hover);
+}
+
+.btn-warning {
+  background: rgba(255, 143, 0, 0.15);
+  color: #ffb74d;
+  border: 1px solid rgba(255, 143, 0, 0.45);
+}
+.btn-warning:hover {
+  background: var(--cds-brand-orange);
+  color: #111114;
+  border-color: var(--cds-brand-orange);
+}
+
+.btn-outline-warning {
+  background: transparent;
+  color: var(--cds-brand-gold);
+  border: 1px solid rgba(253, 196, 0, 0.4);
+}
+.btn-outline-warning:hover {
+  background: rgba(253, 196, 0, 0.12);
+  border-color: var(--cds-brand-gold);
+}
+
+.btn-secondary {
+  background: var(--cds-layer-03);
+  color: var(--cds-text-primary);
+  border: 1px solid var(--cds-border-strong);
+}
+.btn-secondary:hover {
+  background: #444455;
+  color: #ffffff;
+}
+
+.btn-outline-danger {
+  background: transparent;
+  border: 1px solid var(--cds-support-error);
+  color: var(--cds-support-error);
+}
+.btn-outline-danger:hover {
+  background: var(--cds-support-error);
+  color: #ffffff;
+}
+
+.btn-outline {
+  background: var(--cds-field-01);
+  border: 1px solid var(--cds-border-subtle);
+  color: var(--cds-text-primary);
+}
+.btn-outline:hover {
+  background: var(--cds-field-02);
+  border-color: var(--cds-border-strong);
+}
+
+.w-100 {
+  width: 100%;
+}
+
+/* PASEK NARZĘDZI WIERSZY (Sortuj, + Godzina, + Belka) */
+.rows-toolbar-grid {
+  display: grid;
+  grid-template-columns: 0.95fr 1.05fr 1.05fr;
+  gap: 6px;
+  margin-bottom: 10px;
+}
+
+.rows-toolbar-grid .btn {
+  padding: 6px 8px;
+  font-size: 11px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+/* LISTA WIERSZY (GODZINY I BELKI - CARBON DATALIST) */
+.rows-list {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  max-height: 260px;
+  overflow-y: auto;
+  padding-right: 4px;
+}
+
+.rows-list::-webkit-scrollbar {
+  width: 4px;
+}
+.rows-list::-webkit-scrollbar-thumb {
+  background: var(--cds-layer-03);
+  border-radius: 2px;
+}
+
+.row-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 8px;
+  background: var(--cds-field-01);
+  border: 1px solid var(--cds-border-subtle);
+  border-radius: 4px;
+  transition: all 0.12s ease;
+}
+
+.row-item:hover {
+  background: var(--cds-field-02);
+  border-color: var(--cds-border-strong);
+}
+
+/* Wiersz belki podziału w motywie Cube Yellow / Orange */
+.row-item.is-break {
+  background: rgba(255, 143, 0, 0.08);
+  border: 1px solid rgba(255, 143, 0, 0.35);
+}
+
+.row-item.is-break:hover {
+  background: rgba(255, 143, 0, 0.14);
+  border-color: rgba(255, 143, 0, 0.55);
+}
+
+/* Wskaźniki typu wiersza (G oraz B) */
+.row-item-type {
+  width: 22px;
+  height: 22px;
+  min-width: 22px;
+  border-radius: 3px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-ui);
+  font-size: 11px;
+  font-weight: 800;
+  line-height: 1;
+  text-transform: uppercase;
+  flex-shrink: 0;
+  user-select: none;
+}
+
+.row-item-type.type-hour {
+  background: rgba(253, 196, 0, 0.15);
+  color: var(--cds-brand-gold);
+  border: 1px solid rgba(253, 196, 0, 0.35);
+}
+
+.row-item-type.type-break {
+  background: var(--cds-brand-orange);
+  color: #111114;
+  border: 1px solid var(--cds-brand-orange);
+  font-weight: 900;
+}
+
+.row-time-input {
+  width: 58px;
+  min-width: 58px;
+  padding: 4px 6px;
+  background: var(--cds-layer-01);
+  border: 1px solid var(--cds-border-subtle);
+  border-radius: 3px;
+  color: var(--cds-text-primary);
+  font-family: var(--font-ui);
+  font-size: 12px;
+  font-weight: 700;
+  text-align: center;
+  outline: none;
+  transition: all 0.12s ease;
+}
+
+.row-time-input:focus {
+  border-color: var(--cds-brand-gold);
+  background: var(--cds-field-02);
+}
+
+.row-note-input {
+  padding: 4px 8px;
+  background: var(--cds-layer-01);
+  border: 1px solid var(--cds-border-subtle);
+  border-radius: 3px;
+  color: var(--cds-text-secondary);
+  font-family: var(--font-ui);
+  font-size: 11px;
+  outline: none;
+  transition: all 0.12s ease;
+}
+
+.row-note-input:focus {
+  border-color: var(--cds-brand-gold);
+  color: var(--cds-text-primary);
+  background: var(--cds-field-02);
+}
+
+.row-hour-note {
+  width: 82px;
+  max-width: 90px;
+  flex: 0 1 82px;
+}
+
+.row-break-label {
+  flex: 1;
+  min-width: 0;
+  font-weight: 600;
+}
+
+.row-actions {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  margin-left: auto;
+  flex-shrink: 0;
+}
+
+.btn-icon {
+  background: transparent;
+  border: 1px solid transparent;
+  color: var(--cds-text-helper);
+  width: 22px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 3px;
+  cursor: pointer;
+  padding: 0;
+  transition: all 0.12s ease;
+}
+
+.btn-icon:hover {
+  background: var(--cds-layer-03);
+  color: var(--cds-text-primary);
+  border-color: var(--cds-border-subtle);
+}
+
+.btn-icon.delete:hover {
+  background: rgba(218, 30, 40, 0.2);
+  color: var(--cds-support-error);
+  border-color: rgba(218, 30, 40, 0.4);
+}
+
+/* SUBTELNY RESET NA DOLE PANELU (CARBON GHOST BUTTON) */
+.sidebar-footer-action {
+  margin-top: auto;
+  padding-top: 8px;
+  display: flex;
+  justify-content: center;
+}
+
+.btn-sidebar-reset {
+  background: transparent;
+  border: none;
+  color: var(--cds-text-helper);
+  font-family: var(--font-ui);
+  font-size: 11px;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  padding: 6px 12px;
+  border-radius: 4px;
+  transition: all 0.15s ease;
+}
+
+.btn-sidebar-reset:hover {
+  color: var(--cds-text-primary);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.btn-sidebar-reset .reset-icon {
+  flex-shrink: 0;
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* ==========================================================================
+   2. PRAWY OBSZAR ROBOCZY (WORKSPACE & TOP BAR)
+   ========================================================================== */
+
+.main-workspace {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--cds-background);
+  overflow: hidden;
+  position: relative;
+}
+
+.workspace-toolbar {
+  height: 50px;
+  background: #18181c;
+  border-bottom: 1px solid var(--cds-border-subtle);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+  z-index: 5;
+  gap: 12px;
+}
+
+/* LEWA STRONA: PRZYCISKI AKCJI */
+.toolbar-left-actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.btn-tb {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--cds-field-01);
+  border: 1px solid var(--cds-border-subtle);
+  color: var(--cds-text-secondary);
+  padding: 6px 12px;
+  font-family: var(--font-ui);
+  font-size: 12px;
+  font-weight: 600;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  user-select: none;
+}
+
+.btn-tb:hover {
+  background: var(--cds-field-02);
+  border-color: var(--cds-border-strong);
+  color: var(--cds-text-primary);
+}
+
+.file-upload-tb {
+  margin-bottom: 0;
+}
+
+/* GŁÓWNY PRZYCISK EKSPORTU (CARBON PRIMARY ACTION - TIER 1) */
+.btn-tb-export {
+  background: var(--cds-brand-gold);
+  color: #111114;
+  border: 1px solid var(--cds-brand-gold);
+  font-weight: 700;
+  box-shadow: 0 2px 8px rgba(253, 196, 0, 0.35);
+}
+
+.btn-tb-export:hover {
+  background: var(--cds-brand-gold-hover);
+  border-color: var(--cds-brand-gold-hover);
+  color: #000000;
+  box-shadow: 0 4px 14px rgba(253, 196, 0, 0.5);
+  transform: translateY(-1px);
+}
+
+.tb-icon {
+  flex-shrink: 0;
+}
+
+/* ŚRODEK: ZAKŁADKA DOKUMENTU (CARBON DOCUMENT TAB) */
+.toolbar-center-doc {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  min-width: 0;
+}
+
+.doc-tab-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: var(--cds-field-01);
+  border: 1px solid var(--cds-border-subtle);
+  border-radius: 4px;
+  padding: 5px 12px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  max-width: 100%;
+}
+
+.doc-tab-indicator:hover {
+  background: var(--cds-field-02);
+  border-color: var(--cds-border-strong);
+}
+
+.doc-tab-icon {
+  color: var(--cds-text-helper);
+  flex-shrink: 0;
+}
+
+.doc-tab-name {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--cds-text-secondary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  letter-spacing: 0.02em;
+}
+
+.doc-tab-indicator:hover .doc-tab-name {
+  color: var(--cds-text-primary);
+}
+
+.doc-tab-dirty {
+  color: var(--cds-brand-gold);
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 1;
+}
+
+/* PRAWA STRONA: FORMAT I POWIĘKSZENIE (CARBON SEGMENTED / BADGES) */
+.toolbar-right-controls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.display-mode-wrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.display-mode-label {
+  font-family: var(--font-display), var(--font-ui), sans-serif;
+  font-weight: 700;
+  font-size: 13px;
+  color: var(--cds-brand-gold, #FFCC00);
+  white-space: nowrap;
+  letter-spacing: 0.02em;
+}
+
+.display-mode-select {
+  background-color: #171a21;
+  color: #e0e5ed;
+  border: 1px solid #333946;
+  border-radius: 6px;
+  padding: 6px 30px 6px 12px;
+  font-size: 13px;
+  font-weight: 500;
+  font-family: var(--font-ui), sans-serif;
+  outline: none;
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%23FFCC00' viewBox='0 0 16 16'%3E%3Cpath d='M8 11.5l-5-5h10z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  transition: all 0.2s ease;
+}
+
+.display-mode-select:hover {
+  border-color: #555e70;
+  background-color: #1d212b;
+}
+
+.display-mode-select:focus {
+  border-color: var(--cds-brand-gold, #FFCC00);
+  box-shadow: 0 0 0 2px rgba(255, 204, 0, 0.25);
+}
+
+.toolbar-controls {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.zoom-label {
+  font-size: 11px;
+  color: var(--cds-text-helper);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+
+.zoom-button-group {
+  display: inline-flex;
+  border: 1px solid var(--cds-border-subtle);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.btn-zoom {
+  background: var(--cds-field-01);
+  border: none;
+  border-right: 1px solid var(--cds-border-subtle);
+  color: var(--cds-text-helper);
+  padding: 4px 8px;
+  font-family: var(--font-ui);
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.12s;
+}
+
+.btn-zoom:last-child {
+  border-right: none;
+}
+
+.btn-zoom:hover {
+  background: var(--cds-field-02);
+  color: var(--cds-text-primary);
+}
+
+.btn-zoom.active {
+  background: var(--cds-brand-gold);
+  color: #111114;
+  font-weight: 800;
+}
+
+.artboard-scroll-area {
+  flex: 1;
+  overflow: auto;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 40px;
+  background: radial-gradient(circle at center, #1b1c22 0%, #0d0e11 100%);
+}
+
+.artboard-wrapper {
+  transform-origin: top center;
+  transition: transform 0.2s ease-out;
+  display: flex;
+  justify-content: center;
+}
+
+
+/* ==========================================================================
+   3. STRUKTURA RENDEROWANEGO ARTBOARDU (1:1 PIXEL PERFECT)
+   ========================================================================== */
+
+.artboard-canvas {
+  position: relative;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.7);
+  display: flex;
+  flex-direction: column;
+  user-select: none;
+  overflow: hidden;
+}
+
+/* --- Motyw Ciemny (Social Media) --- */
+.artboard-canvas.theme-dark {
+  background-color: var(--dark-bg);
+  color: #FFFFFF;
+}
+
+/* Wymiary bazowe Post Kwadrat */
+.artboard-canvas.format-post_square {
+  width: 1200px;
+  height: 1200px;
+  padding: 32px 32px 36px 32px;
+}
+
+/* Wymiary bazowe Post Pion */
+.artboard-canvas.format-post_portrait {
+  width: 1080px;
+  height: 1350px;
+  padding: 36px 32px 40px 32px;
+}
+
+/* --- Motyw Jasny (Druk A4 / A3) --- */
+.artboard-canvas.theme-light {
+  background-color: var(--light-bg);
+  color: #1F232B;
+}
+
+/* Wymiary bazowe A4 w pt (skalowane proporcjonalnie do podglądu 1400px szerokości dla wygody) */
+.artboard-canvas.format-a4_print {
+  width: 1400px;
+  height: 990px;
+  padding: 20px 30px 20px 30px;
+}
+
+.artboard-canvas.format-a3_print {
+  width: 1600px;
+  height: 1131px;
+  padding: 35px 35px 35px 35px;
+}
+
+
+/* Elementy składowe Artboardu: Logo, Nagłówek, Tabela, Legenda */
+
+/* Logo na górze dla Social Media */
+.artboard-top-logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+  flex-shrink: 0;
+}
+
+.artboard-top-logo svg {
+  height: 65px;
+  width: auto;
+  color: #FDC400;
+}
+
+
+/* Pasek nagłówka z nazwą siłowni – stanowiący integralną część tabeli */
+.artboard-header-bar {
+  border-radius: 10px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  margin-bottom: 8px;
+  box-sizing: border-box;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  user-select: none;
+}
+.artboard-header-bar {
+  position: relative;
+}
+.artboard-header-bar:hover {
+  filter: brightness(1.04);
+}
+.artboard-header-bar.is-selected {
+  z-index: 5;
+}
+
+.theme-dark .artboard-header-bar {
+  background: var(--dark-accent);
+  color: var(--dark-header-text);
+  height: 68px;
+  font-size: 26px;
+}
+
+.theme-light .artboard-header-bar {
+  background: var(--light-accent);
+  color: var(--light-header-text);
+  height: 60px;
+  font-size: 24px;
+}
+
+.format-a3_print .artboard-header-bar {
+  height: 70px;
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+
+/* Główny kontener zawartości w druku (tabela + boczna legenda) wyśrodkowany pionowo na arkuszu */
+.artboard-print-body {
+  display: flex;
+  gap: 20px;
+  width: 100%;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.artboard-print-table-col {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+/* KONTENER SKALOWANIA PROPORCJONALNEGO TABELI */
+.schedule-scale-viewport {
+  width: 100%;
+  position: relative;
+  overflow: visible;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: auto;
+  margin-bottom: 0;
+}
+
+.schedule-scale-wrapper {
+  transform-origin: center center;
+  flex-shrink: 0;
+  will-change: transform;
+}
+
+/* TABELA GRAFIKU */
+.schedule-grid-container {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* Wiersz siatki: 1 komórka nagłówka/godziny + 7 kolumn dni */
+.schedule-grid-row {
+  display: grid;
+  grid-template-columns: 82px repeat(7, 1fr);
+  gap: 6px;
+  align-items: stretch;
+}
+
+.format-a4_print .schedule-grid-row,
+.format-a3_print .schedule-grid-row {
+  grid-template-columns: 90px repeat(7, 1fr);
+  gap: 6px;
+}
+
+/* Kafelki nagłówka dni tygodnia */
+.day-header-cell {
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 12.5px;
+  letter-spacing: -0.015em;
+  text-align: center;
+  height: 38px;
+  white-space: nowrap;
+  padding: 0 4px;
+}
+
+/* W formacie pionowym (1080x1350) zmniejszamy font, by długi napis "PONIEDZIAŁEK" nie wychodził poza komórkę */
+.format-post_portrait .day-header-cell {
+  font-size: 10.5px;
+  letter-spacing: -0.025em;
+  padding: 0 2px;
+}
+
+.format-a4_print .day-header-cell {
+  font-size: 14px;
+  height: 42px;
+}
+.format-a4_print .day-header-corner {
+  height: 42px;
+}
+
+.format-a3_print .day-header-cell {
+  font-size: 15px;
+  height: 44px;
+}
+.format-a3_print .day-header-corner {
+  height: 44px;
+}
+
+.day-header-corner {
+  border-radius: 8px;
+  height: 38px;
+}
+
+.theme-dark .day-header-cell,
+.theme-dark .day-header-corner {
+  background: var(--dark-accent);
+  color: var(--dark-header-text);
+}
+
+.theme-light .day-header-cell,
+.theme-light .day-header-corner {
+  background: var(--light-accent);
+  color: var(--light-header-text);
+}
+
+/* WERSJA SLIM DLA DNI TYGODNIA */
+.day-header-cell.is-slim-day {
+  font-size: 16px;
+  letter-spacing: 0.02em;
+  padding: 0 12px;
+}
+.format-post_portrait .day-header-cell.is-slim-day {
+  font-size: 14.5px;
+  padding: 0 12px;
+}
+
+
+/* Kafelki godzin po lewej stronie */
+.hour-header-cell {
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-weight: 800;
+  padding: 4px;
+  text-align: center;
+}
+
+.hour-text {
+  font-size: 15px;
+  line-height: 1.1;
+}
+
+.hour-note {
+  font-size: 8px;
+  font-weight: 700;
+  margin-top: 2px;
+  text-transform: uppercase;
+}
+
+.theme-dark .hour-header-cell {
+  background: var(--dark-accent);
+  color: var(--dark-header-text);
+}
+
+.theme-light .hour-header-cell {
+  background: var(--light-accent);
+  color: var(--light-header-text);
+}
+
+/* WERSJA SLIM DLA GODZIN (TYLKO CYFRA + DOPISEK) */
+.hour-header-cell.is-slim-hour {
+  padding: 12px 6px;
+  justify-content: center;
+}
+.hour-header-cell.is-slim-hour .hour-text {
+  font-size: 26px;
+  line-height: 1;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+}
+.hour-header-cell.is-slim-hour .hour-note {
+  font-size: 8px;
+  font-weight: 800;
+  margin-top: 4px;
+  letter-spacing: 0.03em;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+
+/* Belka rozdzielająca (przerwa) */
+.schedule-grid-row.break-row {
+  grid-template-columns: 1fr;
+}
+
+.break-bar {
+  border-radius: 8px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.theme-dark .break-bar {
+  background: var(--dark-accent);
+  color: var(--dark-header-text);
+}
+
+.theme-light .break-bar {
+  background: var(--light-accent);
+  color: var(--light-header-text);
+}
+
+
+/* KAFELEK ZAJĘĆ (WYPEŁNIONY LUB PUSTY) - STAŁA WYSOKOŚĆ */
+.schedule-tile {
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px 6px;
+  height: 70px;
+  min-height: 70px;
+  max-height: 70px;
+  cursor: pointer;
+  position: relative;
+  transition: transform 0.1s, box-shadow 0.1s;
+  overflow: hidden;
+}
+
+.hour-header-cell {
+  height: 70px;
+  min-height: 70px;
+  max-height: 70px;
+}
+
+/* W formacie druku wysokość kafelków zwiększona o 30% */
+.format-a4_print .schedule-tile,
+.format-a4_print .hour-header-cell {
+  height: 78px;
+  min-height: 78px;
+  max-height: 78px;
+}
+
+.format-a3_print .schedule-tile,
+.format-a3_print .hour-header-cell {
+  height: 91px;
+  min-height: 91px;
+  max-height: 91px;
+}
+
+.schedule-tile:hover {
+  filter: brightness(1.08);
+}
+
+.schedule-tile {
+  position: relative;
+}
+.schedule-tile.is-selected {
+  z-index: 5;
+}
+
+.theme-dark .schedule-tile.is-empty {
+  background-color: var(--dark-tile-empty);
+  border: 1px solid var(--dark-tile-border);
+}
+
+.theme-light .schedule-tile.is-empty {
+  background-color: var(--light-tile-empty);
+}
+
+.tile-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+  height: 100%;
+  color: #1A1A1A; /* Zgodnie ze wzorcem czarny tekst na kolorowym tle */
+  overflow: hidden;
+  padding: 3px 4px;
+  box-sizing: border-box;
+  gap: 1.5px; /* Kompaktowy, spójny odstęp łączący tytuł, godzinę startu i instruktora w zwięzłą całość */
+}
+
+/* Nazwa zajęć - ZAWSZE NAJWIĘKSZA I NAJBARDZIEJ WYRAZISTA */
+.tile-class-name {
+  font-family: var(--font-display);
+  font-size: 13.5px;
+  font-weight: 800;
+  line-height: 1.08;
+  margin: 0;
+  word-break: normal;
+  overflow-wrap: break-word;
+  color: #1A1A1A;
+  letter-spacing: -0.015em;
+  text-transform: uppercase;
+}
+
+/* Krótkie 1-liniowe tytuły (np. YOGA, SHAPE, BUP, PILATES, FIT BALL) - optymalne -10% dla doskonałej harmonii */
+.tile-class-name.is-short-title {
+  font-size: 13.7px;
+  line-height: 1.08;
+}
+
+/* Długie 1-wyrazowe tytuły (np. WZMACNIANIE, STRETCHING) - zapobiega ucinaniu po bokach */
+.tile-class-name.is-long-single-word {
+  font-size: 11.6px;
+  line-height: 1.08;
+  letter-spacing: -0.025em;
+}
+
+/* W przypadku 2 linijek tytułu */
+.tile-class-name.is-dense {
+  font-size: 12.0px;
+  line-height: 1.08;
+  margin: 0;
+}
+
+/* Przestronne 2 linijki z krótkimi słowami (np. TRENING OBWODOWY, RZEŹBA CIAŁA, PEŁNA FORMA) - powiększone o ok. 20% */
+.tile-class-name.is-two-lines-roomy {
+  font-size: 13.2px;
+  line-height: 1.08;
+}
+
+/* W przypadku 3 linijek tytułu */
+.tile-class-name.is-three-lines {
+  font-size: 10.8px;
+  line-height: 1.06;
+  margin: 0;
+}
+
+/* W przypadku 4 lub więcej linijek tytułu (np. ZDROWY KRĘGOSŁUP Z ELEMENTAMI STRETCHINGU) */
+.tile-class-name.is-four-lines,
+.tile-content.is-extreme-dense .tile-class-name {
+  font-size: 9.6px;
+  line-height: 1.04;
+  letter-spacing: -0.015em;
+  margin: 0;
+}
+
+/* Godzina startu zajęć - Termina Medium, ZAWSZE równa wielkością i wagą sekcji instruktora */
+.tile-custom-start {
+  font-family: var(--font-body);
+  font-size: 10.2px;
+  font-weight: 500;
+  line-height: 1.10;
+  margin: 0;
+  color: #111111;
+  letter-spacing: 0;
+}
+
+/* Prowadzący / Instruktor - Termina Medium, równa wielkością i wagą sekcji godziny startu (bazowa 10.2px dla 1200x1200px) */
+.tile-instructor {
+  font-family: var(--font-body);
+  font-size: 10.2px;
+  font-weight: 500;
+  line-height: 1.12;
+  padding: 0;
+  margin: 0;
+  color: #222222;
+  white-space: normal;
+  word-break: normal;
+  overflow-wrap: break-word;
+  letter-spacing: 0;
+}
+
+.tile-instructor.is-compact {
+  font-size: 9.2px;
+  line-height: 1.10;
+  padding: 0;
+  margin: 0;
+}
+
+/* WERSJA SLIM DLA KAFELKÓW (UKRYTY INSTRUKTOR, TYTUŁ POWIĘKSZONY Z ZACHOWANIEM >= 8PX MARGINESU) */
+.tile-content.is-slim-tile {
+  padding: 8px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  align-items: center !important;
+  gap: 3px !important;
+  text-align: center;
+}
+
+.tile-content.is-slim-tile .tile-class-name {
+  font-size: 16.5px;
+  line-height: 1.14;
+  letter-spacing: -0.01em;
+  margin: 0;
+  max-width: 100%;
+}
+
+.tile-content.is-slim-tile .tile-class-name.is-dense {
+  font-size: 14.5px;
+  line-height: 1.12;
+}
+
+.tile-content.is-slim-tile .tile-class-name.is-three-lines {
+  font-size: 12.5px;
+  line-height: 1.08;
+}
+
+.tile-content.is-slim-tile .tile-custom-start {
+  font-size: 11px;
+  font-weight: 600;
+  margin: 3px 0 0 0;
+  letter-spacing: 0;
+}
+
+.format-post_portrait .tile-content.is-slim-tile .tile-class-name {
+  font-size: 15px;
+}
+.format-post_portrait .tile-content.is-slim-tile .tile-class-name.is-dense {
+  font-size: 13.2px;
+}
+.format-post_portrait .tile-content.is-slim-tile .tile-class-name.is-three-lines {
+  font-size: 11.5px;
+}
+
+/* Kafelki z przestronnym układem (1 linia krótki tytuł lub 2 linie tytuł + 2 linie nazwisko, bez godziny startu) */
+.tile-content.is-spacious-long-instructor .tile-instructor {
+  font-size: 10.5px;
+  line-height: 1.14;
+}
+.tile-content.is-spacious-long-instructor .tile-instructor.is-compact {
+  font-size: 10.2px;
+  line-height: 1.12;
+}
+
+/* Optymalizacja kafelków mających jednocześnie inną godzinę startu i instruktora */
+.tile-content.has-custom-start {
+  gap: 1.5px;
+}
+.tile-content.has-custom-start .tile-class-name {
+  font-size: 11.5px;
+  line-height: 1.08;
+  margin: 0;
+}
+.tile-content.has-custom-start .tile-class-name.is-short-title {
+  font-size: 13.8px; /* +20% dla krótkich tytułów z godziną (np. SHAPE Start o 9:30) */
+  line-height: 1.08;
+  margin: 0;
+}
+
+.tile-content.has-custom-start .tile-custom-start {
+  font-size: 8.8px;
+  font-weight: 500;
+  line-height: 1.10;
+  margin: 0;
+  letter-spacing: 0;
+}
+
+.tile-content.has-custom-start .tile-instructor {
+  font-size: 8.8px;
+  font-weight: 500;
+  line-height: 1.10;
+  margin: 0;
+  letter-spacing: 0;
+}
+
+.tile-content.has-custom-start .tile-instructor.is-compact {
+  font-size: 8.2px;
+  line-height: 1.08;
+}
+
+/* Kafelki z 5 linijkami (np. 2 linie tytuł + godzina startu + 2 linie nazwisko) */
+.tile-content.is-dense-content {
+  padding: 1.5px 2px;
+  gap: 0.8px;
+}
+.tile-content.is-dense-content .tile-class-name {
+  font-size: 12.0px;
+  line-height: 1.06;
+  margin: 0;
+}
+.tile-content.is-dense-content .tile-class-name.is-short-title {
+  font-size: 13.0px;
+}
+.tile-content.is-dense-content .tile-custom-start {
+  font-size: 9.0px;
+  font-weight: 500;
+  line-height: 1.06;
+  margin: 0;
+  letter-spacing: 0;
+}
+.tile-content.is-dense-content .tile-instructor {
+  font-size: 9.0px;
+  font-weight: 500;
+  line-height: 1.06;
+  margin: 0;
+  letter-spacing: 0;
+}
+.tile-content.is-dense-content .tile-instructor.is-compact {
+  font-size: 8.4px;
+  line-height: 1.04;
+}
+
+/* Kafelki z 6 lub więcej linijkami tekstu lub 4+ linijkami tytułu (ekstremalne przypadki) */
+.tile-content.is-super-dense-content,
+.tile-content.is-extreme-dense {
+  padding: 1px 2px;
+  gap: 0.8px;
+}
+.tile-content.is-super-dense-content .tile-class-name,
+.tile-content.is-extreme-dense .tile-class-name {
+  font-size: 10.0px;
+  line-height: 1.04;
+  margin: 0;
+  letter-spacing: -0.015em;
+}
+.tile-content.is-super-dense-content .tile-custom-start,
+.tile-content.is-extreme-dense .tile-custom-start {
+  font-size: 8.0px;
+  font-weight: 500;
+  line-height: 1.04;
+  margin: 0;
+  letter-spacing: 0;
+}
+.tile-content.is-super-dense-content .tile-instructor,
+.tile-content.is-extreme-dense .tile-instructor {
+  font-size: 8.0px;
+  font-weight: 500;
+  line-height: 1.04;
+  margin: 0;
+  letter-spacing: 0;
+}
+
+/* Dostosowanie dla Social Media Pion (1080x1350) */
+.format-post_portrait .tile-content {
+  gap: 1.5px;
+}
+.format-post_portrait .tile-class-name {
+  font-size: 12.8px;
+  line-height: 1.08;
+  margin: 0;
+}
+.format-post_portrait .tile-class-name.is-short-title {
+  font-size: 13.0px; /* Zmniejszone o 10% (np. SHAPE, PILATES, INTERWAŁ, YOGA) */
+  line-height: 1.08;
+  margin: 0;
+}
+.format-post_portrait .tile-class-name.is-long-single-word {
+  font-size: 11.0px; /* Zabezpieczenie przed ucinaniem WZMACNIANIE / STRETCHING */
+  line-height: 1.08;
+  letter-spacing: -0.025em;
+  margin: 0;
+}
+.format-post_portrait .tile-class-name.is-dense {
+  font-size: 11.2px;
+  line-height: 1.08;
+  margin: 0;
+}
+.format-post_portrait .tile-class-name.is-two-lines-roomy {
+  font-size: 12.6px;
+  line-height: 1.08;
+  margin: 0;
+}
+.format-post_portrait .tile-class-name.is-three-lines {
+  font-size: 10.0px;
+  line-height: 1.05;
+  margin: 0;
+}
+.format-post_portrait .tile-class-name.is-four-lines,
+.format-post_portrait .tile-content.is-extreme-dense .tile-class-name {
+  font-size: 8.8px;
+  line-height: 1.03;
+  margin: 0;
+}
+
+/* Godzina startu i instruktor w formacie pionowym - ZAWSZE o identycznej wadze 500 i rozmiarze */
+.format-post_portrait .tile-custom-start {
+  font-size: 9.5px;
+  font-weight: 500;
+  line-height: 1.10;
+  margin: 0;
+  letter-spacing: 0;
+}
+.format-post_portrait .tile-instructor {
+  font-size: 9.5px;
+  font-weight: 500;
+  line-height: 1.10;
+  padding: 0;
+  margin: 0;
+  letter-spacing: 0;
+}
+
+.format-post_portrait .tile-content.has-custom-start .tile-class-name {
+  font-size: 10.8px;
+  line-height: 1.06;
+  margin: 0;
+}
+.format-post_portrait .tile-content.has-custom-start .tile-class-name.is-short-title {
+  font-size: 13.0px; /* +20% dla SHAPE z godziną start o 9:30 (z 10.8px do 13.0px) */
+  line-height: 1.08;
+  margin: 0;
+}
+.format-post_portrait .tile-content.has-custom-start .tile-class-name.is-three-lines {
+  font-size: 9.5px;
+  line-height: 1.05;
+  margin: 0;
+}
+.format-post_portrait .tile-content.has-custom-start .tile-custom-start,
+.format-post_portrait .tile-content.has-custom-start .tile-instructor {
+  font-size: 8.4px;
+  font-weight: 500;
+  line-height: 1.08;
+  margin: 0;
+  padding: 0;
+}
+
+.format-post_portrait .tile-content.is-dense-content {
+  padding: 1.5px 2px;
+  gap: 0.8px;
+}
+.format-post_portrait .tile-content.is-dense-content .tile-class-name {
+  font-size: 11.5px;
+  line-height: 1.06;
+}
+.format-post_portrait .tile-content.is-dense-content .tile-class-name.is-short-title {
+  font-size: 12.5px;
+}
+.format-post_portrait .tile-content.is-dense-content .tile-custom-start,
+.format-post_portrait .tile-content.is-dense-content .tile-instructor {
+  font-size: 8.8px;
+  font-weight: 500;
+  line-height: 1.08;
+}
+
+.format-post_portrait .tile-content.is-super-dense-content .tile-class-name {
+  font-size: 9.6px;
+  line-height: 1.04;
+}
+.format-post_portrait .tile-content.is-super-dense-content .tile-custom-start,
+.format-post_portrait .tile-content.is-super-dense-content .tile-instructor,
+.format-post_portrait .tile-content.is-extreme-dense .tile-custom-start,
+.format-post_portrait .tile-content.is-extreme-dense .tile-instructor {
+  font-size: 7.2px;
+  font-weight: 500;
+  line-height: 1.04;
+}
+
+/* W formacie pionowym (1080x1350) dla długich nazwisk (>22 znaki lub dużo elementów w kafelku jak Zumba) zmniejszamy nazwisko o 15-20% */
+.format-post_portrait .tile-instructor.is-compact {
+  font-size: 7.6px;
+  line-height: 1.05;
+}
+.format-post_portrait .tile-content.has-custom-start .tile-instructor.is-compact {
+  font-size: 7.2px;
+  line-height: 1.04;
+}
+.format-post_portrait .tile-content.is-dense-content .tile-instructor.is-compact {
+  font-size: 8.2px;
+  line-height: 1.04;
+}
+.format-post_portrait .tile-content.is-super-dense-content .tile-instructor.is-compact,
+.format-post_portrait .tile-content.is-extreme-dense .tile-instructor.is-compact {
+  font-size: 7.4px;
+  line-height: 1.02;
+}
+
+/* Post portrait (1080x1350): 20% większe nazwisko (ale nie tytuł) */
+.format-post_portrait .tile-content.is-spacious-long-instructor .tile-instructor {
+  font-size: 9.8px;
+  line-height: 1.12;
+}
+.format-post_portrait .tile-content.is-spacious-long-instructor .tile-instructor.is-compact {
+  font-size: 9.12px; /* 7.6px * 1.20 = 9.12px (+20%) */
+  line-height: 1.1;
+}
+
+/* Dostosowanie dla druku A4 i A3 (zwiększona o 30% wysokość kafelków: 78px / 91px) */
+.format-a4_print .tile-class-name {
+  font-size: 15px;
+  line-height: 1.15;
+  margin: 0;
+}
+.format-a4_print .tile-class-name.is-dense {
+  font-size: 13.5px;
+  line-height: 1.12;
+  margin: 0;
+}
+/* Teksty z trzema liniami w tytule (zmniejszone o ~20% wg zgłoszenia: 11px zamiast 13.5px) */
+.format-a4_print .tile-class-name.is-three-lines {
+  font-size: 11px;
+  line-height: 1.08;
+  margin: 0;
+}
+/* Teksty z 4 lub więcej liniami w tytule (np. ZDROWY KRĘGOSŁUP Z ELEMENTAMI STRETCHINGU) */
+.format-a4_print .tile-class-name.is-four-lines,
+.format-a4_print .tile-content.is-extreme-dense .tile-class-name {
+  font-size: 11px !important;
+  line-height: 1.05 !important;
+  letter-spacing: -0.015em !important;
+  margin: 0 !important;
+}
+.format-a4_print .tile-custom-start {
+  font-size: 11.5px;
+  font-weight: 500;
+  line-height: 1.15;
+  margin: 0;
+  letter-spacing: 0;
+}
+.format-a4_print .tile-instructor {
+  font-size: 11.5px;
+  font-weight: 500;
+  line-height: 1.15;
+  margin: 0;
+  letter-spacing: 0;
+}
+.format-a4_print .tile-content.is-extreme-dense .tile-custom-start {
+  font-size: 8.8px !important;
+  line-height: 1.04 !important;
+  margin: 0 !important;
+}
+.format-a4_print .tile-content.is-extreme-dense .tile-instructor {
+  font-size: 9.4px !important;
+  line-height: 1.2 !important;
+  padding-bottom: 1px !important;
+  margin: 0 !important;
+}
+.format-a4_print .tile-content.has-custom-start .tile-class-name {
+  font-size: 13.5px;
+}
+.format-a4_print .tile-content.has-custom-start .tile-class-name.is-three-lines {
+  font-size: 10.5px;
+  line-height: 1.06;
+}
+.format-a4_print .tile-content.has-custom-start .tile-custom-start {
+  font-size: 10.5px;
+  font-weight: 500;
+  letter-spacing: 0;
+}
+.format-a4_print .tile-content.has-custom-start .tile-instructor {
+  font-size: 10.5px;
+  font-weight: 500;
+  letter-spacing: 0;
+}
+
+/* W formacie druku A4 dla długich nazwisk (>22 znaki) przy wielu elementach */
+.format-a4_print .tile-instructor.is-compact {
+  font-size: 9.8px;
+  line-height: 1.1;
+}
+.format-a4_print .tile-content.has-custom-start .tile-instructor.is-compact {
+  font-size: 9.0px;
+  line-height: 1.06;
+}
+.format-a4_print .tile-content.is-dense-content {
+  padding: 2px 2px;
+  gap: 1px;
+}
+.format-a4_print .tile-content.is-dense-content .tile-class-name {
+  font-size: 13.5px;
+  line-height: 1.08;
+}
+.format-a4_print .tile-content.is-dense-content .tile-class-name.is-short-title {
+  font-size: 14.5px;
+}
+.format-a4_print .tile-content.is-dense-content .tile-custom-start {
+  font-size: 10.5px;
+  font-weight: 500;
+  line-height: 1.10;
+}
+.format-a4_print .tile-content.is-dense-content .tile-instructor {
+  font-size: 10.5px;
+  font-weight: 500;
+  line-height: 1.10;
+}
+.format-a4_print .tile-content.is-dense-content .tile-instructor.is-compact {
+  font-size: 9.8px;
+  line-height: 1.06;
+}
+.format-a4_print .tile-content.is-super-dense-content .tile-instructor.is-compact {
+  font-size: 8.2px;
+  line-height: 1.02;
+}
+
+/* Druk A4: kafelki z przestronnym układem (bazowa 11.5px) */
+.format-a4_print .tile-content.is-spacious-long-instructor .tile-instructor {
+  font-size: 11.8px;
+  line-height: 1.15;
+}
+.format-a4_print .tile-content.is-spacious-long-instructor .tile-instructor.is-compact {
+  font-size: 11.5px;
+  line-height: 1.14;
+}
+
+.format-a4_print .hour-text {
+  font-size: 18px;
+}
+.format-a4_print .hour-note {
+  font-size: 9.5px;
+}
+
+/* Format A3 (jeszcze większy format: 91px kafelki) */
+.format-a3_print .tile-class-name {
+  font-size: 16.5px;
+  line-height: 1.15;
+  margin: 0;
+}
+.format-a3_print .tile-class-name.is-dense {
+  font-size: 14.5px;
+  line-height: 1.12;
+  margin: 0;
+}
+.format-a3_print .tile-class-name.is-three-lines {
+  font-size: 12px;
+  line-height: 1.08;
+  margin: 0;
+}
+.format-a3_print .tile-class-name.is-four-lines,
+.format-a3_print .tile-content.is-extreme-dense .tile-class-name {
+  font-size: 9.8px !important;
+  line-height: 1.05 !important;
+  letter-spacing: -0.02em !important;
+  margin: 0 !important;
+}
+.format-a3_print .tile-custom-start {
+  font-size: 12.5px;
+  font-weight: 500;
+  line-height: 1.15;
+  margin: 0;
+  letter-spacing: 0;
+}
+.format-a3_print .tile-instructor {
+  font-size: 12.5px;
+  font-weight: 500;
+  line-height: 1.15;
+  margin: 0;
+  letter-spacing: 0;
+}
+.format-a3_print .tile-content.is-dense-content {
+  padding: 2.5px 3px;
+  gap: 1.2px;
+}
+.format-a3_print .tile-content.is-dense-content .tile-class-name {
+  font-size: 15.0px;
+  line-height: 1.10;
+}
+.format-a3_print .tile-content.is-dense-content .tile-class-name.is-short-title {
+  font-size: 16.0px;
+}
+.format-a3_print .tile-content.is-dense-content .tile-custom-start {
+  font-size: 12.0px;
+  font-weight: 500;
+  line-height: 1.12;
+}
+.format-a3_print .tile-content.is-dense-content .tile-instructor {
+  font-size: 12.0px;
+  font-weight: 500;
+  line-height: 1.12;
+}
+.format-a3_print .tile-content.is-dense-content .tile-instructor.is-compact {
+  font-size: 11.0px;
+  line-height: 1.08;
+}
+
+.format-a3_print .tile-content.is-extreme-dense .tile-custom-start {
+  font-size: 8.5px !important;
+  line-height: 1.04 !important;
+  margin: 0 !important;
+}
+.format-a3_print .tile-content.is-extreme-dense .tile-instructor {
+  font-size: 8.6px !important;
+  line-height: 1.03 !important;
+  margin: 0 !important;
+}
+
+/* Druk A3: kafelki z przestronnym układem (bazowa 12.5px) */
+.format-a3_print .tile-content.is-spacious-long-instructor .tile-instructor {
+  font-size: 12.8px;
+  line-height: 1.15;
+}
+.format-a3_print .tile-content.is-spacious-long-instructor .tile-instructor.is-compact {
+  font-size: 12.5px;
+  line-height: 1.15;
+}
+.format-a3_print .tile-content.has-custom-start .tile-class-name {
+  font-size: 14.5px;
+}
+.format-a3_print .tile-content.has-custom-start .tile-custom-start {
+  font-size: 11.5px;
+  font-weight: 500;
+  letter-spacing: 0;
+}
+.format-a3_print .tile-content.has-custom-start .tile-instructor {
+  font-size: 11.5px;
+  font-weight: 500;
+  letter-spacing: 0;
+}
+
+.format-a3_print .hour-text {
+  font-size: 20px;
+}
+.format-a3_print .hour-note {
+  font-size: 10.5px;
+}
+
+/* ==========================================================================
+   4. LEGENDA KATEGORII
+   ========================================================================== */
+
+/* Legenda pozioma dla Social Media (przypięta do dołu formatu jak we wzorcu) */
+.artboard-bottom-legend {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin-top: auto;
+  flex-shrink: 0;
+}
+
+.legend-title-box {
+  display: flex;
+  flex-direction: column;
+}
+
+.legend-title-top {
+  font-family: var(--font-display);
+  font-size: 26px;
+  font-weight: 500;
+  color: #FFFFFF;
+  line-height: 1.1;
+}
+
+.legend-title-bottom {
+  font-family: var(--font-display);
+  font-size: 32px;
+  font-weight: 800;
+  color: #FDC400;
+  line-height: 1.1;
+}
+
+.legend-categories-grid {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.legend-categories-row {
+  display: flex;
+  gap: 8px;
+}
+
+.legend-cat-pill {
+  flex: 1;
+  height: 36px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: 12px;
+  font-weight: 800;
+  color: #1A1A1A;
+  text-transform: uppercase;
+  white-space: nowrap;
+  padding: 0 10px;
+}
+
+/* Legenda pionowa dla Druk A4/A3 (po prawej stronie) */
+.artboard-print-sidebar {
+  width: 90px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.print-legend-col {
+  display: flex;
+  gap: 8px;
+  height: 100%;
+}
+
+.print-legend-strip {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.print-cat-badge {
+  width: 40px;
+  padding: 12px 0;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #1A1A1A;
+}
+
+.print-cat-text {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  font-family: var(--font-display);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+}
+
+.print-sidebar-logo {
+  margin-top: auto;
+  padding-top: 14px;
+}
+
+.print-sidebar-logo svg {
+  width: 45px;
+  height: auto;
+  color: #1F232B;
+}
+
+/* ==========================================================================
+   MODALE APLIKACJI (IBM CARBON DESIGN SYSTEM)
+   ========================================================================== */
+
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(4px);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  animation: modalFadeIn 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes modalFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.modal-dialog {
+  background: var(--cds-layer-01);
+  border: 1px solid var(--cds-border-strong);
+  border-radius: 6px;
+  width: 520px;
+  max-width: 95vw;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.7);
+  overflow: hidden;
+  animation: modalPopIn 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.modal-dialog-lg {
+  width: 620px;
+}
+
+@keyframes modalPopIn {
+  from {
+    opacity: 0;
+    transform: scale(0.97) translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.modal-header {
+  padding: 16px 20px;
+  background: var(--cds-background);
+  border-bottom: 1px solid var(--cds-border-subtle);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.modal-title-wrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.modal-title-icon {
+  color: var(--cds-brand-gold);
+  flex-shrink: 0;
+}
+
+.modal-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--cds-text-primary);
+  font-family: var(--font-ui);
+}
+
+.modal-close-btn {
+  background: transparent;
+  border: none;
+  color: var(--cds-text-helper);
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.modal-close-btn:hover {
+  background: var(--cds-layer-03);
+  color: var(--cds-text-primary);
+}
+
+.modal-body {
+  padding: 20px;
+  overflow-y: auto;
+  flex: 1;
+}
+
+.modal-desc {
+  font-size: 13px;
+  color: var(--cds-text-secondary);
+  margin-bottom: 16px;
+  line-height: 1.45;
+}
+
+.modal-section-card {
+  background: var(--cds-field-01);
+  border: 1px solid var(--cds-border-subtle);
+  border-radius: 6px;
+  padding: 14px 16px;
+}
+
+.modal-card-title {
+  font-size: 11.5px;
+  font-weight: 700;
+  color: var(--cds-text-primary);
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.modal-footer {
+  padding: 14px 20px;
+  background: var(--cds-background);
+  border-top: 1px solid var(--cds-border-subtle);
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.modal-status-text {
+  font-size: 12px;
+  color: var(--cds-text-helper);
+  margin-top: 12px;
+  text-align: center;
+  min-height: 18px;
+}
+
+/* Save modal grid */
+.save-actions-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+/* Export formats list */
+.export-formats-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.export-format-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 12px 14px;
+  background: var(--cds-field-01);
+  border: 1px solid var(--cds-border-subtle);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.export-format-item:hover {
+  background: var(--cds-field-02);
+  border-color: var(--cds-border-strong);
+}
+
+.export-format-item:has(.export-checkbox:checked) {
+  border-color: rgba(253, 196, 0, 0.45);
+  background: rgba(253, 196, 0, 0.05);
+}
+
+.export-checkbox {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--cds-brand-gold);
+  cursor: pointer;
+  margin-top: 2px;
+}
+
+.format-item-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.format-item-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--cds-text-primary);
+  margin-bottom: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.format-item-sub {
+  font-size: 11px;
+  color: var(--cds-text-helper);
+}
+
+.format-badge-type {
+  display: inline-flex;
+  align-items: center;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 2px 7px;
+  border-radius: 4px;
+  background: rgba(36, 161, 72, 0.15);
+  color: #42be65;
+  border: 1px solid rgba(66, 190, 101, 0.35);
+}
+
+.format-badge-type.print {
+  background: rgba(15, 98, 254, 0.15);
+  color: #78a9ff;
+  border-color: rgba(120, 169, 255, 0.35);
+}
+
+.format-badge-type.svg {
+  background: rgba(253, 196, 0, 0.15);
+  color: #FDC400;
+  border-color: rgba(253, 196, 0, 0.35);
+}
+
+.export-quick-select {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11.5px;
+  color: var(--cds-text-helper);
+  margin-bottom: 12px;
+  padding-left: 2px;
+}
+
+.btn-link {
+  background: none;
+  border: none;
+  color: var(--cds-brand-gold);
+  font-size: 11.5px;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: underline;
+  padding: 0;
+}
+
+.btn-link:hover {
+  color: #ffe082;
+}
+
+.export-naming-hint {
+  background: var(--cds-field-01);
+  border: 1px solid var(--cds-border-subtle);
+  border-radius: 6px;
+  padding: 10px 14px;
+  font-size: 11px;
+  color: var(--cds-text-secondary);
+  line-height: 1.5;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.export-naming-hint code {
+  color: var(--cds-brand-gold);
+  font-weight: 700;
+  background: rgba(253, 196, 0, 0.1);
+  padding: 2px 6px;
+  border-radius: 3px;
+}
+
+.modal-export-progress {
+  margin-top: 14px;
+  background: var(--cds-field-01);
+  border: 1px solid var(--cds-border-subtle);
+  border-radius: 6px;
+  padding: 12px;
+}
+
+.progress-bar-track {
+  width: 100%;
+  height: 6px;
+  background: var(--cds-layer-02);
+  border-radius: 3px;
+  overflow: hidden;
+  margin-bottom: 8px;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #ff9800, #fdc400);
+  border-radius: 3px;
+  transition: width 0.25s ease;
+}
+
+.progress-status-text {
+  font-size: 11px;
+  color: var(--cds-text-secondary);
+  text-align: center;
+}
+
+.btn-export-modal {
+  background: var(--cds-brand-gold);
+  color: #111114;
+  border: 1px solid var(--cds-brand-gold);
+  font-weight: 700;
+  padding: 9px 18px;
+  border-radius: 4px;
+  font-size: 13px;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(253, 196, 0, 0.35);
+  transition: all 0.15s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-export-modal:hover:not(:disabled) {
+  background: var(--cds-brand-gold-hover);
+  border-color: var(--cds-brand-gold-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 14px rgba(253, 196, 0, 0.5);
+}
+
+.btn-export-modal:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* ==========================================================================
+   POWIADOMIENIA TOAST (IBM CARBON NOTIFICATIONS)
+   ========================================================================== */
+
+.toast-container {
+  position: fixed;
+  top: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  pointer-events: none;
+}
+
+.app-toast {
+  pointer-events: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--cds-layer-01);
+  border: 1px solid var(--cds-border-subtle);
+  border-left: 4px solid var(--cds-support-success);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.65);
+  color: var(--cds-text-primary);
+  padding: 10px 16px;
+  border-radius: 4px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  animation: toastSlideDown 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: opacity 0.15s, transform 0.15s;
+}
+
+.app-toast.toast-error {
+  border-left-color: var(--cds-support-error);
+}
+
+.app-toast.toast-warning {
+  border-left-color: var(--cds-support-warning);
+}
+
+.app-toast.is-hiding {
+  opacity: 0;
+  transform: translateY(-8px);
+}
+
+@keyframes toastSlideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.toast-icon {
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--cds-support-success);
+}
+
+.app-toast.toast-error .toast-icon {
+  color: var(--cds-support-error);
+}
+
+.app-toast.toast-warning .toast-icon {
+  color: var(--cds-support-warning);
+}
+
+.toast-message {
+  line-height: 1.4;
+}
+
+/* Zabezpieczenie przed eksportem zaznaczenia / glow */
+.is-exporting .schedule-tile.is-selected,
+.is-exporting.schedule-tile.is-selected {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+
+/* ==========================================================================
+   DODATKI: EDYCJA NAGŁÓWKA, PUSTY STAN ORAZ DOKUMENT
+   ========================================================================== */
+.doc-tab-indicator.is-empty-doc {
+  opacity: 0.8;
+  border-style: dashed;
+}
+.doc-tab-name.is-empty-doc {
+  font-style: italic;
+  color: #8c93a0;
+}
+
+.header-editor-section {
+  border-left: 3px solid var(--cds-brand-gold, #FFCC00);
+  background: rgba(255, 204, 0, 0.04);
+  animation: fadeIn 0.2s ease;
+}
+
+/* Ekran startowy (Empty State) */
+.empty-workspace-state {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: calc(100vh - 120px);
+  padding: 40px 20px;
+  box-sizing: border-box;
+}
+
+.empty-state-card {
+  background: #181b22;
+  border: 1px solid #2d3340;
+  border-radius: 14px;
+  padding: 48px 40px;
+  max-width: 560px;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: fadeIn 0.25s ease-out;
+}
+
+.empty-state-logo-wrap {
+  margin-bottom: 24px;
+}
+.empty-state-logo-svg {
+  width: 170px;
+  height: auto;
+  color: var(--cds-brand-gold, #FFCC00);
+}
+
+.empty-state-message {
+  font-family: var(--font-ui), sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  color: #e5e9f0;
+  line-height: 1.5;
+  margin-bottom: 32px;
+  max-width: 440px;
+}
+
+.empty-state-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  width: 100%;
+  flex-wrap: wrap;
+}
+
+.empty-state-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: var(--cds-brand-gold, #FFCC00);
+  color: #121418;
+  font-family: var(--font-ui), sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  padding: 13px 24px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 12px rgba(255, 204, 0, 0.2);
+  text-decoration: none;
+}
+.empty-state-btn:hover {
+  background: #ffdb33;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(255, 204, 0, 0.35);
+}
+.empty-state-btn:active {
+  transform: translateY(0);
+}
+
+.empty-state-secondary-link {
+  margin-top: 22px;
+  font-size: 13px;
+  color: #8b94a5;
+  background: none;
+  border: none;
+  text-decoration: underline;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+.empty-state-secondary-link:hover {
+  color: #ffffff;
+}
+
+/* ==========================================================================
+   ANIMOWANY OBRYS ZAZNACZENIA ELEMENTU (MARCHING ANTS + GLOW)
+   Zachowuje oryginalne tło elementu. Widoczny WYŁĄCZNIE podczas pracy w UI.
+   ========================================================================== */
+
+.selection-ants-box {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 30;
+  overflow: visible;
+  border-radius: inherit;
+}
+
+.selection-ants-rect {
+  fill: none;
+  stroke-width: 2.5px;
+  stroke-dasharray: 8 6;
+  animation: marchingAntsLeft 0.75s linear infinite;
+}
+
+/* Ruch kresek w lewo wzdłuż górnej krawędzi obrysu */
+@keyframes marchingAntsLeft {
+  0% {
+    stroke-dashoffset: 0;
+  }
+  100% {
+    stroke-dashoffset: 28px;
+  }
+}
+
+/* WERSJA CYFROWA (Social Media / Theme Dark):
+   Biały obrys z linii przerywanej poruszającej się w lewo z białym efektem glow */
+.theme-dark .selection-ants-rect {
+  stroke: #FFFFFF;
+  filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.95)) drop-shadow(0 0 8px rgba(255, 255, 255, 0.7));
+}
+
+/* WERSJA DO DRUKU (Print A4 / A3 / Theme Light):
+   Żółty (#fdc400) obrys z linii przerywanej poruszającej się w lewo z żółtym efektem glow */
+.theme-light .selection-ants-rect {
+  stroke: #fdc400;
+  filter: drop-shadow(0 0 4px rgba(253, 196, 0, 0.95)) drop-shadow(0 0 8px rgba(253, 196, 0, 0.75));
+}
+
+/* CAŁKOWITE UKRYCIE OBRYSÓW PRZY EKSPORCIE DO PLIKÓW DOCELOWYCH (PNG / PDF / SVG) */
+.is-exporting .selection-ants-box,
+.is-exporting .schedule-tile.is-selected,
+.is-exporting .artboard-header-bar.is-selected,
+.is-exporting .is-editing,
+.is-exporting .is-selected {
+  display: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+}

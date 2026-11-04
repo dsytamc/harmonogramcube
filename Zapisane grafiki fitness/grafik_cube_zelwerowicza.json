@@ -1,0 +1,339 @@
+{
+  "version": "1.0",
+  "gymTitle": "GRAFIK FITNESS - CUBE ZELWEROWICZA",
+  "rows": [
+    {
+      "id": "row_1",
+      "type": "hour",
+      "time": "8:15",
+      "note": ""
+    },
+    {
+      "id": "row_2",
+      "type": "hour",
+      "time": "9:00",
+      "note": ""
+    },
+    {
+      "id": "row_3",
+      "type": "hour",
+      "time": "10:00",
+      "note": ""
+    },
+    {
+      "id": "row_4",
+      "type": "hour",
+      "time": "12:00",
+      "note": ""
+    },
+    {
+      "id": "row_break_imported_4",
+      "type": "break",
+      "label": ""
+    },
+    {
+      "id": "row_5",
+      "type": "hour",
+      "time": "17:00",
+      "note": ""
+    },
+    {
+      "id": "row_6",
+      "type": "hour",
+      "time": "18:00",
+      "note": ""
+    },
+    {
+      "id": "row_7",
+      "type": "hour",
+      "time": "19:00",
+      "note": ""
+    },
+    {
+      "id": "row_8",
+      "type": "hour",
+      "time": "20:00",
+      "note": ""
+    }
+  ],
+  "tiles": {
+    "row_1_wed": {
+      "name": "PŁASKI BRZUCH",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Joanna",
+      "categories": [
+        "modelujace"
+      ]
+    },
+    "row_1_thu": {
+      "name": "SEXY PUPA",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Monika H.",
+      "categories": [
+        "modelujace"
+      ]
+    },
+    "row_1_fri": {
+      "name": "BODY SHAPE",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Monika H.",
+      "categories": [
+        "modelujace"
+      ]
+    },
+    "row_2_mon": {
+      "name": "SPALANIE",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Ofelia",
+      "categories": [
+        "spalajace"
+      ]
+    },
+    "row_2_sat": {
+      "name": "MINIBAND",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Joanna",
+      "categories": [
+        "modelujace",
+        "rozciagajace"
+      ]
+    },
+    "row_2_sun": {
+      "name": "ZDROWY\nKRĘGOSŁUP",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Monika D.",
+      "categories": [
+        "prozdrowotne"
+      ]
+    },
+    "row_3_sat": {
+      "name": "YOGA",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Julia",
+      "categories": [
+        "rozciagajace"
+      ]
+    },
+    "row_3_sun": {
+      "name": "PILATES",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Monika D.",
+      "categories": [
+        "modelujace",
+        "wzmacniajace"
+      ]
+    },
+    "row_4_tue": {
+      "name": "AKTYWNA CIĄŻA",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Natalia",
+      "categories": [
+        "prozdrowotne"
+      ]
+    },
+    "row_5_mon": {
+      "name": "TABATA",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Milena K.",
+      "categories": [
+        "spalajace"
+      ]
+    },
+    "row_5_tue": {
+      "name": "PILATES",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Monika D.",
+      "categories": [
+        "modelujace",
+        "wzmacniajace"
+      ]
+    },
+    "row_5_wed": {
+      "name": "SHAPE",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Milena K.",
+      "categories": [
+        "modelujace"
+      ]
+    },
+    "row_5_thu": {
+      "name": "TRENING\nOBWODOWY",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Kaja Z.",
+      "categories": [
+        "wzmacniajace",
+        "spalajace"
+      ]
+    },
+    "row_5_fri": {
+      "name": "PILATES",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Monika D.",
+      "categories": [
+        "modelujace",
+        "wzmacniajace"
+      ]
+    },
+    "row_6_mon": {
+      "name": "MINIBAND",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Joanna",
+      "categories": [
+        "modelujace",
+        "rozciagajace"
+      ]
+    },
+    "row_6_tue": {
+      "name": "MOBILITY",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Julia",
+      "categories": [
+        "rozciagajace"
+      ]
+    },
+    "row_6_wed": {
+      "name": "HIIT",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Milena K.",
+      "categories": [
+        "spalajace"
+      ]
+    },
+    "row_6_thu": {
+      "name": "FIT SYLWETKA",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Kaja Z.",
+      "categories": [
+        "modelujace"
+      ]
+    },
+    "row_6_fri": {
+      "name": "RZEŹBA CIAŁA",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Basia",
+      "categories": [
+        "modelujace"
+      ]
+    },
+    "row_7_mon": {
+      "name": "CELULIT SKALPEL",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Joanna",
+      "categories": [
+        "modelujace"
+      ]
+    },
+    "row_7_tue": {
+      "name": "TRENING\nOBWODOWY",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Paulina A.",
+      "categories": [
+        "wzmacniajace",
+        "spalajace"
+      ]
+    },
+    "row_7_wed": {
+      "name": "SALSATION®",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Marta",
+      "categories": [
+        "taneczne"
+      ]
+    },
+    "row_7_thu": {
+      "name": "SPALANIE",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Ofelia",
+      "categories": [
+        "spalajace"
+      ]
+    },
+    "row_7_fri": {
+      "name": "MMA",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Jarek K.",
+      "categories": [
+        "sztuki_walki"
+      ]
+    },
+    "row_8_mon": {
+      "name": "YOGA",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Monika D.",
+      "categories": [
+        "rozciagajace"
+      ]
+    },
+    "row_8_tue": {
+      "name": "BUP",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Paulina A.",
+      "categories": [
+        "modelujace"
+      ]
+    },
+    "row_8_wed": {
+      "name": "STRETCHING",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Ofelia",
+      "categories": [
+        "rozciagajace"
+      ]
+    },
+    "row_8_thu": {
+      "name": "STRETCHING",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Ofelia",
+      "categories": [
+        "rozciagajace"
+      ]
+    },
+    "row_6_sun": {
+      "name": "ZUMBA®",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Amelia",
+      "categories": [
+        "taneczne"
+      ]
+    }
+  },
+  "formatId": "post_portrait",
+  "activeDays": [
+    "mon",
+    "tue",
+    "wed",
+    "thu",
+    "fri",
+    "sat",
+    "sun"
+  ]
+}

@@ -1,0 +1,290 @@
+{
+  "version": "1.0",
+  "gymTitle": "GRAFIK FITNESS - CUBE JASŁO",
+  "rows": [
+    {
+      "id": "row_1",
+      "type": "hour",
+      "time": "9:30",
+      "note": ""
+    },
+    {
+      "id": "row_2",
+      "type": "hour",
+      "time": "10:30",
+      "note": ""
+    },
+    {
+      "id": "row_3",
+      "type": "hour",
+      "time": "11:30",
+      "note": ""
+    },
+    {
+      "id": "row_break_imported_3",
+      "type": "break",
+      "label": ""
+    },
+    {
+      "id": "row_4",
+      "type": "hour",
+      "time": "16:30",
+      "note": ""
+    },
+    {
+      "id": "row_5",
+      "type": "hour",
+      "time": "17:30",
+      "note": ""
+    },
+    {
+      "id": "row_6",
+      "type": "hour",
+      "time": "18:30",
+      "note": ""
+    },
+    {
+      "id": "row_7",
+      "type": "hour",
+      "time": "19:30",
+      "note": ""
+    }
+  ],
+  "tiles": {
+    "row_1_tue": {
+      "name": "ZDROWY\nKRĘGOSŁUP",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Bartosz K.",
+      "categories": [
+        "prozdrowotne"
+      ]
+    },
+    "row_1_thu": {
+      "name": "PILATES",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Patryk M.",
+      "categories": [
+        "wzmacniajace"
+      ]
+    },
+    "row_1_sat": {
+      "name": "PILATES",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Ilona Z.",
+      "categories": [
+        "wzmacniajace"
+      ]
+    },
+    "row_1_sun": {
+      "name": "BRZUCH &\nPOŚLADKI",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Bartosz K.",
+      "categories": [
+        "spalajace"
+      ]
+    },
+    "row_2_sat": {
+      "name": "FULL BODY\nWORKOUT",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "",
+      "categories": [
+        "spalajace"
+      ]
+    },
+    "row_2_sun": {
+      "name": "ZDROWY\nKRĘGOSŁUP",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Bartosz K.",
+      "categories": [
+        "prozdrowotne"
+      ]
+    },
+    "row_3_sat": {
+      "name": "JOGA",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Krzysztof S.",
+      "categories": [
+        "wzmacniajace"
+      ]
+    },
+    "row_3_sun": {
+      "name": "SZTANGI",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Kacper Biernacki",
+      "categories": [
+        "modelujace"
+      ]
+    },
+    "row_4_tue": {
+      "name": "SUPER BUP",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Patryk M.",
+      "categories": [
+        "modelujace"
+      ]
+    },
+    "row_4_thu": {
+      "name": "TURBO FORMA",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Kacper Biernacki",
+      "categories": [
+        "spalajace"
+      ]
+    },
+    "row_4_fri": {
+      "name": "BRZUCH &\nPOŚLADKI",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Bartosz K.",
+      "categories": [
+        "spalajace"
+      ]
+    },
+    "row_5_mon": {
+      "name": "FULL BODY\nWORKOUT",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "",
+      "categories": [
+        "spalajace"
+      ]
+    },
+    "row_5_tue": {
+      "name": "MOBILITY",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Patryk M.",
+      "categories": [
+        "rozciagajace"
+      ]
+    },
+    "row_5_wed": {
+      "name": "SUPER BUP",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Bartosz K.",
+      "categories": [
+        "modelujace"
+      ]
+    },
+    "row_5_thu": {
+      "name": "SUPER BUP",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Patryk M.",
+      "categories": [
+        "modelujace"
+      ]
+    },
+    "row_5_fri": {
+      "name": "ZDROWY\nKRĘGOSŁUP",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Bartosz K.",
+      "categories": [
+        "prozdrowotne"
+      ]
+    },
+    "row_6_mon": {
+      "name": "PILATES",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Patryk M.",
+      "categories": [
+        "wzmacniajace"
+      ]
+    },
+    "row_6_tue": {
+      "name": "CARDIO LATINO\nDANCE",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Paulina S.",
+      "categories": [
+        "taneczne"
+      ]
+    },
+    "row_6_wed": {
+      "name": "ZDROWY\nKRĘGOSŁUP",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Bartosz K.",
+      "categories": [
+        "prozdrowotne"
+      ]
+    },
+    "row_6_thu": {
+      "name": "PILATES",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Patryk M.",
+      "categories": [
+        "wzmacniajace"
+      ]
+    },
+    "row_6_fri": {
+      "name": "BRAZYLIJSKIE\nPOŚLADKI",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Kacper Biernacki",
+      "categories": [
+        "modelujace"
+      ]
+    },
+    "row_7_mon": {
+      "name": "CARDIO & ABS",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Kacper Biernacki",
+      "categories": [
+        "modelujace"
+      ]
+    },
+    "row_7_tue": {
+      "name": "BODY SHAPE",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Kacper Biernacki",
+      "categories": [
+        "prozdrowotne"
+      ]
+    },
+    "row_7_wed": {
+      "name": "FULL BODY\nWORKOUT",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Bartosz K.",
+      "categories": [
+        "spalajace"
+      ]
+    },
+    "row_7_thu": {
+      "name": "CARDIO LATINO\nDANCE",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Paulina S.",
+      "categories": [
+        "taneczne"
+      ]
+    },
+    "row_7_fri": {
+      "name": "STRETCHING",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Patryk M.",
+      "categories": [
+        "wzmacniajace"
+      ]
+    }
+  },
+  "formatId": "post_square"
+}

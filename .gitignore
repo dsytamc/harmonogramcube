@@ -1,0 +1,18 @@
+# Temp & build files
+dumped_dom.html
+*.tmp
+*.log
+.DS_Store
+Thumbs.db
+.keep
+node_modules/
+preview_inspect/
+carbon-builder/
+
+# Pliki robocze projektowe i duże zrzuty testowe
+*.ai
+*.zip
+Asset*
+post_zielna*
+przykład*
+Generator Harmonogramów Cube.bat
