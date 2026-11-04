@@ -81,9 +81,9 @@ body {
 }
 
 .brand-title {
-  font-family: var(--font-display, var(--font-ui));
-  font-size: 15px;
-  font-weight: 800;
+  font-family: var(--font-ui), sans-serif;
+  font-size: 14px;
+  font-weight: 600;
   color: #ffffff;
   line-height: 1.25;
   letter-spacing: -0.01em;
