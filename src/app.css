@@ -3621,3 +3621,388 @@ body {
   gap: 10px;
 }
 
+/* ==========================================================================
+   TUTORIAL / SAMOUCZEK SYSTEM & GAMIFIKACJA
+   ========================================================================== */
+
+/* Puchar osiągnięć w nagłówkach */
+.tutorial-cup-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 8px;
+  vertical-align: middle;
+  transition: transform 0.2s ease;
+}
+
+.tutorial-cup-badge.is-silver .trophy-cup-svg {
+  color: #e2e8f0;
+  filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.4));
+  animation: silverCupAuraPulse 30s ease-in-out infinite;
+}
+
+.tutorial-cup-badge.is-gold .trophy-cup-svg {
+  color: #f6be00;
+  filter: drop-shadow(0 0 6px rgba(246, 190, 0, 0.5));
+  animation: goldCupAuraPulse 30s ease-in-out infinite;
+}
+
+@keyframes silverCupAuraPulse {
+  0%, 88%, 100% {
+    filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.35));
+    transform: scale(1);
+  }
+  92% {
+    filter: drop-shadow(0 0 16px rgba(255, 255, 255, 1)) drop-shadow(0 0 5px #ffffff);
+    transform: scale(1.18);
+  }
+  96% {
+    filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.4));
+    transform: scale(1);
+  }
+}
+
+@keyframes goldCupAuraPulse {
+  0%, 88%, 100% {
+    filter: drop-shadow(0 0 5px rgba(246, 190, 0, 0.4));
+    transform: scale(1);
+  }
+  92% {
+    filter: drop-shadow(0 0 18px rgba(255, 204, 0, 1)) drop-shadow(0 0 6px #ffd700);
+    transform: scale(1.18);
+  }
+  96% {
+    filter: drop-shadow(0 0 5px rgba(246, 190, 0, 0.4));
+    transform: scale(1);
+  }
+}
+
+/* Półprzezroczysty overlay blokujący tło */
+.tutorial-backdrop-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.52);
+  z-index: 9998;
+  pointer-events: auto;
+  backdrop-filter: blur(2px);
+  animation: modalFadeIn 0.25s ease-out;
+}
+
+/* Podświetlenie aktywnego elementu w tutorialu */
+.tutorial-highlight-pulsing {
+  position: relative !important;
+  z-index: 10001 !important;
+  outline: 3px solid #f6be00 !important;
+  outline-offset: 4px !important;
+  box-shadow: 0 0 24px rgba(246, 190, 0, 0.85), 0 0 45px rgba(246, 190, 0, 0.45) !important;
+  animation: tutorialHighlightPulse 1.6s ease-in-out infinite !important;
+  pointer-events: auto !important;
+}
+
+@keyframes tutorialHighlightPulse {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 16px rgba(246, 190, 0, 0.7);
+  }
+  50% {
+    transform: scale(1.025);
+    box-shadow: 0 0 32px rgba(246, 190, 0, 0.95), 0 0 55px rgba(246, 190, 0, 0.55);
+  }
+}
+
+/* Pływające okno samouczka */
+.tutorial-floating-card {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  width: 380px;
+  max-width: calc(100vw - 36px);
+  background: #161616;
+  border: 1px solid #3d3d3d;
+  border-radius: 8px;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.88), 0 0 0 1px rgba(246, 190, 0, 0.2);
+  z-index: 10002;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  animation: modalPopIn 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.tutorial-card-header {
+  padding: 14px 18px;
+  background: #111111;
+  border-bottom: 1px solid #2a2a2a;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.tutorial-header-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.tutorial-pulse-indicator {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #f6be00;
+  box-shadow: 0 0 8px #f6be00;
+  animation: pulseDot 1.4s ease-in-out infinite;
+}
+
+@keyframes pulseDot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.8); }
+}
+
+.tutorial-badge-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: #f6be00;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  font-family: var(--font-ui);
+}
+
+.tutorial-steps-counter {
+  font-size: 12px;
+  color: #8d8d8d;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.tutorial-step-curr {
+  font-weight: 600;
+  color: #f4f4f4;
+}
+
+.tutorial-step-rem {
+  font-size: 11px;
+  color: #71717a;
+}
+
+.tutorial-card-body {
+  padding: 18px;
+}
+
+.tutorial-body-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0 0 10px 0;
+  line-height: 1.3;
+}
+
+.tutorial-body-text {
+  font-size: 13px;
+  color: #c6c6c6;
+  line-height: 1.55;
+}
+
+.tutorial-body-text code {
+  background: #242424;
+  padding: 2px 6px;
+  border-radius: 3px;
+  color: #f6be00;
+  font-size: 12px;
+}
+
+.tutorial-card-footer {
+  padding: 12px 18px;
+  background: #111111;
+  border-top: 1px solid #2a2a2a;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.tutorial-skip-btn {
+  background: transparent;
+  border: none;
+  color: #da1e28;
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 6px 4px;
+  transition: color 0.15s ease;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.tutorial-skip-btn:hover {
+  color: #fa4d56;
+}
+
+.tutorial-next-btn {
+  padding: 8px 20px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.btn-finish-trophy {
+  background: linear-gradient(135deg, #ffd700, #f6be00) !important;
+  color: #111111 !important;
+  font-weight: 700 !important;
+  box-shadow: 0 0 16px rgba(246, 190, 0, 0.6) !important;
+}
+
+/* Pływający przycisk pytajnika '?' */
+.floating-help-btn {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #1e1e1e;
+  border: 1px solid #444444;
+  color: #f6be00;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.7);
+  z-index: 990;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.floating-help-btn:hover {
+  background: #2a2a2a;
+  border-color: #f6be00;
+  transform: scale(1.08);
+  box-shadow: 0 0 16px rgba(246, 190, 0, 0.4);
+}
+
+/* Dialog pytania o powtórzenie tutorialu */
+.replay-dialog {
+  width: 420px;
+  text-align: center;
+  padding: 30px 24px 24px;
+  background: #161616;
+  border: 1px solid #393939;
+  border-radius: 8px;
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.85);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.replay-icon-wrap {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: rgba(246, 190, 0, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #f6be00;
+  margin-bottom: 16px;
+}
+
+.replay-modal-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0 0 8px 0;
+  line-height: 1.35;
+}
+
+.replay-modal-desc {
+  font-size: 13px;
+  color: #a8a8a8;
+  margin: 0 0 24px 0;
+  line-height: 1.5;
+}
+
+.replay-modal-actions {
+  display: flex;
+  gap: 12px;
+  width: 100%;
+  justify-content: center;
+}
+
+.replay-modal-actions .btn {
+  flex: 1;
+  padding: 10px 16px;
+}
+
+/* Modal osiągnięcia */
+.achievement-dialog {
+  background: #141414;
+  border: 1px solid #3d3d3d;
+  border-radius: 8px;
+  width: 440px;
+  max-width: 92vw;
+  padding: 38px 28px 28px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.95), 0 0 0 1px rgba(255, 255, 255, 0.08);
+}
+
+.achievement-cup-wrap {
+  margin-bottom: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.achievement-cup-wrap.is-silver-aura .cup-silver {
+  color: #e2e8f0;
+  filter: drop-shadow(0 0 25px rgba(255, 255, 255, 0.95)) drop-shadow(0 0 8px #ffffff);
+  animation: achievementAuraSilver 2s ease-in-out infinite alternate;
+}
+
+.achievement-cup-wrap.is-gold-aura .cup-gold {
+  color: #f6be00;
+  filter: drop-shadow(0 0 30px rgba(246, 190, 0, 0.95)) drop-shadow(0 0 10px #ffd700);
+  animation: achievementAuraGold 2s ease-in-out infinite alternate;
+}
+
+@keyframes achievementAuraSilver {
+  from { transform: scale(1); filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.85)); }
+  to { transform: scale(1.08); filter: drop-shadow(0 0 38px rgba(255, 255, 255, 1)) drop-shadow(0 0 12px #ffffff); }
+}
+
+@keyframes achievementAuraGold {
+  from { transform: scale(1); filter: drop-shadow(0 0 22px rgba(246, 190, 0, 0.85)); }
+  to { transform: scale(1.08); filter: drop-shadow(0 0 42px rgba(255, 204, 0, 1)) drop-shadow(0 0 14px #ffd700); }
+}
+
+.achievement-shine-label {
+  font-family: var(--font-ui);
+  font-size: 20px;
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: 6px;
+  letter-spacing: 0.02em;
+}
+
+.achievement-subtitle-text {
+  font-size: 14px;
+  color: #a8a8a8;
+  margin-bottom: 26px;
+}
+
+.btn-achievement-claim {
+  padding: 12px 32px;
+  font-size: 15px;
+  font-weight: 700;
+  width: 100%;
+  max-width: 240px;
+}
+
+/* Canvas konfetti */
+.tutorial-confetti-canvas {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 10005;
+}
+
+

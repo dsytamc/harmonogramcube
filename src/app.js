@@ -4,6 +4,7 @@ import { renderArtboard } from './artboardRenderer.js';
 import { exportArtboardToPng, exportArtboardToPdf, exportArtboardToSvg } from './exporter.js';
 import { fetchEfitnessSchedule, importFromHtmlString } from './efitnessImporter.js';
 import { getCloudLocations, getSavesForLocation, loadCloudSave, saveToCloud } from './cloudStorage.js';
+import { initTutorial, updateTrophyBadges } from './tutorial.js';
 
 // Inicjalizacja stanu
 const store = new ScheduleStore();
@@ -396,6 +397,9 @@ function init() {
 
   // Start w trybie pustego obszaru roboczego (wymóg użytkownika: brak domyślnego grafiku na start)
   showEmptyWorkspace();
+
+  // Inicjalizacja samouczka krok po kroku
+  initTutorial();
 }
 
 // Tworzy pigułki kategorii w panelu edycji kafelka

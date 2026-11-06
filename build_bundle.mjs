@@ -22,6 +22,7 @@ const files = [
   'src/exporter.js',
   'src/cloudSeedData.js',
   'src/cloudStorage.js',
+  'src/tutorial.js',
   'src/app.js'
 ];
 
