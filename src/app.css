@@ -3909,13 +3909,6 @@ body.tutorial-modal-step .tutorial-spotlight-helper {
   display: none !important;
 }
 
-body.tutorial-modal-step #cloudModal,
-body.tutorial-modal-step #exportModal {
-  justify-content: flex-start !important;
-  align-items: center !important;
-  padding-left: clamp(24px, 6vw, 80px) !important;
-}
-
 body.tutorial-modal-step #cloudModal .cloud-modal-dialog,
 body.tutorial-modal-step #exportModal .modal-dialog {
   box-shadow: 0 24px 64px rgba(0, 0, 0, 0.9), 0 0 0 2px #f6be00, 0 0 26px rgba(246, 190, 0, 0.45) !important;

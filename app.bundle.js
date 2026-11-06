@@ -7928,14 +7928,14 @@ function updateTrophyBadges() {
     if (completions === 1) {
       badge.classList.remove('is-gold');
       badge.classList.add('is-silver');
-      if (badgeLabel) badgeLabel.textContent = 'OSIĄGNIĘCIE: I STOPIEŃ';
-      if (titleEl) titleEl.textContent = 'Eksplorator Cube (Srebrny Puchar)';
+      if (badgeLabel) badgeLabel.textContent = 'Srebrny Puchar';
+      if (titleEl) titleEl.textContent = 'Adept Cube';
       if (descEl) descEl.textContent = 'Gratulacje! Samouczek ukończony po raz pierwszy. Znasz już wszystkie podstawowe narzędzia i skróty aplikacji.';
     } else {
       badge.classList.remove('is-silver');
       badge.classList.add('is-gold');
-      if (badgeLabel) badgeLabel.textContent = 'OSIĄGNIĘCIE: II STOPIEŃ';
-      if (titleEl) titleEl.textContent = 'Mistrz Harmonogramu (Złoty Puchar)';
+      if (badgeLabel) badgeLabel.textContent = 'Złoty Puchar';
+      if (titleEl) titleEl.textContent = 'Mistrz Cube';
       if (descEl) descEl.textContent = 'Wybitne osiągnięcie! Samouczek ukończony dwukrotnie. Mistrzowskie opanowanie planowania, chmury Cube i zaawansowanego eksportu.';
     }
   });
