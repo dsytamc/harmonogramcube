@@ -1648,6 +1648,15 @@ function setupEventListeners() {
     renderLocationSavesTable(loc);
   }
 
+  // Udostępnienie metod okna chmury dla samouczka
+  if (typeof window !== 'undefined') {
+    window.openCloudModal = openCloudModal;
+    window.renderCloudLocationsList = renderCloudLocationsList;
+    window.selectCloudLocation = selectCloudLocation;
+    window.openModal = openModal;
+    window.closeModal = closeModal;
+  }
+
   // Renderowanie tabeli zapisów wybranego miasta
   function renderLocationSavesTable(loc) {
     if (!cloudSavesTableBody) return;

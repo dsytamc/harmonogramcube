@@ -269,52 +269,74 @@ const TUTORIAL_STEPS = [
   {
     id: 'step_save_choice',
     targetSelector: '#cloudModalDialog',
-    fallbackSelector: '#topSaveBtn',
+    fallbackSelector: '#cloudModal',
     view: 'artboard',
-    padding: 10,
-    title: 'Krok 10: Zapis na dysku lub w chmurze',
-    desc: 'Kliknięcie przycisku «Zapisz» otwiera dedykowane okno z dwiema metodami archiwizacji:<br><br>• <strong>Zapisz na dysku:</strong> natychmiastowe pobranie pliku projektu <code>.json</code> na Twój komputer (kopia offline).<br>• <strong>Zapisz w chmurze:</strong> archiwizacja w centralnej bazie powiązanej z konkretnymi klubami Cube.<br><br>Kliknij <strong>Dalej</strong>, aby zobaczyć jak działa zapis w chmurze.',
+    padding: 12,
+    title: 'Krok 10: Wybór metody zapisu (Dysk / Chmura)',
+    desc: 'Oto realne okno zapisu grafiku w aplikacji Cube. Masz do wyboru dwie metody archiwizacji:<br><br>• <strong>Zapisz na dysku:</strong> natychmiast generuje i pobiera plik projektu <code>.json</code> na Twój komputer (kopia offline).<br>• <strong>Zapisz w chmurze:</strong> centralna synchronizacja z bazą klubów Cube.<br><br>Kliknij <strong>Dalej</strong>, aby zobaczyć pełny workflow zapisu w chmurze.',
     actionType: 'next',
     onEnter: () => {
-      const topSaveBtn = document.getElementById('topSaveBtn');
-      if (topSaveBtn) topSaveBtn.click();
+      const exportModal = document.getElementById('exportModal');
+      if (exportModal) exportModal.classList.add('hidden');
+      if (typeof window !== 'undefined' && typeof window.openCloudModal === 'function') {
+        window.openCloudModal('save');
+      } else {
+        const topSaveBtn = document.getElementById('topSaveBtn');
+        if (topSaveBtn) topSaveBtn.click();
+      }
     }
   },
   {
     id: 'step_cloud_save',
-    targetSelector: '#cloudLocationsWrap',
-    fallbackSelector: '#cloudModalDialog',
+    targetSelector: '#cloudModalDialog',
+    fallbackSelector: '#cloudSavesWrap',
     view: 'artboard',
-    padding: 10,
-    title: 'Krok 11: Zapis w chmurze Cube',
-    desc: 'W module chmury Cube wystarczy wybrać odpowiednie miasto (siłownię Cube), a następnie wpisać unikalną nazwę nowego zapisu w polu na dole i zatwierdzić przyciskiem <strong>«Zapisz»</strong>.<br><br>Dzięki temu Twój harmonogram jest zawsze zsynchronizowany i bezpieczny bez konieczności wysyłania plików mailem.<br><br>Kliknij <strong>Dalej</strong>, aby przejść do opcji eksportu.',
+    padding: 12,
+    title: 'Krok 11: Workflow zapisu w chmurze Cube',
+    desc: 'Oto dokładny workflow zapisu grafiku w chmurze Cube:<br><br>1. <strong>Wybór klubu:</strong> Wybierz swoje miasto z bazy lokalizacji Cube (np. Lublin, Garwolin). W każdej chwili możesz cofnąć się przyciskiem <em>«Wróć»</em>.<br>2. <strong>Historia wersji:</strong> Wyświetla się lista wcześniejszych wersji grafiku wraz z datami.<br>3. <strong>Nazwa nowego zapisu:</strong> Wpisz nazwę w polu na dole (np. <code>Grafik Marzec 2026</code>) lub kliknij w istniejący plik, aby go nadpisać.<br>4. <strong>Zatwierdzenie:</strong> Kliknij żółty przycisk <strong>«Zapisz»</strong> na dole, aby bezpiecznie zsynchronizować grafik w chmurze.<br><br>Kliknij <strong>Dalej</strong>, aby przejść do opcji eksportu.',
     actionType: 'next',
     onEnter: () => {
+      const exportModal = document.getElementById('exportModal');
+      if (exportModal) exportModal.classList.add('hidden');
+
       const cloudModal = document.getElementById('cloudModal');
-      if (cloudModal && cloudModal.classList.contains('hidden')) {
-        const topSaveBtn = document.getElementById('topSaveBtn');
-        if (topSaveBtn) topSaveBtn.click();
+      if (!cloudModal || cloudModal.classList.contains('hidden')) {
+        if (typeof window !== 'undefined' && typeof window.openCloudModal === 'function') {
+          window.openCloudModal('save');
+        }
       }
+
+      // Przełączenie do widoku chmury i wybór pierwszej lokalizacji (np. Lublin), aby pokazać tabelę i pole nazwy
       setTimeout(() => {
         const cloudChoiceCloudBtn = document.getElementById('cloudChoiceCloudBtn');
         if (cloudChoiceCloudBtn) cloudChoiceCloudBtn.click();
+
+        setTimeout(() => {
+          const firstLocBtn = document.querySelector('.cloud-location-btn');
+          if (firstLocBtn) firstLocBtn.click();
+        }, 300);
       }, 100);
     }
   },
   {
     id: 'step_export',
     targetSelector: '#exportModal .modal-dialog',
-    fallbackSelector: '#topExportBtn',
+    fallbackSelector: '#exportModal',
     view: 'artboard',
-    padding: 10,
+    padding: 12,
     title: 'Krok 12: Eksport gotowych plików grafiku',
-    desc: 'Gdy harmonogram jest gotowy, kliknij «Eksportuj». W tym oknie możesz jednym kliknięciem wygenerować wszystkie formaty produkcyjne:<br><br>• <strong>Social Media:</strong> Instagram Pion (1080x1350 px) oraz Kwadrat (1200x1200 px),<br>• <strong>Wektorowy SVG:</strong> w pełni edytowalne teksty i grupy w programie Adobe Illustrator,<br>• <strong>Druk A4 i A3 (PDF 300 DPI):</strong> spłaszczone, jasne arkusze gotowe do druku.<br><br>Zaznacz potrzebne formaty i kliknij <strong>Zakończ samouczek</strong>, aby odebrać swoje osiągnięcie!',
+    desc: 'Gdy harmonogram jest gotowy, klikasz «Eksportuj». W tym oknie wybierasz formaty produkcyjne:<br><br>• <strong>Social Media:</strong> Instagram Pion (1080x1350 px) oraz Kwadrat (1200x1200 px),<br>• <strong>Wektorowy SVG:</strong> w pełni edytowalne teksty i grupy w programie Adobe Illustrator,<br>• <strong>Druk A4 i A3 (PDF 300 DPI):</strong> spłaszczone, jasne arkusze gotowe do wydruku.<br><br>Zaznacz wybrane formaty i kliknij <strong>Zakończ samouczek</strong>, aby odebrać swoje osiągnięcie!',
     actionType: 'finish',
     onEnter: () => {
       const cloudModal = document.getElementById('cloudModal');
       if (cloudModal) cloudModal.classList.add('hidden');
-      const topExportBtn = document.getElementById('topExportBtn');
-      if (topExportBtn) topExportBtn.click();
+
+      if (typeof window !== 'undefined' && typeof window.openModal === 'function') {
+        window.openModal('exportModal');
+      } else {
+        const topExportBtn = document.getElementById('topExportBtn');
+        if (topExportBtn) topExportBtn.click();
+      }
     },
     onAdvance: () => {
       const exportModal = document.getElementById('exportModal');
@@ -465,14 +487,10 @@ function handleTutorialClickBlock(e) {
     return; // Kliknięcie w aktywny podświetlony element jest dozwolone
   }
 
-  // Kliknięcie w modale gdy są aktywne w danym kroku
-  const cloudModal = document.getElementById('cloudModal');
-  if (cloudModal && !cloudModal.classList.contains('hidden') && cloudModal.contains(e.target)) {
-    return;
-  }
-  const exportModal = document.getElementById('exportModal');
-  if (exportModal && !exportModal.classList.contains('hidden') && exportModal.contains(e.target)) {
-    return;
+  // Kliknięcie wewnątrz jakiegokolwiek otwartego modalu (importModal, cloudModal, exportModal, replayTutorialModal, tutorialAchievementModal)
+  const openModal = e.target.closest('.modal-backdrop:not(.hidden)');
+  if (openModal) {
+    return; // Kliknięcia wewnątrz otwartego modalu są dozwolone!
   }
 
   // Kliknięcie w tło blokowane
@@ -553,6 +571,14 @@ export function goToStep(index) {
 
   // Wyczyść poprzednie podświetlenie
   clearHighlight();
+
+  // Jeśli wracamy przed krok 10 (zapis), upewnij się że modale zapisu i eksportu są zamknięte
+  if (index < 10) {
+    const cloudModal = document.getElementById('cloudModal');
+    if (cloudModal) cloudModal.classList.add('hidden');
+    const exportModal = document.getElementById('exportModal');
+    if (exportModal) exportModal.classList.add('hidden');
+  }
 
   // Sprawdź czy krok posiada akcję onEnter (np. wstawienie kafelka, otwarcie modalu)
   if (typeof step.onEnter === 'function') {
