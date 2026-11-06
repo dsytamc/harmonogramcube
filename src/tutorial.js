@@ -11,7 +11,140 @@ let isReplayMode = false;
 let confettiAnimId = null;
 let currentTargetEl = null;
 
-// Definicja kroków samouczka (Krok 0: Wprowadzenie na środku, Kroki 1-11: Funkcjonalności)
+// Pomocnik do wstawiania przykładowego kafelka na artboard w trakcie trwania samouczka
+export function ensureTutorialSampleTile() {
+  try {
+    if (typeof window !== 'undefined' && window.store) {
+      const store = window.store;
+      const state = store.getState();
+      const rows = state.rows || [];
+      const hourRows = rows.filter(r => r.type === 'hour');
+      const targetRow = hourRows.find(r => r.id === 'row_3') || hourRows[0];
+      if (targetRow) {
+        store.updateTile(targetRow.id, 'mon', {
+          name: 'ZUMBA',
+          hasCustomStart: true,
+          startTime: '8:30',
+          instructor: 'Ike',
+          categories: ['taneczne']
+        });
+      }
+    }
+  } catch (e) {
+    console.warn('Błąd podczas wstawiania przykładowego kafelka:', e);
+  }
+}
+
+// Zwraca kod HTML animacji demonstracyjnej dla Kroku 7 (Edycja kafelka i formularz)
+function getStep7DemoHtml() {
+  return `
+    <div class="demo-step7-container">
+      <div class="demo-step7-grid-side">
+        <div class="demo-step7-col-header">Poniedziałek</div>
+        <div class="demo-step7-target-cell">
+          <div class="demo-step7-empty-slot">
+            <svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor">
+              <path d="M8 2v5H3v2h5v5h2V9h5V7h-5V2z"/>
+            </svg>
+            <span>Kliknij</span>
+          </div>
+          <div class="demo-step7-filled-tile">
+            <div class="demo-tile-name">ZUMBA</div>
+            <div class="demo-tile-time">Start o 8:30</div>
+            <div class="demo-tile-instr">Ike</div>
+          </div>
+        </div>
+      </div>
+      <div class="demo-step7-form-side">
+        <div class="demo-step7-form-title">2. Edycja kafelka</div>
+        <div class="demo-step7-row">
+          <span class="demo-step7-label">Nazwa zajęć:</span>
+          <div class="demo-step7-input demo-step7-input-name"></div>
+        </div>
+        <div class="demo-step7-toggle-row">
+          <span class="demo-step7-label">Start o: <strong>8:30</strong></span>
+          <span class="demo-step7-pill-cat">
+            <svg viewBox="0 0 16 16" width="10" height="10" fill="currentColor">
+              <path d="M13.5 4.5l-7 7L3 8l1.4-1.4L7 9.2l5.1-5.1z"/>
+            </svg>
+            TANECZNE
+          </span>
+        </div>
+        <div class="demo-step7-row" style="margin-top: 2px;">
+          <span class="demo-step7-label">Prowadzący: <strong>Ike</strong></span>
+        </div>
+      </div>
+      <div class="demo-step7-cursor">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="#ffffff" stroke="#161616" stroke-width="1.5">
+          <path d="M4 3l13 10-6 1.5 3.5 6.5-2.5 1.5-3.5-6.5L4 19V3z"/>
+        </svg>
+      </div>
+    </div>
+  `;
+}
+
+// Zwraca kod HTML animacji demonstracyjnej dla Kroku 9 (Drag & Drop z dymkami i 3s pauzy)
+function getStep9DemoHtml() {
+  return `
+    <div class="demo-step9-container">
+      <div class="demo-step9-grid">
+        <div class="demo-step9-col">
+          <div class="demo-step9-col-title">08:00</div>
+          <div class="demo-step9-slot">
+            <div class="demo-step9-tile-start">
+              <div class="demo-tile-name">ZUMBA</div>
+              <div class="demo-tile-time">Start o 8:30</div>
+              <div class="demo-tile-instr">Ike</div>
+            </div>
+            <span class="demo-step9-slot-empty-cross">+</span>
+          </div>
+        </div>
+        <div class="demo-step9-col">
+          <div class="demo-step9-col-title">09:00</div>
+          <div class="demo-step9-slot">
+            <span class="demo-step9-slot-empty-cross">+</span>
+          </div>
+        </div>
+        <div class="demo-step9-col">
+          <div class="demo-step9-col-title">10:00</div>
+          <div class="demo-step9-slot target-cell">
+            <span class="demo-step9-slot-empty-cross">+</span>
+            <div class="demo-step9-tile-landed">
+              <div class="demo-tile-name">ZUMBA</div>
+              <div class="demo-tile-time">Start o 8:30</div>
+              <div class="demo-tile-instr">Ike</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="demo-step9-cursor-rig">
+        <div class="demo-step9-flying-tile">
+          <div class="demo-tile-name">ZUMBA</div>
+          <div class="demo-tile-time">Start o 8:30</div>
+          <div class="demo-tile-instr">Ike</div>
+        </div>
+        <div class="demo-step9-mouse-icon">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="#ffffff" stroke="#161616" stroke-width="1.5">
+            <path d="M4 3l13 10-6 1.5 3.5 6.5-2.5 1.5-3.5-6.5L4 19V3z"/>
+          </svg>
+        </div>
+        <div class="demo-step9-float-tooltip tip-hold">
+          <svg viewBox="0 0 16 16" width="13" height="13" fill="currentColor">
+            <path d="M8 1a4 4 0 00-4 4v6a4 4 0 008 0V5a4 4 0 00-4-4zm-1 2.06c.3-.04.65-.06 1-.06s.7.02 1 .06V6H7V3.06z"/>
+            <path d="M5 5a3 3 0 012.5-2.96V6H5V5z" fill="#f6be00"/>
+          </svg>
+          <span>przytrzymaj kafelek aby go podnieść</span>
+        </div>
+        <div class="demo-step9-float-tooltip tip-move">
+          <span>Przytrzymując kafelek przenieś go na poprawne miejsce</span>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+// Definicja kroków samouczka (Krok 0: Wprowadzenie na środku, Kroki 1-12: Funkcjonalności)
 const TUTORIAL_STEPS = [
   {
     id: 'step_intro',
@@ -65,70 +198,128 @@ const TUTORIAL_STEPS = [
     actionType: 'next'
   },
   {
-    id: 'step_hours',
+    id: 'step_display_mode',
+    targetSelector: '#formatSelect',
+    fallbackSelector: '.display-mode-wrap',
+    view: 'artboard',
+    padding: 8,
+    title: 'Krok 5: Tryb wyświetlania (Podgląd docelowych formatów)',
+    desc: 'Tryb wyświetlania to interaktywny podgląd rzeczywistych proporcji, kompozycji i kolorystyki grafiku w czasie rzeczywistym. Pozwala natychmiast zobaczyć, jak harmonogram zaprezentuje się na ekranach klubowych, w postach na Instagramie (pion 1080x1350 px, kwadrat) lub w wersji do profesjonalnego druku (A4 / A3 300 DPI) zanim jeszcze przejdziesz do ostatecznego eksportu.<br><br>Kliknij <strong>Dalej</strong>, aby przejść do kolejnego kroku.',
+    actionType: 'next'
+  },
+  {
+    id: 'step_hours_breaks',
     targetSelector: '#rowsList',
     fallbackSelector: '#addHourRowBtn',
     view: 'artboard',
     padding: 10,
-    title: 'Krok 5: Godziny i rodzaj sali',
-    desc: 'W każdym wierszu możesz dostosować godzinę rozpoczęcia oraz dodać dopisek o sali lub miejscu (możesz łamać linie klawiszem Enter lub Shift+Enter).<br><br>Kliknij <strong>Dalej</strong>, aby przejść do kolejnego kroku.',
-    actionType: 'next'
-  },
-  {
-    id: 'step_break_bar',
-    targetSelector: '#addBreakRowBtn',
-    view: 'artboard',
-    padding: 8,
-    title: 'Krok 6: Belka podziału dnia',
-    desc: 'Belka to linia oddzielająca większe bloki czasowe w grafiku (np. zajęcia poranne od popołudniowych lub dłuższe przerwy). Możesz ją płynnie przeciągać i upuszczać między godzinami.<br><br>Kliknij <strong>Dalej</strong>, aby przejść do kolejnego kroku.',
+    title: 'Krok 6: Wiersze godzin i belki podziału dnia',
+    desc: 'W każdym wierszu możesz swobodnie dostosowywać godziny rozpoczęcia oraz dodać dopisek o sali lub miejscu (możesz łamać linie klawiszem Enter). Możesz także wstawiać <strong>belki podziału dnia</strong>, które oddzielają większe bloki czasowe (np. przerwę między zajęciami porannymi a popołudniowymi) i które można płynnie przeciągać między wierszami.<br><br>Kliknij <strong>Dalej</strong>, aby przejść do kolejnego kroku.',
     actionType: 'next'
   },
   {
     id: 'step_tiles',
-    targetSelector: '.schedule-grid-cell:not(.is-empty-placeholder)',
-    fallbackSelector: '#artboardContent',
+    targetSelector: '.schedule-tile.has-content',
+    fallbackSelector: '#tileEditorSection',
     view: 'artboard',
-    padding: 6,
+    padding: 8,
     title: 'Krok 7: Edycja kafelka z zajęciami',
-    desc: 'Kliknij w dowolny kafelek na grafiku, aby edytować nazwę treningu, nazwisko instruktora oraz poziom trudności.<br><br>Kliknij <strong>Dalej</strong>, aby przejść do kolejnego kroku.',
-    actionType: 'next'
+    desc: 'Kliknięcie w pole na grafiku aktywuje formularz w lewym panelu, gdzie wpisujesz nazwę treningu, nazwisko instruktora oraz opcjonalną indywidualną godzinę rozpoczęcia.<br><br>Poniższa zapętlona animacja przedstawia ten proces krok po kroku:',
+    demoType: 'tile_edit',
+    actionType: 'next',
+    onEnter: () => {
+      ensureTutorialSampleTile();
+      setTimeout(() => {
+        if (typeof window !== 'undefined' && window.store) {
+          const rows = window.store.getState().rows || [];
+          const hourRows = rows.filter(r => r.type === 'hour');
+          const targetRow = hourRows.find(r => r.id === 'row_3') || hourRows[0];
+          if (targetRow) {
+            const tileEl = document.querySelector(`.schedule-tile[data-row-id="${targetRow.id}"][data-day-id="mon"]`);
+            if (tileEl) tileEl.click();
+          }
+        }
+      }, 100);
+    }
   },
   {
     id: 'step_categories',
-    targetSelector: '#categoryPaletteBar',
-    fallbackSelector: '#categoryList',
+    targetSelector: '#categoriesPicker',
+    fallbackSelector: '#categoryPaletteBar',
     view: 'artboard',
     padding: 8,
-    title: 'Krok 8: Kolory i kategorie zajęć',
-    desc: 'Każdy rodzaj zajęć ma przypisany dedykowany kolor z palety Cube, co ułatwia klubowiczom szybką orientację w harmonogramie.<br><br>Kliknij <strong>Dalej</strong>, aby przejść do kolejnego kroku.',
+    title: 'Krok 8: Kolory i kategorie zajęć (max 2)',
+    desc: 'Każda dyscyplina w Cube posiada unikalny kolor z firmowej palety barw.<br><br><strong>Ważna zasada:</strong> do jednego kafelka możesz przypisać <strong>maksymalnie dwie kategorie</strong> (np. Wzmacniające + Taneczne). W takim przypadku kafelek otrzymuje elegancki <strong>podział ukośny (diagonal split)</strong> dzielący tło kafelka po przekątnej na dwa kolory!<br><br>Kliknij <strong>Dalej</strong>, aby przejść do kolejnego kroku.',
     actionType: 'next'
   },
   {
     id: 'step_drag_drop',
-    targetSelector: '#artboardContent',
+    targetSelector: '.schedule-tile.has-content',
+    fallbackSelector: '#artboardWrapper',
     view: 'artboard',
-    padding: 10,
-    title: 'Krok 9: Przesuwanie i usuwanie kafelków',
-    desc: 'Przytrzymaj kafelek przez pół sekundy, aby go unieść i przenieść w inne miejsce z płynną animacją. Aby usunąć kafelek, zaznacz go i naciśnij Delete lub ikonę kosza.<br><br>Kliknij <strong>Dalej</strong>, aby przejść do kolejnego kroku.',
-    actionType: 'next'
+    padding: 8,
+    title: 'Krok 9: Zajęcia w złym miejscu? Przenieś je!',
+    desc: 'Jeśli zajęcia zostały zaplanowane w złej godzinie lub dniu, możesz je błyskawicznie przenieść! Przytrzymaj kafelek przez pół sekundy, aby go unieść, a następnie przeciągnij na właściwe miejsce.<br><br>Zobacz poniższą animację podnoszenia i przenoszenia kafelka o dwie pozycje z upuszczeniem:',
+    demoType: 'drag_drop',
+    actionType: 'next',
+    onEnter: () => {
+      ensureTutorialSampleTile();
+    }
   },
   {
-    id: 'step_save',
-    targetSelector: '#topSaveBtn',
+    id: 'step_save_choice',
+    targetSelector: '#cloudModalDialog',
+    fallbackSelector: '#topSaveBtn',
     view: 'artboard',
-    padding: 6,
-    title: 'Krok 10: Zapis w chmurze i na dysku',
-    desc: 'Przycisk «Zapisz» otwiera okno zapisu. Możesz pobrać plik projektu bezpośrednio na komputer lub zapisać go w chmurze przypisanej do konkretnego miasta Cube.<br><br>Kliknij <strong>Dalej</strong>, aby przejść do kolejnego kroku.',
-    actionType: 'next'
+    padding: 10,
+    title: 'Krok 10: Zapis na dysku lub w chmurze',
+    desc: 'Kliknięcie przycisku «Zapisz» otwiera dedykowane okno z dwiema metodami archiwizacji:<br><br>• <strong>Zapisz na dysku:</strong> natychmiastowe pobranie pliku projektu <code>.json</code> na Twój komputer (kopia offline).<br>• <strong>Zapisz w chmurze:</strong> archiwizacja w centralnej bazie powiązanej z konkretnymi klubami Cube.<br><br>Kliknij <strong>Dalej</strong>, aby zobaczyć jak działa zapis w chmurze.',
+    actionType: 'next',
+    onEnter: () => {
+      const topSaveBtn = document.getElementById('topSaveBtn');
+      if (topSaveBtn) topSaveBtn.click();
+    }
+  },
+  {
+    id: 'step_cloud_save',
+    targetSelector: '#cloudLocationsWrap',
+    fallbackSelector: '#cloudModalDialog',
+    view: 'artboard',
+    padding: 10,
+    title: 'Krok 11: Zapis w chmurze Cube',
+    desc: 'W module chmury Cube wystarczy wybrać odpowiednie miasto (siłownię Cube), a następnie wpisać unikalną nazwę nowego zapisu w polu na dole i zatwierdzić przyciskiem <strong>«Zapisz»</strong>.<br><br>Dzięki temu Twój harmonogram jest zawsze zsynchronizowany i bezpieczny bez konieczności wysyłania plików mailem.<br><br>Kliknij <strong>Dalej</strong>, aby przejść do opcji eksportu.',
+    actionType: 'next',
+    onEnter: () => {
+      const cloudModal = document.getElementById('cloudModal');
+      if (cloudModal && cloudModal.classList.contains('hidden')) {
+        const topSaveBtn = document.getElementById('topSaveBtn');
+        if (topSaveBtn) topSaveBtn.click();
+      }
+      setTimeout(() => {
+        const cloudChoiceCloudBtn = document.getElementById('cloudChoiceCloudBtn');
+        if (cloudChoiceCloudBtn) cloudChoiceCloudBtn.click();
+      }, 100);
+    }
   },
   {
     id: 'step_export',
-    targetSelector: '#topExportBtn',
+    targetSelector: '#exportModal .modal-dialog',
+    fallbackSelector: '#topExportBtn',
     view: 'artboard',
-    padding: 6,
-    title: 'Krok 11: Eksport gotowych plików',
-    desc: 'Gdy grafik jest gotowy, kliknij «Eksportuj». Wygenerujesz perfekcyjne pliki na social media (Instagram pion i kwadrat) oraz wektorowy/rastrowy PDF 300 DPI gotowy do druku A4 lub A3.<br><br>Kliknij <strong>Zakończ samouczek</strong>, aby odebrać nagrodę!',
-    actionType: 'finish'
+    padding: 10,
+    title: 'Krok 12: Eksport gotowych plików grafiku',
+    desc: 'Gdy harmonogram jest gotowy, kliknij «Eksportuj». W tym oknie możesz jednym kliknięciem wygenerować wszystkie formaty produkcyjne:<br><br>• <strong>Social Media:</strong> Instagram Pion (1080x1350 px) oraz Kwadrat (1200x1200 px),<br>• <strong>Wektorowy SVG:</strong> w pełni edytowalne teksty i grupy w programie Adobe Illustrator,<br>• <strong>Druk A4 i A3 (PDF 300 DPI):</strong> spłaszczone, jasne arkusze gotowe do druku.<br><br>Zaznacz potrzebne formaty i kliknij <strong>Zakończ samouczek</strong>, aby odebrać swoje osiągnięcie!',
+    actionType: 'finish',
+    onEnter: () => {
+      const cloudModal = document.getElementById('cloudModal');
+      if (cloudModal) cloudModal.classList.add('hidden');
+      const topExportBtn = document.getElementById('topExportBtn');
+      if (topExportBtn) topExportBtn.click();
+    },
+    onAdvance: () => {
+      const exportModal = document.getElementById('exportModal');
+      if (exportModal) exportModal.classList.add('hidden');
+    }
   }
 ];
 
@@ -165,39 +356,65 @@ function setTutorialSkipped() {
   } catch (e) {}
 }
 
-// Aktualizacja pucharów w nagłówku i na ekranie startowym
+// Aktualizacja pucharów osiągnięć (kwadratowe kontenery z tooltipem)
 export function updateTrophyBadges() {
   const completions = getTutorialCompletions();
-  const badges = document.querySelectorAll('.tutorial-cup-badge');
+  const squareBadges = document.querySelectorAll('.trophy-square-badge');
+  const legacyBadges = document.querySelectorAll('.tutorial-cup-badge');
   const floatingHelpBtn = document.getElementById('floatingHelpBtn');
 
-  badges.forEach(badge => {
+  const cupSvgHtml = `
+    <svg viewBox="0 0 24 24" class="trophy-cup-svg" width="22" height="22" fill="currentColor">
+      <path d="M19 5h-2V3H7v2H5c-1.1 0-2 .9-2 2v1c0 2.55 1.92 4.63 4.39 4.94A5.01 5.01 0 0011 15.9V19H7v2h10v-2h-4v-3.1a5.01 5.01 0 003.61-2.96C19.08 12.63 21 10.55 21 8V7c0-1.1-.9-2-2-2zM5 8V7h2v3.82C5.84 10.4 5 9.3 5 8zm14 0c0 1.3-.84 2.4-2 2.82V7h2v1z"/>
+    </svg>
+  `;
+
+  // Obsługa nowych kwadratowych kontenerów
+  squareBadges.forEach(badge => {
     if (completions <= 0) {
       badge.classList.add('hidden');
       badge.classList.remove('is-silver', 'is-gold');
-      badge.innerHTML = '';
       return;
     }
 
     badge.classList.remove('hidden');
+    const iconBox = badge.querySelector('.trophy-badge-icon-box');
+    const badgeLabel = badge.querySelector('.trophy-tooltip-badge');
+    const titleEl = badge.querySelector('.trophy-tooltip-title');
+    const descEl = badge.querySelector('.trophy-tooltip-desc');
+
+    if (iconBox) iconBox.innerHTML = cupSvgHtml;
+
     if (completions === 1) {
       badge.classList.remove('is-gold');
       badge.classList.add('is-silver');
-      badge.title = 'Osiągnięcie: Samouczek ukończony (Srebrny puchar)';
-      badge.innerHTML = `
-        <svg viewBox="0 0 24 24" class="trophy-cup-svg" width="22" height="22" fill="currentColor">
-          <path d="M19 5h-2V3H7v2H5c-1.1 0-2 .9-2 2v1c0 2.55 1.92 4.63 4.39 4.94A5.01 5.01 0 0011 15.9V19H7v2h10v-2h-4v-3.1a5.01 5.01 0 003.61-2.96C19.08 12.63 21 10.55 21 8V7c0-1.1-.9-2-2-2zM5 8V7h2v3.82C5.84 10.4 5 9.3 5 8zm14 0c0 1.3-.84 2.4-2 2.82V7h2v1z"/>
-        </svg>
-      `;
+      if (badgeLabel) badgeLabel.textContent = 'OSIĄGNIĘCIE: I STOPIEŃ';
+      if (titleEl) titleEl.textContent = 'Eksplorator Cube (Srebrny Puchar)';
+      if (descEl) descEl.textContent = 'Gratulacje! Samouczek ukończony po raz pierwszy. Znasz już wszystkie podstawowe narzędzia i skróty aplikacji.';
     } else {
       badge.classList.remove('is-silver');
       badge.classList.add('is-gold');
-      badge.title = 'Osiągnięcie: Samouczek ukończony dwukrotnie (Złoty puchar)';
-      badge.innerHTML = `
-        <svg viewBox="0 0 24 24" class="trophy-cup-svg" width="22" height="22" fill="currentColor">
-          <path d="M19 5h-2V3H7v2H5c-1.1 0-2 .9-2 2v1c0 2.55 1.92 4.63 4.39 4.94A5.01 5.01 0 0011 15.9V19H7v2h10v-2h-4v-3.1a5.01 5.01 0 003.61-2.96C19.08 12.63 21 10.55 21 8V7c0-1.1-.9-2-2-2zM5 8V7h2v3.82C5.84 10.4 5 9.3 5 8zm14 0c0 1.3-.84 2.4-2 2.82V7h2v1z"/>
-        </svg>
-      `;
+      if (badgeLabel) badgeLabel.textContent = 'OSIĄGNIĘCIE: II STOPIEŃ';
+      if (titleEl) titleEl.textContent = 'Mistrz Harmonogramu (Złoty Puchar)';
+      if (descEl) descEl.textContent = 'Wybitne osiągnięcie! Samouczek ukończony dwukrotnie. Mistrzowskie opanowanie planowania, chmury Cube i zaawansowanego eksportu.';
+    }
+  });
+
+  // Obsługa legacy badges
+  legacyBadges.forEach(badge => {
+    if (completions <= 0) {
+      badge.classList.add('hidden');
+      badge.innerHTML = '';
+      return;
+    }
+    badge.classList.remove('hidden');
+    badge.innerHTML = cupSvgHtml;
+    if (completions === 1) {
+      badge.classList.remove('is-gold');
+      badge.classList.add('is-silver');
+    } else {
+      badge.classList.remove('is-silver');
+      badge.classList.add('is-gold');
     }
   });
 
@@ -248,9 +465,32 @@ function handleTutorialClickBlock(e) {
     return; // Kliknięcie w aktywny podświetlony element jest dozwolone
   }
 
+  // Kliknięcie w modale gdy są aktywne w danym kroku
+  const cloudModal = document.getElementById('cloudModal');
+  if (cloudModal && !cloudModal.classList.contains('hidden') && cloudModal.contains(e.target)) {
+    return;
+  }
+  const exportModal = document.getElementById('exportModal');
+  if (exportModal && !exportModal.classList.contains('hidden') && exportModal.contains(e.target)) {
+    return;
+  }
+
   // Kliknięcie w tło blokowane
   e.preventDefault();
   e.stopPropagation();
+}
+
+// Sprzątanie otwartych modali po zakończeniu lub przerwaniu samouczka
+function cleanupTutorialModals() {
+  const cloudModal = document.getElementById('cloudModal');
+  if (cloudModal) cloudModal.classList.add('hidden');
+  const exportModal = document.getElementById('exportModal');
+  if (exportModal) exportModal.classList.add('hidden');
+  const demoBox = document.getElementById('tutorialStepDemoBox');
+  if (demoBox) {
+    demoBox.innerHTML = '';
+    demoBox.classList.add('hidden');
+  }
 }
 
 // Start samouczka
@@ -298,7 +538,7 @@ export function goToStep(index) {
       if (appEl) appEl.classList.add('is-start-screen');
     }
   } else if (step.view === 'artboard') {
-    // Jeśli krok wymaga widoku artboardu (kroki 4-11)
+    // Jeśli krok wymaga widoku artboardu (kroki 4-12)
     const emptyState = document.getElementById('emptyWorkspaceState');
     const artboardWrapper = document.getElementById('artboardWrapper');
     const appEl = document.getElementById('app');
@@ -314,6 +554,15 @@ export function goToStep(index) {
   // Wyczyść poprzednie podświetlenie
   clearHighlight();
 
+  // Sprawdź czy krok posiada akcję onEnter (np. wstawienie kafelka, otwarcie modalu)
+  if (typeof step.onEnter === 'function') {
+    try {
+      step.onEnter();
+    } catch (e) {
+      console.warn('Błąd onEnter w samouczku:', e);
+    }
+  }
+
   // Sprawdź czy karta ma być wyśrodkowana (np. krok 0 powitalny)
   const card = document.getElementById('tutorialFloatingCard');
   if (card) {
@@ -324,40 +573,57 @@ export function goToStep(index) {
     }
   }
 
+  // Obsługa demonstracyjnych animacji wizualnych (krok 7 i krok 9)
+  const demoBox = document.getElementById('tutorialStepDemoBox');
+  if (demoBox) {
+    if (step.demoType === 'tile_edit') {
+      demoBox.innerHTML = getStep7DemoHtml();
+      demoBox.classList.remove('hidden');
+    } else if (step.demoType === 'drag_drop') {
+      demoBox.innerHTML = getStep9DemoHtml();
+      demoBox.classList.remove('hidden');
+    } else {
+      demoBox.innerHTML = '';
+      demoBox.classList.add('hidden');
+    }
+  }
+
   // Znajdź i podświetl element docelowy (jeśli istnieje)
-  let targetEl = null;
-  if (step.targetSelector) {
-    targetEl = document.querySelector(step.targetSelector);
-    if (!targetEl && step.fallbackSelector) {
-      targetEl = document.querySelector(step.fallbackSelector);
+  setTimeout(() => {
+    let targetEl = null;
+    if (step.targetSelector) {
+      targetEl = document.querySelector(step.targetSelector);
+      if (!targetEl && step.fallbackSelector) {
+        targetEl = document.querySelector(step.fallbackSelector);
+      }
     }
-  }
 
-  currentTargetEl = targetEl;
+    currentTargetEl = targetEl;
 
-  if (targetEl) {
-    targetEl.classList.add('tutorial-highlight-pulsing');
-    try {
-      targetEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-    } catch (e) {}
+    if (targetEl) {
+      targetEl.classList.add('tutorial-highlight-pulsing');
+      try {
+        targetEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      } catch (e) {}
 
-    setTimeout(() => {
-      updateSpotlight(targetEl, step.padding || 8);
-    }, 50);
+      setTimeout(() => {
+        updateSpotlight(targetEl, step.padding || 8);
+      }, 60);
 
-    // Jeśli to krok kliknięcia w element (np. pusty szablon)
-    if (step.id === 'step_blank') {
-      const clickHandler = () => {
-        targetEl.removeEventListener('click', clickHandler);
-        setTimeout(() => {
-          goToStep(currentStepIndex + 1);
-        }, 150);
-      };
-      targetEl.addEventListener('click', clickHandler, { once: true });
+      // Jeśli to krok kliknięcia w element (np. pusty szablon)
+      if (step.id === 'step_blank') {
+        const clickHandler = () => {
+          targetEl.removeEventListener('click', clickHandler);
+          setTimeout(() => {
+            goToStep(currentStepIndex + 1);
+          }, 150);
+        };
+        targetEl.addEventListener('click', clickHandler, { once: true });
+      }
+    } else {
+      updateSpotlight(null);
     }
-  } else {
-    updateSpotlight(null);
-  }
+  }, 80);
 
   // Zaktualizuj zawartość okna samouczka
   const stepNumEl = document.getElementById('tutorialStepNum');
@@ -367,11 +633,11 @@ export function goToStep(index) {
   const nextBtn = document.getElementById('tutorialNextBtn');
   const prevBtn = document.getElementById('tutorialPrevBtn');
 
-  const totalSteps = TUTORIAL_STEPS.length - 1; // 11 kroków merytorycznych
+  const totalSteps = TUTORIAL_STEPS.length - 1; // 12 kroków merytorycznych
 
   if (index === 0) {
     if (stepNumEl) stepNumEl.textContent = 'Wprowadzenie';
-    if (stepRemainingEl) stepRemainingEl.textContent = '(11 kroków przewodnika)';
+    if (stepRemainingEl) stepRemainingEl.textContent = `(${totalSteps} kroków przewodnika)`;
   } else {
     const remaining = totalSteps - index;
     if (stepNumEl) stepNumEl.textContent = `Krok ${index} z ${totalSteps}`;
@@ -414,6 +680,7 @@ function clearHighlight() {
 // Pomiń tutorial
 export function skipTutorial() {
   clearHighlight();
+  cleanupTutorialModals();
   isTutorialRunning = false;
   setTutorialSkipped();
 
@@ -434,6 +701,7 @@ export function skipTutorial() {
 // Zakończenie tutorialu i przyznanie osiągnięcia
 export function finishTutorial() {
   clearHighlight();
+  cleanupTutorialModals();
   isTutorialRunning = false;
 
   window.removeEventListener('click', handleTutorialClickBlock, true);

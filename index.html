@@ -24,7 +24,14 @@
           </div>
           <div class="brand-text-wrap">
             <h1 class="brand-title">Generator grafiku fitness</h1>
-            <span class="tutorial-cup-badge hidden" title="Osiągnięcie: Samouczek ukończony"></span>
+            <div class="trophy-square-badge hidden" id="sidebarTrophyBadge" tabindex="0">
+              <div class="trophy-badge-icon-box" id="sidebarTrophyIcon"></div>
+              <div class="trophy-hover-tooltip" id="sidebarTrophyTooltip">
+                <div class="trophy-tooltip-badge">OSIĄGNIĘCIE</div>
+                <div class="trophy-tooltip-title">Srebrny Puchar Cube</div>
+                <div class="trophy-tooltip-desc">Opis osiągnięcia</div>
+              </div>
+            </div>
           </div>
         </div>
       </header>
@@ -306,6 +313,15 @@
               <button type="button" class="btn-zoom" data-zoom="1.0">100%</button>
             </div>
           </div>
+          <!-- KWADRATOWY KONTENER NA PUCHAR OSIĄGNIĘCIA (PO PRAWEJ STRONIE) -->
+          <div class="trophy-square-badge hidden" id="toolbarTrophyBadge" tabindex="0">
+            <div class="trophy-badge-icon-box" id="toolbarTrophyIcon"></div>
+            <div class="trophy-hover-tooltip" id="toolbarTrophyTooltip">
+              <div class="trophy-tooltip-badge" id="toolbarTrophyBadgeLabel">OSIĄGNIĘCIE</div>
+              <div class="trophy-tooltip-title" id="toolbarTrophyTitle">Srebrny Puchar Cube</div>
+              <div class="trophy-tooltip-desc" id="toolbarTrophyDesc">Opis osiągnięcia</div>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -329,7 +345,14 @@
             </div>
             <h2 class="empty-state-app-title">
               GENERATOR GRAFIKU FITNESS
-              <span class="tutorial-cup-badge hidden" title="Osiągnięcie: Samouczek ukończony"></span>
+              <div class="trophy-square-badge hidden" id="emptyStateTrophyBadge" tabindex="0">
+                <div class="trophy-badge-icon-box" id="emptyStateTrophyIcon"></div>
+                <div class="trophy-hover-tooltip" id="emptyStateTrophyTooltip">
+                  <div class="trophy-tooltip-badge">OSIĄGNIĘCIE</div>
+                  <div class="trophy-tooltip-title">Srebrny Puchar Cube</div>
+                  <div class="trophy-tooltip-desc">Opis osiągnięcia</div>
+                </div>
+              </div>
             </h2>
             <div class="empty-state-message">
               Wczytaj tabelę z pliku, lub importuj ją ze strony eFitness.
@@ -699,6 +722,8 @@
       <div id="tutorialStepDesc" class="tutorial-body-text">
         W tym miejscu możesz wczytać wcześniej zapisany grafik...
       </div>
+      <!-- DYNAMICZNY KONTENER NA ZAPĘTLONE ANIMACJE (KROK 7 i KROK 9) -->
+      <div id="tutorialStepDemoBox" class="tutorial-step-demo-box hidden"></div>
     </div>
     <div class="tutorial-card-footer">
       <button type="button" id="tutorialSkipBtn" class="tutorial-skip-btn">Pomiń cały tutorial</button>

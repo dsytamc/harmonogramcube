@@ -11,6 +11,7 @@ const store = new ScheduleStore();
 if (typeof window !== 'undefined') {
   window.store = store;
   window.renderArtboard = renderArtboard;
+  window.selectTile = (rowId, dayId) => selectTile(rowId, dayId);
 }
 
 // Zmienne stanu UI

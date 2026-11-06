@@ -3627,25 +3627,111 @@ body {
    ========================================================================== */
 
 /* Puchar osiągnięć w nagłówkach */
-.tutorial-cup-badge {
+/* Container kwadratowy dla pucharu osiągnięcia */
+.trophy-square-badge {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  margin-left: 8px;
+  width: 38px;
+  height: 38px;
+  background: #1e1e1e;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 6px;
+  position: relative;
+  cursor: pointer;
+  flex-shrink: 0;
+  margin-left: 10px;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
   vertical-align: middle;
-  transition: transform 0.2s ease;
 }
 
-.tutorial-cup-badge.is-silver .trophy-cup-svg {
+.trophy-square-badge:hover {
+  background: #282828;
+  border-color: rgba(255, 255, 255, 0.36);
+  transform: translateY(-1px);
+}
+
+.trophy-badge-icon-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+.trophy-square-badge.is-silver {
+  border-color: rgba(226, 232, 240, 0.35);
+}
+
+.trophy-square-badge.is-silver .trophy-cup-svg {
   color: #e2e8f0;
-  filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.4));
+  filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.45));
   animation: silverCupAuraPulse 30s ease-in-out infinite;
 }
 
-.tutorial-cup-badge.is-gold .trophy-cup-svg {
+.trophy-square-badge.is-gold {
+  border-color: rgba(246, 190, 0, 0.45);
+}
+
+.trophy-square-badge.is-gold .trophy-cup-svg {
   color: #f6be00;
-  filter: drop-shadow(0 0 6px rgba(246, 190, 0, 0.5));
+  filter: drop-shadow(0 0 6px rgba(246, 190, 0, 0.55));
   animation: goldCupAuraPulse 30s ease-in-out infinite;
+}
+
+/* Tooltip po najechaniu myszką */
+.trophy-hover-tooltip {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  width: 290px;
+  background: #161616;
+  border: 1px solid #393939;
+  border-radius: 6px;
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.85), 0 0 0 1px rgba(255, 255, 255, 0.1);
+  padding: 12px 14px;
+  z-index: 100050;
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(6px);
+  transition: opacity 0.22s ease, transform 0.22s ease, visibility 0.22s;
+  text-align: left;
+}
+
+.trophy-square-badge:hover .trophy-hover-tooltip,
+.trophy-square-badge:focus-visible .trophy-hover-tooltip {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.trophy-tooltip-badge {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+  color: #fdc400;
+}
+
+.trophy-square-badge.is-silver .trophy-tooltip-badge {
+  color: #d1d5db;
+}
+
+.trophy-tooltip-title {
+  font-family: var(--font-display, 'Termina', sans-serif);
+  font-size: 13px;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 6px;
+  line-height: 1.35;
+}
+
+.trophy-tooltip-desc {
+  font-size: 12px;
+  color: #c6c6c6;
+  line-height: 1.45;
 }
 
 @keyframes silverCupAuraPulse {
@@ -3725,7 +3811,7 @@ body {
   position: fixed;
   bottom: 28px;
   right: 28px;
-  width: 380px;
+  width: 460px;
   max-width: calc(100vw - 36px);
   background: #161616;
   border: 1px solid #3d3d3d;
@@ -3736,6 +3822,640 @@ body {
   flex-direction: column;
   overflow: hidden;
   animation: modalPopIn 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Kontener demonstracyjny w karcie samouczka */
+.tutorial-step-demo-box {
+  margin-top: 14px;
+  background: #0d0d0d;
+  border: 1px solid #282828;
+  border-radius: 6px;
+  padding: 12px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.6);
+}
+
+/* ==========================================================================
+   ANIMACJA KROK 7: EDYCJA KAFELKA I WPISANIE DANYCH
+   ========================================================================== */
+.demo-step7-container {
+  display: flex;
+  gap: 12px;
+  align-items: stretch;
+  min-height: 155px;
+  position: relative;
+  font-family: var(--font-ui, 'IBM Plex Sans', sans-serif);
+}
+
+.demo-step7-grid-side {
+  width: 135px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: #141414;
+  border: 1px solid #222;
+  border-radius: 4px;
+  padding: 8px;
+  position: relative;
+}
+
+.demo-step7-col-header {
+  font-size: 10px;
+  font-weight: 700;
+  color: #8d8d8d;
+  margin-bottom: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.demo-step7-target-cell {
+  width: 100%;
+  height: 80px;
+  background: #1b1b1b;
+  border: 1px dashed rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  animation: step7CellState 8.5s ease-in-out infinite;
+}
+
+.demo-step7-empty-slot {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  color: #6e6e6e;
+  font-size: 11px;
+  animation: step7EmptySlotFade 8.5s ease-in-out infinite;
+}
+
+.demo-step7-filled-tile {
+  position: absolute;
+  inset: 0;
+  background: #CB6CE6;
+  color: #1a1a1a;
+  padding: 6px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  animation: step7FilledTileFade 8.5s ease-in-out infinite;
+}
+
+.demo-step7-filled-tile .demo-tile-name {
+  font-family: var(--font-display, 'Termina', sans-serif);
+  font-weight: 700;
+  font-size: 11px;
+  line-height: 1.15;
+  color: #1a1a1a;
+}
+
+.demo-step7-filled-tile .demo-tile-time {
+  font-size: 9px;
+  font-weight: 600;
+  color: rgba(26, 26, 26, 0.85);
+  margin-top: 2px;
+}
+
+.demo-step7-filled-tile .demo-tile-instr {
+  font-size: 9px;
+  color: rgba(26, 26, 26, 0.8);
+  margin-top: 2px;
+}
+
+.demo-step7-form-side {
+  flex: 1;
+  background: #161616;
+  border: 1px solid #2a2a2a;
+  border-radius: 4px;
+  padding: 8px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.demo-step7-form-title {
+  font-size: 10px;
+  font-weight: 700;
+  color: #f6be00;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border-bottom: 1px solid #222;
+  padding-bottom: 3px;
+}
+
+.demo-step7-row {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.demo-step7-label {
+  font-size: 9px;
+  color: #8d8d8d;
+}
+
+.demo-step7-input {
+  height: 20px;
+  background: #111;
+  border: 1px solid #333;
+  border-radius: 2px;
+  padding: 0 5px;
+  font-size: 10px;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.demo-step7-input-name::after {
+  content: "ZUMBA";
+  animation: step7TypeName 8.5s steps(5, end) infinite;
+}
+
+.demo-step7-toggle-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 2px;
+}
+
+.demo-step7-pill-cat {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 6px;
+  border-radius: 10px;
+  font-size: 9px;
+  font-weight: 600;
+  background: #222;
+  color: #888;
+  animation: step7CategoryPill 8.5s ease-in-out infinite;
+}
+
+.demo-step7-cursor {
+  position: absolute;
+  pointer-events: none;
+  z-index: 10;
+  animation: step7CursorMove 8.5s ease-in-out infinite;
+}
+
+@keyframes step7CursorMove {
+  0% {
+    top: 130px;
+    left: 280px;
+    opacity: 0;
+  }
+  8% {
+    top: 55px;
+    left: 65px;
+    opacity: 1;
+    transform: scale(1);
+  }
+  12%, 16% {
+    top: 55px;
+    left: 65px;
+    opacity: 1;
+    transform: scale(0.85);
+  }
+  24% {
+    top: 36px;
+    left: 200px;
+    transform: scale(1);
+  }
+  38% {
+    top: 72px;
+    left: 230px;
+  }
+  50% {
+    top: 116px;
+    left: 195px;
+    transform: scale(0.85);
+  }
+  58% {
+    top: 116px;
+    left: 195px;
+    transform: scale(1);
+  }
+  80% {
+    top: 70px;
+    left: 70px;
+    opacity: 1;
+  }
+  92%, 100% {
+    top: 120px;
+    left: 280px;
+    opacity: 0;
+  }
+}
+
+@keyframes step7CellState {
+  0%, 12% {
+    border-color: rgba(255, 255, 255, 0.2);
+    box-shadow: none;
+  }
+  14%, 58% {
+    border-color: #f6be00;
+    box-shadow: 0 0 10px rgba(246, 190, 0, 0.5);
+  }
+  62%, 92% {
+    border-color: #CB6CE6;
+    box-shadow: 0 0 12px rgba(203, 108, 230, 0.45);
+  }
+  96%, 100% {
+    border-color: rgba(255, 255, 255, 0.2);
+    box-shadow: none;
+  }
+}
+
+@keyframes step7EmptySlotFade {
+  0%, 58% {
+    opacity: 1;
+  }
+  62%, 92% {
+    opacity: 0;
+  }
+  96%, 100% {
+    opacity: 1;
+  }
+}
+
+@keyframes step7FilledTileFade {
+  0%, 58% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  62%, 92% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  96%, 100% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+}
+
+@keyframes step7CategoryPill {
+  0%, 48% {
+    background: #222;
+    color: #888;
+  }
+  52%, 92% {
+    background: #CB6CE6;
+    color: #1a1a1a;
+    box-shadow: 0 0 8px rgba(203, 108, 230, 0.6);
+  }
+  96%, 100% {
+    background: #222;
+    color: #888;
+  }
+}
+
+@keyframes step7TypeName {
+  0%, 22% { content: ""; }
+  24% { content: "Z"; }
+  26% { content: "ZU"; }
+  28% { content: "ZUM"; }
+  30% { content: "ZUMB"; }
+  32%, 92% { content: "ZUMBA"; }
+  96%, 100% { content: ""; }
+}
+
+/* ==========================================================================
+   ANIMACJA KROK 9: PRZENOSZENIE KAFELKA (DRAG & DROP) Z PAUZĄ 3s
+   ========================================================================== */
+.demo-step9-container {
+  min-height: 155px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 8px 4px;
+  font-family: var(--font-ui, 'IBM Plex Sans', sans-serif);
+}
+
+.demo-step9-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  position: relative;
+}
+
+.demo-step9-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.demo-step9-col-title {
+  font-size: 10px;
+  font-weight: 700;
+  color: #71717a;
+  margin-bottom: 5px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.demo-step9-slot {
+  width: 100%;
+  height: 72px;
+  border-radius: 4px;
+  position: relative;
+  background: #141414;
+  border: 1px dashed rgba(255, 255, 255, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.demo-step9-slot-empty-cross {
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.18);
+  font-weight: 300;
+}
+
+.demo-step9-tile-start {
+  position: absolute;
+  inset: 0;
+  background: #CB6CE6;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+  text-align: center;
+  color: #1a1a1a;
+  animation: step9TileStartAnim 8.5s ease-in-out infinite;
+}
+
+.demo-step9-tile-start .demo-tile-name,
+.demo-step9-flying-tile .demo-tile-name,
+.demo-step9-tile-landed .demo-tile-name {
+  font-family: var(--font-display, 'Termina', sans-serif);
+  font-weight: 700;
+  font-size: 11px;
+  line-height: 1.15;
+  color: #1a1a1a;
+}
+
+.demo-step9-tile-start .demo-tile-time,
+.demo-step9-flying-tile .demo-tile-time,
+.demo-step9-tile-landed .demo-tile-time {
+  font-size: 9px;
+  font-weight: 600;
+  color: rgba(26, 26, 26, 0.85);
+  margin-top: 2px;
+}
+
+.demo-step9-tile-start .demo-tile-instr,
+.demo-step9-flying-tile .demo-tile-instr,
+.demo-step9-tile-landed .demo-tile-instr {
+  font-size: 9px;
+  color: rgba(26, 26, 26, 0.8);
+  margin-top: 1px;
+}
+
+.demo-step9-tile-landed {
+  position: absolute;
+  inset: 0;
+  background: #CB6CE6;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+  text-align: center;
+  color: #1a1a1a;
+  animation: step9TileLandedAnim 8.5s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+}
+
+.demo-step9-slot.target-cell {
+  animation: step9TargetSlotHighlight 8.5s ease-in-out infinite;
+}
+
+.demo-step9-cursor-rig {
+  position: absolute;
+  pointer-events: none;
+  z-index: 20;
+  animation: step9CursorRigMove 8.5s ease-in-out infinite;
+}
+
+.demo-step9-flying-tile {
+  width: 90px;
+  height: 60px;
+  background: #CB6CE6;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+  text-align: center;
+  color: #1a1a1a;
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.75), 0 4px 10px rgba(0, 0, 0, 0.4);
+  transform: scale(1.06);
+  position: absolute;
+  top: -24px;
+  left: -12px;
+  animation: step9FlyingTileVisibility 8.5s ease-in-out infinite;
+}
+
+.demo-step9-mouse-icon {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 25;
+}
+
+.demo-step9-float-tooltip {
+  position: absolute;
+  white-space: nowrap;
+  background: #1f1f1f;
+  border: 1px solid #3d3d3d;
+  color: #f4f4f4;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 10px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.7);
+  pointer-events: none;
+}
+
+.demo-step9-float-tooltip.tip-hold {
+  bottom: calc(100% + 8px);
+  left: 0;
+  animation: step9TipHoldAnim 8.5s ease-in-out infinite;
+}
+
+.demo-step9-float-tooltip.tip-move {
+  top: calc(100% + 10px);
+  left: 0;
+  animation: step9TipMoveAnim 8.5s ease-in-out infinite;
+}
+
+@keyframes step9CursorRigMove {
+  0% {
+    top: 75px;
+    left: 20px;
+    opacity: 0;
+  }
+  6% {
+    top: 45px;
+    left: 45px;
+    opacity: 1;
+  }
+  10%, 18% {
+    top: 45px;
+    left: 45px;
+  }
+  24% {
+    top: 40px;
+    left: 140px;
+  }
+  40%, 44% {
+    top: 45px;
+    left: 235px;
+    opacity: 1;
+  }
+  48% {
+    top: 55px;
+    left: 245px;
+    opacity: 0;
+  }
+  94%, 100% {
+    opacity: 0;
+    top: 75px;
+    left: 20px;
+  }
+}
+
+@keyframes step9TileStartAnim {
+  0%, 10% {
+    opacity: 1;
+    transform: rotate(0deg);
+  }
+  12% { transform: rotate(-2deg); }
+  14% { transform: rotate(2deg); }
+  16% { transform: rotate(-2deg); }
+  18% {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  92% {
+    opacity: 0;
+  }
+  96%, 100% {
+    opacity: 1;
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes step9FlyingTileVisibility {
+  0%, 17% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  18%, 42% {
+    opacity: 1;
+    transform: scale(1.06);
+  }
+  43%, 100% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+}
+
+@keyframes step9TargetSlotHighlight {
+  0%, 28% {
+    border-color: rgba(255, 255, 255, 0.15);
+    background: #141414;
+  }
+  32%, 42% {
+    border-color: #f6be00;
+    background: rgba(246, 190, 0, 0.08);
+    box-shadow: 0 0 12px rgba(246, 190, 0, 0.35);
+  }
+  44%, 100% {
+    border-color: rgba(255, 255, 255, 0.15);
+    background: #141414;
+    box-shadow: none;
+  }
+}
+
+@keyframes step9TileLandedAnim {
+  0%, 42% {
+    opacity: 0;
+    transform: scale(1.5);
+  }
+  43% {
+    opacity: 0.8;
+    transform: scale(1.5);
+  }
+  46% {
+    opacity: 1;
+    transform: scale(0.97);
+  }
+  48% {
+    transform: scale(1.02);
+  }
+  50% {
+    transform: scale(1) rotate(-1.5deg);
+  }
+  52% {
+    transform: scale(1) rotate(1.5deg);
+  }
+  54% {
+    transform: scale(1) rotate(0deg);
+  }
+  90% {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
+  95%, 100% {
+    opacity: 0;
+  }
+}
+
+@keyframes step9TipHoldAnim {
+  0%, 5% {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  8%, 17% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  20%, 100% {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+}
+
+@keyframes step9TipMoveAnim {
+  0%, 20% {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  23%, 40% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  43%, 100% {
+    opacity: 0;
+    transform: translateY(4px);
+  }
 }
 
 .tutorial-card-header {
