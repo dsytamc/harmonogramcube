@@ -1,0 +1,57 @@
+
+{
+  "cities": [
+    {
+      "city": "Chełm",
+      "street": "Lubelska 135"
+    },
+    {
+      "city": "Elbląg",
+      "street": "Warszawska 47"
+    },
+    {
+      "city": "Garwolin",
+      "street": "Trakt Lwowski 158A"
+    },
+    {
+      "city": "Jasło",
+      "street": "Lwowska 24"
+    },
+    {
+      "city": "Lublin",
+      "street": "Józefa Mackiewicza 7"
+    },
+    {
+      "city": "Lublin",
+      "street": "Sławinkowska 47"
+    },
+    {
+      "city": "Lublin",
+      "street": "Korpusu Ochrony Pogranicza 2"
+    },
+    {
+      "city": "Łódź",
+      "street": "Unii Lubelskiej 2"
+    },
+    {
+      "city": "Płock",
+      "street": "Miodowa 13A"
+    },
+    {
+      "city": "Radom",
+      "street": "Bolesława Limanowskiego 98"
+    },
+    {
+      "city": "Sochaczew",
+      "street": "Aleja 600-lecia 27A"
+    },
+    {
+      "city": "Świdnik",
+      "street": "Kardynała Stefana Wyszyńskiego 22"
+    },
+    {
+      "city": "Włocławek",
+      "street": "Broniewskiego 5"
+    }
+  ]
+}

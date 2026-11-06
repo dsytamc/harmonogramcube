@@ -1,5 +1,8 @@
 /* Generator Grafiku Fitness Cube - Standalone Bundle (działa bezpośrednio przez file://) */
 !function(t,e){"object"==typeof exports&&"undefined"!=typeof module?e(exports):"function"==typeof define&&define.amd?define(["exports"],e):e((t="undefined"!=typeof globalThis?globalThis:t||self).htmlToImage={})}(this,function(t){"use strict";function d(t,c,u,a){return new(u=u||Promise)(function(n,e){function r(t){try{o(a.next(t))}catch(t){e(t)}}function i(t){try{o(a.throw(t))}catch(t){e(t)}}function o(t){var e;t.done?n(t.value):((e=t.value)instanceof u?e:new u(function(t){t(e)})).then(r,i)}o((a=a.apply(t,c||[])).next())})}function v(r,i){var o,c,u,a={label:0,sent:function(){if(1&u[0])throw u[1];return u[1]},trys:[],ops:[]},s={next:t(0),throw:t(1),return:t(2)};return"function"==typeof Symbol&&(s[Symbol.iterator]=function(){return this}),s;function t(n){return function(t){var e=[n,t];if(o)throw new TypeError("Generator is already executing.");for(;s&&(e[s=0]&&(a=0)),a;)try{if(o=1,c&&(u=2&e[0]?c.return:e[0]?c.throw||((u=c.return)&&u.call(c),0):c.next)&&!(u=u.call(c,e[1])).done)return u;switch(c=0,(e=u?[2&e[0],u.value]:e)[0]){case 0:case 1:u=e;break;case 4:return a.label++,{value:e[1],done:!1};case 5:a.label++,c=e[1],e=[0];continue;case 7:e=a.ops.pop(),a.trys.pop();continue;default:if(!((u=0<(u=a.trys).length&&u[u.length-1])||6!==e[0]&&2!==e[0])){a=0;continue}if(3===e[0]&&(!u||e[1]>u[0]&&e[1]<u[3])){a.label=e[1];break}if(6===e[0]&&a.label<u[1]){a.label=u[1],u=e;break}if(u&&a.label<u[2]){a.label=u[2],a.ops.push(e);break}u[2]&&a.ops.pop(),a.trys.pop();continue}e=i.call(r,a)}catch(t){e=[6,t],c=0}finally{o=u=0}if(5&e[0])throw e[1];return{value:e[0]?e[1]:void 0,done:!0}}}}var a;a=0;function l(t){for(var e=[],n=0,r=t.length;n<r;n++)e.push(t[n]);return e}function o(t,e){t=(t.ownerDocument.defaultView||window).getComputedStyle(t).getPropertyValue(e);return t?parseFloat(t.replace("px","")):0}function f(t,e){var n,r,i;return{width:(e=void 0===e?{}:e).width||(r=o(n=t,"border-left-width"),i=o(n,"border-right-width"),n.clientWidth+r+i),height:e.height||(r=o(n=t,"border-top-width"),i=o(n,"border-bottom-width"),n.clientHeight+r+i)}}var g=16384;function p(r){return new Promise(function(t,e){var n=new Image;n.decode=function(){return t(n)},n.onload=function(){return t(n)},n.onerror=e,n.crossOrigin="anonymous",n.decoding="async",n.src=r})}function s(r,i,o){return d(this,void 0,void 0,function(){var e,n;return v(this,function(t){return n="http://www.w3.org/2000/svg",e=document.createElementNS(n,"svg"),n=document.createElementNS(n,"foreignObject"),e.setAttribute("width","".concat(i)),e.setAttribute("height","".concat(o)),e.setAttribute("viewBox","0 0 ".concat(i," ").concat(o)),n.setAttribute("width","100%"),n.setAttribute("height","100%"),n.setAttribute("x","0"),n.setAttribute("y","0"),n.setAttribute("externalResourcesRequired","true"),e.appendChild(n),n.appendChild(r),[2,function(e){return d(this,void 0,void 0,function(){return v(this,function(t){return[2,Promise.resolve().then(function(){return(new XMLSerializer).serializeToString(e)}).then(encodeURIComponent).then(function(t){return"data:image/svg+xml;charset=utf-8,".concat(t)})]})})}(e)]})})}var h=function(t,e){if(t instanceof e)return!0;t=Object.getPrototypeOf(t);return null!==t&&(t.constructor.name===e.name||h(t,e))};function m(t,e,n){var r,i,o=window.getComputedStyle(t,n),c=o.getPropertyValue("content");if(""!==c&&"none"!==c){a+=1;var c="u".concat("0000".concat((Math.random()*Math.pow(36,4)<<0).toString(36)).slice(-4)).concat(a);try{e.className="".concat(e.className," ").concat(c)}catch(t){return}var u=document.createElement("style");u.appendChild((n=n,o=o,c=".".concat(c=c,":").concat(n),n=o.cssText?(i=(n=o).getPropertyValue("content"),"".concat(n.cssText," content: '").concat(i.replace(/'|"/g,""),"';")):l(r=o).map(function(t){var e=r.getPropertyValue(t),n=r.getPropertyPriority(t);return"".concat(t,": ").concat(e).concat(n?" !important":"",";")}).join(" "),document.createTextNode("".concat(c,"{").concat(n,"}")))),e.appendChild(u)}}var e="application/font-woff",n="image/jpeg",r={woff:e,woff2:e,ttf:"application/font-truetype",eot:"application/vnd.ms-fontobject",png:"image/png",jpg:n,jpeg:n,gif:"image/gif",tiff:"image/tiff",svg:"image/svg+xml",webp:"image/webp"};function w(t){t=((t=/\.([^./]*?)$/g.exec(t))?t[1]:"").toLowerCase();return r[t]||""}function b(t){return-1!==t.search(/^(data:)/)}function y(t,e){return"data:".concat(e,";base64,").concat(t)}function x(e,n,o){return d(this,void 0,void 0,function(){var r,i;return v(this,function(t){switch(t.label){case 0:return[4,fetch(e,n)];case 1:if(404===(r=t.sent()).status)throw new Error('Resource "'.concat(r.url,'" not found'));return[4,r.blob()];case 2:return i=t.sent(),[2,new Promise(function(t,e){var n=new FileReader;n.onerror=e,n.onloadend=function(){try{t(o({res:r,result:n.result}))}catch(t){e(t)}},n.readAsDataURL(i)})]}})})}var S={};function E(s,l,h){return d(this,void 0,void 0,function(){var o,c,u,a;return v(this,function(t){switch(t.label){case 0:if(e=s,n=l,r=h.includeQueryParams,i=e.replace(/\?.*/,""),/ttf|otf|eot|woff2?/i.test(i=r?e:i)&&(i=i.replace(/.*\//,"")),o=n?"[".concat(n,"]").concat(i):i,null!=S[o])return[2,S[o]];h.cacheBust&&(s+=(/\?/.test(s)?"&":"?")+(new Date).getTime()),t.label=1;case 1:return t.trys.push([1,3,,4]),[4,x(s,h.fetchRequestInit,function(t){var e=t.res,t=t.result;return l=l||(e.headers.get("Content-Type")||""),t.split(/,/)[1]})];case 2:return c=t.sent(),c=y(c,l),[3,4];case 3:return u=t.sent(),c=h.imagePlaceholder||"",a="Failed to fetch resource: ".concat(s),(a=u?"string"==typeof u?u:u.message:a)&&console.warn(a),[3,4];case 4:return[2,S[o]=c]}var e,n,r,i})})}function C(s,e,n){return d(this,void 0,void 0,function(){return v(this,function(t){return n||!e.filter||e.filter(s)?[2,Promise.resolve(s).then(function(t){return function(e,n){return d(this,void 0,void 0,function(){return v(this,function(t){return h(e,HTMLCanvasElement)?[2,function(n){return d(this,void 0,void 0,function(){var e;return v(this,function(t){return"data:,"===(e=n.toDataURL())?[2,n.cloneNode(!1)]:[2,p(e)]})})}(e)]:h(e,HTMLVideoElement)?[2,function(r,i){return d(this,void 0,void 0,function(){var e,n;return v(this,function(t){switch(t.label){case 0:return r.currentSrc?(n=document.createElement("canvas"),e=n.getContext("2d"),n.width=r.clientWidth,n.height=r.clientHeight,null!=e&&e.drawImage(r,0,0,n.width,n.height),[2,p(n.toDataURL())]):(e=r.poster,n=w(e),[4,E(e,n,i)]);case 1:return[2,p(t.sent())]}})})}(e,n)]:h(e,HTMLIFrameElement)?[2,function(e){var n;return d(this,void 0,void 0,function(){return v(this,function(t){switch(t.label){case 0:return t.trys.push([0,3,,4]),null!=(n=null==e?void 0:e.contentDocument)&&n.body?[4,C(e.contentDocument.body,{},!0)]:[3,2];case 1:return[2,t.sent()];case 2:return[3,4];case 3:return t.sent(),[3,4];case 4:return[2,e.cloneNode(!1)]}})})}(e)]:[2,e.cloneNode(!1)]})})}(t,e)}).then(function(t){return function(n,r,i){var o;return d(this,void 0,void 0,function(){var e;return v(this,function(t){switch(t.label){case 0:return e=[],0===(e=null!=n.tagName&&"SLOT"===n.tagName.toUpperCase()&&n.assignedNodes?l(n.assignedNodes()):h(n,HTMLIFrameElement)&&null!=(o=n.contentDocument)&&o.body?l(n.contentDocument.body.childNodes):l((null!=(o=n.shadowRoot)?o:n).childNodes)).length||h(n,HTMLVideoElement)?[2,r]:[4,e.reduce(function(t,e){return t.then(function(){return C(e,i)}).then(function(t){t&&r.appendChild(t)})},Promise.resolve())];case 1:return t.sent(),[2,r]}})})}(s,t,e)}).then(function(t){return e=s,h(t=t,Element)&&(o=e,(a=(c=t).style)&&((u=window.getComputedStyle(o)).cssText?(a.cssText=u.cssText,a.transformOrigin=u.transformOrigin):l(u).forEach(function(t){var e,n=u.getPropertyValue(t);"font-size"===t&&n.endsWith("px")&&(e=Math.floor(parseFloat(n.substring(0,n.length-2)))-.1,n="".concat(e,"px")),h(o,HTMLIFrameElement)&&"display"===t&&"inline"===n&&(n="block"),"d"===t&&c.getAttribute("d")&&(n="path(".concat(c.getAttribute("d"),")")),a.setProperty(t,n,u.getPropertyPriority(t))})),m(r=e,i=t,":before"),m(r,i,":after"),r=t,h(i=e,HTMLTextAreaElement)&&(r.innerHTML=i.value),h(i,HTMLInputElement)&&r.setAttribute("value",i.value),r=t,h(n=e,HTMLSelectElement)&&(r=Array.from(r.children).find(function(t){return n.value===t.getAttribute("value")}))&&r.setAttribute("selected","")),t;var e,n,r,i,o,c,u,a}).then(function(t){return function(h,f){return d(this,void 0,void 0,function(){var e,n,r,i,o,c,u,a,s,l;return v(this,function(t){switch(t.label){case 0:if(0===(e=h.querySelectorAll?h.querySelectorAll("use"):[]).length)return[2,h];n={},l=0,t.label=1;case 1:return l<e.length?(a=e[l],(a=a.getAttribute("xlink:href"))?(u=h.querySelector(a),r=document.querySelector(a),u||!r||n[a]?[3,3]:(i=n,o=a,[4,C(r,f,!0)])):[3,3]):[3,4];case 2:i[o]=t.sent(),t.label=3;case 3:return l++,[3,1];case 4:if((c=Object.values(n)).length){for(u="http://www.w3.org/1999/xhtml",(a=document.createElementNS(u,"svg")).setAttribute("xmlns",u),a.style.position="absolute",a.style.width="0",a.style.height="0",a.style.overflow="hidden",a.style.display="none",s=document.createElementNS(u,"defs"),a.appendChild(s),l=0;l<c.length;l++)s.appendChild(c[l]);h.appendChild(a)}return[2,h]}})})}(t,e)})]:[2,null]})})}var P=/url\((['"]?)([^'"]+?)\1\)/g,R=/url\([^)]+\)\s*format\((["']?)([^"']+)\1\)/g,T=/src:\s*(?:url\([^)]+\)\s*format\([^)]+\)[,;]\s*)+/g;function A(t){return-1!==t.search(P)}function c(o,c,u){return d(this,void 0,void 0,function(){var n;return v(this,function(t){return A(o)?(e=o,i=u.preferredFontFormat,n=i?e.replace(T,function(t){for(;;){var e=R.exec(t)||[],n=e[0],e=e[2];if(!e)return"";if(e===i)return"src: ".concat(n,";")}}):e,r=[],n.replace(P,function(t,e,n){return r.push(n),t}),[2,r.filter(function(t){return!b(t)}).reduce(function(t,e){return t.then(function(t){return function(c,u,a,s,l){return d(this,void 0,void 0,function(){var n,r,i,o;return v(this,function(t){switch(t.label){case 0:return t.trys.push([0,5,,6]),n=a?function(t,e){if(t.match(/^[a-z]+:\/\//i))return t;if(t.match(/^\/\//))return window.location.protocol+t;if(t.match(/^[a-z]+:/i))return t;var n=document.implementation.createHTMLDocument(),r=n.createElement("base"),i=n.createElement("a");return n.head.appendChild(r),n.body.appendChild(i),e&&(r.href=e),i.href=t,i.href}(u,a):u,r=w(u),i=void 0,l?[4,l(n)]:[3,2];case 1:return o=t.sent(),i=y(o,r),[3,4];case 2:return[4,E(n,r,s)];case 3:i=t.sent(),t.label=4;case 4:return[2,c.replace((e=u.replace(/([.*+?^${}()|\[\]\/\\])/g,"\\$1"),new RegExp("(url\\(['\"]?)(".concat(e,")(['\"]?\\))"),"g")),"$1".concat(i,"$3"))];case 5:return t.sent(),[3,6];case 6:return[2,c]}var e})})}(t,e,c,u)})},Promise.resolve(n))]):[2,o];var r,e,i})})}function i(n,r,i){var o;return d(this,void 0,void 0,function(){var e;return v(this,function(t){switch(t.label){case 0:return(e=null==(o=r.style)?void 0:o.getPropertyValue(n))?[4,c(e,null,i)]:[3,2];case 1:return e=t.sent(),r.style.setProperty(n,e,r.style.getPropertyPriority(n)),[2,!0];case 2:return[2,!1]}})})}function L(e,n){return d(this,void 0,void 0,function(){return v(this,function(t){switch(t.label){case 0:return h(e,Element)?[4,function(e,n){return d(this,void 0,void 0,function(){return v(this,function(t){switch(t.label){case 0:return[4,i("background",e,n)];case 1:return t.sent()?[3,3]:[4,i("background-image",e,n)];case 2:t.sent(),t.label=3;case 3:return[4,i("mask",e,n)];case 4:return t.sent()?[3,6]:[4,i("mask-image",e,n)];case 5:t.sent(),t.label=6;case 6:return[2]}})})}(e,n)]:[3,4];case 1:return t.sent(),[4,function(i,o){return d(this,void 0,void 0,function(){var n,e,r;return v(this,function(t){switch(t.label){case 0:return(n=h(i,HTMLImageElement))&&!b(i.src)||h(i,SVGImageElement)&&!b(i.href.baseVal)?[4,E(e=n?i.src:i.href.baseVal,w(e),o)]:[2];case 1:return r=t.sent(),[4,new Promise(function(t,e){i.onload=t,i.onerror=e;e=i;e.decode&&(e.decode=t),"lazy"===e.loading&&(e.loading="eager"),n?(i.srcset="",i.src=r):i.href.baseVal=r})];case 2:return t.sent(),[2]}})})}(e,n)];case 2:return t.sent(),[4,function(n,r){return d(this,void 0,void 0,function(){var e;return v(this,function(t){switch(t.label){case 0:return e=l(n.childNodes),e=e.map(function(t){return L(t,r)}),[4,Promise.all(e).then(function(){return n})];case 1:return t.sent(),[2]}})})}(e,n)];case 3:t.sent(),t.label=4;case 4:return[2]}})})}var u={};function N(r){return d(this,void 0,void 0,function(){var e,n;return v(this,function(t){switch(t.label){case 0:return null!=(e=u[r])?[2,e]:[4,fetch(r)];case 1:return[4,t.sent().text()];case 2:return n=t.sent(),e={url:r,cssText:n},[2,u[r]=e]}})})}function k(c,u){return d(this,void 0,void 0,function(){var r,i,e,o=this;return v(this,function(t){return r=c.cssText,i=/url\(["']?([^"')]+)["']?\)/g,e=r.match(/url\([^)]+\)/g)||[],e=e.map(function(n){return d(o,void 0,void 0,function(){var e;return v(this,function(t){return[2,x(e=(e=n.replace(i,"$1")).startsWith("https://")?e:new URL(e,c.url).href,u.fetchRequestInit,function(t){t=t.result;return r=r.replace(n,"url(".concat(t,")")),[n,t]})]})})}),[2,Promise.all(e).then(function(){return r})]})})}function I(t){if(null==t)return[];for(var e=[],n=t.replace(/(\/\*[\s\S]*?\*\/)/gi,""),r=new RegExp("((@.*?keyframes [\\s\\S]*?){([\\s\\S]*?}\\s*?)})","gi");null!==(i=r.exec(n));)e.push(i[0]);for(var i,n=n.replace(r,""),o=/@import[\s\S]*?url\([^)]*\)[\s\S]*?;/gi,c=new RegExp("((\\s*?(?:\\/\\*[\\s\\S]*?\\*\\/)?\\s*?@media[\\s\\S]*?){([\\s\\S]*?)}\\s*?})|(([\\s\\S]*?){([\\s\\S]*?)})","gi");;){if(null===(i=o.exec(n))){if(null===(i=c.exec(n)))break;o.lastIndex=c.lastIndex}else c.lastIndex=o.lastIndex;e.push(i[0])}return e}function V(e,n){return d(this,void 0,void 0,function(){return v(this,function(t){switch(t.label){case 0:if(null==e.ownerDocument)throw new Error("Provided element is not within a Document");return[4,function(o,c){return d(this,void 0,void 0,function(){var n,i;return v(this,function(t){return n=[],i=[],o.forEach(function(r){if("cssRules"in r)try{l(r.cssRules||[]).forEach(function(t,e){var n;t.type===CSSRule.IMPORT_RULE&&(n=e+1,e=N(t.href).then(function(t){return k(t,c)}).then(function(t){return I(t).forEach(function(e){try{r.insertRule(e,e.startsWith("@import")?n+=1:r.cssRules.length)}catch(t){console.error("Error inserting rule from remote css",{rule:e,error:t})}})}).catch(function(t){console.error("Error loading remote css",t.toString())}),i.push(e))})}catch(t){var e=o.find(function(t){return null==t.href})||document.styleSheets[0];null!=r.href&&i.push(N(r.href).then(function(t){return k(t,c)}).then(function(t){return I(t).forEach(function(t){e.insertRule(t,r.cssRules.length)})}).catch(function(t){console.error("Error loading remote stylesheet",t)})),console.error("Error inlining remote css file",t)}}),[2,Promise.all(i).then(function(){return o.forEach(function(e){if("cssRules"in e)try{l(e.cssRules||[]).forEach(function(t){n.push(t)})}catch(t){console.error("Error while reading CSS rules from ".concat(e.href),t)}}),n})]})})}(l(e.ownerDocument.styleSheets),n)];case 1:return[2,t.sent().filter(function(t){return t.type===CSSRule.FONT_FACE_RULE}).filter(function(t){return A(t.style.getPropertyValue("src"))})]}})})}function D(n,r){return d(this,void 0,void 0,function(){var e;return v(this,function(t){switch(t.label){case 0:return[4,V(n,r)];case 1:return e=t.sent(),[4,Promise.all(e.map(function(t){var e=t.parentStyleSheet?t.parentStyleSheet.href:null;return c(t.cssText,e,r)}))];case 2:return[2,t.sent().join("\n")]}})})}function M(u,a){return void 0===a&&(a={}),d(this,void 0,void 0,function(){var i,o,c;return v(this,function(t){switch(t.label){case 0:return o=f(u,a),i=o.width,o=o.height,[4,C(u,a,!0)];case 1:return[4,function(o,c){return d(this,void 0,void 0,function(){var e,n,r,i;return v(this,function(t){switch(t.label){case 0:return null==c.fontEmbedCSS?[3,1]:(e=c.fontEmbedCSS,[3,5]);case 1:return c.skipFonts?(n=null,[3,4]):[3,2];case 2:return[4,D(o,c)];case 3:n=t.sent(),t.label=4;case 4:e=n,t.label=5;case 5:return(i=e)&&(r=document.createElement("style"),i=document.createTextNode(i),r.appendChild(i),o.firstChild?o.insertBefore(r,o.firstChild):o.appendChild(r)),[2]}})})}(c=t.sent(),a)];case 2:return t.sent(),[4,L(c,a)];case 3:return t.sent(),e=a,n=c.style,e.backgroundColor&&(n.backgroundColor=e.backgroundColor),e.width&&(n.width="".concat(e.width,"px")),e.height&&(n.height="".concat(e.height,"px")),null!=(r=e.style)&&Object.keys(r).forEach(function(t){n[t]=r[t]}),[4,s(c,i,o)];case 4:return[2,t.sent()]}var e,n,r})})}function H(l,h){return void 0===h&&(h={}),d(this,void 0,void 0,function(){var n,r,i,o,c,u,a,s;return v(this,function(t){switch(t.label){case 0:return r=f(l,h),n=r.width,r=r.height,[4,M(l,h)];case 1:return[4,p(t.sent())];case 2:return i=t.sent(),o=document.createElement("canvas"),c=o.getContext("2d"),u=h.pixelRatio||function(){var t;try{e=process}catch(t){}var e=e&&e.env?e.env.devicePixelRatio:null;return e&&(t=parseInt(e,10),Number.isNaN(t)&&(t=1)),t||window.devicePixelRatio||1}(),a=h.canvasWidth||n,s=h.canvasHeight||r,o.width=a*u,o.height=s*u,h.skipAutoScale||((e=o).width>g||e.height>g)&&(e.width>g&&e.height>g?e.width>e.height?(e.height*=g/e.width,e.width=g):(e.width*=g/e.height,e.height=g):e.width>g?(e.height*=g/e.width,e.width=g):(e.width*=g/e.height,e.height=g)),o.style.width="".concat(a),o.style.height="".concat(s),h.backgroundColor&&(c.fillStyle=h.backgroundColor,c.fillRect(0,0,o.width,o.height)),c.drawImage(i,0,0,o.width,o.height),[2,o]}var e})})}t.getFontEmbedCSS=function(e,n){return void 0===n&&(n={}),d(this,void 0,void 0,function(){return v(this,function(t){return[2,D(e,n)]})})},t.toBlob=function(e,n){return void 0===n&&(n={}),d(this,void 0,void 0,function(){return v(this,function(t){switch(t.label){case 0:return[4,H(e,n)];case 1:return[4,(o=t.sent(),void 0===c&&(c={}),o.toBlob?new Promise(function(t){o.toBlob(t,c.type||"image/png",c.quality||1)}):new Promise(function(t){for(var e=window.atob(o.toDataURL(c.type||void 0,c.quality||void 0).split(",")[1]),n=e.length,r=new Uint8Array(n),i=0;i<n;i+=1)r[i]=e.charCodeAt(i);t(new Blob([r],{type:c.type||"image/png"}))}))];case 2:return[2,t.sent()]}var o,c})})},t.toCanvas=H,t.toJpeg=function(e,n){return void 0===n&&(n={}),d(this,void 0,void 0,function(){return v(this,function(t){switch(t.label){case 0:return[4,H(e,n)];case 1:return[2,t.sent().toDataURL("image/jpeg",n.quality||1)]}})})},t.toPixelData=function(r,i){return void 0===i&&(i={}),d(this,void 0,void 0,function(){var e,n;return v(this,function(t){switch(t.label){case 0:return n=f(r,i),e=n.width,n=n.height,[4,H(r,i)];case 1:return[2,t.sent().getContext("2d").getImageData(0,0,e,n).data]}})})},t.toPng=function(e,n){return void 0===n&&(n={}),d(this,void 0,void 0,function(){return v(this,function(t){switch(t.label){case 0:return[4,H(e,n)];case 1:return[2,t.sent().toDataURL()]}})})},t.toSvg=M});
+if (typeof window !== 'undefined' && typeof htmlToImage !== 'undefined') {
+  window.htmlToImage = htmlToImage;
+}
 
 (function() {
 'use strict';
@@ -2669,7 +2672,8 @@ async function exportArtboardToPng(artboardEl, state, statusCallback = null, cus
   try {
     if (statusCallback) statusCallback(`Renderowanie pliku PNG (${targetWidth} × ${targetHeight} px)...`);
 
-    if (typeof window.htmlToImage === 'undefined') {
+    const hti = window.htmlToImage || (typeof globalThis !== 'undefined' ? globalThis.htmlToImage : null);
+    if (!hti) {
       throw new Error('Biblioteka html-to-image nie została załadowana.');
     }
 
@@ -2687,7 +2691,7 @@ async function exportArtboardToPng(artboardEl, state, statusCallback = null, cus
     };
 
     // Renderowanie do blob PNG
-    const blob = await window.htmlToImage.toBlob(artboardEl, options);
+    const blob = await hti.toBlob(artboardEl, options);
 
     if (!blob) {
       throw new Error('Nie udało się wygenerować obrazu PNG.');
@@ -2763,7 +2767,8 @@ async function exportArtboardToPdf(artboardEl, state, statusCallback = null, cus
   try {
     if (statusCallback) statusCallback(`Generowanie spłaszczonego rastra druku 300 DPI (${targetPxWidth}×${targetPxHeight} px)...`);
 
-    if (typeof window.htmlToImage === 'undefined') {
+    const hti = window.htmlToImage || (typeof globalThis !== 'undefined' ? globalThis.htmlToImage : null);
+    if (!hti) {
       throw new Error('Biblioteka html-to-image nie została załadowana.');
     }
 
@@ -2781,7 +2786,7 @@ async function exportArtboardToPdf(artboardEl, state, statusCallback = null, cus
     };
 
     // Renderujemy do wysokorozdzielczego JPEG w pamięci
-    const jpegDataUrl = await window.htmlToImage.toJpeg(artboardEl, options);
+    const jpegDataUrl = await hti.toJpeg(artboardEl, options);
     if (!jpegDataUrl || !jpegDataUrl.startsWith('data:image/jpeg;base64,')) {
       throw new Error('Nie udało się wygenerować rastra dla dokumentu PDF.');
     }
@@ -2911,7 +2916,4415 @@ function triggerDownload(blob, filename) {
 
 /* ===== END FILE: src/exporter.js ===== */
 
+/* ===== START FILE: src/cloudSeedData.js ===== */
+// Wbudowany katalog początkowy chmury (fallback dla trybu offline / file://)
+const CLOUD_INDEX_SEED = {
+  "version": "1.0",
+  "updatedAt": "2026-11-06T09:03:52.419Z",
+  "locations": [
+    {
+      "id": "chelm-lubelska-135",
+      "city": "Chełm",
+      "street": "Lubelska 135",
+      "saves": [
+        {
+          "id": "grafik_cube_chelm",
+          "filename": "grafik_cube_chelm.json",
+          "name": "Grafik Cube Chełm",
+          "updatedAt": "2026-10-20T08:25:49.187Z",
+          "size": 6236
+        }
+      ]
+    },
+    {
+      "id": "elblag-warszawska-47",
+      "city": "Elbląg",
+      "street": "Warszawska 47",
+      "saves": [
+        {
+          "id": "grafik_cube_elblag",
+          "filename": "grafik_cube_elblag.json",
+          "name": "Grafik Cube Elbląg",
+          "updatedAt": "2026-10-19T13:12:08.402Z",
+          "size": 3153
+        }
+      ]
+    },
+    {
+      "id": "garwolin-trakt-lwowski-158a",
+      "city": "Garwolin",
+      "street": "Trakt Lwowski 158A",
+      "saves": [
+        {
+          "id": "grafik_fitness___cube_garwolin",
+          "filename": "grafik_fitness___cube_garwolin.json",
+          "name": "Grafik Cube Garwolin",
+          "updatedAt": "2026-10-14T06:54:22.367Z",
+          "size": 5445
+        }
+      ]
+    },
+    {
+      "id": "jaslo-lwowska-24",
+      "city": "Jasło",
+      "street": "Lwowska 24",
+      "saves": [
+        {
+          "id": "grafik_cube_jaslo",
+          "filename": "grafik_cube_jaslo.json",
+          "name": "Grafik Cube Jasło",
+          "updatedAt": "2026-10-14T13:24:27.751Z",
+          "size": 6014
+        }
+      ]
+    },
+    {
+      "id": "lublin-jozefa-mackiewicza-7",
+      "city": "Lublin",
+      "street": "Józefa Mackiewicza 7",
+      "saves": [
+        {
+          "id": "grafik_cube_czechow",
+          "filename": "grafik_cube_czechow.json",
+          "name": "Grafik Cube Czechów",
+          "updatedAt": "2026-11-03T08:20:09.940Z",
+          "size": 6885
+        }
+      ]
+    },
+    {
+      "id": "lublin-slawinkowska-47",
+      "city": "Lublin",
+      "street": "Sławinkowska 47",
+      "saves": [
+        {
+          "id": "grafik_cube_slawin",
+          "filename": "grafik_cube_slawin.json",
+          "name": "Grafik Cube Sławin",
+          "updatedAt": "2026-10-28T09:17:14.948Z",
+          "size": 8943
+        }
+      ]
+    },
+    {
+      "id": "lublin-korpusu-ochrony-pogranicza-2",
+      "city": "Lublin",
+      "street": "Korpusu Ochrony Pogranicza 2",
+      "saves": [
+        {
+          "id": "grafik_cube_zelwerowicza",
+          "filename": "grafik_cube_zelwerowicza.json",
+          "name": "Grafik Cube Zelwerowicza",
+          "updatedAt": "2026-10-20T09:35:57.300Z",
+          "size": 6767
+        }
+      ]
+    },
+    {
+      "id": "lodz-unii-lubelskiej-2",
+      "city": "Łódź",
+      "street": "Unii Lubelskiej 2",
+      "saves": [
+        {
+          "id": "grafik_cube_lodz",
+          "filename": "grafik_cube_lodz.json",
+          "name": "Grafik Cube Łódź",
+          "updatedAt": "2026-10-14T13:28:06.155Z",
+          "size": 6298
+        }
+      ]
+    },
+    {
+      "id": "plock-miodowa-13a",
+      "city": "Płock",
+      "street": "Miodowa 13A",
+      "saves": [
+        {
+          "id": "grafik_cube_plock",
+          "filename": "grafik_cube_plock.json",
+          "name": "Grafik Cube Płock",
+          "updatedAt": "2026-10-28T08:05:14.357Z",
+          "size": 5567
+        }
+      ]
+    },
+    {
+      "id": "radom-boleslawa-limanowskiego-98",
+      "city": "Radom",
+      "street": "Bolesława Limanowskiego 98",
+      "saves": []
+    },
+    {
+      "id": "sochaczew-aleja-600-lecia-27a",
+      "city": "Sochaczew",
+      "street": "Aleja 600-lecia 27A",
+      "saves": [
+        {
+          "id": "grafik_cube_sochaczew",
+          "filename": "grafik_cube_sochaczew.json",
+          "name": "Grafik Cube Sochaczew",
+          "updatedAt": "2026-10-19T06:44:08.862Z",
+          "size": 5960
+        }
+      ]
+    },
+    {
+      "id": "swidnik-kardynala-stefana-wyszynskiego-22",
+      "city": "Świdnik",
+      "street": "Kardynała Stefana Wyszyńskiego 22",
+      "saves": [
+        {
+          "id": "grafik_cube_swidnik",
+          "filename": "grafik_cube_swidnik.json",
+          "name": "Grafik Cube Świdnik",
+          "updatedAt": "2026-10-14T13:30:07.862Z",
+          "size": 6419
+        }
+      ]
+    },
+    {
+      "id": "wloclawek-broniewskiego-5",
+      "city": "Włocławek",
+      "street": "Broniewskiego 5",
+      "saves": [
+        {
+          "id": "grafik_cube_wloclawek",
+          "filename": "grafik_cube_wloclawek.json",
+          "name": "Grafik Cube Włocławek",
+          "updatedAt": "2026-10-21T11:00:49.673Z",
+          "size": 7391
+        },
+        {
+          "id": "grafik_cube_wloclawek_doulotki",
+          "filename": "grafik_cube_wloclawek_doulotki.json",
+          "name": "Grafik Cube Włocławek (Do ulotki)",
+          "updatedAt": "2026-10-21T11:04:29.848Z",
+          "size": 6788
+        }
+      ]
+    }
+  ]
+};
+
+const CLOUD_FILES_SEED = {
+  "chelm-lubelska-135/grafik_cube_chelm.json": {
+    "version": "1.0",
+    "gymTitle": "GRAFIK FITNESS - CUBE CHEŁM",
+    "rows": [
+      {
+        "id": "row_1",
+        "type": "hour",
+        "time": "8:30",
+        "note": ""
+      },
+      {
+        "id": "row_2",
+        "type": "hour",
+        "time": "9:00",
+        "note": ""
+      },
+      {
+        "id": "row_3",
+        "type": "hour",
+        "time": "10:00",
+        "note": ""
+      },
+      {
+        "id": "row_4",
+        "type": "hour",
+        "time": "10:30",
+        "note": ""
+      },
+      {
+        "id": "row_1791963357348_duve",
+        "type": "break",
+        "label": ""
+      },
+      {
+        "id": "row_5",
+        "type": "hour",
+        "time": "16:15",
+        "note": ""
+      },
+      {
+        "id": "row_6",
+        "type": "hour",
+        "time": "17:00",
+        "note": ""
+      },
+      {
+        "id": "row_1792484215053_cii6",
+        "type": "hour",
+        "time": "18:00",
+        "note": "siłownia"
+      },
+      {
+        "id": "row_8",
+        "type": "hour",
+        "time": "18:00",
+        "note": "sala fitness"
+      },
+      {
+        "id": "row_10",
+        "type": "hour",
+        "time": "19:00",
+        "note": ""
+      },
+      {
+        "id": "row_12",
+        "type": "hour",
+        "time": "20:00",
+        "note": ""
+      }
+    ],
+    "tiles": {
+      "row_1_tue": {
+        "name": "AKTYWNY\nSENIOR",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Marta Dumin",
+        "categories": [
+          "wzmacniajace"
+        ]
+      },
+      "row_1_thu": {
+        "name": "AKTYWNY\nSENIOR",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Marta Dumin",
+        "categories": [
+          "wzmacniajace"
+        ]
+      },
+      "row_2_sat": {
+        "name": "PŁASKI\nBRZUCH",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Nikola Kołodyńska",
+        "categories": [
+          "modelujace"
+        ]
+      },
+      "row_3_sat": {
+        "name": "CARDIO \n+ STRETCH",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Edyta Wróbel",
+        "categories": [
+          "spalajace"
+        ]
+      },
+      "row_4_sat": {
+        "name": "POŚLADKI 2.0",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Edyta Wróbel",
+        "categories": [
+          "modelujace"
+        ]
+      },
+      "row_5_thu": {
+        "name": "SPOKOJNE\nWZMACNIANIE",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Marta Dumin",
+        "categories": [
+          "wzmacniajace"
+        ]
+      },
+      "row_6_mon": {
+        "name": "SEXY PUPA",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Nikola Kołodyńska",
+        "categories": [
+          "modelujace"
+        ]
+      },
+      "row_6_fri": {
+        "name": "SZTANGI",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Nikola Kołodyńska",
+        "categories": [
+          "wzmacniajace"
+        ]
+      },
+      "row_8_mon": {
+        "name": "BUP",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Magdalena Zańko",
+        "categories": [
+          "modelujace"
+        ]
+      },
+      "row_8_wed": {
+        "name": "SPALANIE",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Magdalena Zańko",
+        "categories": [
+          "spalajace"
+        ]
+      },
+      "row_8_fri": {
+        "name": "BUP",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Magdalena Zańko",
+        "categories": [
+          "modelujace"
+        ]
+      },
+      "row_10_mon": {
+        "name": "BODY SHAPE\n- MINI BAND WORKOUT",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Sylwia Kossowska",
+        "categories": [
+          "modelujace"
+        ]
+      },
+      "row_10_wed": {
+        "name": "MODELOWANIE\nSYLWETKI",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Magdalena Zańko",
+        "categories": [
+          "modelujace"
+        ]
+      },
+      "row_10_fri": {
+        "name": "FIT BALL",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Sylwia Kossowska",
+        "categories": [
+          "modelujace"
+        ]
+      },
+      "row_12_mon": {
+        "name": "STRETCH\n& ROLLER",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Sylwia Kossowska",
+        "categories": [
+          "rozciagajace"
+        ]
+      },
+      "row_6_tue": {
+        "name": "FULL BODY WORKOUT",
+        "hasCustomStart": true,
+        "startTime": "17:15",
+        "instructor": "Marta Dumin",
+        "categories": [
+          "spalajace"
+        ]
+      },
+      "row_6_thu": {
+        "name": "ZDROWY KRĘGOSŁUP",
+        "hasCustomStart": true,
+        "startTime": "17:15",
+        "instructor": "Marta Dumin",
+        "categories": [
+          "prozdrowotne"
+        ]
+      },
+      "row_8_tue": {
+        "name": "ZUMBA FITNESS®",
+        "hasCustomStart": true,
+        "startTime": "18:20",
+        "instructor": "Monika Kruszczyńska\n-Szczubiał",
+        "categories": [
+          "taneczne"
+        ]
+      },
+      "row_8_thu": {
+        "name": "ZUMBA FITNESS®",
+        "hasCustomStart": true,
+        "startTime": "18:20",
+        "instructor": "Monika Kruszczyńska\n-Szczubiał",
+        "categories": [
+          "taneczne"
+        ]
+      },
+      "row_10_tue": {
+        "name": "PILATES",
+        "hasCustomStart": true,
+        "startTime": "19:30",
+        "instructor": "Wiktoria Matuszewska",
+        "categories": [
+          "wzmacniajace"
+        ]
+      },
+      "row_10_thu": {
+        "name": "TURBO FORMA",
+        "hasCustomStart": true,
+        "startTime": "19:30",
+        "instructor": "Edyta Wróbel",
+        "categories": [
+          "spalajace"
+        ]
+      },
+      "row_12_tue": {
+        "name": "BOKS",
+        "hasCustomStart": true,
+        "startTime": "20:30",
+        "instructor": "Daniel Gorczyca",
+        "categories": [
+          "sztuki_walki"
+        ]
+      },
+      "row_12_thu": {
+        "name": "BOKS",
+        "hasCustomStart": true,
+        "startTime": "20:30",
+        "instructor": "Daniel Gorczyca",
+        "categories": [
+          "sztuki_walki"
+        ]
+      },
+      "row_1792484215053_cii6_wed": {
+        "name": "CUBE CROSS",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Edyta Wróbel",
+        "categories": [
+          "spalajace"
+        ]
+      }
+    },
+    "formatId": "post_portrait",
+    "activeDays": [
+      "mon",
+      "tue",
+      "wed",
+      "thu",
+      "fri",
+      "sat",
+      "sun"
+    ]
+  },
+  "elblag-warszawska-47/grafik_cube_elblag.json": {
+    "version": "1.0",
+    "gymTitle": "GRAFIK FITNESS - CUBE ELBLĄG",
+    "rows": [
+      {
+        "id": "row_1792415353811_o4gk",
+        "type": "hour",
+        "time": "16:00",
+        "note": ""
+      },
+      {
+        "id": "row_1",
+        "type": "hour",
+        "time": "17:00",
+        "note": ""
+      },
+      {
+        "id": "row_2",
+        "type": "hour",
+        "time": "18:00",
+        "note": ""
+      },
+      {
+        "id": "row_3",
+        "type": "hour",
+        "time": "19:00",
+        "note": ""
+      },
+      {
+        "id": "row_1792415370258_pot2",
+        "type": "hour",
+        "time": "20:00",
+        "note": ""
+      }
+    ],
+    "tiles": {
+      "row_1_mon": {
+        "name": "SEXY PUPA",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Zuzanna Przybysz",
+        "categories": [
+          "modelujace"
+        ]
+      },
+      "row_1_tue": {
+        "name": "STRECHING\n+ MOBILITY",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Paweł Landowski",
+        "categories": [
+          "prozdrowotne"
+        ]
+      },
+      "row_1_wed": {
+        "name": "RZEŹBA\n& KONDYCJA",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Daiana Suszek",
+        "categories": [
+          "wzmacniajace"
+        ]
+      },
+      "row_1_thu": {
+        "name": "FAT BURNING",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Paweł Landowski",
+        "categories": [
+          "spalajace"
+        ]
+      },
+      "row_1_fri": {
+        "name": "ZUMBA®",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Małgorzata Płaza",
+        "categories": [
+          "taneczne"
+        ]
+      },
+      "row_2_mon": {
+        "name": "TABATA",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Daiana Suszek",
+        "categories": [
+          "spalajace"
+        ]
+      },
+      "row_2_tue": {
+        "name": "PILATES",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Viktoryia Vinterhryn",
+        "categories": [
+          "modelujace"
+        ]
+      },
+      "row_2_wed": {
+        "name": "SPALANIE\n+ PŁASKI BRZUCH",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Zuzanna Przybysz",
+        "categories": [
+          "spalajace"
+        ]
+      },
+      "row_2_thu": {
+        "name": "PILATES",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Viktoryia Vinterhryn",
+        "categories": [
+          "modelujace"
+        ]
+      },
+      "row_2_fri": {
+        "name": "RAMIONA\nI BRZUCH",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Zuzanna Przybysz",
+        "categories": [
+          "modelujace"
+        ]
+      },
+      "row_3_tue": {
+        "name": "ZDROWY\nKRĘGOSŁUP",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Zuzanna Przybysz",
+        "categories": [
+          "prozdrowotne"
+        ]
+      },
+      "row_3_wed": {
+        "name": "ZUMBA®",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Małgorzata Płaza",
+        "categories": [
+          "taneczne"
+        ]
+      }
+    },
+    "formatId": "post_portrait",
+    "activeDays": [
+      "mon",
+      "tue",
+      "wed",
+      "thu",
+      "fri"
+    ]
+  },
+  "garwolin-trakt-lwowski-158a/grafik_fitness___cube_garwolin.json": {
+    "version": "1.0",
+    "gymTitle": "GRAFIK FITNESS - CUBE GARWOLIN",
+    "rows": [
+      {
+        "id": "row_1",
+        "type": "hour",
+        "time": "6:30",
+        "note": "SALA OPEN"
+      },
+      {
+        "id": "row_2",
+        "type": "hour",
+        "time": "9:00",
+        "note": ""
+      },
+      {
+        "id": "row_3",
+        "type": "hour",
+        "time": "9:30",
+        "note": ""
+      },
+      {
+        "id": "row_4",
+        "type": "hour",
+        "time": "10:30",
+        "note": ""
+      },
+      {
+        "id": "row_break_imported_4",
+        "type": "break",
+        "label": ""
+      },
+      {
+        "id": "row_5",
+        "type": "hour",
+        "time": "17:00",
+        "note": ""
+      },
+      {
+        "id": "row_6",
+        "type": "hour",
+        "time": "18:00",
+        "note": ""
+      },
+      {
+        "id": "row_7",
+        "type": "hour",
+        "time": "19:00",
+        "note": ""
+      },
+      {
+        "id": "row_8",
+        "type": "hour",
+        "time": "20:00",
+        "note": ""
+      },
+      {
+        "id": "row_9",
+        "type": "hour",
+        "time": "21:00",
+        "note": ""
+      }
+    ],
+    "tiles": {
+      "row_1_fri": {
+        "name": "CUBE CROSS\nNA BRAMACH",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Marlena W.",
+        "categories": [
+          "spalajace"
+        ]
+      },
+      "row_2_wed": {
+        "name": "AKTYWNY\nSTART",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Marlena W.",
+        "categories": [
+          "wzmacniajace"
+        ]
+      },
+      "row_3_sat": {
+        "name": "HARMONIA\nRUCHU",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Marlena W.",
+        "categories": [
+          "wzmacniajace"
+        ]
+      },
+      "row_4_sat": {
+        "name": "BUP EXPRESS\n& RELAKS",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Marlena W.",
+        "categories": [
+          "modelujace"
+        ]
+      },
+      "row_5_mon": {
+        "name": "AKTYWNY\nSTART",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Marlena W.",
+        "categories": [
+          "wzmacniajace"
+        ]
+      },
+      "row_5_thu": {
+        "name": "BEAT &\nBREATH YOGA",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Aga S.",
+        "categories": [
+          "wzmacniajace"
+        ]
+      },
+      "row_5_fri": {
+        "name": "FUNCTIONAL BARBELL\n& KB",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Marlena W.",
+        "categories": [
+          "spalajace"
+        ]
+      },
+      "row_6_mon": {
+        "name": "GLUTE &\nCORE LAB",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Marlena W.",
+        "categories": [
+          "modelujace"
+        ]
+      },
+      "row_6_wed": {
+        "name": "POWRÓT DO\nFORMY",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Marlena W.",
+        "categories": [
+          "wzmacniajace"
+        ]
+      },
+      "row_6_thu": {
+        "name": "ACCESSORY\nBURN",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Monika J.",
+        "categories": [
+          "wzmacniajace"
+        ]
+      },
+      "row_6_fri": {
+        "name": "AKTYWNY\nSTART",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Marlena W.",
+        "categories": [
+          "wzmacniajace"
+        ]
+      },
+      "row_7_mon": {
+        "name": "TOTAL BODY\nCIRCUIT",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Monika J.",
+        "categories": [
+          "spalajace"
+        ]
+      },
+      "row_7_tue": {
+        "name": "POWER MAT\nPILATES",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Aga S.",
+        "categories": [
+          "wzmacniajace"
+        ]
+      },
+      "row_7_wed": {
+        "name": "CUBE CROSS",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Marlena W.",
+        "categories": [
+          "wzmacniajace"
+        ]
+      },
+      "row_7_thu": {
+        "name": "STEP CARDIO",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Dorota  Z.",
+        "categories": [
+          "spalajace"
+        ]
+      },
+      "row_7_fri": {
+        "name": "BUP",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Marlena W.",
+        "categories": [
+          "modelujace"
+        ]
+      },
+      "row_8_mon": {
+        "name": "CUBE CROSS",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Marlena W.",
+        "categories": [
+          "wzmacniajace"
+        ]
+      },
+      "row_8_tue": {
+        "name": "TUESDAY GLOW\nYOGA",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Aga S.",
+        "categories": [
+          "rozciagajace"
+        ]
+      },
+      "row_8_wed": {
+        "name": "MOBILITY",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Dorota  Z.",
+        "categories": [
+          "rozciagajace"
+        ]
+      },
+      "row_8_thu": {
+        "name": "FIT BALL",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Dorota  Z.",
+        "categories": [
+          "wzmacniajace"
+        ]
+      },
+      "row_9_mon": {
+        "name": "KICK- BOXING",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Asia Ch.",
+        "categories": [
+          "sztuki_walki"
+        ]
+      },
+      "row_9_wed": {
+        "name": "STEP CARDIO",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Dorota  Z.",
+        "categories": [
+          "spalajace"
+        ]
+      }
+    },
+    "formatId": "post_square"
+  },
+  "jaslo-lwowska-24/grafik_cube_jaslo.json": {
+    "version": "1.0",
+    "gymTitle": "GRAFIK FITNESS - CUBE JASŁO",
+    "rows": [
+      {
+        "id": "row_1",
+        "type": "hour",
+        "time": "9:30",
+        "note": ""
+      },
+      {
+        "id": "row_2",
+        "type": "hour",
+        "time": "10:30",
+        "note": ""
+      },
+      {
+        "id": "row_3",
+        "type": "hour",
+        "time": "11:30",
+        "note": ""
+      },
+      {
+        "id": "row_break_imported_3",
+        "type": "break",
+        "label": ""
+      },
+      {
+        "id": "row_4",
+        "type": "hour",
+        "time": "16:30",
+        "note": ""
+      },
+      {
+        "id": "row_5",
+        "type": "hour",
+        "time": "17:30",
+        "note": ""
+      },
+      {
+        "id": "row_6",
+        "type": "hour",
+        "time": "18:30",
+        "note": ""
+      },
+      {
+        "id": "row_7",
+        "type": "hour",
+        "time": "19:30",
+        "note": ""
+      }
+    ],
+    "tiles": {
+      "row_1_tue": {
+        "name": "ZDROWY\nKRĘGOSŁUP",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Bartosz K.",
+        "categories": [
+          "prozdrowotne"
+        ]
+      },
+      "row_1_thu": {
+        "name": "PILATES",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Patryk M.",
+        "categories": [
+          "wzmacniajace"
+        ]
+      },
+      "row_1_sat": {
+        "name": "PILATES",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Ilona Z.",
+        "categories": [
+          "wzmacniajace"
+        ]
+      },
+      "row_1_sun": {
+        "name": "BRZUCH &\nPOŚLADKI",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Bartosz K.",
+        "categories": [
+          "spalajace"
+        ]
+      },
+      "row_2_sat": {
+        "name": "FULL BODY\nWORKOUT",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "",
+        "categories": [
+          "spalajace"
+        ]
+      },
+      "row_2_sun": {
+        "name": "ZDROWY\nKRĘGOSŁUP",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Bartosz K.",
+        "categories": [
+          "prozdrowotne"
+        ]
+      },
+      "row_3_sat": {
+        "name": "JOGA",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Krzysztof S.",
+        "categories": [
+          "wzmacniajace"
+        ]
+      },
+      "row_3_sun": {
+        "name": "SZTANGI",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Kacper Biernacki",
+        "categories": [
+          "modelujace"
+        ]
+      },
+      "row_4_tue": {
+        "name": "SUPER BUP",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Patryk M.",
+        "categories": [
+          "modelujace"
+        ]
+      },
+      "row_4_thu": {
+        "name": "TURBO FORMA",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Kacper Biernacki",
+        "categories": [
+          "spalajace"
+        ]
+      },
+      "row_4_fri": {
+        "name": "BRZUCH &\nPOŚLADKI",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Bartosz K.",
+        "categories": [
+          "spalajace"
+        ]
+      },
+      "row_5_mon": {
+        "name": "FULL BODY\nWORKOUT",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "",
+        "categories": [
+          "spalajace"
+        ]
+      },
+      "row_5_tue": {
+        "name": "MOBILITY",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Patryk M.",
+        "categories": [
+          "rozciagajace"
+        ]
+      },
+      "row_5_wed": {
+        "name": "SUPER BUP",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Bartosz K.",
+        "categories": [
+          "modelujace"
+        ]
+      },
+      "row_5_thu": {
+        "name": "SUPER BUP",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Patryk M.",
+        "categories": [
+          "modelujace"
+        ]
+      },
+      "row_5_fri": {
+        "name": "ZDROWY\nKRĘGOSŁUP",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Bartosz K.",
+        "categories": [
+          "prozdrowotne"
+        ]
+      },
+      "row_6_mon": {
+        "name": "PILATES",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Patryk M.",
+        "categories": [
+          "wzmacniajace"
+        ]
+      },
+      "row_6_tue": {
+        "name": "CARDIO LATINO\nDANCE",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Paulina S.",
+        "categories": [
+          "taneczne"
+        ]
+      },
+      "row_6_wed": {
+        "name": "ZDROWY\nKRĘGOSŁUP",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Bartosz K.",
+        "categories": [
+          "prozdrowotne"
+        ]
+      },
+      "row_6_thu": {
+        "name": "PILATES",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Patryk M.",
+        "categories": [
+          "wzmacniajace"
+        ]
+      },
+      "row_6_fri": {
+        "name": "BRAZYLIJSKIE\nPOŚLADKI",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Kacper Biernacki",
+        "categories": [
+          "modelujace"
+        ]
+      },
+      "row_7_mon": {
+        "name": "CARDIO & ABS",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Kacper Biernacki",
+        "categories": [
+          "modelujace"
+        ]
+      },
+      "row_7_tue": {
+        "name": "BODY SHAPE",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Kacper Biernacki",
+        "categories": [
+          "prozdrowotne"
+        ]
+      },
+      "row_7_wed": {
+        "name": "FULL BODY\nWORKOUT",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Bartosz K.",
+        "categories": [
+          "spalajace"
+        ]
+      },
+      "row_7_thu": {
+        "name": "CARDIO LATINO\nDANCE",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Paulina S.",
+        "categories": [
+          "taneczne"
+        ]
+      },
+      "row_7_fri": {
+        "name": "STRETCHING",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Patryk M.",
+        "categories": [
+          "wzmacniajace"
+        ]
+      }
+    },
+    "formatId": "post_square"
+  },
+  "lublin-jozefa-mackiewicza-7/grafik_cube_czechow.json": {
+    "version": "1.0",
+    "gymTitle": "GRAFIK FITNESS - CUBE CZECHÓW",
+    "rows": [
+      {
+        "id": "row_1",
+        "type": "hour",
+        "time": "9:00",
+        "note": "DUŻA SALA"
+      },
+      {
+        "id": "row_2",
+        "type": "hour",
+        "time": "9:30",
+        "note": "DUŻA SALA"
+      },
+      {
+        "id": "row_3",
+        "type": "hour",
+        "time": "9:30",
+        "note": "MAŁA SALA"
+      },
+      {
+        "id": "row_break_imported_3",
+        "type": "break",
+        "label": ""
+      },
+      {
+        "id": "row_5",
+        "type": "hour",
+        "time": "17:00",
+        "note": "DUŻA SALA"
+      },
+      {
+        "id": "row_6",
+        "type": "hour",
+        "time": "18:00",
+        "note": "DUŻA SALA"
+      },
+      {
+        "id": "row_8",
+        "type": "hour",
+        "time": "19:00",
+        "note": "MAŁA SALA"
+      },
+      {
+        "id": "row_9",
+        "type": "hour",
+        "time": "19:00",
+        "note": "DUŻA SALA"
+      },
+      {
+        "id": "row_11",
+        "type": "hour",
+        "time": "20:00",
+        "note": "DUŻA SALA"
+      }
+    ],
+    "tiles": {
+      "row_1_mon": {
+        "name": "PŁASKI BRZUCH\n+ STRECHING",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Zosia",
+        "categories": [
+          "modelujace",
+          "rozciagajace"
+        ]
+      },
+      "row_1_wed": {
+        "name": "RZEŹBA CIAŁA",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Zosia",
+        "categories": [
+          "wzmacniajace"
+        ]
+      },
+      "row_2_thu": {
+        "name": "ZDROWY\nKRĘGOSŁUP",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Elwira",
+        "categories": [
+          "prozdrowotne"
+        ]
+      },
+      "row_2_sat": {
+        "name": "RZEŹBA CIAŁA",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Ania K.",
+        "categories": [
+          "wzmacniajace"
+        ]
+      },
+      "row_5_thu": {
+        "name": "RZEŹBA CIAŁA",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Ania K.",
+        "categories": [
+          "wzmacniajace"
+        ]
+      },
+      "row_5_sun": {
+        "name": "TRENING\nOBWODOWY",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Elwira",
+        "categories": [
+          "spalajace",
+          "wzmacniajace"
+        ]
+      },
+      "row_6_mon": {
+        "name": "ZUMBA®",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Monika D.",
+        "categories": [
+          "taneczne"
+        ]
+      },
+      "row_6_wed": {
+        "name": "FIT SYLWETKA",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Kaja Z.",
+        "categories": [
+          "modelujace"
+        ]
+      },
+      "row_6_thu": {
+        "name": "BUP",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Ania K.",
+        "categories": [
+          "modelujace"
+        ]
+      },
+      "row_6_fri": {
+        "name": "ZUMBA®",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Monika D.",
+        "categories": [
+          "taneczne"
+        ]
+      },
+      "row_6_sun": {
+        "name": "MOBILITY",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Elwira",
+        "categories": [
+          "rozciagajace"
+        ]
+      },
+      "row_8_fri": {
+        "name": "YOGA",
+        "hasCustomStart": true,
+        "startTime": "19:15",
+        "instructor": "grupa początująca\nIke",
+        "categories": [
+          "rozciagajace"
+        ]
+      },
+      "row_9_mon": {
+        "name": "SEXY PUPA",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Beata",
+        "categories": [
+          "modelujace"
+        ]
+      },
+      "row_9_wed": {
+        "name": "EKSTRA BRZUCH",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Beata",
+        "categories": [
+          "modelujace"
+        ]
+      },
+      "row_11_mon": {
+        "name": "TRENING\nOBWODOWY",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Maciek",
+        "categories": [
+          "spalajace",
+          "wzmacniajace"
+        ]
+      },
+      "row_11_wed": {
+        "name": "TRENING\nOBWODOWY",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Maciek",
+        "categories": [
+          "spalajace",
+          "wzmacniajace"
+        ]
+      },
+      "row_11_thu": {
+        "name": "PILATES",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Kasia Ć",
+        "categories": [
+          "modelujace",
+          "wzmacniajace"
+        ]
+      },
+      "row_2_sun": {
+        "name": "PILATES",
+        "hasCustomStart": true,
+        "startTime": "9:40",
+        "instructor": "Kasia",
+        "categories": [
+          "modelujace",
+          "wzmacniajace"
+        ]
+      },
+      "row_3_sat": {
+        "name": "ZDROWY\nKRĘGOSŁUP",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Kasia",
+        "categories": [
+          "prozdrowotne"
+        ]
+      },
+      "row_5_mon": {
+        "name": "RZEŹBA CIAŁA",
+        "hasCustomStart": true,
+        "startTime": "16:45",
+        "instructor": "Ania K.",
+        "categories": [
+          "wzmacniajace"
+        ]
+      },
+      "row_5_wed": {
+        "name": "STRECHING\n+ MOBILITY",
+        "hasCustomStart": true,
+        "startTime": "16:45",
+        "instructor": "Ofelia",
+        "categories": [
+          "spalajace",
+          "rozciagajace"
+        ]
+      },
+      "row_6_tue": {
+        "name": "TABATA",
+        "hasCustomStart": true,
+        "startTime": "18:15",
+        "instructor": "Wiktoria",
+        "categories": [
+          "spalajace"
+        ]
+      },
+      "row_8_mon": {
+        "name": "YOGA",
+        "hasCustomStart": true,
+        "startTime": "19:15",
+        "instructor": "grupa początująca\nIke",
+        "categories": [
+          "rozciagajace"
+        ]
+      },
+      "row_8_wed": {
+        "name": "YOGA",
+        "hasCustomStart": true,
+        "startTime": "19:15",
+        "instructor": "grupa początująca\nIke",
+        "categories": [
+          "rozciagajace"
+        ]
+      },
+      "row_9_thu": {
+        "name": "CROSS TBC",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Ike",
+        "categories": [
+          "spalajace"
+        ]
+      },
+      "row_9_tue": {
+        "name": "RZEŹBA CIAŁA",
+        "hasCustomStart": true,
+        "startTime": "19:15",
+        "instructor": "Ania K.",
+        "categories": [
+          "wzmacniajace"
+        ]
+      },
+      "row_9_fri": {
+        "name": "TRENING\nOBWODOWY",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Maciej D.",
+        "categories": [
+          "spalajace",
+          "wzmacniajace"
+        ]
+      },
+      "row_11_tue": {
+        "name": "MOBILITY",
+        "hasCustomStart": true,
+        "startTime": "20:05",
+        "instructor": "Ania K.",
+        "categories": [
+          "modelujace"
+        ]
+      }
+    },
+    "formatId": "post_portrait",
+    "activeDays": [
+      "mon",
+      "tue",
+      "wed",
+      "thu",
+      "fri",
+      "sat",
+      "sun"
+    ],
+    "slimDays": false,
+    "slimHours": false,
+    "slimTiles": false
+  },
+  "lublin-slawinkowska-47/grafik_cube_slawin.json": {
+    "version": "1.0",
+    "gymTitle": "GRAFIK FITNESS - CUBE SŁAWIN",
+    "rows": [
+      {
+        "id": "row_1",
+        "type": "hour",
+        "time": "8:10",
+        "note": ""
+      },
+      {
+        "id": "row_3",
+        "type": "hour",
+        "time": "9:10",
+        "note": ""
+      },
+      {
+        "id": "row_5",
+        "type": "hour",
+        "time": "10:30",
+        "note": ""
+      },
+      {
+        "id": "row_6",
+        "type": "hour",
+        "time": "11:30",
+        "note": ""
+      },
+      {
+        "id": "row_break_imported_6",
+        "type": "break",
+        "label": ""
+      },
+      {
+        "id": "row_7",
+        "type": "hour",
+        "time": "16:00",
+        "note": ""
+      },
+      {
+        "id": "row_9",
+        "type": "hour",
+        "time": "17:00",
+        "note": ""
+      },
+      {
+        "id": "row_11",
+        "type": "hour",
+        "time": "18:00",
+        "note": ""
+      },
+      {
+        "id": "row_12",
+        "type": "hour",
+        "time": "19:00",
+        "note": ""
+      },
+      {
+        "id": "row_13",
+        "type": "hour",
+        "time": "20:00",
+        "note": ""
+      }
+    ],
+    "tiles": {
+      "row_1_mon": {
+        "name": "RZEŹBA CIAŁA",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Ania K.",
+        "categories": [
+          "wzmacniajace"
+        ]
+      },
+      "row_1_tue": {
+        "name": "SHAPE",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Dorota",
+        "categories": [
+          "modelujace"
+        ]
+      },
+      "row_1_wed": {
+        "name": "WZMACNIANIE",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Monika H.",
+        "categories": [
+          "wzmacniajace"
+        ]
+      },
+      "row_1_thu": {
+        "name": "YOGA",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Justyna Sz.",
+        "categories": [
+          "rozciagajace"
+        ]
+      },
+      "row_1_fri": {
+        "name": "PŁASKI BRZUCH",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Ania K.",
+        "categories": [
+          "modelujace"
+        ]
+      },
+      "row_3_mon": {
+        "name": "PILATES",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Anzhelika",
+        "categories": [
+          "modelujace",
+          "wzmacniajace"
+        ]
+      },
+      "row_3_tue": {
+        "name": "ZDROWY\nKRĘGOSŁUP",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Dorota",
+        "categories": [
+          "prozdrowotne"
+        ]
+      },
+      "row_3_wed": {
+        "name": "PILATES",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Monika D.",
+        "categories": [
+          "modelujace",
+          "wzmacniajace"
+        ]
+      },
+      "row_3_thu": {
+        "name": "AKTYWNE CIAŁO",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Justyna Sz.",
+        "categories": [
+          "modelujace"
+        ]
+      },
+      "row_3_fri": {
+        "name": "STRECHING\n+ MOBILITY",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Ofelia",
+        "categories": [
+          "rozciagajace",
+          "wzmacniajace"
+        ]
+      },
+      "row_5_sat": {
+        "name": "YOGA",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Justyna Sz.",
+        "categories": [
+          "rozciagajace"
+        ]
+      },
+      "row_5_sun": {
+        "name": "PILATES",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Kaja Z.",
+        "categories": [
+          "modelujace"
+        ]
+      },
+      "row_6_sun": {
+        "name": "ZUMBA LATINO",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Monika H.",
+        "categories": [
+          "taneczne"
+        ]
+      },
+      "row_7_tue": {
+        "name": "POWRÓT DO\nFORMY",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Dorota",
+        "categories": [
+          "wzmacniajace"
+        ]
+      },
+      "row_9_mon": {
+        "name": "STRECHING \n+ MOBILITY",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Ofelia",
+        "categories": [
+          "rozciagajace"
+        ]
+      },
+      "row_9_wed": {
+        "name": "BUDUJ, MODELUJ,\nWZMACNIAJ",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Justyna T",
+        "categories": [
+          "modelujace"
+        ]
+      },
+      "row_9_thu": {
+        "name": "FIT BALL",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Sławka",
+        "categories": [
+          "wzmacniajace"
+        ]
+      },
+      "row_9_fri": {
+        "name": "WZMACNIANIE",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Zosia",
+        "categories": [
+          "wzmacniajace"
+        ]
+      },
+      "row_9_sun": {
+        "name": "YOGA",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Anzhelika",
+        "categories": [
+          "rozciagajace"
+        ]
+      },
+      "row_11_mon": {
+        "name": "PEŁNA FORMA",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Justyna T",
+        "categories": [
+          "wzmacniajace"
+        ]
+      },
+      "row_11_wed": {
+        "name": "ZDROWY\nKRĘGOSŁUP",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Anzhelika",
+        "categories": [
+          "prozdrowotne"
+        ]
+      },
+      "row_11_thu": {
+        "name": "FULL BODY\nWORKOUT",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Sławka",
+        "categories": [
+          "spalajace",
+          "wzmacniajace"
+        ]
+      },
+      "row_11_fri": {
+        "name": "PILATES",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Anzhelika",
+        "categories": [
+          "modelujace",
+          "wzmacniajace"
+        ]
+      },
+      "row_11_sun": {
+        "name": "ZDROWY\nKRĘGOSŁUP",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Anzhelika",
+        "categories": [
+          "prozdrowotne"
+        ]
+      },
+      "row_12_mon": {
+        "name": "YOGA",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Justyna Sz.",
+        "categories": [
+          "rozciagajace"
+        ]
+      },
+      "row_12_tue": {
+        "name": "POWER PILATES",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Iwona",
+        "categories": [
+          "modelujace",
+          "wzmacniajace"
+        ]
+      },
+      "row_12_wed": {
+        "name": "INTERWAŁ",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Anzhelika",
+        "categories": [
+          "spalajace"
+        ]
+      },
+      "row_12_thu": {
+        "name": "PILATES",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Iwona",
+        "categories": [
+          "modelujace",
+          "wzmacniajace"
+        ]
+      },
+      "row_12_fri": {
+        "name": "HIPS & FLOW",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Monika H.",
+        "categories": [
+          "rozciagajace"
+        ]
+      },
+      "row_13_mon": {
+        "name": "TRENING\nOBWODOWY",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Łukasz J.",
+        "categories": [
+          "spalajace",
+          "wzmacniajace"
+        ]
+      },
+      "row_13_tue": {
+        "name": "FULL BODY\nWORKOUT",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Sławka",
+        "categories": [
+          "spalajace",
+          "wzmacniajace"
+        ]
+      },
+      "row_13_wed": {
+        "name": "TRENING\nOBWODOWY",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Łukasz J.",
+        "categories": [
+          "spalajace",
+          "wzmacniajace"
+        ]
+      },
+      "row_13_thu": {
+        "name": "FAT KILLER",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Iwona",
+        "categories": [
+          "spalajace"
+        ]
+      },
+      "row_1_sat": {
+        "name": "POWER PUMP",
+        "hasCustomStart": true,
+        "startTime": "8:30",
+        "instructor": "Monika H.",
+        "categories": [
+          "spalajace"
+        ]
+      },
+      "row_3_sat": {
+        "name": "STRETCHING",
+        "hasCustomStart": true,
+        "startTime": "9:30",
+        "instructor": "Monika H.",
+        "categories": [
+          "rozciagajace"
+        ]
+      },
+      "row_3_sun": {
+        "name": "SHAPE",
+        "hasCustomStart": true,
+        "startTime": "9:30",
+        "instructor": "Kaja Z.",
+        "categories": [
+          "modelujace"
+        ]
+      },
+      "row_11_tue": {
+        "name": "RZEŹBA CIAŁA",
+        "hasCustomStart": true,
+        "startTime": "17:50",
+        "instructor": "Ania K.",
+        "categories": [
+          "wzmacniajace"
+        ]
+      },
+      "row_9_tue": {
+        "name": "ZDROWY KRĘGOSŁUP Z\nELEMENTAMI STRETCHINGU",
+        "hasCustomStart": true,
+        "startTime": "16:50",
+        "instructor": "Dorota",
+        "categories": [
+          "prozdrowotne",
+          "rozciagajace"
+        ]
+      }
+    },
+    "formatId": "post_portrait",
+    "activeDays": [
+      "mon",
+      "tue",
+      "wed",
+      "thu",
+      "fri",
+      "sat",
+      "sun"
+    ],
+    "slimDays": true,
+    "slimHours": false,
+    "slimTiles": false
+  },
+  "lublin-korpusu-ochrony-pogranicza-2/grafik_cube_zelwerowicza.json": {
+    "version": "1.0",
+    "gymTitle": "GRAFIK FITNESS - CUBE ZELWEROWICZA",
+    "rows": [
+      {
+        "id": "row_1",
+        "type": "hour",
+        "time": "8:15",
+        "note": ""
+      },
+      {
+        "id": "row_2",
+        "type": "hour",
+        "time": "9:00",
+        "note": ""
+      },
+      {
+        "id": "row_3",
+        "type": "hour",
+        "time": "10:00",
+        "note": ""
+      },
+      {
+        "id": "row_4",
+        "type": "hour",
+        "time": "12:00",
+        "note": ""
+      },
+      {
+        "id": "row_break_imported_4",
+        "type": "break",
+        "label": ""
+      },
+      {
+        "id": "row_5",
+        "type": "hour",
+        "time": "17:00",
+        "note": ""
+      },
+      {
+        "id": "row_6",
+        "type": "hour",
+        "time": "18:00",
+        "note": ""
+      },
+      {
+        "id": "row_7",
+        "type": "hour",
+        "time": "19:00",
+        "note": ""
+      },
+      {
+        "id": "row_8",
+        "type": "hour",
+        "time": "20:00",
+        "note": ""
+      }
+    ],
+    "tiles": {
+      "row_1_wed": {
+        "name": "PŁASKI BRZUCH",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Joanna",
+        "categories": [
+          "modelujace"
+        ]
+      },
+      "row_1_thu": {
+        "name": "SEXY PUPA",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Monika H.",
+        "categories": [
+          "modelujace"
+        ]
+      },
+      "row_1_fri": {
+        "name": "BODY SHAPE",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Monika H.",
+        "categories": [
+          "modelujace"
+        ]
+      },
+      "row_2_mon": {
+        "name": "SPALANIE",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Ofelia",
+        "categories": [
+          "spalajace"
+        ]
+      },
+      "row_2_sat": {
+        "name": "MINIBAND",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Joanna",
+        "categories": [
+          "modelujace",
+          "rozciagajace"
+        ]
+      },
+      "row_2_sun": {
+        "name": "ZDROWY\nKRĘGOSŁUP",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Monika D.",
+        "categories": [
+          "prozdrowotne"
+        ]
+      },
+      "row_3_sat": {
+        "name": "YOGA",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Julia",
+        "categories": [
+          "rozciagajace"
+        ]
+      },
+      "row_3_sun": {
+        "name": "PILATES",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Monika D.",
+        "categories": [
+          "modelujace",
+          "wzmacniajace"
+        ]
+      },
+      "row_4_tue": {
+        "name": "AKTYWNA CIĄŻA",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Natalia",
+        "categories": [
+          "prozdrowotne"
+        ]
+      },
+      "row_5_mon": {
+        "name": "TABATA",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Milena K.",
+        "categories": [
+          "spalajace"
+        ]
+      },
+      "row_5_tue": {
+        "name": "PILATES",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Monika D.",
+        "categories": [
+          "modelujace",
+          "wzmacniajace"
+        ]
+      },
+      "row_5_wed": {
+        "name": "SHAPE",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Milena K.",
+        "categories": [
+          "modelujace"
+        ]
+      },
+      "row_5_thu": {
+        "name": "TRENING\nOBWODOWY",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Kaja Z.",
+        "categories": [
+          "wzmacniajace",
+          "spalajace"
+        ]
+      },
+      "row_5_fri": {
+        "name": "PILATES",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Monika D.",
+        "categories": [
+          "modelujace",
+          "wzmacniajace"
+        ]
+      },
+      "row_6_mon": {
+        "name": "MINIBAND",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Joanna",
+        "categories": [
+          "modelujace",
+          "rozciagajace"
+        ]
+      },
+      "row_6_tue": {
+        "name": "MOBILITY",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Julia",
+        "categories": [
+          "rozciagajace"
+        ]
+      },
+      "row_6_wed": {
+        "name": "HIIT",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Milena K.",
+        "categories": [
+          "spalajace"
+        ]
+      },
+      "row_6_thu": {
+        "name": "FIT SYLWETKA",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Kaja Z.",
+        "categories": [
+          "modelujace"
+        ]
+      },
+      "row_6_fri": {
+        "name": "RZEŹBA CIAŁA",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Basia",
+        "categories": [
+          "modelujace"
+        ]
+      },
+      "row_7_mon": {
+        "name": "CELULIT SKALPEL",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Joanna",
+        "categories": [
+          "modelujace"
+        ]
+      },
+      "row_7_tue": {
+        "name": "TRENING\nOBWODOWY",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Paulina A.",
+        "categories": [
+          "wzmacniajace",
+          "spalajace"
+        ]
+      },
+      "row_7_wed": {
+        "name": "SALSATION®",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Marta",
+        "categories": [
+          "taneczne"
+        ]
+      },
+      "row_7_thu": {
+        "name": "SPALANIE",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Ofelia",
+        "categories": [
+          "spalajace"
+        ]
+      },
+      "row_7_fri": {
+        "name": "MMA",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Jarek K.",
+        "categories": [
+          "sztuki_walki"
+        ]
+      },
+      "row_8_mon": {
+        "name": "YOGA",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Monika D.",
+        "categories": [
+          "rozciagajace"
+        ]
+      },
+      "row_8_tue": {
+        "name": "BUP",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Paulina A.",
+        "categories": [
+          "modelujace"
+        ]
+      },
+      "row_8_wed": {
+        "name": "STRETCHING",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Ofelia",
+        "categories": [
+          "rozciagajace"
+        ]
+      },
+      "row_8_thu": {
+        "name": "STRETCHING",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Ofelia",
+        "categories": [
+          "rozciagajace"
+        ]
+      },
+      "row_6_sun": {
+        "name": "ZUMBA®",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Amelia",
+        "categories": [
+          "taneczne"
+        ]
+      }
+    },
+    "formatId": "post_portrait",
+    "activeDays": [
+      "mon",
+      "tue",
+      "wed",
+      "thu",
+      "fri",
+      "sat",
+      "sun"
+    ]
+  },
+  "lodz-unii-lubelskiej-2/grafik_cube_lodz.json": {
+    "version": "1.0",
+    "gymTitle": "GRAFIK FITNESS - CUBE ŁÓDŹ",
+    "rows": [
+      {
+        "id": "row_1",
+        "type": "hour",
+        "time": "9:00",
+        "note": ""
+      },
+      {
+        "id": "row_2",
+        "type": "hour",
+        "time": "10:00",
+        "note": ""
+      },
+      {
+        "id": "row_break_imported_2",
+        "type": "break",
+        "label": ""
+      },
+      {
+        "id": "row_3",
+        "type": "hour",
+        "time": "17:00",
+        "note": ""
+      },
+      {
+        "id": "row_4",
+        "type": "hour",
+        "time": "18:00",
+        "note": ""
+      },
+      {
+        "id": "row_5",
+        "type": "hour",
+        "time": "19:00",
+        "note": ""
+      },
+      {
+        "id": "row_6",
+        "type": "hour",
+        "time": "20:00",
+        "note": ""
+      }
+    ],
+    "tiles": {
+      "row_1_mon": {
+        "name": "FULL BODY\nWORKOUT",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Joanna Nazar",
+        "categories": [
+          "modelujace"
+        ]
+      },
+      "row_1_tue": {
+        "name": "BRAZYLIJSKIE\nPOŚLADKI",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Maja Polak",
+        "categories": [
+          "modelujace"
+        ]
+      },
+      "row_1_wed": {
+        "name": "TBC",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Natalia Korytkowska",
+        "categories": [
+          "wzmacniajace"
+        ]
+      },
+      "row_1_thu": {
+        "name": "BRZUCH +\nPOŚLADKI",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Iwona Przybylska",
+        "categories": [
+          "modelujace"
+        ]
+      },
+      "row_1_fri": {
+        "name": "TRENING\nOBWODOWY",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Joanna Nazar",
+        "categories": [
+          "spalajace"
+        ]
+      },
+      "row_1_sat": {
+        "name": "FULL BODY\nWORKOUT",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Natalia Korytkowska",
+        "categories": [
+          "modelujace"
+        ]
+      },
+      "row_1_sun": {
+        "name": "RZEŹBA &\nKONDYCJA",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Aleksandra Kwasiborska",
+        "categories": [
+          "modelujace"
+        ]
+      },
+      "row_2_thu": {
+        "name": "ZDROWY\nKRĘGOSŁUP",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Iwona Przybylska",
+        "categories": [
+          "prozdrowotne"
+        ]
+      },
+      "row_2_sat": {
+        "name": "ZDROWY\nKRĘGOSŁUP",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Natalia Korytkowska",
+        "categories": [
+          "prozdrowotne"
+        ]
+      },
+      "row_2_sun": {
+        "name": "PILATES",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Aleksandra Kwasiborska",
+        "categories": [
+          "prozdrowotne"
+        ]
+      },
+      "row_3_mon": {
+        "name": "SHAPE",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Aleksandra Kwasiborska",
+        "categories": [
+          "wzmacniajace"
+        ]
+      },
+      "row_3_tue": {
+        "name": "SALSATION ®",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Natalia Korytkowska",
+        "categories": [
+          "taneczne"
+        ]
+      },
+      "row_3_wed": {
+        "name": "FIT SYLWETKA",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Natalia Korytkowska",
+        "categories": [
+          "modelujace"
+        ]
+      },
+      "row_3_thu": {
+        "name": "MINIBAND",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Joanna Nazar",
+        "categories": [
+          "modelujace"
+        ]
+      },
+      "row_3_fri": {
+        "name": "ZUMBA ®",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Natalia Korytkowska",
+        "categories": [
+          "taneczne"
+        ]
+      },
+      "row_4_mon": {
+        "name": "BRAZYLIJSKIE\nPOŚLADKI",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Aleksandra Kwasiborska",
+        "categories": [
+          "modelujace"
+        ]
+      },
+      "row_4_tue": {
+        "name": "STEP CARDIO",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Joanna Nazar",
+        "categories": [
+          "spalajace"
+        ]
+      },
+      "row_4_wed": {
+        "name": "BUP",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Maja Polak",
+        "categories": [
+          "modelujace"
+        ]
+      },
+      "row_4_thu": {
+        "name": "POWER PUMP",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Joanna Nazar",
+        "categories": [
+          "spalajace"
+        ]
+      },
+      "row_4_fri": {
+        "name": "POWER PILATES",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Natalia Korytkowska",
+        "categories": [
+          "wzmacniajace"
+        ]
+      },
+      "row_5_mon": {
+        "name": "SPALANIE +\nPŁASKI BRZUCH",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Karolina Foszczyńska",
+        "categories": [
+          "spalajace"
+        ]
+      },
+      "row_5_tue": {
+        "name": "RAMIONA I\nBRZUCH",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Joanna Nazar",
+        "categories": [
+          "modelujace"
+        ]
+      },
+      "row_5_wed": {
+        "name": "PILATES",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Maja Polak",
+        "categories": [
+          "prozdrowotne"
+        ]
+      },
+      "row_5_thu": {
+        "name": "FIT SYLWETKA",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Aleksandra Kwasiborska",
+        "categories": [
+          "modelujace"
+        ]
+      },
+      "row_5_fri": {
+        "name": "SEXY PUPA",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Iwona Przybylska",
+        "categories": [
+          "modelujace"
+        ]
+      },
+      "row_6_mon": {
+        "name": "ZDROWY\nKRĘGOSŁUP",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Karolina Foszczyńska",
+        "categories": [
+          "prozdrowotne"
+        ]
+      },
+      "row_6_thu": {
+        "name": "PILATES",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Aleksandra Kwasiborska",
+        "categories": [
+          "prozdrowotne"
+        ]
+      }
+    },
+    "formatId": "post_square"
+  },
+  "plock-miodowa-13a/grafik_cube_plock.json": {
+    "version": "1.0",
+    "gymTitle": "GRAFIK FITNESS - CUBE PŁOCK",
+    "rows": [
+      {
+        "id": "row_1",
+        "type": "hour",
+        "time": "9:00",
+        "note": ""
+      },
+      {
+        "id": "row_2",
+        "type": "hour",
+        "time": "10:30",
+        "note": ""
+      },
+      {
+        "id": "row_break_imported_2",
+        "type": "break",
+        "label": ""
+      },
+      {
+        "id": "row_3",
+        "type": "hour",
+        "time": "16:00",
+        "note": ""
+      },
+      {
+        "id": "row_4",
+        "type": "hour",
+        "time": "17:00",
+        "note": ""
+      },
+      {
+        "id": "row_5",
+        "type": "hour",
+        "time": "18:00",
+        "note": ""
+      },
+      {
+        "id": "row_6",
+        "type": "hour",
+        "time": "19:00",
+        "note": ""
+      },
+      {
+        "id": "row_7",
+        "type": "hour",
+        "time": "20:00",
+        "note": ""
+      }
+    ],
+    "tiles": {
+      "row_1_sat": {
+        "name": "ZDROWY KRĘGOSŁUP Z\nELEMENTAMI STRETCHINGU",
+        "hasCustomStart": true,
+        "startTime": "",
+        "instructor": "Kinga",
+        "categories": [
+          "prozdrowotne",
+          "rozciagajace"
+        ]
+      },
+      "row_2_sat": {
+        "name": "TRENING\nOBWODOWY",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Maryna",
+        "categories": [
+          "spalajace",
+          "wzmacniajace"
+        ]
+      },
+      "row_3_fri": {
+        "name": "RAMIONA\nI BRZUCH",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Kinga",
+        "categories": [
+          "modelujace",
+          "wzmacniajace"
+        ]
+      },
+      "row_4_tue": {
+        "name": "DANCE CARDIO",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Kinga",
+        "categories": [
+          "taneczne",
+          "spalajace"
+        ]
+      },
+      "row_4_fri": {
+        "name": "LADIES DANCE",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Kinga",
+        "categories": [
+          "taneczne"
+        ]
+      },
+      "row_5_mon": {
+        "name": "SPALANIE\n+ PŁASKI BRZUCH",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Kinga",
+        "categories": [
+          "spalajace",
+          "modelujace"
+        ]
+      },
+      "row_5_tue": {
+        "name": "STEP CARDIO",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Maryna",
+        "categories": [
+          "spalajace"
+        ]
+      },
+      "row_5_wed": {
+        "name": "FITNESS MIX",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Maryna",
+        "categories": [
+          "spalajace",
+          "wzmacniajace"
+        ]
+      },
+      "row_5_thu": {
+        "name": "STEP\nWZMACNIANIE",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Maryna",
+        "categories": [
+          "spalajace",
+          "wzmacniajace"
+        ]
+      },
+      "row_5_fri": {
+        "name": "SHAPE",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Maryna",
+        "categories": [
+          "modelujace",
+          "wzmacniajace"
+        ]
+      },
+      "row_6_mon": {
+        "name": "BRAZYLIJSKIE\nPOŚLADKI",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Kinga",
+        "categories": [
+          "modelujace",
+          "wzmacniajace"
+        ]
+      },
+      "row_6_tue": {
+        "name": "FULL BODY\nWORKOUT",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Kinga",
+        "categories": [
+          "modelujace",
+          "wzmacniajace"
+        ]
+      },
+      "row_6_wed": {
+        "name": "RZEŹBA CIAŁA",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Kinga",
+        "categories": [
+          "modelujace",
+          "wzmacniajace"
+        ]
+      },
+      "row_6_thu": {
+        "name": "BUP",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Kinga",
+        "categories": [
+          "modelujace",
+          "wzmacniajace"
+        ]
+      },
+      "row_6_fri": {
+        "name": "STRETCHING",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Maryna",
+        "categories": [
+          "rozciagajace"
+        ]
+      },
+      "row_7_mon": {
+        "name": "STRETCH\n& ROLLER",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Maryna",
+        "categories": [
+          "rozciagajace"
+        ]
+      },
+      "row_7_tue": {
+        "name": "ZDROWY KRĘGOSŁUP Z\nELEMENTAMI STRETCHINGU",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Kinga",
+        "categories": [
+          "prozdrowotne",
+          "rozciagajace"
+        ]
+      },
+      "row_7_wed": {
+        "name": "RAMIONA\nI BRZUCH",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Kinga",
+        "categories": [
+          "modelujace",
+          "wzmacniajace"
+        ]
+      },
+      "row_7_thu": {
+        "name": "PILATES",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Adrianna",
+        "categories": [
+          "wzmacniajace"
+        ]
+      },
+      "row_2_sun": {
+        "name": "ZDROWY KRĘGOSŁUP Z\nELEMENTAMI STRETCHINGU",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Kinga",
+        "categories": [
+          "prozdrowotne",
+          "rozciagajace"
+        ]
+      },
+      "row_1_sun": {
+        "name": "TRENING\nOBWODOWY",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Maryna",
+        "categories": [
+          "spalajace",
+          "wzmacniajace"
+        ]
+      }
+    },
+    "formatId": "a4_print",
+    "activeDays": [
+      "mon",
+      "tue",
+      "wed",
+      "thu",
+      "fri",
+      "sat",
+      "sun"
+    ],
+    "slimDays": false,
+    "slimHours": false,
+    "slimTiles": false
+  },
+  "sochaczew-aleja-600-lecia-27a/grafik_cube_sochaczew.json": {
+    "version": "1.0",
+    "gymTitle": "GRAFIK FITNESS - CUBE SOCHACZEW",
+    "rows": [
+      {
+        "id": "row_1",
+        "type": "hour",
+        "time": "9:00",
+        "note": ""
+      },
+      {
+        "id": "row_2",
+        "type": "hour",
+        "time": "10:30",
+        "note": ""
+      },
+      {
+        "id": "row_3",
+        "type": "hour",
+        "time": "11:00",
+        "note": ""
+      },
+      {
+        "id": "row_4",
+        "type": "hour",
+        "time": "12:00",
+        "note": ""
+      },
+      {
+        "id": "row_break_imported_4",
+        "type": "break",
+        "label": ""
+      },
+      {
+        "id": "row_5",
+        "type": "hour",
+        "time": "17:00",
+        "note": ""
+      },
+      {
+        "id": "row_6",
+        "type": "hour",
+        "time": "18:00",
+        "note": ""
+      },
+      {
+        "id": "row_7",
+        "type": "hour",
+        "time": "19:00",
+        "note": ""
+      },
+      {
+        "id": "row_8",
+        "type": "hour",
+        "time": "19:15",
+        "note": ""
+      },
+      {
+        "id": "row_9",
+        "type": "hour",
+        "time": "20:00",
+        "note": ""
+      }
+    ],
+    "tiles": {
+      "row_1_tue": {
+        "name": "TRENING\nFUNKCJONALNY",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Piotr Bojanowski",
+        "categories": [
+          "prozdrowotne"
+        ]
+      },
+      "row_1_wed": {
+        "name": "ZDROWY\nKRĘGOSŁUP",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Magdalena Bluszcz",
+        "categories": [
+          "rozciagajace"
+        ]
+      },
+      "row_2_sat": {
+        "name": "BODY PUMP",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Irina Nowikowa\n-Sobańska",
+        "categories": [
+          "rozciagajace"
+        ]
+      },
+      "row_3_sun": {
+        "name": "STRETCHING",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Magdalena Bluszcz",
+        "categories": [
+          "rozciagajace"
+        ]
+      },
+      "row_4_sat": {
+        "name": "PILATES",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Magdalena Bluszcz",
+        "categories": [
+          "rozciagajace"
+        ]
+      },
+      "row_5_mon": {
+        "name": "SZTANGI",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Irina Nowikowa\n-Sobańska",
+        "categories": [
+          "wzmacniajace"
+        ]
+      },
+      "row_5_tue": {
+        "name": "FULL BODY\nWORKOUT",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Irina Nowikowa\n-Sobańska",
+        "categories": [
+          "wzmacniajace"
+        ]
+      },
+      "row_5_wed": {
+        "name": "BUP",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Irina Nowikowa-Sobańska",
+        "categories": [
+          "prozdrowotne"
+        ]
+      },
+      "row_5_thu": {
+        "name": "STEP CARDIO",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Irina Nowikowa\n-Sobańska",
+        "categories": [
+          "spalajace"
+        ]
+      },
+      "row_5_fri": {
+        "name": "HITT ATTACK\n& FIRE ABS",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Piotr Bojanowski",
+        "categories": [
+          "spalajace"
+        ]
+      },
+      "row_6_mon": {
+        "name": "TRENING\nOBWODOWY",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Piotr Bojanowski",
+        "categories": [
+          "spalajace"
+        ]
+      },
+      "row_6_tue": {
+        "name": "STEP",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Irina Nowikowa\n-Sobańska",
+        "categories": [
+          "spalajace"
+        ]
+      },
+      "row_6_wed": {
+        "name": "SZTANGI",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Piotr Bojanowski",
+        "categories": [
+          "wzmacniajace"
+        ]
+      },
+      "row_6_thu": {
+        "name": "MOBILITY",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Piotr Bojanowski",
+        "categories": [
+          "wzmacniajace"
+        ]
+      },
+      "row_6_fri": {
+        "name": "ZUMBA®",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Basia Borowska",
+        "categories": [
+          "taneczne"
+        ]
+      },
+      "row_7_mon": {
+        "name": "STRETCHING",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Piotr Bojanowski",
+        "categories": [
+          "rozciagajace"
+        ]
+      },
+      "row_7_tue": {
+        "name": "MOBILITY",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Magdalena Bluszcz",
+        "categories": [
+          "wzmacniajace"
+        ]
+      },
+      "row_7_wed": {
+        "name": "PILATES",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Magdalena Bluszcz",
+        "categories": [
+          "rozciagajace"
+        ]
+      },
+      "row_7_thu": {
+        "name": "BODY SHAPE",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Magdalena Bluszcz",
+        "categories": [
+          "modelujace"
+        ]
+      },
+      "row_8_fri": {
+        "name": "POWRÓT DO\nFORMY",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Magdalena Bluszcz",
+        "categories": [
+          "spalajace"
+        ]
+      },
+      "row_9_mon": {
+        "name": "STEP DANCE",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Karolina Słojewska",
+        "categories": [
+          "taneczne"
+        ]
+      },
+      "row_9_tue": {
+        "name": "BOKS",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Kamil Włodarczyk",
+        "categories": [
+          "sztuki_walki"
+        ]
+      },
+      "row_9_wed": {
+        "name": "STEP DANCE",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Karolina Słojewska",
+        "categories": [
+          "taneczne"
+        ]
+      },
+      "row_9_thu": {
+        "name": "BOKS",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Kamil Włodarczyk",
+        "categories": [
+          "sztuki_walki"
+        ]
+      }
+    },
+    "formatId": "a3_print"
+  },
+  "swidnik-kardynala-stefana-wyszynskiego-22/grafik_cube_swidnik.json": {
+    "version": "1.0",
+    "gymTitle": "GRAFIK FITNESS - CUBE SWIDNIK",
+    "rows": [
+      {
+        "id": "row_1",
+        "type": "hour",
+        "time": "9:00",
+        "note": ""
+      },
+      {
+        "id": "row_2",
+        "type": "hour",
+        "time": "10:00",
+        "note": ""
+      },
+      {
+        "id": "row_3",
+        "type": "hour",
+        "time": "11:00",
+        "note": ""
+      },
+      {
+        "id": "row_break_imported_3",
+        "type": "break",
+        "label": ""
+      },
+      {
+        "id": "row_4",
+        "type": "hour",
+        "time": "17:00",
+        "note": ""
+      },
+      {
+        "id": "row_5",
+        "type": "hour",
+        "time": "18:00",
+        "note": ""
+      },
+      {
+        "id": "row_6",
+        "type": "hour",
+        "time": "19:00",
+        "note": ""
+      },
+      {
+        "id": "row_7",
+        "type": "hour",
+        "time": "20:00",
+        "note": ""
+      }
+    ],
+    "tiles": {
+      "row_1_mon": {
+        "name": "PILATES",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Ola",
+        "categories": [
+          "modelujace"
+        ]
+      },
+      "row_1_tue": {
+        "name": "TBC",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Ola",
+        "categories": [
+          "spalajace"
+        ]
+      },
+      "row_1_wed": {
+        "name": "STRETCHING",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Elwira",
+        "categories": [
+          "rozciagajace"
+        ]
+      },
+      "row_1_thu": {
+        "name": "MOBILITY",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Karolina",
+        "categories": [
+          "rozciagajace"
+        ]
+      },
+      "row_1_fri": {
+        "name": "PŁASKI BRZUCH",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Ola",
+        "categories": [
+          "modelujace"
+        ]
+      },
+      "row_1_sat": {
+        "name": "SEXY PUPA",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Beata Cz.",
+        "categories": [
+          "modelujace"
+        ]
+      },
+      "row_2_sat": {
+        "name": "SPALANIE +\nPŁASKI BRZUCH",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Beata Cz.",
+        "categories": [
+          "spalajace"
+        ]
+      },
+      "row_2_sun": {
+        "name": "HOT BODY",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Elwira",
+        "categories": [
+          "wzmacniajace"
+        ]
+      },
+      "row_3_sat": {
+        "name": "ZDROWY\nKRĘGOSŁUP",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Zuzia Sz.",
+        "categories": [
+          "prozdrowotne"
+        ]
+      },
+      "row_3_sun": {
+        "name": "PILATES",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Elwira",
+        "categories": [
+          "modelujace"
+        ]
+      },
+      "row_4_mon": {
+        "name": "BUP",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Iza",
+        "categories": [
+          "modelujace"
+        ]
+      },
+      "row_4_tue": {
+        "name": "DANCE CARDIO",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Zosia",
+        "categories": [
+          "taneczne"
+        ]
+      },
+      "row_4_wed": {
+        "name": "ZDROWY\nKRĘGOSŁUP",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Elwira",
+        "categories": [
+          "prozdrowotne"
+        ]
+      },
+      "row_4_thu": {
+        "name": "SZTANGI",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Zosia",
+        "categories": [
+          "wzmacniajace"
+        ]
+      },
+      "row_4_fri": {
+        "name": "PILATES",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Ola",
+        "categories": [
+          "modelujace"
+        ]
+      },
+      "row_5_mon": {
+        "name": "ZDROWY\nKRĘGOSŁUP",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Zuzia Sz.",
+        "categories": [
+          "prozdrowotne"
+        ]
+      },
+      "row_5_tue": {
+        "name": "CUBE CROSS",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Zosia",
+        "categories": [
+          "spalajace"
+        ]
+      },
+      "row_5_wed": {
+        "name": "PŁASKI BRZUCH",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Karolina",
+        "categories": [
+          "modelujace"
+        ]
+      },
+      "row_5_thu": {
+        "name": "CUBE CROSS",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Zosia",
+        "categories": [
+          "spalajace"
+        ]
+      },
+      "row_5_fri": {
+        "name": "TRENING\nOBWODOWY",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Ola",
+        "categories": [
+          "spalajace"
+        ]
+      },
+      "row_6_mon": {
+        "name": "MINIBAND",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Zuzia Sz.",
+        "categories": [
+          "modelujace"
+        ]
+      },
+      "row_6_tue": {
+        "name": "SPALANIE",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Ola",
+        "categories": [
+          "spalajace"
+        ]
+      },
+      "row_6_wed": {
+        "name": "AKTIV YOGA",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Paweł",
+        "categories": [
+          "rozciagajace"
+        ]
+      },
+      "row_6_thu": {
+        "name": "MOBILITY",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Karolina",
+        "categories": [
+          "rozciagajace"
+        ]
+      },
+      "row_6_fri": {
+        "name": "YOGA",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Paweł",
+        "categories": [
+          "rozciagajace"
+        ]
+      },
+      "row_7_mon": {
+        "name": "YOGA",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Paweł",
+        "categories": [
+          "rozciagajace"
+        ]
+      },
+      "row_7_tue": {
+        "name": "STEP\nFUNKCJONALNY",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Magda K.",
+        "categories": [
+          "wzmacniajace"
+        ]
+      },
+      "row_7_wed": {
+        "name": "RELAKS YOGA",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Paweł",
+        "categories": [
+          "rozciagajace"
+        ]
+      },
+      "row_7_thu": {
+        "name": "SAMOOBRONA",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Jarek Kasperek",
+        "categories": [
+          "sztuki_walki"
+        ]
+      }
+    },
+    "formatId": "post_square"
+  },
+  "wloclawek-broniewskiego-5/grafik_cube_wloclawek.json": {
+    "version": "1.0",
+    "gymTitle": "GRAFIK FITNESS - CUBE WLOCLAWEK",
+    "rows": [
+      {
+        "id": "row_1",
+        "type": "hour",
+        "time": "9:00",
+        "note": ""
+      },
+      {
+        "id": "row_2",
+        "type": "hour",
+        "time": "10:00",
+        "note": ""
+      },
+      {
+        "id": "row_break_imported_2",
+        "type": "break",
+        "label": ""
+      },
+      {
+        "id": "row_3",
+        "type": "hour",
+        "time": "17:00",
+        "note": ""
+      },
+      {
+        "id": "row_4",
+        "type": "hour",
+        "time": "18:00",
+        "note": ""
+      },
+      {
+        "id": "row_5",
+        "type": "hour",
+        "time": "19:00",
+        "note": ""
+      },
+      {
+        "id": "row_6",
+        "type": "hour",
+        "time": "20:00",
+        "note": ""
+      }
+    ],
+    "tiles": {
+      "row_1_mon": {
+        "name": "FULL BODY\nWORKOUT",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Marta Klińska",
+        "categories": [
+          "modelujace"
+        ]
+      },
+      "row_1_tue": {
+        "name": "SEXY PUPA",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Natalia Deskiewicz",
+        "categories": [
+          "modelujace"
+        ]
+      },
+      "row_1_wed": {
+        "name": "RZEŹBA &\nKONDYCJA",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Marta Klińska",
+        "categories": [
+          "wzmacniajace"
+        ]
+      },
+      "row_1_thu": {
+        "name": "BRZUCH +\nPOŚLADKI",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Natalia Deskiewicz",
+        "categories": [
+          "modelujace"
+        ]
+      },
+      "row_1_fri": {
+        "name": "FIT SYLWETKA",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Julia Skwara",
+        "categories": [
+          "modelujace"
+        ]
+      },
+      "row_1_sat": {
+        "name": "RZEŹBA &\nKONDYCJA",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Julia Szwankowska",
+        "categories": [
+          "modelujace"
+        ]
+      },
+      "row_1_sun": {
+        "name": "PILATES",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Marta Dudzińska",
+        "categories": [
+          "prozdrowotne"
+        ]
+      },
+      "row_2_thu": {
+        "name": "PILATES",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Natalia Deskiewicz",
+        "categories": [
+          "prozdrowotne"
+        ]
+      },
+      "row_2_fri": {
+        "name": "STRETCHING",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Julia Skwara",
+        "categories": [
+          "modelujace"
+        ]
+      },
+      "row_2_sat": {
+        "name": "ZDROWY\nKRĘGOSŁUP",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Julia Szwankowska",
+        "categories": [
+          "prozdrowotne"
+        ]
+      },
+      "row_2_sun": {
+        "name": "FULL BODY\nWORKOUT",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Marta Dudzińska",
+        "categories": [
+          "modelujace"
+        ]
+      },
+      "row_3_mon": {
+        "name": "BRAZUCA",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Klaudia Jędrzjeczak",
+        "categories": [
+          "taneczne"
+        ]
+      },
+      "row_3_tue": {
+        "name": "RAMIONA I\nBRZUCH",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Natalia Deskiewicz",
+        "categories": [
+          "modelujace"
+        ]
+      },
+      "row_3_wed": {
+        "name": "TRENING\nOBWODOWY",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Marta Klińska",
+        "categories": [
+          "spalajace"
+        ]
+      },
+      "row_3_thu": {
+        "name": "FIT SYLWETKA",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Julia Szwankowska",
+        "categories": [
+          "modelujace"
+        ]
+      },
+      "row_3_fri": {
+        "name": "PILATES",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Natalia Deskiewicz",
+        "categories": [
+          "prozdrowotne"
+        ]
+      },
+      "row_4_mon": {
+        "name": "SPALANIE +\nPŁASKI BRZUCH",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Julia Skwara",
+        "categories": [
+          "spalajace"
+        ]
+      },
+      "row_4_tue": {
+        "name": "ZUMBA ®",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Marta Dudzińska",
+        "categories": [
+          "taneczne"
+        ]
+      },
+      "row_4_wed": {
+        "name": "ENERGY FIT\nBALL",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Nikola Zielińska",
+        "categories": [
+          "wzmacniajace"
+        ]
+      },
+      "row_4_thu": {
+        "name": "ZDROWY\nKRĘGOSŁUP",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Julia Szwankowska",
+        "categories": [
+          "prozdrowotne"
+        ]
+      },
+      "row_4_fri": {
+        "name": "PŁASKI\nBRZUCH+STRECHING",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Natalia Deskiewicz",
+        "categories": [
+          "rozciagajace"
+        ]
+      },
+      "row_4_sun": {
+        "name": "YOGA",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Jacek Kmieć",
+        "categories": [
+          "rozciagajace"
+        ]
+      },
+      "row_5_mon": {
+        "name": "BODY SHAPE",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Marta Dudzińska",
+        "categories": [
+          "modelujace"
+        ]
+      },
+      "row_5_tue": {
+        "name": "FIT SYLWETKA",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Julia Szwankowska",
+        "categories": [
+          "modelujace"
+        ]
+      },
+      "row_5_wed": {
+        "name": "BUP",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Nikola Zielińska",
+        "categories": [
+          "modelujace"
+        ]
+      },
+      "row_5_thu": {
+        "name": "SEXY PUPA",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Natalia Deskiewicz",
+        "categories": [
+          "modelujace"
+        ]
+      },
+      "row_5_fri": {
+        "name": "ZUMBA ®",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Marta Dudzińska",
+        "categories": [
+          "taneczne"
+        ]
+      },
+      "row_6_mon": {
+        "name": "ZDROWY\nKRĘGOSŁUP",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Marta Dudzińska",
+        "categories": [
+          "prozdrowotne"
+        ]
+      },
+      "row_6_tue": {
+        "name": "STEP\nFUNKCJONALNY",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Julia Szwankowska",
+        "categories": [
+          "spalajace"
+        ]
+      },
+      "row_6_wed": {
+        "name": "STRETCHING",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Nikola Zielińska",
+        "categories": [
+          "rozciagajace"
+        ]
+      },
+      "row_6_thu": {
+        "name": "YOGA",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Jacek Kmieć",
+        "categories": [
+          "rozciagajace"
+        ]
+      },
+      "row_6_fri": {
+        "name": "STRETCH &\nRELAX",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "Natalia Deskiewicz",
+        "categories": [
+          "rozciagajace"
+        ]
+      }
+    },
+    "formatId": "post_portrait",
+    "activeDays": [
+      "mon",
+      "tue",
+      "wed",
+      "thu",
+      "fri",
+      "sat",
+      "sun"
+    ]
+  },
+  "wloclawek-broniewskiego-5/grafik_cube_wloclawek_doulotki.json": {
+    "version": "1.0",
+    "gymTitle": "GRAFIK FITNESS - CUBE WŁOCŁAWEK",
+    "rows": [
+      {
+        "id": "row_1",
+        "type": "hour",
+        "time": "9:00",
+        "note": ""
+      },
+      {
+        "id": "row_2",
+        "type": "hour",
+        "time": "10:00",
+        "note": ""
+      },
+      {
+        "id": "row_3",
+        "type": "hour",
+        "time": "17:00",
+        "note": ""
+      },
+      {
+        "id": "row_4",
+        "type": "hour",
+        "time": "18:00",
+        "note": ""
+      },
+      {
+        "id": "row_5",
+        "type": "hour",
+        "time": "19:00",
+        "note": ""
+      },
+      {
+        "id": "row_6",
+        "type": "hour",
+        "time": "20:00",
+        "note": ""
+      }
+    ],
+    "tiles": {
+      "row_1_mon": {
+        "name": "FULL BODY\nWORKOUT",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "",
+        "categories": [
+          "modelujace"
+        ]
+      },
+      "row_1_tue": {
+        "name": "SEXY PUPA",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "",
+        "categories": [
+          "modelujace"
+        ]
+      },
+      "row_1_wed": {
+        "name": "RZEŹBA &\nKONDYCJA",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "",
+        "categories": [
+          "wzmacniajace"
+        ]
+      },
+      "row_1_thu": {
+        "name": "BRZUCH +\nPOŚLADKI",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "",
+        "categories": [
+          "modelujace"
+        ]
+      },
+      "row_1_fri": {
+        "name": "FIT SYLWETKA",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "",
+        "categories": [
+          "modelujace"
+        ]
+      },
+      "row_1_sat": {
+        "name": "RZEŹBA &\nKONDYCJA",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "",
+        "categories": [
+          "modelujace"
+        ]
+      },
+      "row_1_sun": {
+        "name": "PILATES",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "",
+        "categories": [
+          "prozdrowotne"
+        ]
+      },
+      "row_2_thu": {
+        "name": "PILATES",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "",
+        "categories": [
+          "prozdrowotne"
+        ]
+      },
+      "row_2_fri": {
+        "name": "STRETCHING",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "",
+        "categories": [
+          "modelujace"
+        ]
+      },
+      "row_2_sat": {
+        "name": "ZDROWY\nKRĘGOSŁUP",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "",
+        "categories": [
+          "prozdrowotne"
+        ]
+      },
+      "row_2_sun": {
+        "name": "FULL BODY\nWORKOUT",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "",
+        "categories": [
+          "modelujace"
+        ]
+      },
+      "row_3_mon": {
+        "name": "BRAZUCA",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "",
+        "categories": [
+          "taneczne"
+        ]
+      },
+      "row_3_tue": {
+        "name": "RAMIONA I\nBRZUCH",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "",
+        "categories": [
+          "modelujace"
+        ]
+      },
+      "row_3_wed": {
+        "name": "TRENING\nOBWODOWY",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "",
+        "categories": [
+          "spalajace"
+        ]
+      },
+      "row_3_thu": {
+        "name": "FIT SYLWETKA",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "",
+        "categories": [
+          "modelujace"
+        ]
+      },
+      "row_3_fri": {
+        "name": "PILATES",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "",
+        "categories": [
+          "prozdrowotne"
+        ]
+      },
+      "row_4_mon": {
+        "name": "SPALANIE\n+ PŁASKI BRZUCH",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "",
+        "categories": [
+          "spalajace"
+        ]
+      },
+      "row_4_tue": {
+        "name": "ZUMBA®",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "",
+        "categories": [
+          "taneczne"
+        ]
+      },
+      "row_4_wed": {
+        "name": "ENERGY\nFIT BALL",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "",
+        "categories": [
+          "wzmacniajace"
+        ]
+      },
+      "row_4_thu": {
+        "name": "ZDROWY\nKRĘGOSŁUP",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "",
+        "categories": [
+          "prozdrowotne"
+        ]
+      },
+      "row_4_fri": {
+        "name": "PŁASKI BRZUCH +\nSTRECHING",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "",
+        "categories": [
+          "rozciagajace"
+        ]
+      },
+      "row_4_sun": {
+        "name": "YOGA",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "",
+        "categories": [
+          "rozciagajace"
+        ]
+      },
+      "row_5_mon": {
+        "name": "BODY SHAPE",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "",
+        "categories": [
+          "modelujace"
+        ]
+      },
+      "row_5_tue": {
+        "name": "FIT SYLWETKA",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "",
+        "categories": [
+          "modelujace"
+        ]
+      },
+      "row_5_wed": {
+        "name": "BUP",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "",
+        "categories": [
+          "modelujace"
+        ]
+      },
+      "row_5_thu": {
+        "name": "SEXY PUPA",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "",
+        "categories": [
+          "modelujace"
+        ]
+      },
+      "row_5_fri": {
+        "name": "ZUMBA®",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "",
+        "categories": [
+          "taneczne"
+        ]
+      },
+      "row_6_mon": {
+        "name": "ZDROWY\nKRĘGOSŁUP",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "",
+        "categories": [
+          "prozdrowotne"
+        ]
+      },
+      "row_6_tue": {
+        "name": "STEP\nFUNKCJONALNY",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "",
+        "categories": [
+          "spalajace"
+        ]
+      },
+      "row_6_wed": {
+        "name": "STRETCHING",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "",
+        "categories": [
+          "rozciagajace"
+        ]
+      },
+      "row_6_thu": {
+        "name": "YOGA",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "",
+        "categories": [
+          "rozciagajace"
+        ]
+      },
+      "row_6_fri": {
+        "name": "STRETCH\n& RELAX",
+        "hasCustomStart": false,
+        "startTime": "",
+        "instructor": "",
+        "categories": [
+          "rozciagajace"
+        ]
+      }
+    },
+    "formatId": "post_portrait",
+    "activeDays": [
+      "mon",
+      "tue",
+      "wed",
+      "thu",
+      "fri",
+      "sat",
+      "sun"
+    ]
+  }
+};
+
+/* ===== END FILE: src/cloudSeedData.js ===== */
+
+/* ===== START FILE: src/cloudStorage.js ===== */
+
+const STORAGE_INDEX_KEY = 'cube_cloud_index_v1';
+const STORAGE_FILES_KEY = 'cube_cloud_files_v1';
+const GITHUB_TOKEN_KEY = 'cube_github_token';
+
+// Inicjalizacja lub odczyt pamięci lokalnej
+function getStoredIndex() {
+  try {
+    const raw = localStorage.getItem(STORAGE_INDEX_KEY);
+    if (raw) {
+      const parsed = JSON.parse(raw);
+      if (parsed && Array.isArray(parsed.locations)) {
+        return parsed;
+      }
+    }
+  } catch (e) {
+    console.warn('Błąd odczytu lokalnego indeksu chmury:', e);
+  }
+
+  // Użyj domyślnego seedu
+  const seedCopy = JSON.parse(JSON.stringify(CLOUD_INDEX_SEED));
+  try {
+    localStorage.setItem(STORAGE_INDEX_KEY, JSON.stringify(seedCopy));
+  } catch (e) {}
+  return seedCopy;
+}
+
+function saveStoredIndex(indexData) {
+  try {
+    indexData.updatedAt = new Date().toISOString();
+    localStorage.setItem(STORAGE_INDEX_KEY, JSON.stringify(indexData));
+  } catch (e) {
+    console.warn('Nie udało się zapisać indeksu w localStorage:', e);
+  }
+}
+
+function getStoredFile(pathKey) {
+  try {
+    const filesRaw = localStorage.getItem(STORAGE_FILES_KEY);
+    if (filesRaw) {
+      const filesMap = JSON.parse(filesRaw);
+      if (filesMap && filesMap[pathKey]) {
+        return filesMap[pathKey];
+      }
+    }
+  } catch (e) {}
+
+  if (CLOUD_FILES_SEED && CLOUD_FILES_SEED[pathKey]) {
+    return CLOUD_FILES_SEED[pathKey];
+  }
+  return null;
+}
+
+function saveStoredFile(pathKey, fileData) {
+  try {
+    let filesMap = {};
+    const filesRaw = localStorage.getItem(STORAGE_FILES_KEY);
+    if (filesRaw) {
+      try { filesMap = JSON.parse(filesRaw); } catch (e) {}
+    }
+    filesMap[pathKey] = fileData;
+    localStorage.setItem(STORAGE_FILES_KEY, JSON.stringify(filesMap));
+  } catch (e) {
+    console.warn('Nie udało się zapisać pliku w localStorage:', e);
+  }
+}
+
+// Pobierz listę wszystkich lokalizacji
+async function getCloudLocations() {
+  const index = getStoredIndex();
+
+  // Spróbuj pobrać najnowszy stan w tle (gdy jesteśmy online/na serwerze)
+  if (typeof window !== 'undefined' && window.location.protocol.startsWith('http')) {
+    try {
+      const res = await fetch('/api/cloud-saves', { method: 'GET' });
+      if (res.ok) {
+        const remoteIndex = await res.json();
+        if (remoteIndex && Array.isArray(remoteIndex.locations)) {
+          // Scal lokalizacje i zachowaj lokalne nowe zapisy
+          mergeRemoteIndex(index, remoteIndex);
+          saveStoredIndex(index);
+        }
+      }
+    } catch (e) {
+      // Cicho ignoruj - tryb offline/lokalny działa bez przeszkód
+    }
+  }
+
+  return index.locations || [];
+}
+
+// Scalanie zdalnego indeksu z lokalnym
+function mergeRemoteIndex(localIndex, remoteIndex) {
+  if (!remoteIndex || !Array.isArray(remoteIndex.locations)) return;
+
+  for (const rLoc of remoteIndex.locations) {
+    const lLoc = localIndex.locations.find(l => l.id === rLoc.id);
+    if (!lLoc) {
+      localIndex.locations.push(rLoc);
+    } else {
+      for (const rSave of rLoc.saves || []) {
+        const existing = (lLoc.saves || []).find(s => s.filename === rSave.filename);
+        if (!existing) {
+          lLoc.saves.push(rSave);
+        } else if (new Date(rSave.updatedAt) > new Date(existing.updatedAt)) {
+          Object.assign(existing, rSave);
+        }
+      }
+    }
+  }
+}
+
+// Pobierz listę zapisów dla wybranej lokalizacji
+async function getSavesForLocation(locationId) {
+  const locations = await getCloudLocations();
+  const loc = locations.find(l => l.id === locationId);
+  return loc && loc.saves ? loc.saves : [];
+}
+
+// Wczytaj plik zapisu z chmury
+async function loadCloudSave(locationId, filename) {
+  const pathKey = `${locationId}/${filename}`;
+
+  // 1. Sprawdź lokalny magazyn i seed
+  const cached = getStoredFile(pathKey);
+  if (cached) {
+    return cached;
+  }
+
+  // 2. Jeśli jesteśmy online / HTTP, pobierz z serwera
+  if (typeof window !== 'undefined' && window.location.protocol.startsWith('http')) {
+    try {
+      const res = await fetch(`/api/cloud-saves?locationId=${encodeURIComponent(locationId)}&file=${encodeURIComponent(filename)}`);
+      if (res.ok) {
+        const data = await res.json();
+        saveStoredFile(pathKey, data);
+        return data;
+      }
+    } catch (e) {
+      console.warn('Błąd pobierania pliku z serwera:', e);
+    }
+
+    try {
+      const staticRes = await fetch(`chmura_zapisy/${locationId}/${filename}`);
+      if (staticRes.ok) {
+        const data = await staticRes.json();
+        saveStoredFile(pathKey, data);
+        return data;
+      }
+    } catch (e) {}
+  }
+
+  throw new Error(`Nie odnaleziono pliku ${filename} dla lokalizacji ${locationId}`);
+}
+
+// Zapisz projekt w chmurze
+async function saveToCloud(locationId, saveName, scheduleData) {
+  if (!locationId) throw new Error('Nie wybrano lokalizacji.');
+  if (!saveName || !saveName.trim()) throw new Error('Wpisz nazwę zapisu.');
+
+  const trimmedName = saveName.trim();
+  // Utwórz bezpieczną nazwę pliku
+  let safeBaseName = trimmedName
+    .toLowerCase()
+    .replace(/[ąćęłńóśźż]/g, c => ({ 'ą':'a','ć':'c','ę':'e','ł':'l','ń':'n','ó':'o','ś':'s','ź':'z','ż':'z' })[c] || c)
+    .replace(/[^a-z0-9_-]/g, '_')
+    .replace(/_+/g, '_')
+    .replace(/^_|_$/g, '');
+
+  if (!safeBaseName) safeBaseName = 'grafik';
+  const filename = safeBaseName.endsWith('.json') ? safeBaseName : `${safeBaseName}.json`;
+  const pathKey = `${locationId}/${filename}`;
+  const nowIso = new Date().toISOString();
+
+  // 1. Zapisz natychmiast w pamięci lokalnej (gwarancja braku utraty danych)
+  saveStoredFile(pathKey, scheduleData);
+
+  // 2. Zaktualizuj indeks lokalny
+  const index = getStoredIndex();
+  let loc = index.locations.find(l => l.id === locationId);
+  if (!loc) {
+    loc = { id: locationId, city: locationId, street: '', saves: [] };
+    index.locations.push(loc);
+  }
+  if (!Array.isArray(loc.saves)) loc.saves = [];
+
+  const existingSaveIndex = loc.saves.findIndex(s => s.filename === filename);
+  const jsonStr = JSON.stringify(scheduleData, null, 2);
+  const saveEntry = {
+    id: filename.replace(/\.json$/, ''),
+    filename: filename,
+    name: trimmedName,
+    updatedAt: nowIso,
+    size: jsonStr.length
+  };
+
+  if (existingSaveIndex >= 0) {
+    loc.saves[existingSaveIndex] = saveEntry;
+  } else {
+    loc.saves.unshift(saveEntry); // dodaj na początek
+  }
+
+  saveStoredIndex(index);
+
+  // 3. Jeśli jesteśmy online / na Vercel, wyślij do API chmury (zapis do GitHub)
+  let cloudSyncStatus = 'local';
+  if (typeof window !== 'undefined' && window.location.protocol.startsWith('http')) {
+    try {
+      const apiRes = await fetch('/api/cloud-save', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          locationId,
+          filename,
+          data: scheduleData,
+          title: trimmedName
+        })
+      });
+
+      if (apiRes.ok) {
+        const result = await apiRes.json();
+        cloudSyncStatus = result.githubSynced ? 'github' : 'server';
+      }
+    } catch (apiErr) {
+      console.warn('Synchronizacja z serwerem w tle nie powiodła się:', apiErr);
+    }
+  }
+
+  return {
+    success: true,
+    locationId,
+    filename,
+    name: trimmedName,
+    updatedAt: nowIso,
+    cloudSyncStatus
+  };
+}
+
+/* ===== END FILE: src/cloudStorage.js ===== */
+
 /* ===== START FILE: src/app.js ===== */
+
 
 
 
@@ -3034,6 +7447,25 @@ const modalImportStatus = document.getElementById('modalImportStatus');
 const saveFileNameInput = document.getElementById('saveFileNameInput');
 const modalSaveDirectBtn = document.getElementById('modalSaveDirectBtn');
 const modalSaveAsBtn = document.getElementById('modalSaveAsBtn');
+
+// Modal Zapis / Wczytanie (Lokalnie i w chmurze)
+const cloudModal = document.getElementById('cloudModal');
+const cloudModalDialog = document.getElementById('cloudModalDialog');
+const cloudModalTitle = document.getElementById('cloudModalTitle');
+const cloudChoiceDiskBtn = document.getElementById('cloudChoiceDiskBtn');
+const cloudChoiceDiskTitle = document.getElementById('cloudChoiceDiskTitle');
+const cloudChoiceDiskDesc = document.getElementById('cloudChoiceDiskDesc');
+const cloudChoiceCloudBtn = document.getElementById('cloudChoiceCloudBtn');
+const cloudChoiceCloudTitle = document.getElementById('cloudChoiceCloudTitle');
+const cloudLocationsWrap = document.getElementById('cloudLocationsWrap');
+const cloudLocationsGrid = document.getElementById('cloudLocationsGrid');
+const cloudSavesWrap = document.getElementById('cloudSavesWrap');
+const cloudBackToLocationsBtn = document.getElementById('cloudBackToLocationsBtn');
+const cloudSelectedLocationTitle = document.getElementById('cloudSelectedLocationTitle');
+const cloudSavesTableBody = document.getElementById('cloudSavesTableBody');
+const cloudSaveNameGroup = document.getElementById('cloudSaveNameGroup');
+const cloudSaveNameInput = document.getElementById('cloudSaveNameInput');
+const cloudModalActionBtn = document.getElementById('cloudModalActionBtn');
 
 // Formularz w modalu Eksport
 const selectAllFormatsBtn = document.getElementById('selectAllFormatsBtn');
@@ -3872,9 +8304,9 @@ function setupEventListeners() {
   }
 
   // Obsługa przycisków pustego obszaru roboczego (start screen)
-  if (emptyLoadBtn && emptyLoadFileInput) {
+  if (emptyLoadBtn) {
     emptyLoadBtn.addEventListener('click', () => {
-      emptyLoadFileInput.click();
+      openCloudModal('load');
     });
   }
 
@@ -4223,7 +8655,7 @@ function setupEventListeners() {
     });
   });
 
-  [importModal, saveModal, exportModal].forEach(modal => {
+  [importModal, saveModal, exportModal, cloudModal].forEach(modal => {
     if (!modal) return;
     modal.addEventListener('click', (e) => {
       if (e.target === modal) {
@@ -4312,16 +8744,312 @@ function setupEventListeners() {
   }
 
   // ==========================================================================
-  // GÓRNY PASEK NARZĘDZI: ZAPISZ I WCZYTAJ
+  // ZAPIS I WCZYTYWANIE PROJEKTÓW: MODAL CHMURA / DYSK (CARBON)
   // ==========================================================================
-  if (topSaveBtn) {
-    topSaveBtn.addEventListener('click', () => {
-      if (saveFileNameInput) saveFileNameInput.value = currentDocName;
-      openModal('saveModal');
+  let cloudModalMode = 'save'; // 'save' | 'load'
+  let selectedCloudLoc = null;
+  let selectedCloudSave = null;
+  let cloudLocationsCache = [];
+
+  function openCloudModal(mode = 'save') {
+    cloudModalMode = mode;
+    selectedCloudLoc = null;
+    selectedCloudSave = null;
+
+    const isSave = mode === 'save';
+
+    if (cloudModalTitle) {
+      cloudModalTitle.textContent = isSave ? 'Zapisz' : 'Wczytaj';
+    }
+
+    if (cloudChoiceDiskTitle) {
+      cloudChoiceDiskTitle.textContent = isSave ? 'Zapisz na dysku' : 'Wczytaj z dysku';
+    }
+    if (cloudChoiceDiskDesc) {
+      cloudChoiceDiskDesc.textContent = isSave ? 'Pobierz plik projektu .json' : 'Wybierz plik projektu .json';
+    }
+
+    if (cloudChoiceCloudTitle) {
+      cloudChoiceCloudTitle.textContent = isSave ? 'Zapisz w chmurze' : 'Wczytaj w chmurze';
+    }
+
+    if (cloudModalDialog) {
+      cloudModalDialog.classList.remove('is-expanded');
+    }
+    if (cloudChoiceCloudBtn) {
+      cloudChoiceCloudBtn.classList.remove('is-active');
+    }
+    if (cloudLocationsWrap) {
+      cloudLocationsWrap.classList.add('hidden');
+    }
+    if (cloudSavesWrap) {
+      cloudSavesWrap.classList.add('hidden');
+    }
+    if (cloudModalActionBtn) {
+      cloudModalActionBtn.classList.add('hidden');
+    }
+
+    openModal('cloudModal');
+  }
+
+  // Kliknięcie "Zapisz na dysku" / "Wczytaj z dysku"
+  if (cloudChoiceDiskBtn) {
+    cloudChoiceDiskBtn.addEventListener('click', () => {
+      if (cloudModalMode === 'save') {
+        const fileName = currentDocName || 'grafik_cube.json';
+        downloadBlobFile(store.exportStateJson(), fileName);
+        markAsSaved();
+        closeModal('cloudModal');
+        showToast(`✓ Zapisano plik: ${fileName}`);
+      } else {
+        closeModal('cloudModal');
+        if (topLoadProjectInput) {
+          topLoadProjectInput.click();
+        } else if (emptyLoadFileInput) {
+          emptyLoadFileInput.click();
+        }
+      }
     });
   }
 
-  // Zapis bezpośredni w modalu
+  // Kliknięcie "Zapisz w chmurze" / "Wczytaj w chmurze"
+  if (cloudChoiceCloudBtn) {
+    cloudChoiceCloudBtn.addEventListener('click', async () => {
+      cloudChoiceCloudBtn.classList.add('is-active');
+      if (cloudModalDialog) cloudModalDialog.classList.add('is-expanded');
+      if (cloudLocationsWrap) cloudLocationsWrap.classList.remove('hidden');
+      if (cloudSavesWrap) cloudSavesWrap.classList.add('hidden');
+      if (cloudModalActionBtn) cloudModalActionBtn.classList.add('hidden');
+
+      await renderCloudLocationsList();
+    });
+  }
+
+  // Renderowanie listy miast z bazy Cube
+  async function renderCloudLocationsList() {
+    if (!cloudLocationsGrid) return;
+    cloudLocationsGrid.innerHTML = '<div style="color:#8d8d8d; font-size:12px; padding:12px;">Wczytywanie lokalizacji...</div>';
+
+    try {
+      cloudLocationsCache = await getCloudLocations();
+      cloudLocationsGrid.innerHTML = '';
+
+      cloudLocationsCache.forEach(loc => {
+        const btn = document.createElement('div');
+        btn.className = 'cloud-location-btn';
+
+        const savesCount = Array.isArray(loc.saves) ? loc.saves.length : 0;
+        const badgeHtml = savesCount > 0 ? `<div class="cloud-location-badge">${savesCount}</div>` : '';
+
+        btn.innerHTML = `
+          ${badgeHtml}
+          <div class="cloud-location-city">${loc.city}</div>
+          <div class="cloud-location-street">${loc.street}</div>
+        `;
+
+        btn.addEventListener('click', () => {
+          selectCloudLocation(loc);
+        });
+
+        cloudLocationsGrid.appendChild(btn);
+      });
+    } catch (err) {
+      cloudLocationsGrid.innerHTML = `<div style="color:#ff8389; font-size:12px; padding:12px;">Błąd: ${err.message}</div>`;
+    }
+  }
+
+  // Wybór lokalizacji
+  function selectCloudLocation(loc) {
+    selectedCloudLoc = loc;
+    selectedCloudSave = null;
+
+    if (cloudLocationsWrap) cloudLocationsWrap.classList.add('hidden');
+    if (cloudSavesWrap) cloudSavesWrap.classList.remove('hidden');
+    if (cloudModalActionBtn) cloudModalActionBtn.classList.remove('hidden');
+
+    if (cloudSelectedLocationTitle) {
+      cloudSelectedLocationTitle.innerHTML = `<strong>${loc.city}</strong>, ${loc.street}`;
+    }
+
+    const isSave = cloudModalMode === 'save';
+
+    if (cloudSaveNameGroup) {
+      if (isSave) {
+        cloudSaveNameGroup.classList.remove('hidden');
+        if (cloudSaveNameInput) {
+          let defaultName = store.state?.gymTitle || `Grafik ${loc.city}`;
+          if (currentDocName && currentDocName !== 'grafik_cube.json') {
+            defaultName = currentDocName.replace(/\.json$/i, '');
+          }
+          cloudSaveNameInput.value = defaultName;
+        }
+      } else {
+        cloudSaveNameGroup.classList.add('hidden');
+      }
+    }
+
+    if (cloudModalActionBtn) {
+      cloudModalActionBtn.textContent = isSave ? 'Zapisz' : 'Wczytaj';
+      cloudModalActionBtn.disabled = !isSave;
+    }
+
+    renderLocationSavesTable(loc);
+  }
+
+  // Renderowanie tabeli zapisów wybranego miasta
+  function renderLocationSavesTable(loc) {
+    if (!cloudSavesTableBody) return;
+    cloudSavesTableBody.innerHTML = '';
+
+    const saves = Array.isArray(loc.saves) ? loc.saves : [];
+    if (saves.length === 0) {
+      cloudSavesTableBody.innerHTML = `
+        <tr>
+          <td colspan="3" class="cloud-empty-saves">Brak zapisów dla tej lokalizacji</td>
+        </tr>
+      `;
+      return;
+    }
+
+    saves.forEach((s, idx) => {
+      const tr = document.createElement('tr');
+      tr.className = 'cloud-save-row';
+
+      let dateStr = '';
+      if (s.updatedAt) {
+        try {
+          const d = new Date(s.updatedAt);
+          dateStr = d.toLocaleDateString('pl-PL') + ', ' + d.toLocaleTimeString('pl-PL', { hour: '2-digit', minute: '2-digit' });
+        } catch (e) {
+          dateStr = s.updatedAt;
+        }
+      }
+
+      tr.innerHTML = `
+        <td class="cloud-save-num">#${idx + 1}</td>
+        <td class="cloud-save-name">${s.name || s.filename}</td>
+        <td class="cloud-save-date" style="text-align: right;">${dateStr}</td>
+      `;
+
+      tr.addEventListener('click', () => {
+        cloudSavesTableBody.querySelectorAll('.cloud-save-row').forEach(r => r.classList.remove('is-selected'));
+        tr.classList.add('is-selected');
+        selectedCloudSave = s;
+
+        if (cloudModalMode === 'load') {
+          if (cloudModalActionBtn) cloudModalActionBtn.disabled = false;
+        } else {
+          if (cloudSaveNameInput) {
+            cloudSaveNameInput.value = s.name || s.filename.replace(/\.json$/, '');
+          }
+        }
+      });
+
+      tr.addEventListener('dblclick', () => {
+        if (cloudModalMode === 'load') {
+          executeCloudLoad(loc, s);
+        }
+      });
+
+      cloudSavesTableBody.appendChild(tr);
+    });
+  }
+
+  // Przycisk "Wróć do listy miast"
+  if (cloudBackToLocationsBtn) {
+    cloudBackToLocationsBtn.addEventListener('click', () => {
+      if (cloudSavesWrap) cloudSavesWrap.classList.add('hidden');
+      if (cloudLocationsWrap) cloudLocationsWrap.classList.remove('hidden');
+      if (cloudModalActionBtn) cloudModalActionBtn.classList.add('hidden');
+      selectedCloudLoc = null;
+      selectedCloudSave = null;
+    });
+  }
+
+  // Główny przycisk akcji w modalu chmury (Zapisz / Wczytaj)
+  if (cloudModalActionBtn) {
+    cloudModalActionBtn.addEventListener('click', async () => {
+      if (!selectedCloudLoc) return;
+
+      if (cloudModalMode === 'save') {
+        const name = cloudSaveNameInput ? cloudSaveNameInput.value.trim() : '';
+        if (!name) {
+          alert('Wpisz nazwę zapisu.');
+          return;
+        }
+
+        cloudModalActionBtn.disabled = true;
+        cloudModalActionBtn.textContent = 'Zapisywanie...';
+
+        try {
+          const stateToSave = JSON.parse(store.exportStateJson());
+          const result = await saveToCloud(selectedCloudLoc.id, name, stateToSave);
+          markAsSaved();
+          setDocumentName(result.filename);
+          closeModal('cloudModal');
+          showToast(`✓ Zapisano w chmurze: ${name}`);
+        } catch (err) {
+          console.error('Błąd zapisu w chmurze:', err);
+          showToast(`✕ Błąd zapisu: ${err.message}`, 'error');
+        } finally {
+          cloudModalActionBtn.disabled = false;
+          cloudModalActionBtn.textContent = 'Zapisz';
+        }
+      } else {
+        if (!selectedCloudSave) return;
+        await executeCloudLoad(selectedCloudLoc, selectedCloudSave);
+      }
+    });
+  }
+
+  // Wykonanie wczytania z chmury
+  async function executeCloudLoad(loc, saveItem) {
+    try {
+      if (cloudModalActionBtn) {
+        cloudModalActionBtn.disabled = true;
+        cloudModalActionBtn.textContent = 'Wczytywanie...';
+      }
+
+      const loadedData = await loadCloudSave(loc.id, saveItem.filename);
+      if (!loadedData) throw new Error('Nie udało się wczytać danych.');
+
+      store.loadState(loadedData);
+      setDocumentName(saveItem.filename);
+      showScheduleWorkspace(saveItem.filename);
+      markAsSaved();
+      closeModal('cloudModal');
+      showToast(`✓ Wczytano grafik: ${saveItem.name || saveItem.filename}`);
+    } catch (err) {
+      console.error('Błąd wczytywania z chmury:', err);
+      showToast(`✕ Błąd wczytywania: ${err.message}`, 'error');
+    } finally {
+      if (cloudModalActionBtn) {
+        cloudModalActionBtn.disabled = false;
+        cloudModalActionBtn.textContent = 'Wczytaj';
+      }
+    }
+  }
+
+  // Powiązanie przycisków interfejsu z nowym modalem
+  if (topSaveBtn) {
+    topSaveBtn.addEventListener('click', () => {
+      openCloudModal('save');
+    });
+  }
+
+  if (topLoadBtn) {
+    topLoadBtn.addEventListener('click', () => {
+      openCloudModal('load');
+    });
+  }
+
+  if (saveProjectBtn) {
+    saveProjectBtn.addEventListener('click', () => {
+      openCloudModal('save');
+    });
+  }
+
+  // Zapis bezpośredni w modalu (fallback)
   if (modalSaveDirectBtn) {
     modalSaveDirectBtn.addEventListener('click', () => {
       const targetName = saveFileNameInput ? saveFileNameInput.value : currentDocName;
@@ -4333,7 +9061,7 @@ function setupEventListeners() {
     });
   }
 
-  // Zapisz jako... w modalu (File System Access API lub standardowe okno zapisu)
+  // Zapisz jako... w modalu (fallback)
   if (modalSaveAsBtn) {
     modalSaveAsBtn.addEventListener('click', async () => {
       const targetName = saveFileNameInput ? saveFileNameInput.value : currentDocName;
@@ -4362,18 +9090,10 @@ function setupEventListeners() {
         }
       }
 
-      // Fallback
       downloadBlobFile(store.exportStateJson(), currentDocName);
       markAsSaved();
       closeModal('saveModal');
       showToast(`✓ Zapisano jako: ${currentDocName}`);
-    });
-  }
-
-  // Wczytywanie z górnego paska (Wczytaj)
-  if (topLoadBtn && topLoadProjectInput) {
-    topLoadBtn.addEventListener('click', () => {
-      topLoadProjectInput.click();
     });
   }
 

@@ -1,0 +1,334 @@
+{
+  "version": "1.0",
+  "gymTitle": "GRAFIK FITNESS - CUBE CZECHÓW",
+  "rows": [
+    {
+      "id": "row_1",
+      "type": "hour",
+      "time": "9:00",
+      "note": "DUŻA SALA"
+    },
+    {
+      "id": "row_2",
+      "type": "hour",
+      "time": "9:30",
+      "note": "DUŻA SALA"
+    },
+    {
+      "id": "row_3",
+      "type": "hour",
+      "time": "9:30",
+      "note": "MAŁA SALA"
+    },
+    {
+      "id": "row_break_imported_3",
+      "type": "break",
+      "label": ""
+    },
+    {
+      "id": "row_5",
+      "type": "hour",
+      "time": "17:00",
+      "note": "DUŻA SALA"
+    },
+    {
+      "id": "row_6",
+      "type": "hour",
+      "time": "18:00",
+      "note": "DUŻA SALA"
+    },
+    {
+      "id": "row_8",
+      "type": "hour",
+      "time": "19:00",
+      "note": "MAŁA SALA"
+    },
+    {
+      "id": "row_9",
+      "type": "hour",
+      "time": "19:00",
+      "note": "DUŻA SALA"
+    },
+    {
+      "id": "row_11",
+      "type": "hour",
+      "time": "20:00",
+      "note": "DUŻA SALA"
+    }
+  ],
+  "tiles": {
+    "row_1_mon": {
+      "name": "PŁASKI BRZUCH\n+ STRECHING",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Zosia",
+      "categories": [
+        "modelujace",
+        "rozciagajace"
+      ]
+    },
+    "row_1_wed": {
+      "name": "RZEŹBA CIAŁA",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Zosia",
+      "categories": [
+        "wzmacniajace"
+      ]
+    },
+    "row_2_thu": {
+      "name": "ZDROWY\nKRĘGOSŁUP",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Elwira",
+      "categories": [
+        "prozdrowotne"
+      ]
+    },
+    "row_2_sat": {
+      "name": "RZEŹBA CIAŁA",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Ania K.",
+      "categories": [
+        "wzmacniajace"
+      ]
+    },
+    "row_5_thu": {
+      "name": "RZEŹBA CIAŁA",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Ania K.",
+      "categories": [
+        "wzmacniajace"
+      ]
+    },
+    "row_5_sun": {
+      "name": "TRENING\nOBWODOWY",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Elwira",
+      "categories": [
+        "spalajace",
+        "wzmacniajace"
+      ]
+    },
+    "row_6_mon": {
+      "name": "ZUMBA®",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Monika D.",
+      "categories": [
+        "taneczne"
+      ]
+    },
+    "row_6_wed": {
+      "name": "FIT SYLWETKA",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Kaja Z.",
+      "categories": [
+        "modelujace"
+      ]
+    },
+    "row_6_thu": {
+      "name": "BUP",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Ania K.",
+      "categories": [
+        "modelujace"
+      ]
+    },
+    "row_6_fri": {
+      "name": "ZUMBA®",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Monika D.",
+      "categories": [
+        "taneczne"
+      ]
+    },
+    "row_6_sun": {
+      "name": "MOBILITY",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Elwira",
+      "categories": [
+        "rozciagajace"
+      ]
+    },
+    "row_8_fri": {
+      "name": "YOGA",
+      "hasCustomStart": true,
+      "startTime": "19:15",
+      "instructor": "grupa początująca\nIke",
+      "categories": [
+        "rozciagajace"
+      ]
+    },
+    "row_9_mon": {
+      "name": "SEXY PUPA",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Beata",
+      "categories": [
+        "modelujace"
+      ]
+    },
+    "row_9_wed": {
+      "name": "EKSTRA BRZUCH",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Beata",
+      "categories": [
+        "modelujace"
+      ]
+    },
+    "row_11_mon": {
+      "name": "TRENING\nOBWODOWY",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Maciek",
+      "categories": [
+        "spalajace",
+        "wzmacniajace"
+      ]
+    },
+    "row_11_wed": {
+      "name": "TRENING\nOBWODOWY",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Maciek",
+      "categories": [
+        "spalajace",
+        "wzmacniajace"
+      ]
+    },
+    "row_11_thu": {
+      "name": "PILATES",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Kasia Ć",
+      "categories": [
+        "modelujace",
+        "wzmacniajace"
+      ]
+    },
+    "row_2_sun": {
+      "name": "PILATES",
+      "hasCustomStart": true,
+      "startTime": "9:40",
+      "instructor": "Kasia",
+      "categories": [
+        "modelujace",
+        "wzmacniajace"
+      ]
+    },
+    "row_3_sat": {
+      "name": "ZDROWY\nKRĘGOSŁUP",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Kasia",
+      "categories": [
+        "prozdrowotne"
+      ]
+    },
+    "row_5_mon": {
+      "name": "RZEŹBA CIAŁA",
+      "hasCustomStart": true,
+      "startTime": "16:45",
+      "instructor": "Ania K.",
+      "categories": [
+        "wzmacniajace"
+      ]
+    },
+    "row_5_wed": {
+      "name": "STRECHING\n+ MOBILITY",
+      "hasCustomStart": true,
+      "startTime": "16:45",
+      "instructor": "Ofelia",
+      "categories": [
+        "spalajace",
+        "rozciagajace"
+      ]
+    },
+    "row_6_tue": {
+      "name": "TABATA",
+      "hasCustomStart": true,
+      "startTime": "18:15",
+      "instructor": "Wiktoria",
+      "categories": [
+        "spalajace"
+      ]
+    },
+    "row_8_mon": {
+      "name": "YOGA",
+      "hasCustomStart": true,
+      "startTime": "19:15",
+      "instructor": "grupa początująca\nIke",
+      "categories": [
+        "rozciagajace"
+      ]
+    },
+    "row_8_wed": {
+      "name": "YOGA",
+      "hasCustomStart": true,
+      "startTime": "19:15",
+      "instructor": "grupa początująca\nIke",
+      "categories": [
+        "rozciagajace"
+      ]
+    },
+    "row_9_thu": {
+      "name": "CROSS TBC",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Ike",
+      "categories": [
+        "spalajace"
+      ]
+    },
+    "row_9_tue": {
+      "name": "RZEŹBA CIAŁA",
+      "hasCustomStart": true,
+      "startTime": "19:15",
+      "instructor": "Ania K.",
+      "categories": [
+        "wzmacniajace"
+      ]
+    },
+    "row_9_fri": {
+      "name": "TRENING\nOBWODOWY",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Maciej D.",
+      "categories": [
+        "spalajace",
+        "wzmacniajace"
+      ]
+    },
+    "row_11_tue": {
+      "name": "MOBILITY",
+      "hasCustomStart": true,
+      "startTime": "20:05",
+      "instructor": "Ania K.",
+      "categories": [
+        "modelujace"
+      ]
+    }
+  },
+  "formatId": "post_portrait",
+  "activeDays": [
+    "mon",
+    "tue",
+    "wed",
+    "thu",
+    "fri",
+    "sat",
+    "sun"
+  ],
+  "slimDays": false,
+  "slimHours": false,
+  "slimTiles": false
+}

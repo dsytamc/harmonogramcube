@@ -1,0 +1,273 @@
+{
+  "version": "1.0",
+  "gymTitle": "GRAFIK FITNESS - CUBE PŁOCK",
+  "rows": [
+    {
+      "id": "row_1",
+      "type": "hour",
+      "time": "9:00",
+      "note": ""
+    },
+    {
+      "id": "row_2",
+      "type": "hour",
+      "time": "10:30",
+      "note": ""
+    },
+    {
+      "id": "row_break_imported_2",
+      "type": "break",
+      "label": ""
+    },
+    {
+      "id": "row_3",
+      "type": "hour",
+      "time": "16:00",
+      "note": ""
+    },
+    {
+      "id": "row_4",
+      "type": "hour",
+      "time": "17:00",
+      "note": ""
+    },
+    {
+      "id": "row_5",
+      "type": "hour",
+      "time": "18:00",
+      "note": ""
+    },
+    {
+      "id": "row_6",
+      "type": "hour",
+      "time": "19:00",
+      "note": ""
+    },
+    {
+      "id": "row_7",
+      "type": "hour",
+      "time": "20:00",
+      "note": ""
+    }
+  ],
+  "tiles": {
+    "row_1_sat": {
+      "name": "ZDROWY KRĘGOSŁUP Z\nELEMENTAMI STRETCHINGU",
+      "hasCustomStart": true,
+      "startTime": "",
+      "instructor": "Kinga",
+      "categories": [
+        "prozdrowotne",
+        "rozciagajace"
+      ]
+    },
+    "row_2_sat": {
+      "name": "TRENING\nOBWODOWY",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Maryna",
+      "categories": [
+        "spalajace",
+        "wzmacniajace"
+      ]
+    },
+    "row_3_fri": {
+      "name": "RAMIONA\nI BRZUCH",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Kinga",
+      "categories": [
+        "modelujace",
+        "wzmacniajace"
+      ]
+    },
+    "row_4_tue": {
+      "name": "DANCE CARDIO",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Kinga",
+      "categories": [
+        "taneczne",
+        "spalajace"
+      ]
+    },
+    "row_4_fri": {
+      "name": "LADIES DANCE",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Kinga",
+      "categories": [
+        "taneczne"
+      ]
+    },
+    "row_5_mon": {
+      "name": "SPALANIE\n+ PŁASKI BRZUCH",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Kinga",
+      "categories": [
+        "spalajace",
+        "modelujace"
+      ]
+    },
+    "row_5_tue": {
+      "name": "STEP CARDIO",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Maryna",
+      "categories": [
+        "spalajace"
+      ]
+    },
+    "row_5_wed": {
+      "name": "FITNESS MIX",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Maryna",
+      "categories": [
+        "spalajace",
+        "wzmacniajace"
+      ]
+    },
+    "row_5_thu": {
+      "name": "STEP\nWZMACNIANIE",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Maryna",
+      "categories": [
+        "spalajace",
+        "wzmacniajace"
+      ]
+    },
+    "row_5_fri": {
+      "name": "SHAPE",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Maryna",
+      "categories": [
+        "modelujace",
+        "wzmacniajace"
+      ]
+    },
+    "row_6_mon": {
+      "name": "BRAZYLIJSKIE\nPOŚLADKI",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Kinga",
+      "categories": [
+        "modelujace",
+        "wzmacniajace"
+      ]
+    },
+    "row_6_tue": {
+      "name": "FULL BODY\nWORKOUT",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Kinga",
+      "categories": [
+        "modelujace",
+        "wzmacniajace"
+      ]
+    },
+    "row_6_wed": {
+      "name": "RZEŹBA CIAŁA",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Kinga",
+      "categories": [
+        "modelujace",
+        "wzmacniajace"
+      ]
+    },
+    "row_6_thu": {
+      "name": "BUP",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Kinga",
+      "categories": [
+        "modelujace",
+        "wzmacniajace"
+      ]
+    },
+    "row_6_fri": {
+      "name": "STRETCHING",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Maryna",
+      "categories": [
+        "rozciagajace"
+      ]
+    },
+    "row_7_mon": {
+      "name": "STRETCH\n& ROLLER",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Maryna",
+      "categories": [
+        "rozciagajace"
+      ]
+    },
+    "row_7_tue": {
+      "name": "ZDROWY KRĘGOSŁUP Z\nELEMENTAMI STRETCHINGU",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Kinga",
+      "categories": [
+        "prozdrowotne",
+        "rozciagajace"
+      ]
+    },
+    "row_7_wed": {
+      "name": "RAMIONA\nI BRZUCH",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Kinga",
+      "categories": [
+        "modelujace",
+        "wzmacniajace"
+      ]
+    },
+    "row_7_thu": {
+      "name": "PILATES",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Adrianna",
+      "categories": [
+        "wzmacniajace"
+      ]
+    },
+    "row_2_sun": {
+      "name": "ZDROWY KRĘGOSŁUP Z\nELEMENTAMI STRETCHINGU",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Kinga",
+      "categories": [
+        "prozdrowotne",
+        "rozciagajace"
+      ]
+    },
+    "row_1_sun": {
+      "name": "TRENING\nOBWODOWY",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Maryna",
+      "categories": [
+        "spalajace",
+        "wzmacniajace"
+      ]
+    }
+  },
+  "formatId": "a4_print",
+  "activeDays": [
+    "mon",
+    "tue",
+    "wed",
+    "thu",
+    "fri",
+    "sat",
+    "sun"
+  ],
+  "slimDays": false,
+  "slimHours": false,
+  "slimTiles": false
+}

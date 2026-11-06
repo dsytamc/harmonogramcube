@@ -1,0 +1,154 @@
+{
+  "version": "1.0",
+  "gymTitle": "GRAFIK FITNESS - CUBE ELBLĄG",
+  "rows": [
+    {
+      "id": "row_1792415353811_o4gk",
+      "type": "hour",
+      "time": "16:00",
+      "note": ""
+    },
+    {
+      "id": "row_1",
+      "type": "hour",
+      "time": "17:00",
+      "note": ""
+    },
+    {
+      "id": "row_2",
+      "type": "hour",
+      "time": "18:00",
+      "note": ""
+    },
+    {
+      "id": "row_3",
+      "type": "hour",
+      "time": "19:00",
+      "note": ""
+    },
+    {
+      "id": "row_1792415370258_pot2",
+      "type": "hour",
+      "time": "20:00",
+      "note": ""
+    }
+  ],
+  "tiles": {
+    "row_1_mon": {
+      "name": "SEXY PUPA",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Zuzanna Przybysz",
+      "categories": [
+        "modelujace"
+      ]
+    },
+    "row_1_tue": {
+      "name": "STRECHING\n+ MOBILITY",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Paweł Landowski",
+      "categories": [
+        "prozdrowotne"
+      ]
+    },
+    "row_1_wed": {
+      "name": "RZEŹBA\n& KONDYCJA",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Daiana Suszek",
+      "categories": [
+        "wzmacniajace"
+      ]
+    },
+    "row_1_thu": {
+      "name": "FAT BURNING",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Paweł Landowski",
+      "categories": [
+        "spalajace"
+      ]
+    },
+    "row_1_fri": {
+      "name": "ZUMBA®",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Małgorzata Płaza",
+      "categories": [
+        "taneczne"
+      ]
+    },
+    "row_2_mon": {
+      "name": "TABATA",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Daiana Suszek",
+      "categories": [
+        "spalajace"
+      ]
+    },
+    "row_2_tue": {
+      "name": "PILATES",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Viktoryia Vinterhryn",
+      "categories": [
+        "modelujace"
+      ]
+    },
+    "row_2_wed": {
+      "name": "SPALANIE\n+ PŁASKI BRZUCH",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Zuzanna Przybysz",
+      "categories": [
+        "spalajace"
+      ]
+    },
+    "row_2_thu": {
+      "name": "PILATES",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Viktoryia Vinterhryn",
+      "categories": [
+        "modelujace"
+      ]
+    },
+    "row_2_fri": {
+      "name": "RAMIONA\nI BRZUCH",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Zuzanna Przybysz",
+      "categories": [
+        "modelujace"
+      ]
+    },
+    "row_3_tue": {
+      "name": "ZDROWY\nKRĘGOSŁUP",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Zuzanna Przybysz",
+      "categories": [
+        "prozdrowotne"
+      ]
+    },
+    "row_3_wed": {
+      "name": "ZUMBA®",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Małgorzata Płaza",
+      "categories": [
+        "taneczne"
+      ]
+    }
+  },
+  "formatId": "post_portrait",
+  "activeDays": [
+    "mon",
+    "tue",
+    "wed",
+    "thu",
+    "fri"
+  ]
+}

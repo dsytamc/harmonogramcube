@@ -1,0 +1,187 @@
+{
+  "version": "1.0",
+  "updatedAt": "2026-11-06T09:03:52.419Z",
+  "locations": [
+    {
+      "id": "chelm-lubelska-135",
+      "city": "Chełm",
+      "street": "Lubelska 135",
+      "saves": [
+        {
+          "id": "grafik_cube_chelm",
+          "filename": "grafik_cube_chelm.json",
+          "name": "Grafik Cube Chełm",
+          "updatedAt": "2026-10-20T08:25:49.187Z",
+          "size": 6236
+        }
+      ]
+    },
+    {
+      "id": "elblag-warszawska-47",
+      "city": "Elbląg",
+      "street": "Warszawska 47",
+      "saves": [
+        {
+          "id": "grafik_cube_elblag",
+          "filename": "grafik_cube_elblag.json",
+          "name": "Grafik Cube Elbląg",
+          "updatedAt": "2026-10-19T13:12:08.402Z",
+          "size": 3153
+        }
+      ]
+    },
+    {
+      "id": "garwolin-trakt-lwowski-158a",
+      "city": "Garwolin",
+      "street": "Trakt Lwowski 158A",
+      "saves": [
+        {
+          "id": "grafik_fitness___cube_garwolin",
+          "filename": "grafik_fitness___cube_garwolin.json",
+          "name": "Grafik Cube Garwolin",
+          "updatedAt": "2026-10-14T06:54:22.367Z",
+          "size": 5445
+        }
+      ]
+    },
+    {
+      "id": "jaslo-lwowska-24",
+      "city": "Jasło",
+      "street": "Lwowska 24",
+      "saves": [
+        {
+          "id": "grafik_cube_jaslo",
+          "filename": "grafik_cube_jaslo.json",
+          "name": "Grafik Cube Jasło",
+          "updatedAt": "2026-10-14T13:24:27.751Z",
+          "size": 6014
+        }
+      ]
+    },
+    {
+      "id": "lublin-jozefa-mackiewicza-7",
+      "city": "Lublin",
+      "street": "Józefa Mackiewicza 7",
+      "saves": [
+        {
+          "id": "grafik_cube_czechow",
+          "filename": "grafik_cube_czechow.json",
+          "name": "Grafik Cube Czechów",
+          "updatedAt": "2026-11-03T08:20:09.940Z",
+          "size": 6885
+        }
+      ]
+    },
+    {
+      "id": "lublin-slawinkowska-47",
+      "city": "Lublin",
+      "street": "Sławinkowska 47",
+      "saves": [
+        {
+          "id": "grafik_cube_slawin",
+          "filename": "grafik_cube_slawin.json",
+          "name": "Grafik Cube Sławin",
+          "updatedAt": "2026-10-28T09:17:14.948Z",
+          "size": 8943
+        }
+      ]
+    },
+    {
+      "id": "lublin-korpusu-ochrony-pogranicza-2",
+      "city": "Lublin",
+      "street": "Korpusu Ochrony Pogranicza 2",
+      "saves": [
+        {
+          "id": "grafik_cube_zelwerowicza",
+          "filename": "grafik_cube_zelwerowicza.json",
+          "name": "Grafik Cube Zelwerowicza",
+          "updatedAt": "2026-10-20T09:35:57.300Z",
+          "size": 6767
+        }
+      ]
+    },
+    {
+      "id": "lodz-unii-lubelskiej-2",
+      "city": "Łódź",
+      "street": "Unii Lubelskiej 2",
+      "saves": [
+        {
+          "id": "grafik_cube_lodz",
+          "filename": "grafik_cube_lodz.json",
+          "name": "Grafik Cube Łódź",
+          "updatedAt": "2026-10-14T13:28:06.155Z",
+          "size": 6298
+        }
+      ]
+    },
+    {
+      "id": "plock-miodowa-13a",
+      "city": "Płock",
+      "street": "Miodowa 13A",
+      "saves": [
+        {
+          "id": "grafik_cube_plock",
+          "filename": "grafik_cube_plock.json",
+          "name": "Grafik Cube Płock",
+          "updatedAt": "2026-10-28T08:05:14.357Z",
+          "size": 5567
+        }
+      ]
+    },
+    {
+      "id": "radom-boleslawa-limanowskiego-98",
+      "city": "Radom",
+      "street": "Bolesława Limanowskiego 98",
+      "saves": []
+    },
+    {
+      "id": "sochaczew-aleja-600-lecia-27a",
+      "city": "Sochaczew",
+      "street": "Aleja 600-lecia 27A",
+      "saves": [
+        {
+          "id": "grafik_cube_sochaczew",
+          "filename": "grafik_cube_sochaczew.json",
+          "name": "Grafik Cube Sochaczew",
+          "updatedAt": "2026-10-19T06:44:08.862Z",
+          "size": 5960
+        }
+      ]
+    },
+    {
+      "id": "swidnik-kardynala-stefana-wyszynskiego-22",
+      "city": "Świdnik",
+      "street": "Kardynała Stefana Wyszyńskiego 22",
+      "saves": [
+        {
+          "id": "grafik_cube_swidnik",
+          "filename": "grafik_cube_swidnik.json",
+          "name": "Grafik Cube Świdnik",
+          "updatedAt": "2026-10-14T13:30:07.862Z",
+          "size": 6419
+        }
+      ]
+    },
+    {
+      "id": "wloclawek-broniewskiego-5",
+      "city": "Włocławek",
+      "street": "Broniewskiego 5",
+      "saves": [
+        {
+          "id": "grafik_cube_wloclawek",
+          "filename": "grafik_cube_wloclawek.json",
+          "name": "Grafik Cube Włocławek",
+          "updatedAt": "2026-10-21T11:00:49.673Z",
+          "size": 7391
+        },
+        {
+          "id": "grafik_cube_wloclawek_doulotki",
+          "filename": "grafik_cube_wloclawek_doulotki.json",
+          "name": "Grafik Cube Włocławek (Do ulotki)",
+          "updatedAt": "2026-10-21T11:04:29.848Z",
+          "size": 6788
+        }
+      ]
+    }
+  ]
+}

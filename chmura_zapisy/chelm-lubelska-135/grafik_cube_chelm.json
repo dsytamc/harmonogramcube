@@ -1,0 +1,299 @@
+{
+  "version": "1.0",
+  "gymTitle": "GRAFIK FITNESS - CUBE CHEŁM",
+  "rows": [
+    {
+      "id": "row_1",
+      "type": "hour",
+      "time": "8:30",
+      "note": ""
+    },
+    {
+      "id": "row_2",
+      "type": "hour",
+      "time": "9:00",
+      "note": ""
+    },
+    {
+      "id": "row_3",
+      "type": "hour",
+      "time": "10:00",
+      "note": ""
+    },
+    {
+      "id": "row_4",
+      "type": "hour",
+      "time": "10:30",
+      "note": ""
+    },
+    {
+      "id": "row_1791963357348_duve",
+      "type": "break",
+      "label": ""
+    },
+    {
+      "id": "row_5",
+      "type": "hour",
+      "time": "16:15",
+      "note": ""
+    },
+    {
+      "id": "row_6",
+      "type": "hour",
+      "time": "17:00",
+      "note": ""
+    },
+    {
+      "id": "row_1792484215053_cii6",
+      "type": "hour",
+      "time": "18:00",
+      "note": "siłownia"
+    },
+    {
+      "id": "row_8",
+      "type": "hour",
+      "time": "18:00",
+      "note": "sala fitness"
+    },
+    {
+      "id": "row_10",
+      "type": "hour",
+      "time": "19:00",
+      "note": ""
+    },
+    {
+      "id": "row_12",
+      "type": "hour",
+      "time": "20:00",
+      "note": ""
+    }
+  ],
+  "tiles": {
+    "row_1_tue": {
+      "name": "AKTYWNY\nSENIOR",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Marta Dumin",
+      "categories": [
+        "wzmacniajace"
+      ]
+    },
+    "row_1_thu": {
+      "name": "AKTYWNY\nSENIOR",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Marta Dumin",
+      "categories": [
+        "wzmacniajace"
+      ]
+    },
+    "row_2_sat": {
+      "name": "PŁASKI\nBRZUCH",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Nikola Kołodyńska",
+      "categories": [
+        "modelujace"
+      ]
+    },
+    "row_3_sat": {
+      "name": "CARDIO \n+ STRETCH",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Edyta Wróbel",
+      "categories": [
+        "spalajace"
+      ]
+    },
+    "row_4_sat": {
+      "name": "POŚLADKI 2.0",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Edyta Wróbel",
+      "categories": [
+        "modelujace"
+      ]
+    },
+    "row_5_thu": {
+      "name": "SPOKOJNE\nWZMACNIANIE",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Marta Dumin",
+      "categories": [
+        "wzmacniajace"
+      ]
+    },
+    "row_6_mon": {
+      "name": "SEXY PUPA",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Nikola Kołodyńska",
+      "categories": [
+        "modelujace"
+      ]
+    },
+    "row_6_fri": {
+      "name": "SZTANGI",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Nikola Kołodyńska",
+      "categories": [
+        "wzmacniajace"
+      ]
+    },
+    "row_8_mon": {
+      "name": "BUP",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Magdalena Zańko",
+      "categories": [
+        "modelujace"
+      ]
+    },
+    "row_8_wed": {
+      "name": "SPALANIE",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Magdalena Zańko",
+      "categories": [
+        "spalajace"
+      ]
+    },
+    "row_8_fri": {
+      "name": "BUP",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Magdalena Zańko",
+      "categories": [
+        "modelujace"
+      ]
+    },
+    "row_10_mon": {
+      "name": "BODY SHAPE\n- MINI BAND WORKOUT",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Sylwia Kossowska",
+      "categories": [
+        "modelujace"
+      ]
+    },
+    "row_10_wed": {
+      "name": "MODELOWANIE\nSYLWETKI",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Magdalena Zańko",
+      "categories": [
+        "modelujace"
+      ]
+    },
+    "row_10_fri": {
+      "name": "FIT BALL",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Sylwia Kossowska",
+      "categories": [
+        "modelujace"
+      ]
+    },
+    "row_12_mon": {
+      "name": "STRETCH\n& ROLLER",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Sylwia Kossowska",
+      "categories": [
+        "rozciagajace"
+      ]
+    },
+    "row_6_tue": {
+      "name": "FULL BODY WORKOUT",
+      "hasCustomStart": true,
+      "startTime": "17:15",
+      "instructor": "Marta Dumin",
+      "categories": [
+        "spalajace"
+      ]
+    },
+    "row_6_thu": {
+      "name": "ZDROWY KRĘGOSŁUP",
+      "hasCustomStart": true,
+      "startTime": "17:15",
+      "instructor": "Marta Dumin",
+      "categories": [
+        "prozdrowotne"
+      ]
+    },
+    "row_8_tue": {
+      "name": "ZUMBA FITNESS®",
+      "hasCustomStart": true,
+      "startTime": "18:20",
+      "instructor": "Monika Kruszczyńska\n-Szczubiał",
+      "categories": [
+        "taneczne"
+      ]
+    },
+    "row_8_thu": {
+      "name": "ZUMBA FITNESS®",
+      "hasCustomStart": true,
+      "startTime": "18:20",
+      "instructor": "Monika Kruszczyńska\n-Szczubiał",
+      "categories": [
+        "taneczne"
+      ]
+    },
+    "row_10_tue": {
+      "name": "PILATES",
+      "hasCustomStart": true,
+      "startTime": "19:30",
+      "instructor": "Wiktoria Matuszewska",
+      "categories": [
+        "wzmacniajace"
+      ]
+    },
+    "row_10_thu": {
+      "name": "TURBO FORMA",
+      "hasCustomStart": true,
+      "startTime": "19:30",
+      "instructor": "Edyta Wróbel",
+      "categories": [
+        "spalajace"
+      ]
+    },
+    "row_12_tue": {
+      "name": "BOKS",
+      "hasCustomStart": true,
+      "startTime": "20:30",
+      "instructor": "Daniel Gorczyca",
+      "categories": [
+        "sztuki_walki"
+      ]
+    },
+    "row_12_thu": {
+      "name": "BOKS",
+      "hasCustomStart": true,
+      "startTime": "20:30",
+      "instructor": "Daniel Gorczyca",
+      "categories": [
+        "sztuki_walki"
+      ]
+    },
+    "row_1792484215053_cii6_wed": {
+      "name": "CUBE CROSS",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Edyta Wróbel",
+      "categories": [
+        "spalajace"
+      ]
+    }
+  },
+  "formatId": "post_portrait",
+  "activeDays": [
+    "mon",
+    "tue",
+    "wed",
+    "thu",
+    "fri",
+    "sat",
+    "sun"
+  ]
+}

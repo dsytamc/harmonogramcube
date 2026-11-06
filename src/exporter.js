@@ -594,7 +594,8 @@ export async function exportArtboardToPng(artboardEl, state, statusCallback = nu
   try {
     if (statusCallback) statusCallback(`Renderowanie pliku PNG (${targetWidth} × ${targetHeight} px)...`);
 
-    if (typeof window.htmlToImage === 'undefined') {
+    const hti = window.htmlToImage || (typeof globalThis !== 'undefined' ? globalThis.htmlToImage : null);
+    if (!hti) {
       throw new Error('Biblioteka html-to-image nie została załadowana.');
     }
 
@@ -612,7 +613,7 @@ export async function exportArtboardToPng(artboardEl, state, statusCallback = nu
     };
 
     // Renderowanie do blob PNG
-    const blob = await window.htmlToImage.toBlob(artboardEl, options);
+    const blob = await hti.toBlob(artboardEl, options);
 
     if (!blob) {
       throw new Error('Nie udało się wygenerować obrazu PNG.');
@@ -688,7 +689,8 @@ export async function exportArtboardToPdf(artboardEl, state, statusCallback = nu
   try {
     if (statusCallback) statusCallback(`Generowanie spłaszczonego rastra druku 300 DPI (${targetPxWidth}×${targetPxHeight} px)...`);
 
-    if (typeof window.htmlToImage === 'undefined') {
+    const hti = window.htmlToImage || (typeof globalThis !== 'undefined' ? globalThis.htmlToImage : null);
+    if (!hti) {
       throw new Error('Biblioteka html-to-image nie została załadowana.');
     }
 
@@ -706,7 +708,7 @@ export async function exportArtboardToPdf(artboardEl, state, statusCallback = nu
     };
 
     // Renderujemy do wysokorozdzielczego JPEG w pamięci
-    const jpegDataUrl = await window.htmlToImage.toJpeg(artboardEl, options);
+    const jpegDataUrl = await hti.toJpeg(artboardEl, options);
     if (!jpegDataUrl || !jpegDataUrl.startsWith('data:image/jpeg;base64,')) {
       throw new Error('Nie udało się wygenerować rastra dla dokumentu PDF.');
     }

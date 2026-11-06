@@ -1,0 +1,317 @@
+{
+  "version": "1.0",
+  "gymTitle": "GRAFIK FITNESS - CUBE SWIDNIK",
+  "rows": [
+    {
+      "id": "row_1",
+      "type": "hour",
+      "time": "9:00",
+      "note": ""
+    },
+    {
+      "id": "row_2",
+      "type": "hour",
+      "time": "10:00",
+      "note": ""
+    },
+    {
+      "id": "row_3",
+      "type": "hour",
+      "time": "11:00",
+      "note": ""
+    },
+    {
+      "id": "row_break_imported_3",
+      "type": "break",
+      "label": ""
+    },
+    {
+      "id": "row_4",
+      "type": "hour",
+      "time": "17:00",
+      "note": ""
+    },
+    {
+      "id": "row_5",
+      "type": "hour",
+      "time": "18:00",
+      "note": ""
+    },
+    {
+      "id": "row_6",
+      "type": "hour",
+      "time": "19:00",
+      "note": ""
+    },
+    {
+      "id": "row_7",
+      "type": "hour",
+      "time": "20:00",
+      "note": ""
+    }
+  ],
+  "tiles": {
+    "row_1_mon": {
+      "name": "PILATES",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Ola",
+      "categories": [
+        "modelujace"
+      ]
+    },
+    "row_1_tue": {
+      "name": "TBC",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Ola",
+      "categories": [
+        "spalajace"
+      ]
+    },
+    "row_1_wed": {
+      "name": "STRETCHING",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Elwira",
+      "categories": [
+        "rozciagajace"
+      ]
+    },
+    "row_1_thu": {
+      "name": "MOBILITY",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Karolina",
+      "categories": [
+        "rozciagajace"
+      ]
+    },
+    "row_1_fri": {
+      "name": "PŁASKI BRZUCH",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Ola",
+      "categories": [
+        "modelujace"
+      ]
+    },
+    "row_1_sat": {
+      "name": "SEXY PUPA",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Beata Cz.",
+      "categories": [
+        "modelujace"
+      ]
+    },
+    "row_2_sat": {
+      "name": "SPALANIE +\nPŁASKI BRZUCH",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Beata Cz.",
+      "categories": [
+        "spalajace"
+      ]
+    },
+    "row_2_sun": {
+      "name": "HOT BODY",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Elwira",
+      "categories": [
+        "wzmacniajace"
+      ]
+    },
+    "row_3_sat": {
+      "name": "ZDROWY\nKRĘGOSŁUP",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Zuzia Sz.",
+      "categories": [
+        "prozdrowotne"
+      ]
+    },
+    "row_3_sun": {
+      "name": "PILATES",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Elwira",
+      "categories": [
+        "modelujace"
+      ]
+    },
+    "row_4_mon": {
+      "name": "BUP",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Iza",
+      "categories": [
+        "modelujace"
+      ]
+    },
+    "row_4_tue": {
+      "name": "DANCE CARDIO",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Zosia",
+      "categories": [
+        "taneczne"
+      ]
+    },
+    "row_4_wed": {
+      "name": "ZDROWY\nKRĘGOSŁUP",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Elwira",
+      "categories": [
+        "prozdrowotne"
+      ]
+    },
+    "row_4_thu": {
+      "name": "SZTANGI",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Zosia",
+      "categories": [
+        "wzmacniajace"
+      ]
+    },
+    "row_4_fri": {
+      "name": "PILATES",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Ola",
+      "categories": [
+        "modelujace"
+      ]
+    },
+    "row_5_mon": {
+      "name": "ZDROWY\nKRĘGOSŁUP",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Zuzia Sz.",
+      "categories": [
+        "prozdrowotne"
+      ]
+    },
+    "row_5_tue": {
+      "name": "CUBE CROSS",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Zosia",
+      "categories": [
+        "spalajace"
+      ]
+    },
+    "row_5_wed": {
+      "name": "PŁASKI BRZUCH",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Karolina",
+      "categories": [
+        "modelujace"
+      ]
+    },
+    "row_5_thu": {
+      "name": "CUBE CROSS",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Zosia",
+      "categories": [
+        "spalajace"
+      ]
+    },
+    "row_5_fri": {
+      "name": "TRENING\nOBWODOWY",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Ola",
+      "categories": [
+        "spalajace"
+      ]
+    },
+    "row_6_mon": {
+      "name": "MINIBAND",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Zuzia Sz.",
+      "categories": [
+        "modelujace"
+      ]
+    },
+    "row_6_tue": {
+      "name": "SPALANIE",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Ola",
+      "categories": [
+        "spalajace"
+      ]
+    },
+    "row_6_wed": {
+      "name": "AKTIV YOGA",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Paweł",
+      "categories": [
+        "rozciagajace"
+      ]
+    },
+    "row_6_thu": {
+      "name": "MOBILITY",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Karolina",
+      "categories": [
+        "rozciagajace"
+      ]
+    },
+    "row_6_fri": {
+      "name": "YOGA",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Paweł",
+      "categories": [
+        "rozciagajace"
+      ]
+    },
+    "row_7_mon": {
+      "name": "YOGA",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Paweł",
+      "categories": [
+        "rozciagajace"
+      ]
+    },
+    "row_7_tue": {
+      "name": "STEP\nFUNKCJONALNY",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Magda K.",
+      "categories": [
+        "wzmacniajace"
+      ]
+    },
+    "row_7_wed": {
+      "name": "RELAKS YOGA",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Paweł",
+      "categories": [
+        "rozciagajace"
+      ]
+    },
+    "row_7_thu": {
+      "name": "SAMOOBRONA",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Jarek Kasperek",
+      "categories": [
+        "sztuki_walki"
+      ]
+    }
+  },
+  "formatId": "post_square"
+}

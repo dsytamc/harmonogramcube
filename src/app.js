@@ -3,6 +3,7 @@ import { ScheduleStore } from './store.js';
 import { renderArtboard } from './artboardRenderer.js';
 import { exportArtboardToPng, exportArtboardToPdf, exportArtboardToSvg } from './exporter.js';
 import { fetchEfitnessSchedule, importFromHtmlString } from './efitnessImporter.js';
+import { getCloudLocations, getSavesForLocation, loadCloudSave, saveToCloud } from './cloudStorage.js';
 
 // Inicjalizacja stanu
 const store = new ScheduleStore();
@@ -121,6 +122,25 @@ const modalImportStatus = document.getElementById('modalImportStatus');
 const saveFileNameInput = document.getElementById('saveFileNameInput');
 const modalSaveDirectBtn = document.getElementById('modalSaveDirectBtn');
 const modalSaveAsBtn = document.getElementById('modalSaveAsBtn');
+
+// Modal Zapis / Wczytanie (Lokalnie i w chmurze)
+const cloudModal = document.getElementById('cloudModal');
+const cloudModalDialog = document.getElementById('cloudModalDialog');
+const cloudModalTitle = document.getElementById('cloudModalTitle');
+const cloudChoiceDiskBtn = document.getElementById('cloudChoiceDiskBtn');
+const cloudChoiceDiskTitle = document.getElementById('cloudChoiceDiskTitle');
+const cloudChoiceDiskDesc = document.getElementById('cloudChoiceDiskDesc');
+const cloudChoiceCloudBtn = document.getElementById('cloudChoiceCloudBtn');
+const cloudChoiceCloudTitle = document.getElementById('cloudChoiceCloudTitle');
+const cloudLocationsWrap = document.getElementById('cloudLocationsWrap');
+const cloudLocationsGrid = document.getElementById('cloudLocationsGrid');
+const cloudSavesWrap = document.getElementById('cloudSavesWrap');
+const cloudBackToLocationsBtn = document.getElementById('cloudBackToLocationsBtn');
+const cloudSelectedLocationTitle = document.getElementById('cloudSelectedLocationTitle');
+const cloudSavesTableBody = document.getElementById('cloudSavesTableBody');
+const cloudSaveNameGroup = document.getElementById('cloudSaveNameGroup');
+const cloudSaveNameInput = document.getElementById('cloudSaveNameInput');
+const cloudModalActionBtn = document.getElementById('cloudModalActionBtn');
 
 // Formularz w modalu Eksport
 const selectAllFormatsBtn = document.getElementById('selectAllFormatsBtn');
@@ -959,9 +979,9 @@ function setupEventListeners() {
   }
 
   // Obsługa przycisków pustego obszaru roboczego (start screen)
-  if (emptyLoadBtn && emptyLoadFileInput) {
+  if (emptyLoadBtn) {
     emptyLoadBtn.addEventListener('click', () => {
-      emptyLoadFileInput.click();
+      openCloudModal('load');
     });
   }
 
@@ -1310,7 +1330,7 @@ function setupEventListeners() {
     });
   });
 
-  [importModal, saveModal, exportModal].forEach(modal => {
+  [importModal, saveModal, exportModal, cloudModal].forEach(modal => {
     if (!modal) return;
     modal.addEventListener('click', (e) => {
       if (e.target === modal) {
@@ -1399,16 +1419,312 @@ function setupEventListeners() {
   }
 
   // ==========================================================================
-  // GÓRNY PASEK NARZĘDZI: ZAPISZ I WCZYTAJ
+  // ZAPIS I WCZYTYWANIE PROJEKTÓW: MODAL CHMURA / DYSK (CARBON)
   // ==========================================================================
-  if (topSaveBtn) {
-    topSaveBtn.addEventListener('click', () => {
-      if (saveFileNameInput) saveFileNameInput.value = currentDocName;
-      openModal('saveModal');
+  let cloudModalMode = 'save'; // 'save' | 'load'
+  let selectedCloudLoc = null;
+  let selectedCloudSave = null;
+  let cloudLocationsCache = [];
+
+  function openCloudModal(mode = 'save') {
+    cloudModalMode = mode;
+    selectedCloudLoc = null;
+    selectedCloudSave = null;
+
+    const isSave = mode === 'save';
+
+    if (cloudModalTitle) {
+      cloudModalTitle.textContent = isSave ? 'Zapisz' : 'Wczytaj';
+    }
+
+    if (cloudChoiceDiskTitle) {
+      cloudChoiceDiskTitle.textContent = isSave ? 'Zapisz na dysku' : 'Wczytaj z dysku';
+    }
+    if (cloudChoiceDiskDesc) {
+      cloudChoiceDiskDesc.textContent = isSave ? 'Pobierz plik projektu .json' : 'Wybierz plik projektu .json';
+    }
+
+    if (cloudChoiceCloudTitle) {
+      cloudChoiceCloudTitle.textContent = isSave ? 'Zapisz w chmurze' : 'Wczytaj w chmurze';
+    }
+
+    if (cloudModalDialog) {
+      cloudModalDialog.classList.remove('is-expanded');
+    }
+    if (cloudChoiceCloudBtn) {
+      cloudChoiceCloudBtn.classList.remove('is-active');
+    }
+    if (cloudLocationsWrap) {
+      cloudLocationsWrap.classList.add('hidden');
+    }
+    if (cloudSavesWrap) {
+      cloudSavesWrap.classList.add('hidden');
+    }
+    if (cloudModalActionBtn) {
+      cloudModalActionBtn.classList.add('hidden');
+    }
+
+    openModal('cloudModal');
+  }
+
+  // Kliknięcie "Zapisz na dysku" / "Wczytaj z dysku"
+  if (cloudChoiceDiskBtn) {
+    cloudChoiceDiskBtn.addEventListener('click', () => {
+      if (cloudModalMode === 'save') {
+        const fileName = currentDocName || 'grafik_cube.json';
+        downloadBlobFile(store.exportStateJson(), fileName);
+        markAsSaved();
+        closeModal('cloudModal');
+        showToast(`✓ Zapisano plik: ${fileName}`);
+      } else {
+        closeModal('cloudModal');
+        if (topLoadProjectInput) {
+          topLoadProjectInput.click();
+        } else if (emptyLoadFileInput) {
+          emptyLoadFileInput.click();
+        }
+      }
     });
   }
 
-  // Zapis bezpośredni w modalu
+  // Kliknięcie "Zapisz w chmurze" / "Wczytaj w chmurze"
+  if (cloudChoiceCloudBtn) {
+    cloudChoiceCloudBtn.addEventListener('click', async () => {
+      cloudChoiceCloudBtn.classList.add('is-active');
+      if (cloudModalDialog) cloudModalDialog.classList.add('is-expanded');
+      if (cloudLocationsWrap) cloudLocationsWrap.classList.remove('hidden');
+      if (cloudSavesWrap) cloudSavesWrap.classList.add('hidden');
+      if (cloudModalActionBtn) cloudModalActionBtn.classList.add('hidden');
+
+      await renderCloudLocationsList();
+    });
+  }
+
+  // Renderowanie listy miast z bazy Cube
+  async function renderCloudLocationsList() {
+    if (!cloudLocationsGrid) return;
+    cloudLocationsGrid.innerHTML = '<div style="color:#8d8d8d; font-size:12px; padding:12px;">Wczytywanie lokalizacji...</div>';
+
+    try {
+      cloudLocationsCache = await getCloudLocations();
+      cloudLocationsGrid.innerHTML = '';
+
+      cloudLocationsCache.forEach(loc => {
+        const btn = document.createElement('div');
+        btn.className = 'cloud-location-btn';
+
+        const savesCount = Array.isArray(loc.saves) ? loc.saves.length : 0;
+        const badgeHtml = savesCount > 0 ? `<div class="cloud-location-badge">${savesCount}</div>` : '';
+
+        btn.innerHTML = `
+          ${badgeHtml}
+          <div class="cloud-location-city">${loc.city}</div>
+          <div class="cloud-location-street">${loc.street}</div>
+        `;
+
+        btn.addEventListener('click', () => {
+          selectCloudLocation(loc);
+        });
+
+        cloudLocationsGrid.appendChild(btn);
+      });
+    } catch (err) {
+      cloudLocationsGrid.innerHTML = `<div style="color:#ff8389; font-size:12px; padding:12px;">Błąd: ${err.message}</div>`;
+    }
+  }
+
+  // Wybór lokalizacji
+  function selectCloudLocation(loc) {
+    selectedCloudLoc = loc;
+    selectedCloudSave = null;
+
+    if (cloudLocationsWrap) cloudLocationsWrap.classList.add('hidden');
+    if (cloudSavesWrap) cloudSavesWrap.classList.remove('hidden');
+    if (cloudModalActionBtn) cloudModalActionBtn.classList.remove('hidden');
+
+    if (cloudSelectedLocationTitle) {
+      cloudSelectedLocationTitle.innerHTML = `<strong>${loc.city}</strong>, ${loc.street}`;
+    }
+
+    const isSave = cloudModalMode === 'save';
+
+    if (cloudSaveNameGroup) {
+      if (isSave) {
+        cloudSaveNameGroup.classList.remove('hidden');
+        if (cloudSaveNameInput) {
+          let defaultName = store.state?.gymTitle || `Grafik ${loc.city}`;
+          if (currentDocName && currentDocName !== 'grafik_cube.json') {
+            defaultName = currentDocName.replace(/\.json$/i, '');
+          }
+          cloudSaveNameInput.value = defaultName;
+        }
+      } else {
+        cloudSaveNameGroup.classList.add('hidden');
+      }
+    }
+
+    if (cloudModalActionBtn) {
+      cloudModalActionBtn.textContent = isSave ? 'Zapisz' : 'Wczytaj';
+      cloudModalActionBtn.disabled = !isSave;
+    }
+
+    renderLocationSavesTable(loc);
+  }
+
+  // Renderowanie tabeli zapisów wybranego miasta
+  function renderLocationSavesTable(loc) {
+    if (!cloudSavesTableBody) return;
+    cloudSavesTableBody.innerHTML = '';
+
+    const saves = Array.isArray(loc.saves) ? loc.saves : [];
+    if (saves.length === 0) {
+      cloudSavesTableBody.innerHTML = `
+        <tr>
+          <td colspan="3" class="cloud-empty-saves">Brak zapisów dla tej lokalizacji</td>
+        </tr>
+      `;
+      return;
+    }
+
+    saves.forEach((s, idx) => {
+      const tr = document.createElement('tr');
+      tr.className = 'cloud-save-row';
+
+      let dateStr = '';
+      if (s.updatedAt) {
+        try {
+          const d = new Date(s.updatedAt);
+          dateStr = d.toLocaleDateString('pl-PL') + ', ' + d.toLocaleTimeString('pl-PL', { hour: '2-digit', minute: '2-digit' });
+        } catch (e) {
+          dateStr = s.updatedAt;
+        }
+      }
+
+      tr.innerHTML = `
+        <td class="cloud-save-num">#${idx + 1}</td>
+        <td class="cloud-save-name">${s.name || s.filename}</td>
+        <td class="cloud-save-date" style="text-align: right;">${dateStr}</td>
+      `;
+
+      tr.addEventListener('click', () => {
+        cloudSavesTableBody.querySelectorAll('.cloud-save-row').forEach(r => r.classList.remove('is-selected'));
+        tr.classList.add('is-selected');
+        selectedCloudSave = s;
+
+        if (cloudModalMode === 'load') {
+          if (cloudModalActionBtn) cloudModalActionBtn.disabled = false;
+        } else {
+          if (cloudSaveNameInput) {
+            cloudSaveNameInput.value = s.name || s.filename.replace(/\.json$/, '');
+          }
+        }
+      });
+
+      tr.addEventListener('dblclick', () => {
+        if (cloudModalMode === 'load') {
+          executeCloudLoad(loc, s);
+        }
+      });
+
+      cloudSavesTableBody.appendChild(tr);
+    });
+  }
+
+  // Przycisk "Wróć do listy miast"
+  if (cloudBackToLocationsBtn) {
+    cloudBackToLocationsBtn.addEventListener('click', () => {
+      if (cloudSavesWrap) cloudSavesWrap.classList.add('hidden');
+      if (cloudLocationsWrap) cloudLocationsWrap.classList.remove('hidden');
+      if (cloudModalActionBtn) cloudModalActionBtn.classList.add('hidden');
+      selectedCloudLoc = null;
+      selectedCloudSave = null;
+    });
+  }
+
+  // Główny przycisk akcji w modalu chmury (Zapisz / Wczytaj)
+  if (cloudModalActionBtn) {
+    cloudModalActionBtn.addEventListener('click', async () => {
+      if (!selectedCloudLoc) return;
+
+      if (cloudModalMode === 'save') {
+        const name = cloudSaveNameInput ? cloudSaveNameInput.value.trim() : '';
+        if (!name) {
+          alert('Wpisz nazwę zapisu.');
+          return;
+        }
+
+        cloudModalActionBtn.disabled = true;
+        cloudModalActionBtn.textContent = 'Zapisywanie...';
+
+        try {
+          const stateToSave = JSON.parse(store.exportStateJson());
+          const result = await saveToCloud(selectedCloudLoc.id, name, stateToSave);
+          markAsSaved();
+          setDocumentName(result.filename);
+          closeModal('cloudModal');
+          showToast(`✓ Zapisano w chmurze: ${name}`);
+        } catch (err) {
+          console.error('Błąd zapisu w chmurze:', err);
+          showToast(`✕ Błąd zapisu: ${err.message}`, 'error');
+        } finally {
+          cloudModalActionBtn.disabled = false;
+          cloudModalActionBtn.textContent = 'Zapisz';
+        }
+      } else {
+        if (!selectedCloudSave) return;
+        await executeCloudLoad(selectedCloudLoc, selectedCloudSave);
+      }
+    });
+  }
+
+  // Wykonanie wczytania z chmury
+  async function executeCloudLoad(loc, saveItem) {
+    try {
+      if (cloudModalActionBtn) {
+        cloudModalActionBtn.disabled = true;
+        cloudModalActionBtn.textContent = 'Wczytywanie...';
+      }
+
+      const loadedData = await loadCloudSave(loc.id, saveItem.filename);
+      if (!loadedData) throw new Error('Nie udało się wczytać danych.');
+
+      store.loadState(loadedData);
+      setDocumentName(saveItem.filename);
+      showScheduleWorkspace(saveItem.filename);
+      markAsSaved();
+      closeModal('cloudModal');
+      showToast(`✓ Wczytano grafik: ${saveItem.name || saveItem.filename}`);
+    } catch (err) {
+      console.error('Błąd wczytywania z chmury:', err);
+      showToast(`✕ Błąd wczytywania: ${err.message}`, 'error');
+    } finally {
+      if (cloudModalActionBtn) {
+        cloudModalActionBtn.disabled = false;
+        cloudModalActionBtn.textContent = 'Wczytaj';
+      }
+    }
+  }
+
+  // Powiązanie przycisków interfejsu z nowym modalem
+  if (topSaveBtn) {
+    topSaveBtn.addEventListener('click', () => {
+      openCloudModal('save');
+    });
+  }
+
+  if (topLoadBtn) {
+    topLoadBtn.addEventListener('click', () => {
+      openCloudModal('load');
+    });
+  }
+
+  if (saveProjectBtn) {
+    saveProjectBtn.addEventListener('click', () => {
+      openCloudModal('save');
+    });
+  }
+
+  // Zapis bezpośredni w modalu (fallback)
   if (modalSaveDirectBtn) {
     modalSaveDirectBtn.addEventListener('click', () => {
       const targetName = saveFileNameInput ? saveFileNameInput.value : currentDocName;
@@ -1420,7 +1736,7 @@ function setupEventListeners() {
     });
   }
 
-  // Zapisz jako... w modalu (File System Access API lub standardowe okno zapisu)
+  // Zapisz jako... w modalu (fallback)
   if (modalSaveAsBtn) {
     modalSaveAsBtn.addEventListener('click', async () => {
       const targetName = saveFileNameInput ? saveFileNameInput.value : currentDocName;
@@ -1449,18 +1765,10 @@ function setupEventListeners() {
         }
       }
 
-      // Fallback
       downloadBlobFile(store.exportStateJson(), currentDocName);
       markAsSaved();
       closeModal('saveModal');
       showToast(`✓ Zapisano jako: ${currentDocName}`);
-    });
-  }
-
-  // Wczytywanie z górnego paska (Wczytaj)
-  if (topLoadBtn && topLoadProjectInput) {
-    topLoadBtn.addEventListener('click', () => {
-      topLoadProjectInput.click();
     });
   }
 

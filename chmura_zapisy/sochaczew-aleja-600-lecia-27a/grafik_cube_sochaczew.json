@@ -1,0 +1,284 @@
+{
+  "version": "1.0",
+  "gymTitle": "GRAFIK FITNESS - CUBE SOCHACZEW",
+  "rows": [
+    {
+      "id": "row_1",
+      "type": "hour",
+      "time": "9:00",
+      "note": ""
+    },
+    {
+      "id": "row_2",
+      "type": "hour",
+      "time": "10:30",
+      "note": ""
+    },
+    {
+      "id": "row_3",
+      "type": "hour",
+      "time": "11:00",
+      "note": ""
+    },
+    {
+      "id": "row_4",
+      "type": "hour",
+      "time": "12:00",
+      "note": ""
+    },
+    {
+      "id": "row_break_imported_4",
+      "type": "break",
+      "label": ""
+    },
+    {
+      "id": "row_5",
+      "type": "hour",
+      "time": "17:00",
+      "note": ""
+    },
+    {
+      "id": "row_6",
+      "type": "hour",
+      "time": "18:00",
+      "note": ""
+    },
+    {
+      "id": "row_7",
+      "type": "hour",
+      "time": "19:00",
+      "note": ""
+    },
+    {
+      "id": "row_8",
+      "type": "hour",
+      "time": "19:15",
+      "note": ""
+    },
+    {
+      "id": "row_9",
+      "type": "hour",
+      "time": "20:00",
+      "note": ""
+    }
+  ],
+  "tiles": {
+    "row_1_tue": {
+      "name": "TRENING\nFUNKCJONALNY",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Piotr Bojanowski",
+      "categories": [
+        "prozdrowotne"
+      ]
+    },
+    "row_1_wed": {
+      "name": "ZDROWY\nKRĘGOSŁUP",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Magdalena Bluszcz",
+      "categories": [
+        "rozciagajace"
+      ]
+    },
+    "row_2_sat": {
+      "name": "BODY PUMP",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Irina Nowikowa\n-Sobańska",
+      "categories": [
+        "rozciagajace"
+      ]
+    },
+    "row_3_sun": {
+      "name": "STRETCHING",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Magdalena Bluszcz",
+      "categories": [
+        "rozciagajace"
+      ]
+    },
+    "row_4_sat": {
+      "name": "PILATES",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Magdalena Bluszcz",
+      "categories": [
+        "rozciagajace"
+      ]
+    },
+    "row_5_mon": {
+      "name": "SZTANGI",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Irina Nowikowa\n-Sobańska",
+      "categories": [
+        "wzmacniajace"
+      ]
+    },
+    "row_5_tue": {
+      "name": "FULL BODY\nWORKOUT",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Irina Nowikowa\n-Sobańska",
+      "categories": [
+        "wzmacniajace"
+      ]
+    },
+    "row_5_wed": {
+      "name": "BUP",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Irina Nowikowa-Sobańska",
+      "categories": [
+        "prozdrowotne"
+      ]
+    },
+    "row_5_thu": {
+      "name": "STEP CARDIO",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Irina Nowikowa\n-Sobańska",
+      "categories": [
+        "spalajace"
+      ]
+    },
+    "row_5_fri": {
+      "name": "HITT ATTACK\n& FIRE ABS",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Piotr Bojanowski",
+      "categories": [
+        "spalajace"
+      ]
+    },
+    "row_6_mon": {
+      "name": "TRENING\nOBWODOWY",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Piotr Bojanowski",
+      "categories": [
+        "spalajace"
+      ]
+    },
+    "row_6_tue": {
+      "name": "STEP",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Irina Nowikowa\n-Sobańska",
+      "categories": [
+        "spalajace"
+      ]
+    },
+    "row_6_wed": {
+      "name": "SZTANGI",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Piotr Bojanowski",
+      "categories": [
+        "wzmacniajace"
+      ]
+    },
+    "row_6_thu": {
+      "name": "MOBILITY",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Piotr Bojanowski",
+      "categories": [
+        "wzmacniajace"
+      ]
+    },
+    "row_6_fri": {
+      "name": "ZUMBA®",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Basia Borowska",
+      "categories": [
+        "taneczne"
+      ]
+    },
+    "row_7_mon": {
+      "name": "STRETCHING",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Piotr Bojanowski",
+      "categories": [
+        "rozciagajace"
+      ]
+    },
+    "row_7_tue": {
+      "name": "MOBILITY",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Magdalena Bluszcz",
+      "categories": [
+        "wzmacniajace"
+      ]
+    },
+    "row_7_wed": {
+      "name": "PILATES",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Magdalena Bluszcz",
+      "categories": [
+        "rozciagajace"
+      ]
+    },
+    "row_7_thu": {
+      "name": "BODY SHAPE",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Magdalena Bluszcz",
+      "categories": [
+        "modelujace"
+      ]
+    },
+    "row_8_fri": {
+      "name": "POWRÓT DO\nFORMY",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Magdalena Bluszcz",
+      "categories": [
+        "spalajace"
+      ]
+    },
+    "row_9_mon": {
+      "name": "STEP DANCE",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Karolina Słojewska",
+      "categories": [
+        "taneczne"
+      ]
+    },
+    "row_9_tue": {
+      "name": "BOKS",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Kamil Włodarczyk",
+      "categories": [
+        "sztuki_walki"
+      ]
+    },
+    "row_9_wed": {
+      "name": "STEP DANCE",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Karolina Słojewska",
+      "categories": [
+        "taneczne"
+      ]
+    },
+    "row_9_thu": {
+      "name": "BOKS",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Kamil Włodarczyk",
+      "categories": [
+        "sztuki_walki"
+      ]
+    }
+  },
+  "formatId": "a3_print"
+}

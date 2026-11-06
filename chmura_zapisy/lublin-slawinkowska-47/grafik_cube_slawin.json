@@ -1,0 +1,433 @@
+{
+  "version": "1.0",
+  "gymTitle": "GRAFIK FITNESS - CUBE SŁAWIN",
+  "rows": [
+    {
+      "id": "row_1",
+      "type": "hour",
+      "time": "8:10",
+      "note": ""
+    },
+    {
+      "id": "row_3",
+      "type": "hour",
+      "time": "9:10",
+      "note": ""
+    },
+    {
+      "id": "row_5",
+      "type": "hour",
+      "time": "10:30",
+      "note": ""
+    },
+    {
+      "id": "row_6",
+      "type": "hour",
+      "time": "11:30",
+      "note": ""
+    },
+    {
+      "id": "row_break_imported_6",
+      "type": "break",
+      "label": ""
+    },
+    {
+      "id": "row_7",
+      "type": "hour",
+      "time": "16:00",
+      "note": ""
+    },
+    {
+      "id": "row_9",
+      "type": "hour",
+      "time": "17:00",
+      "note": ""
+    },
+    {
+      "id": "row_11",
+      "type": "hour",
+      "time": "18:00",
+      "note": ""
+    },
+    {
+      "id": "row_12",
+      "type": "hour",
+      "time": "19:00",
+      "note": ""
+    },
+    {
+      "id": "row_13",
+      "type": "hour",
+      "time": "20:00",
+      "note": ""
+    }
+  ],
+  "tiles": {
+    "row_1_mon": {
+      "name": "RZEŹBA CIAŁA",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Ania K.",
+      "categories": [
+        "wzmacniajace"
+      ]
+    },
+    "row_1_tue": {
+      "name": "SHAPE",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Dorota",
+      "categories": [
+        "modelujace"
+      ]
+    },
+    "row_1_wed": {
+      "name": "WZMACNIANIE",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Monika H.",
+      "categories": [
+        "wzmacniajace"
+      ]
+    },
+    "row_1_thu": {
+      "name": "YOGA",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Justyna Sz.",
+      "categories": [
+        "rozciagajace"
+      ]
+    },
+    "row_1_fri": {
+      "name": "PŁASKI BRZUCH",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Ania K.",
+      "categories": [
+        "modelujace"
+      ]
+    },
+    "row_3_mon": {
+      "name": "PILATES",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Anzhelika",
+      "categories": [
+        "modelujace",
+        "wzmacniajace"
+      ]
+    },
+    "row_3_tue": {
+      "name": "ZDROWY\nKRĘGOSŁUP",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Dorota",
+      "categories": [
+        "prozdrowotne"
+      ]
+    },
+    "row_3_wed": {
+      "name": "PILATES",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Monika D.",
+      "categories": [
+        "modelujace",
+        "wzmacniajace"
+      ]
+    },
+    "row_3_thu": {
+      "name": "AKTYWNE CIAŁO",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Justyna Sz.",
+      "categories": [
+        "modelujace"
+      ]
+    },
+    "row_3_fri": {
+      "name": "STRECHING\n+ MOBILITY",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Ofelia",
+      "categories": [
+        "rozciagajace",
+        "wzmacniajace"
+      ]
+    },
+    "row_5_sat": {
+      "name": "YOGA",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Justyna Sz.",
+      "categories": [
+        "rozciagajace"
+      ]
+    },
+    "row_5_sun": {
+      "name": "PILATES",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Kaja Z.",
+      "categories": [
+        "modelujace"
+      ]
+    },
+    "row_6_sun": {
+      "name": "ZUMBA LATINO",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Monika H.",
+      "categories": [
+        "taneczne"
+      ]
+    },
+    "row_7_tue": {
+      "name": "POWRÓT DO\nFORMY",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Dorota",
+      "categories": [
+        "wzmacniajace"
+      ]
+    },
+    "row_9_mon": {
+      "name": "STRECHING \n+ MOBILITY",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Ofelia",
+      "categories": [
+        "rozciagajace"
+      ]
+    },
+    "row_9_wed": {
+      "name": "BUDUJ, MODELUJ,\nWZMACNIAJ",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Justyna T",
+      "categories": [
+        "modelujace"
+      ]
+    },
+    "row_9_thu": {
+      "name": "FIT BALL",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Sławka",
+      "categories": [
+        "wzmacniajace"
+      ]
+    },
+    "row_9_fri": {
+      "name": "WZMACNIANIE",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Zosia",
+      "categories": [
+        "wzmacniajace"
+      ]
+    },
+    "row_9_sun": {
+      "name": "YOGA",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Anzhelika",
+      "categories": [
+        "rozciagajace"
+      ]
+    },
+    "row_11_mon": {
+      "name": "PEŁNA FORMA",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Justyna T",
+      "categories": [
+        "wzmacniajace"
+      ]
+    },
+    "row_11_wed": {
+      "name": "ZDROWY\nKRĘGOSŁUP",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Anzhelika",
+      "categories": [
+        "prozdrowotne"
+      ]
+    },
+    "row_11_thu": {
+      "name": "FULL BODY\nWORKOUT",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Sławka",
+      "categories": [
+        "spalajace",
+        "wzmacniajace"
+      ]
+    },
+    "row_11_fri": {
+      "name": "PILATES",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Anzhelika",
+      "categories": [
+        "modelujace",
+        "wzmacniajace"
+      ]
+    },
+    "row_11_sun": {
+      "name": "ZDROWY\nKRĘGOSŁUP",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Anzhelika",
+      "categories": [
+        "prozdrowotne"
+      ]
+    },
+    "row_12_mon": {
+      "name": "YOGA",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Justyna Sz.",
+      "categories": [
+        "rozciagajace"
+      ]
+    },
+    "row_12_tue": {
+      "name": "POWER PILATES",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Iwona",
+      "categories": [
+        "modelujace",
+        "wzmacniajace"
+      ]
+    },
+    "row_12_wed": {
+      "name": "INTERWAŁ",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Anzhelika",
+      "categories": [
+        "spalajace"
+      ]
+    },
+    "row_12_thu": {
+      "name": "PILATES",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Iwona",
+      "categories": [
+        "modelujace",
+        "wzmacniajace"
+      ]
+    },
+    "row_12_fri": {
+      "name": "HIPS & FLOW",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Monika H.",
+      "categories": [
+        "rozciagajace"
+      ]
+    },
+    "row_13_mon": {
+      "name": "TRENING\nOBWODOWY",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Łukasz J.",
+      "categories": [
+        "spalajace",
+        "wzmacniajace"
+      ]
+    },
+    "row_13_tue": {
+      "name": "FULL BODY\nWORKOUT",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Sławka",
+      "categories": [
+        "spalajace",
+        "wzmacniajace"
+      ]
+    },
+    "row_13_wed": {
+      "name": "TRENING\nOBWODOWY",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Łukasz J.",
+      "categories": [
+        "spalajace",
+        "wzmacniajace"
+      ]
+    },
+    "row_13_thu": {
+      "name": "FAT KILLER",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Iwona",
+      "categories": [
+        "spalajace"
+      ]
+    },
+    "row_1_sat": {
+      "name": "POWER PUMP",
+      "hasCustomStart": true,
+      "startTime": "8:30",
+      "instructor": "Monika H.",
+      "categories": [
+        "spalajace"
+      ]
+    },
+    "row_3_sat": {
+      "name": "STRETCHING",
+      "hasCustomStart": true,
+      "startTime": "9:30",
+      "instructor": "Monika H.",
+      "categories": [
+        "rozciagajace"
+      ]
+    },
+    "row_3_sun": {
+      "name": "SHAPE",
+      "hasCustomStart": true,
+      "startTime": "9:30",
+      "instructor": "Kaja Z.",
+      "categories": [
+        "modelujace"
+      ]
+    },
+    "row_11_tue": {
+      "name": "RZEŹBA CIAŁA",
+      "hasCustomStart": true,
+      "startTime": "17:50",
+      "instructor": "Ania K.",
+      "categories": [
+        "wzmacniajace"
+      ]
+    },
+    "row_9_tue": {
+      "name": "ZDROWY KRĘGOSŁUP Z\nELEMENTAMI STRETCHINGU",
+      "hasCustomStart": true,
+      "startTime": "16:50",
+      "instructor": "Dorota",
+      "categories": [
+        "prozdrowotne",
+        "rozciagajace"
+      ]
+    }
+  },
+  "formatId": "post_portrait",
+  "activeDays": [
+    "mon",
+    "tue",
+    "wed",
+    "thu",
+    "fri",
+    "sat",
+    "sun"
+  ],
+  "slimDays": true,
+  "slimHours": false,
+  "slimTiles": false
+}

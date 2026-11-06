@@ -20,6 +20,8 @@ const files = [
   'src/efitnessImporter.js',
   'src/embeddedFonts.js',
   'src/exporter.js',
+  'src/cloudSeedData.js',
+  'src/cloudStorage.js',
   'src/app.js'
 ];
 
@@ -29,6 +31,9 @@ const htmlToImageCode = fs.existsSync('assets/js/html-to-image.js')
 
 let bundleContent = `/* Generator Grafiku Fitness Cube - Standalone Bundle (działa bezpośrednio przez file://) */
 ${htmlToImageCode}
+if (typeof window !== 'undefined' && typeof htmlToImage !== 'undefined') {
+  window.htmlToImage = htmlToImage;
+}
 
 (function() {
 'use strict';

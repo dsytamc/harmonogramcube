@@ -1,0 +1,266 @@
+{
+  "version": "1.0",
+  "gymTitle": "GRAFIK FITNESS - CUBE GARWOLIN",
+  "rows": [
+    {
+      "id": "row_1",
+      "type": "hour",
+      "time": "6:30",
+      "note": "SALA OPEN"
+    },
+    {
+      "id": "row_2",
+      "type": "hour",
+      "time": "9:00",
+      "note": ""
+    },
+    {
+      "id": "row_3",
+      "type": "hour",
+      "time": "9:30",
+      "note": ""
+    },
+    {
+      "id": "row_4",
+      "type": "hour",
+      "time": "10:30",
+      "note": ""
+    },
+    {
+      "id": "row_break_imported_4",
+      "type": "break",
+      "label": ""
+    },
+    {
+      "id": "row_5",
+      "type": "hour",
+      "time": "17:00",
+      "note": ""
+    },
+    {
+      "id": "row_6",
+      "type": "hour",
+      "time": "18:00",
+      "note": ""
+    },
+    {
+      "id": "row_7",
+      "type": "hour",
+      "time": "19:00",
+      "note": ""
+    },
+    {
+      "id": "row_8",
+      "type": "hour",
+      "time": "20:00",
+      "note": ""
+    },
+    {
+      "id": "row_9",
+      "type": "hour",
+      "time": "21:00",
+      "note": ""
+    }
+  ],
+  "tiles": {
+    "row_1_fri": {
+      "name": "CUBE CROSS\nNA BRAMACH",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Marlena W.",
+      "categories": [
+        "spalajace"
+      ]
+    },
+    "row_2_wed": {
+      "name": "AKTYWNY\nSTART",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Marlena W.",
+      "categories": [
+        "wzmacniajace"
+      ]
+    },
+    "row_3_sat": {
+      "name": "HARMONIA\nRUCHU",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Marlena W.",
+      "categories": [
+        "wzmacniajace"
+      ]
+    },
+    "row_4_sat": {
+      "name": "BUP EXPRESS\n& RELAKS",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Marlena W.",
+      "categories": [
+        "modelujace"
+      ]
+    },
+    "row_5_mon": {
+      "name": "AKTYWNY\nSTART",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Marlena W.",
+      "categories": [
+        "wzmacniajace"
+      ]
+    },
+    "row_5_thu": {
+      "name": "BEAT &\nBREATH YOGA",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Aga S.",
+      "categories": [
+        "wzmacniajace"
+      ]
+    },
+    "row_5_fri": {
+      "name": "FUNCTIONAL BARBELL\n& KB",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Marlena W.",
+      "categories": [
+        "spalajace"
+      ]
+    },
+    "row_6_mon": {
+      "name": "GLUTE &\nCORE LAB",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Marlena W.",
+      "categories": [
+        "modelujace"
+      ]
+    },
+    "row_6_wed": {
+      "name": "POWRÓT DO\nFORMY",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Marlena W.",
+      "categories": [
+        "wzmacniajace"
+      ]
+    },
+    "row_6_thu": {
+      "name": "ACCESSORY\nBURN",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Monika J.",
+      "categories": [
+        "wzmacniajace"
+      ]
+    },
+    "row_6_fri": {
+      "name": "AKTYWNY\nSTART",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Marlena W.",
+      "categories": [
+        "wzmacniajace"
+      ]
+    },
+    "row_7_mon": {
+      "name": "TOTAL BODY\nCIRCUIT",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Monika J.",
+      "categories": [
+        "spalajace"
+      ]
+    },
+    "row_7_tue": {
+      "name": "POWER MAT\nPILATES",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Aga S.",
+      "categories": [
+        "wzmacniajace"
+      ]
+    },
+    "row_7_wed": {
+      "name": "CUBE CROSS",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Marlena W.",
+      "categories": [
+        "wzmacniajace"
+      ]
+    },
+    "row_7_thu": {
+      "name": "STEP CARDIO",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Dorota  Z.",
+      "categories": [
+        "spalajace"
+      ]
+    },
+    "row_7_fri": {
+      "name": "BUP",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Marlena W.",
+      "categories": [
+        "modelujace"
+      ]
+    },
+    "row_8_mon": {
+      "name": "CUBE CROSS",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Marlena W.",
+      "categories": [
+        "wzmacniajace"
+      ]
+    },
+    "row_8_tue": {
+      "name": "TUESDAY GLOW\nYOGA",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Aga S.",
+      "categories": [
+        "rozciagajace"
+      ]
+    },
+    "row_8_wed": {
+      "name": "MOBILITY",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Dorota  Z.",
+      "categories": [
+        "rozciagajace"
+      ]
+    },
+    "row_8_thu": {
+      "name": "FIT BALL",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Dorota  Z.",
+      "categories": [
+        "wzmacniajace"
+      ]
+    },
+    "row_9_mon": {
+      "name": "KICK- BOXING",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Asia Ch.",
+      "categories": [
+        "sztuki_walki"
+      ]
+    },
+    "row_9_wed": {
+      "name": "STEP CARDIO",
+      "hasCustomStart": false,
+      "startTime": "",
+      "instructor": "Dorota  Z.",
+      "categories": [
+        "spalajace"
+      ]
+    }
+  },
+  "formatId": "post_square"
+}
