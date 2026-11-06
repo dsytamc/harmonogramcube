@@ -392,34 +392,50 @@
         </button>
       </div>
       <div class="modal-body">
-        <p class="modal-desc">Wybierz preferowany sposób importu grafiku ze strony CMS eFitness:</p>
-        
-        <div class="modal-section-card">
-          <div class="modal-card-title">Opcja 1: Pobierz bezpośrednio przez link</div>
-          <div class="form-group" style="margin-bottom: 10px;">
-            <input type="url" id="modalEfitnessUrlInput" class="form-input" value="https://cubefitness-garwolin.cms.efitness.com.pl/kalendarz-zajec" placeholder="https://...efitness.com.pl/kalendarz-zajec">
+        <div id="modalImportFormContent">
+          <p class="modal-desc">Wybierz preferowany sposób importu grafiku ze strony CMS eFitness:</p>
+          
+          <div class="modal-section-card">
+            <div class="modal-card-title">Opcja 1: Pobierz bezpośrednio przez link</div>
+            <div class="form-group" style="margin-bottom: 10px;">
+              <input type="url" id="modalEfitnessUrlInput" class="form-input" value="https://cubefitness-garwolin.cms.efitness.com.pl/kalendarz-zajec" placeholder="https://...efitness.com.pl/kalendarz-zajec">
+            </div>
+            <button type="button" id="modalImportUrlBtn" class="btn btn-primary w-100">
+              <svg viewBox="0 0 16 16" width="15" height="15" fill="currentColor">
+                <path d="M12.5 6.2C12.1 3.8 10.2 2 8 2 6.1 2 4.4 3.4 4 5.3 2.3 5.7 1 7.2 1 9c0 2.2 1.8 4 4 4h7.5c1.9 0 3.5-1.6 3.5-3.5 0-1.8-1.4-3.2-3.5-3.3zM12.5 12H5c-1.7 0-3-1.3-3-3 0-1.5 1.1-2.7 2.6-2.9l.5-.1.1-.5C5.6 3.7 6.7 3 8 3c1.7 0 3.1 1.2 3.4 2.8l.2.8.8.1c1.5.2 2.6 1.4 2.6 2.8 0 1.7-1.3 2.5-2.5 2.5z"/>
+                <path d="M7.5 6v3.1L6.3 7.9l-.7.7 2.4 2.4 2.4-2.4-.7-.7-1.2 1.2V6z"/>
+              </svg>
+              <span>Pobierz grafik ze strony</span>
+            </button>
           </div>
-          <button type="button" id="modalImportUrlBtn" class="btn btn-primary w-100">
-            <svg viewBox="0 0 16 16" width="15" height="15" fill="currentColor">
-              <path d="M12.5 6.2C12.1 3.8 10.2 2 8 2 6.1 2 4.4 3.4 4 5.3 2.3 5.7 1 7.2 1 9c0 2.2 1.8 4 4 4h7.5c1.9 0 3.5-1.6 3.5-3.5 0-1.8-1.4-3.2-3.5-3.3zM12.5 12H5c-1.7 0-3-1.3-3-3 0-1.5 1.1-2.7 2.6-2.9l.5-.1.1-.5C5.6 3.7 6.7 3 8 3c1.7 0 3.1 1.2 3.4 2.8l.2.8.8.1c1.5.2 2.6 1.4 2.6 2.8 0 1.7-1.3 2.5-2.5 2.5z"/>
-              <path d="M7.5 6v3.1L6.3 7.9l-.7.7 2.4 2.4 2.4-2.4-.7-.7-1.2 1.2V6z"/>
-            </svg>
-            <span>Pobierz grafik ze strony</span>
-          </button>
+
+          <div class="modal-section-card" style="margin-top: 14px;">
+            <div class="modal-card-title">Opcja 2: Wklej kod HTML ze strony (Ctrl+U)</div>
+            <textarea id="modalEfitnessHtmlInput" rows="3" class="form-textarea" placeholder="Wklej tutaj kod źródłowy strony..."></textarea>
+            <button type="button" id="modalImportHtmlBtn" class="btn btn-outline-warning w-100" style="margin-top: 10px;">
+              <svg viewBox="0 0 16 16" width="15" height="15" fill="currentColor">
+                <path d="M5.7 3.3L1 8l4.7 4.7.7-.7L2.4 8l4-4-.7-.7zm4.6 0l-.7.7 4 4-4 4 .7.7L15 8l-4.7-4.7z"/>
+              </svg>
+              <span>Zaimportuj z kodu HTML</span>
+            </button>
+          </div>
         </div>
 
-        <div class="modal-section-card" style="margin-top: 14px;">
-          <div class="modal-card-title">Opcja 2: Wklej kod HTML ze strony (Ctrl+U)</div>
-          <textarea id="modalEfitnessHtmlInput" rows="3" class="form-textarea" placeholder="Wklej tutaj kod źródłowy strony..."></textarea>
-          <button type="button" id="modalImportHtmlBtn" class="btn btn-outline-warning w-100" style="margin-top: 10px;">
-            <svg viewBox="0 0 16 16" width="15" height="15" fill="currentColor">
-              <path d="M5.7 3.3L1 8l4.7 4.7.7-.7L2.4 8l4-4-.7-.7zm4.6 0l-.7.7 4 4-4 4 .7.7L15 8l-4.7-4.7z"/>
+        <!-- PANEL ANIMACJI WCZYTYWANIA DANYCH (FALA ŻÓŁTYCH KROPEK + FAJECZKA SUKCESU) -->
+        <div id="modalImportProgressBox" class="modal-import-progress-box hidden">
+          <div id="modalImportDotsWave" class="import-dots-wave">
+            <span class="import-dot"></span>
+            <span class="import-dot"></span>
+            <span class="import-dot"></span>
+          </div>
+          <div id="modalImportSuccessCheck" class="import-success-check hidden">
+            <svg viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="#24a148" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10" stroke="#24a148" stroke-width="2" fill="rgba(36, 161, 72, 0.12)"></circle>
+              <path d="M8 12.5l2.8 2.8 5.4-5.6"></path>
             </svg>
-            <span>Zaimportuj z kodu HTML</span>
-          </button>
+          </div>
+          <div id="modalImportStatus" class="modal-import-status-text">Pobieranie danych z kalendarza eFitness...</div>
         </div>
-
-        <div id="modalImportStatus" class="modal-status-text"></div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-close-modal="importModal">Anuluj</button>

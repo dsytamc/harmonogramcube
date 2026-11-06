@@ -118,6 +118,10 @@ const modalImportUrlBtn = document.getElementById('modalImportUrlBtn');
 const modalEfitnessHtmlInput = document.getElementById('modalEfitnessHtmlInput');
 const modalImportHtmlBtn = document.getElementById('modalImportHtmlBtn');
 const modalImportStatus = document.getElementById('modalImportStatus');
+const modalImportFormContent = document.getElementById('modalImportFormContent');
+const modalImportProgressBox = document.getElementById('modalImportProgressBox');
+const modalImportDotsWave = document.getElementById('modalImportDotsWave');
+const modalImportSuccessCheck = document.getElementById('modalImportSuccessCheck');
 
 // Formularz w modalu Zapis
 const saveFileNameInput = document.getElementById('saveFileNameInput');
@@ -1012,6 +1016,7 @@ function setupEventListeners() {
 
   if (emptyImportBtn) {
     emptyImportBtn.addEventListener('click', () => {
+      resetImportModalUI();
       openModal('importModal');
     });
   }
@@ -1346,8 +1351,21 @@ function setupEventListeners() {
   // ==========================================================================
   // GÓRNY PASEK NARZĘDZI: IMPORTUJ
   // ==========================================================================
+  function resetImportModalUI() {
+    if (modalImportFormContent) modalImportFormContent.classList.remove('hidden');
+    if (modalImportProgressBox) modalImportProgressBox.classList.add('hidden');
+    if (modalImportDotsWave) modalImportDotsWave.classList.remove('hidden');
+    if (modalImportSuccessCheck) modalImportSuccessCheck.classList.add('hidden');
+    if (modalImportStatus) {
+      modalImportStatus.classList.remove('is-success');
+      modalImportStatus.textContent = '';
+    }
+    if (modalImportUrlBtn) modalImportUrlBtn.disabled = false;
+  }
+
   if (topImportBtn) {
     topImportBtn.addEventListener('click', () => {
+      resetImportModalUI();
       openModal('importModal');
     });
   }
@@ -1362,7 +1380,16 @@ function setupEventListeners() {
       }
 
       modalImportUrlBtn.disabled = true;
-      if (modalImportStatus) modalImportStatus.textContent = 'Pobieranie danych z kalendarza eFitness...';
+
+      // Pokaż animację fali kropek, ukryj zbędne pola
+      if (modalImportFormContent) modalImportFormContent.classList.add('hidden');
+      if (modalImportProgressBox) modalImportProgressBox.classList.remove('hidden');
+      if (modalImportDotsWave) modalImportDotsWave.classList.remove('hidden');
+      if (modalImportSuccessCheck) modalImportSuccessCheck.classList.add('hidden');
+      if (modalImportStatus) {
+        modalImportStatus.classList.remove('is-success');
+        modalImportStatus.textContent = 'Łączenie z serwerem i pobieranie danych eFitness...';
+      }
 
       try {
         const importedState = await fetchEfitnessSchedule(url, (msg) => {
@@ -1376,13 +1403,33 @@ function setupEventListeners() {
           const safeSlug = importedState.gymTitle.toLowerCase().replace(/grafik\s*fitness\s*[-–—]?\s*/i, '').replace(/[^a-z0-9ąćęłńóśźż]+/gi, '_').replace(/^_+|_+$/g, '');
           if (safeSlug) targetDocName = `grafik_${safeSlug}.json`;
         }
+
+        // Sukces: kropki zamieniają się w zieloną fajeczkę i napis "Gotowe!"
+        if (modalImportDotsWave) modalImportDotsWave.classList.add('hidden');
+        if (modalImportSuccessCheck) modalImportSuccessCheck.classList.remove('hidden');
+        if (modalImportStatus) {
+          modalImportStatus.classList.add('is-success');
+          modalImportStatus.textContent = 'Gotowe!';
+        }
+
+        // Krótkie oczekiwanie, aby użytkownik zobaczył potwierdzenie
+        await new Promise(resolve => setTimeout(resolve, 800));
+
         showScheduleWorkspace(targetDocName);
         closeModal('importModal');
         showToast(`✓ Zaimportowano grafik pomyślnie! (${importedState.rows.length} wierszy)`);
+        resetImportModalUI();
       } catch (err) {
         console.error('Błąd importu eFitness (modal):', err);
-        if (modalImportStatus) modalImportStatus.textContent = `✕ ${err.message}`;
+        if (modalImportDotsWave) modalImportDotsWave.classList.add('hidden');
+        if (modalImportStatus) {
+          modalImportStatus.classList.remove('is-success');
+          modalImportStatus.textContent = `✕ ${err.message}`;
+        }
         showToast(`✕ Błąd importu: ${err.message}`, 'error');
+        setTimeout(() => {
+          resetImportModalUI();
+        }, 2600);
       } finally {
         modalImportUrlBtn.disabled = false;
       }
@@ -1391,14 +1438,21 @@ function setupEventListeners() {
 
   // Import przez HTML w modalu
   if (modalImportHtmlBtn) {
-    modalImportHtmlBtn.addEventListener('click', () => {
+    modalImportHtmlBtn.addEventListener('click', async () => {
       const rawHtml = modalEfitnessHtmlInput ? modalEfitnessHtmlInput.value.trim() : '';
       if (!rawHtml) {
         alert('Wklej kod źródłowy HTML strony lub tabeli.');
         return;
       }
 
-      if (modalImportStatus) modalImportStatus.textContent = 'Przetwarzanie wklejonego kodu HTML...';
+      if (modalImportFormContent) modalImportFormContent.classList.add('hidden');
+      if (modalImportProgressBox) modalImportProgressBox.classList.remove('hidden');
+      if (modalImportDotsWave) modalImportDotsWave.classList.remove('hidden');
+      if (modalImportSuccessCheck) modalImportSuccessCheck.classList.add('hidden');
+      if (modalImportStatus) {
+        modalImportStatus.classList.remove('is-success');
+        modalImportStatus.textContent = 'Przetwarzanie wklejonego kodu HTML...';
+      }
 
       try {
         const sourceUrl = modalEfitnessUrlInput ? modalEfitnessUrlInput.value.trim() : '';
@@ -1411,13 +1465,31 @@ function setupEventListeners() {
           const safeSlug = importedState.gymTitle.toLowerCase().replace(/grafik\s*fitness\s*[-–—]?\s*/i, '').replace(/[^a-z0-9ąćęłńóśźż]+/gi, '_').replace(/^_+|_+$/g, '');
           if (safeSlug) targetDocName = `grafik_${safeSlug}.json`;
         }
+
+        if (modalImportDotsWave) modalImportDotsWave.classList.add('hidden');
+        if (modalImportSuccessCheck) modalImportSuccessCheck.classList.remove('hidden');
+        if (modalImportStatus) {
+          modalImportStatus.classList.add('is-success');
+          modalImportStatus.textContent = 'Gotowe!';
+        }
+
+        await new Promise(resolve => setTimeout(resolve, 800));
+
         showScheduleWorkspace(targetDocName);
         closeModal('importModal');
         showToast(`✓ Zaimportowano grafik pomyślnie! (${importedState.rows.length} wierszy)`);
+        resetImportModalUI();
       } catch (err) {
         console.error('Błąd importu z HTML (modal):', err);
-        if (modalImportStatus) modalImportStatus.textContent = `✕ ${err.message}`;
+        if (modalImportDotsWave) modalImportDotsWave.classList.add('hidden');
+        if (modalImportStatus) {
+          modalImportStatus.classList.remove('is-success');
+          modalImportStatus.textContent = `✕ ${err.message}`;
+        }
         showToast(`✕ Błąd importu z HTML: ${err.message}`, 'error');
+        setTimeout(() => {
+          resetImportModalUI();
+        }, 2600);
       }
     });
   }

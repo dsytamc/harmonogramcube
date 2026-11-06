@@ -7337,15 +7337,34 @@ let isReplayMode = false;
 let confettiAnimId = null;
 let currentTargetEl = null;
 
-// Definicja kroków samouczka
+// Definicja kroków samouczka (Krok 0: Wprowadzenie na środku, Kroki 1-11: Funkcjonalności)
 const TUTORIAL_STEPS = [
+  {
+    id: 'step_intro',
+    targetSelector: null,
+    view: 'start',
+    isCentered: true,
+    title: 'Witaj w Generatorze Grafiku Fitness Cube!',
+    desc: 'Generator Grafiku Cube to dedykowane narzędzie do projektowania, edycji i publikacji profesjonalnych harmonogramów zajęć dla klubów Cube.<br><br><strong>W aplikacji możesz:</strong><br>• Błyskawicznie układać zajęcia metodą przeciągnij-i-upuść,<br>• Dostosowywać godziny i dodawać rodzaje sal (z opcją łamania linii),<br>• Wstawiać ruchome belki dzielące większe okresy czasu,<br>• Zapisywać harmonogramy na dysku oraz w chmurze Cube,<br>• Importować gotowy plan zajęć bezpośrednio z CMS eFitness,<br>• Eksportować grafiki na Social Media oraz gotowe do druku pliki PDF 300 DPI.<br><br>Zapraszamy do przejścia krótkiego przewodnika, który wyjaśni wszystkie funkcjonalności programu!',
+    actionType: 'next',
+    nextBtnText: 'Rozpocznij samouczek'
+  },
   {
     id: 'step_load',
     targetSelector: '#emptyLoadBtn',
     view: 'start',
     padding: 8,
-    title: 'Wczytywanie projektów',
+    title: 'Krok 1: Wczytywanie projektów',
     desc: 'W tym miejscu możesz wczytać wcześniej zapisany grafik – zarówno z pliku <code>.json</code> na Twoim komputerze, jak i z chmury powiązanej z bazą wszystkich klubów Cube.<br><br>Kliknij <strong>Dalej</strong>, aby przejść do kolejnego kroku.',
+    actionType: 'next'
+  },
+  {
+    id: 'step_efitness',
+    targetSelector: '#emptyImportBtn',
+    view: 'start',
+    padding: 8,
+    title: 'Krok 2: Import z eFitness',
+    desc: 'Aby zaimportować grafik z systemu eFitness, wystarczy kliknąć ten przycisk i wkleić bezpośredni link do kalendarza zajęć z danej siłowni.<br><br><strong>Ważna uwaga:</strong> aby dane zostały poprawnie zaimportowane, należy dobrze uzupełnić grafik w panelu eFitness. Po imporcie na artboardzie należy również zweryfikować, czy wszystkie zajęcia i kategorie zostały prawidłowo przypisane i ewentualnie nanieść drobne korekty.<br><br>Kliknij <strong>Dalej</strong>, aby przejść do kolejnego kroku.',
     actionType: 'next'
   },
   {
@@ -7353,8 +7372,8 @@ const TUTORIAL_STEPS = [
     targetSelector: '#emptyCreateBlankBtn',
     view: 'start',
     padding: 10,
-    title: 'Rozpoczęcie od pustego wzorca',
-    desc: 'Aby stworzyć nowy harmonogram, kliknij podświetlony przycisk <strong>«lub rozpocznij z pustym wzorcem»</strong>.',
+    title: 'Krok 3: Pusty wzorzec',
+    desc: 'Aby stworzyć nowy harmonogram od czystego szablonu, kliknij podświetlony przycisk <strong>«lub rozpocznij z pustym wzorcem»</strong>.',
     actionType: 'target_or_next',
     onAdvance: () => {
       const btn = document.getElementById('emptyCreateBlankBtn');
@@ -7367,8 +7386,8 @@ const TUTORIAL_STEPS = [
     fallbackSelector: '#headerEditorSection',
     view: 'artboard',
     padding: 8,
-    title: 'Nagłówek i nazwa klubu',
-    desc: 'Wpisz tutaj nazwę swojego klubu Cube. Zmiana nazwy natychmiast aktualizuje się w charakterystycznym firmowym nagłówku na artboardzie.<br><br>Kliknij <strong>Dalej</strong>, aby przejść do kolejnego kroku.',
+    title: 'Krok 4: Nagłówek i nazwa klubu',
+    desc: 'Wpisz tutaj nazwę swojego klubu Cube. Zmiana nazwy natychmiast aktualizuje się w charakterystycznym firmowym nagłówku na artboardzie w kroju Termina Bold.<br><br>Kliknij <strong>Dalej</strong>, aby przejść do kolejnego kroku.',
     actionType: 'next'
   },
   {
@@ -7377,7 +7396,7 @@ const TUTORIAL_STEPS = [
     fallbackSelector: '#addHourRowBtn',
     view: 'artboard',
     padding: 10,
-    title: 'Godziny i rodzaj sali',
+    title: 'Krok 5: Godziny i rodzaj sali',
     desc: 'W każdym wierszu możesz dostosować godzinę rozpoczęcia oraz dodać dopisek o sali lub miejscu (możesz łamać linie klawiszem Enter lub Shift+Enter).<br><br>Kliknij <strong>Dalej</strong>, aby przejść do kolejnego kroku.',
     actionType: 'next'
   },
@@ -7386,7 +7405,7 @@ const TUTORIAL_STEPS = [
     targetSelector: '#addBreakRowBtn',
     view: 'artboard',
     padding: 8,
-    title: 'Belka podziału dnia',
+    title: 'Krok 6: Belka podziału dnia',
     desc: 'Belka to linia oddzielająca większe bloki czasowe w grafiku (np. zajęcia poranne od popołudniowych lub dłuższe przerwy). Możesz ją płynnie przeciągać i upuszczać między godzinami.<br><br>Kliknij <strong>Dalej</strong>, aby przejść do kolejnego kroku.',
     actionType: 'next'
   },
@@ -7396,7 +7415,7 @@ const TUTORIAL_STEPS = [
     fallbackSelector: '#artboardContent',
     view: 'artboard',
     padding: 6,
-    title: 'Edycja kafelka z zajęciami',
+    title: 'Krok 7: Edycja kafelka z zajęciami',
     desc: 'Kliknij w dowolny kafelek na grafiku, aby edytować nazwę treningu, nazwisko instruktora oraz poziom trudności.<br><br>Kliknij <strong>Dalej</strong>, aby przejść do kolejnego kroku.',
     actionType: 'next'
   },
@@ -7406,7 +7425,7 @@ const TUTORIAL_STEPS = [
     fallbackSelector: '#categoryList',
     view: 'artboard',
     padding: 8,
-    title: 'Kolory i kategorie zajęć',
+    title: 'Krok 8: Kolory i kategorie zajęć',
     desc: 'Każdy rodzaj zajęć ma przypisany dedykowany kolor z palety Cube, co ułatwia klubowiczom szybką orientację w harmonogramie.<br><br>Kliknij <strong>Dalej</strong>, aby przejść do kolejnego kroku.',
     actionType: 'next'
   },
@@ -7415,7 +7434,7 @@ const TUTORIAL_STEPS = [
     targetSelector: '#artboardContent',
     view: 'artboard',
     padding: 10,
-    title: 'Przesuwanie i usuwanie kafelków',
+    title: 'Krok 9: Przesuwanie i usuwanie kafelków',
     desc: 'Przytrzymaj kafelek przez pół sekundy, aby go unieść i przenieść w inne miejsce z płynną animacją. Aby usunąć kafelek, zaznacz go i naciśnij Delete lub ikonę kosza.<br><br>Kliknij <strong>Dalej</strong>, aby przejść do kolejnego kroku.',
     actionType: 'next'
   },
@@ -7424,7 +7443,7 @@ const TUTORIAL_STEPS = [
     targetSelector: '#topSaveBtn',
     view: 'artboard',
     padding: 6,
-    title: 'Zapis w chmurze i na dysku',
+    title: 'Krok 10: Zapis w chmurze i na dysku',
     desc: 'Przycisk «Zapisz» otwiera okno zapisu. Możesz pobrać plik projektu bezpośrednio na komputer lub zapisać go w chmurze przypisanej do konkretnego miasta Cube.<br><br>Kliknij <strong>Dalej</strong>, aby przejść do kolejnego kroku.',
     actionType: 'next'
   },
@@ -7433,7 +7452,7 @@ const TUTORIAL_STEPS = [
     targetSelector: '#topExportBtn',
     view: 'artboard',
     padding: 6,
-    title: 'Eksport gotowych plików',
+    title: 'Krok 11: Eksport gotowych plików',
     desc: 'Gdy grafik jest gotowy, kliknij «Eksportuj». Wygenerujesz perfekcyjne pliki na social media (Instagram pion i kwadrat) oraz wektorowy/rastrowy PDF 300 DPI gotowy do druku A4 lub A3.<br><br>Kliknij <strong>Zakończ samouczek</strong>, aby odebrać nagrodę!',
     actionType: 'finish'
   }
@@ -7594,7 +7613,7 @@ function goToStep(index) {
   currentStepIndex = index;
   const step = TUTORIAL_STEPS[index];
 
-  // Jeśli krok wymaga widoku startowego (kroki 1 i 2)
+  // Jeśli krok wymaga widoku startowego (kroki 0, 1, 2, 3)
   if (step.view === 'start') {
     const emptyState = document.getElementById('emptyWorkspaceState');
     const artboardWrapper = document.getElementById('artboardWrapper');
@@ -7605,12 +7624,11 @@ function goToStep(index) {
       if (appEl) appEl.classList.add('is-start-screen');
     }
   } else if (step.view === 'artboard') {
-    // Jeśli krok wymaga widoku artboardu (kroki 3-10)
+    // Jeśli krok wymaga widoku artboardu (kroki 4-11)
     const emptyState = document.getElementById('emptyWorkspaceState');
     const artboardWrapper = document.getElementById('artboardWrapper');
     const appEl = document.getElementById('app');
     if (emptyState && artboardWrapper && !emptyState.classList.contains('hidden')) {
-      // Jeśli jesteśmy jeszcze na ekranie powitalnym, uruchom pusty szablon
       const blankBtn = document.getElementById('emptyCreateBlankBtn');
       if (blankBtn) blankBtn.click();
       emptyState.classList.add('hidden');
@@ -7622,10 +7640,23 @@ function goToStep(index) {
   // Wyczyść poprzednie podświetlenie
   clearHighlight();
 
-  // Znajdź i podświetl element docelowy
-  let targetEl = document.querySelector(step.targetSelector);
-  if (!targetEl && step.fallbackSelector) {
-    targetEl = document.querySelector(step.fallbackSelector);
+  // Sprawdź czy karta ma być wyśrodkowana (np. krok 0 powitalny)
+  const card = document.getElementById('tutorialFloatingCard');
+  if (card) {
+    if (step.isCentered) {
+      card.classList.add('is-centered');
+    } else {
+      card.classList.remove('is-centered');
+    }
+  }
+
+  // Znajdź i podświetl element docelowy (jeśli istnieje)
+  let targetEl = null;
+  if (step.targetSelector) {
+    targetEl = document.querySelector(step.targetSelector);
+    if (!targetEl && step.fallbackSelector) {
+      targetEl = document.querySelector(step.fallbackSelector);
+    }
   }
 
   currentTargetEl = targetEl;
@@ -7636,7 +7667,6 @@ function goToStep(index) {
       targetEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     } catch (e) {}
 
-    // Ustaw pozycję maski spotlight z odpowiednim marginesem (zero blura na elemencie!)
     setTimeout(() => {
       updateSpotlight(targetEl, step.padding || 8);
     }, 50);
@@ -7663,25 +7693,33 @@ function goToStep(index) {
   const nextBtn = document.getElementById('tutorialNextBtn');
   const prevBtn = document.getElementById('tutorialPrevBtn');
 
-  const totalSteps = TUTORIAL_STEPS.length;
-  const currentNum = index + 1;
-  const remaining = totalSteps - currentNum;
+  const totalSteps = TUTORIAL_STEPS.length - 1; // 11 kroków merytorycznych
 
-  if (stepNumEl) stepNumEl.textContent = `Krok ${currentNum} z ${totalSteps}`;
-  if (stepRemainingEl) stepRemainingEl.textContent = remaining > 0 ? `(pozostało: ${remaining})` : '(ostatni krok)';
+  if (index === 0) {
+    if (stepNumEl) stepNumEl.textContent = 'Wprowadzenie';
+    if (stepRemainingEl) stepRemainingEl.textContent = '(11 kroków przewodnika)';
+  } else {
+    const remaining = totalSteps - index;
+    if (stepNumEl) stepNumEl.textContent = `Krok ${index} z ${totalSteps}`;
+    if (stepRemainingEl) stepRemainingEl.textContent = remaining > 0 ? `(pozostało: ${remaining})` : '(ostatni krok)';
+  }
+
   if (stepTitleEl) stepTitleEl.textContent = step.title;
   if (stepDescEl) stepDescEl.innerHTML = step.desc;
 
-  // Przycisk "Wstecz" – aktywny od kroku 2 wzwyż
+  // Przycisk "Wstecz" – nieaktywny na kroku 0
   if (prevBtn) {
     prevBtn.disabled = (index === 0);
   }
 
-  // Przycisk "Dalej" / "Zakończ"
+  // Przycisk "Dalej" / "Zakończ" / własny tekst
   if (nextBtn) {
     if (step.actionType === 'finish') {
       nextBtn.textContent = 'Zakończ samouczek';
       nextBtn.classList.add('btn-finish-trophy');
+    } else if (step.nextBtnText) {
+      nextBtn.textContent = step.nextBtnText;
+      nextBtn.classList.remove('btn-finish-trophy');
     } else {
       nextBtn.textContent = 'Dalej';
       nextBtn.classList.remove('btn-finish-trophy');
@@ -7711,7 +7749,10 @@ function skipTutorial() {
   if (overlay) overlay.classList.add('hidden');
 
   const card = document.getElementById('tutorialFloatingCard');
-  if (card) card.classList.add('hidden');
+  if (card) {
+    card.classList.add('hidden');
+    card.classList.remove('is-centered');
+  }
 
   updateTrophyBadges();
 }
@@ -7727,7 +7768,10 @@ function finishTutorial() {
   if (overlay) overlay.classList.add('hidden');
 
   const card = document.getElementById('tutorialFloatingCard');
-  if (card) card.classList.add('hidden');
+  if (card) {
+    card.classList.add('hidden');
+    card.classList.remove('is-centered');
+  }
 
   const prevCompletions = getTutorialCompletions();
   const newCompletions = prevCompletions + 1;
@@ -8069,6 +8113,10 @@ const modalImportUrlBtn = document.getElementById('modalImportUrlBtn');
 const modalEfitnessHtmlInput = document.getElementById('modalEfitnessHtmlInput');
 const modalImportHtmlBtn = document.getElementById('modalImportHtmlBtn');
 const modalImportStatus = document.getElementById('modalImportStatus');
+const modalImportFormContent = document.getElementById('modalImportFormContent');
+const modalImportProgressBox = document.getElementById('modalImportProgressBox');
+const modalImportDotsWave = document.getElementById('modalImportDotsWave');
+const modalImportSuccessCheck = document.getElementById('modalImportSuccessCheck');
 
 // Formularz w modalu Zapis
 const saveFileNameInput = document.getElementById('saveFileNameInput');
@@ -8963,6 +9011,7 @@ function setupEventListeners() {
 
   if (emptyImportBtn) {
     emptyImportBtn.addEventListener('click', () => {
+      resetImportModalUI();
       openModal('importModal');
     });
   }
@@ -9297,8 +9346,21 @@ function setupEventListeners() {
   // ==========================================================================
   // GÓRNY PASEK NARZĘDZI: IMPORTUJ
   // ==========================================================================
+  function resetImportModalUI() {
+    if (modalImportFormContent) modalImportFormContent.classList.remove('hidden');
+    if (modalImportProgressBox) modalImportProgressBox.classList.add('hidden');
+    if (modalImportDotsWave) modalImportDotsWave.classList.remove('hidden');
+    if (modalImportSuccessCheck) modalImportSuccessCheck.classList.add('hidden');
+    if (modalImportStatus) {
+      modalImportStatus.classList.remove('is-success');
+      modalImportStatus.textContent = '';
+    }
+    if (modalImportUrlBtn) modalImportUrlBtn.disabled = false;
+  }
+
   if (topImportBtn) {
     topImportBtn.addEventListener('click', () => {
+      resetImportModalUI();
       openModal('importModal');
     });
   }
@@ -9313,7 +9375,16 @@ function setupEventListeners() {
       }
 
       modalImportUrlBtn.disabled = true;
-      if (modalImportStatus) modalImportStatus.textContent = 'Pobieranie danych z kalendarza eFitness...';
+
+      // Pokaż animację fali kropek, ukryj zbędne pola
+      if (modalImportFormContent) modalImportFormContent.classList.add('hidden');
+      if (modalImportProgressBox) modalImportProgressBox.classList.remove('hidden');
+      if (modalImportDotsWave) modalImportDotsWave.classList.remove('hidden');
+      if (modalImportSuccessCheck) modalImportSuccessCheck.classList.add('hidden');
+      if (modalImportStatus) {
+        modalImportStatus.classList.remove('is-success');
+        modalImportStatus.textContent = 'Łączenie z serwerem i pobieranie danych eFitness...';
+      }
 
       try {
         const importedState = await fetchEfitnessSchedule(url, (msg) => {
@@ -9327,13 +9398,33 @@ function setupEventListeners() {
           const safeSlug = importedState.gymTitle.toLowerCase().replace(/grafik\s*fitness\s*[-–—]?\s*/i, '').replace(/[^a-z0-9ąćęłńóśźż]+/gi, '_').replace(/^_+|_+$/g, '');
           if (safeSlug) targetDocName = `grafik_${safeSlug}.json`;
         }
+
+        // Sukces: kropki zamieniają się w zieloną fajeczkę i napis "Gotowe!"
+        if (modalImportDotsWave) modalImportDotsWave.classList.add('hidden');
+        if (modalImportSuccessCheck) modalImportSuccessCheck.classList.remove('hidden');
+        if (modalImportStatus) {
+          modalImportStatus.classList.add('is-success');
+          modalImportStatus.textContent = 'Gotowe!';
+        }
+
+        // Krótkie oczekiwanie, aby użytkownik zobaczył potwierdzenie
+        await new Promise(resolve => setTimeout(resolve, 800));
+
         showScheduleWorkspace(targetDocName);
         closeModal('importModal');
         showToast(`✓ Zaimportowano grafik pomyślnie! (${importedState.rows.length} wierszy)`);
+        resetImportModalUI();
       } catch (err) {
         console.error('Błąd importu eFitness (modal):', err);
-        if (modalImportStatus) modalImportStatus.textContent = `✕ ${err.message}`;
+        if (modalImportDotsWave) modalImportDotsWave.classList.add('hidden');
+        if (modalImportStatus) {
+          modalImportStatus.classList.remove('is-success');
+          modalImportStatus.textContent = `✕ ${err.message}`;
+        }
         showToast(`✕ Błąd importu: ${err.message}`, 'error');
+        setTimeout(() => {
+          resetImportModalUI();
+        }, 2600);
       } finally {
         modalImportUrlBtn.disabled = false;
       }
@@ -9342,14 +9433,21 @@ function setupEventListeners() {
 
   // Import przez HTML w modalu
   if (modalImportHtmlBtn) {
-    modalImportHtmlBtn.addEventListener('click', () => {
+    modalImportHtmlBtn.addEventListener('click', async () => {
       const rawHtml = modalEfitnessHtmlInput ? modalEfitnessHtmlInput.value.trim() : '';
       if (!rawHtml) {
         alert('Wklej kod źródłowy HTML strony lub tabeli.');
         return;
       }
 
-      if (modalImportStatus) modalImportStatus.textContent = 'Przetwarzanie wklejonego kodu HTML...';
+      if (modalImportFormContent) modalImportFormContent.classList.add('hidden');
+      if (modalImportProgressBox) modalImportProgressBox.classList.remove('hidden');
+      if (modalImportDotsWave) modalImportDotsWave.classList.remove('hidden');
+      if (modalImportSuccessCheck) modalImportSuccessCheck.classList.add('hidden');
+      if (modalImportStatus) {
+        modalImportStatus.classList.remove('is-success');
+        modalImportStatus.textContent = 'Przetwarzanie wklejonego kodu HTML...';
+      }
 
       try {
         const sourceUrl = modalEfitnessUrlInput ? modalEfitnessUrlInput.value.trim() : '';
@@ -9362,13 +9460,31 @@ function setupEventListeners() {
           const safeSlug = importedState.gymTitle.toLowerCase().replace(/grafik\s*fitness\s*[-–—]?\s*/i, '').replace(/[^a-z0-9ąćęłńóśźż]+/gi, '_').replace(/^_+|_+$/g, '');
           if (safeSlug) targetDocName = `grafik_${safeSlug}.json`;
         }
+
+        if (modalImportDotsWave) modalImportDotsWave.classList.add('hidden');
+        if (modalImportSuccessCheck) modalImportSuccessCheck.classList.remove('hidden');
+        if (modalImportStatus) {
+          modalImportStatus.classList.add('is-success');
+          modalImportStatus.textContent = 'Gotowe!';
+        }
+
+        await new Promise(resolve => setTimeout(resolve, 800));
+
         showScheduleWorkspace(targetDocName);
         closeModal('importModal');
         showToast(`✓ Zaimportowano grafik pomyślnie! (${importedState.rows.length} wierszy)`);
+        resetImportModalUI();
       } catch (err) {
         console.error('Błąd importu z HTML (modal):', err);
-        if (modalImportStatus) modalImportStatus.textContent = `✕ ${err.message}`;
+        if (modalImportDotsWave) modalImportDotsWave.classList.add('hidden');
+        if (modalImportStatus) {
+          modalImportStatus.classList.remove('is-success');
+          modalImportStatus.textContent = `✕ ${err.message}`;
+        }
         showToast(`✕ Błąd importu z HTML: ${err.message}`, 'error');
+        setTimeout(() => {
+          resetImportModalUI();
+        }, 2600);
       }
     });
   }
