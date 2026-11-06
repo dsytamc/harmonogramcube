@@ -293,6 +293,9 @@ function showEmptyWorkspace() {
   setDocumentName(null);
   deselectTile();
   closeHeaderEditor();
+  if (typeof updateTrophyBadges === 'function') {
+    updateTrophyBadges();
+  }
 
   const startVideo = document.getElementById('startScreenVideo');
   if (startVideo) {
@@ -322,6 +325,9 @@ function showScheduleWorkspace(filename = null) {
   updateArtboard(store.getState());
   applyZoom(currentZoom);
   markAsSaved();
+  if (typeof updateTrophyBadges === 'function') {
+    updateTrophyBadges();
+  }
 }
 
 function openHeaderEditor(currentTitle) {

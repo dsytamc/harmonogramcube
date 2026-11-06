@@ -47,8 +47,12 @@ body {
 
 .brand {
   display: flex;
+  flex-direction: row;
   align-items: center;
-  gap: 14px;
+  justify-content: flex-start;
+  gap: 12px;
+  width: 100%;
+  flex-wrap: nowrap;
 }
 
 .brand-logo-cube {
@@ -80,13 +84,13 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  flex: 1;
+  flex: 1 1 auto;
   min-width: 0;
 }
 
 .brand-title {
   font-family: 'Termina', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  font-size: 11.5px;
+  font-size: 11px;
   font-weight: 700;
   color: #fdc400;
   line-height: 1.25;
@@ -98,6 +102,7 @@ body {
 #sidebarTrophyBadge {
   margin-left: auto;
   flex-shrink: 0;
+  align-self: center;
 }
 
 .brand-subtitle {
@@ -2851,6 +2856,8 @@ body {
 }
 
 /* Ukrycie osiągnięć na ekranie startowym */
+.is-start-screen .trophy-square-badge,
+.is-start-screen .tutorial-cup-badge,
 .empty-workspace-state .trophy-square-badge,
 .empty-workspace-state .tutorial-cup-badge {
   display: none !important;
@@ -3811,6 +3818,65 @@ body {
   background: transparent;
   z-index: 9998;
   pointer-events: auto;
+  transition: backdrop-filter 0.35s ease, background 0.35s ease, -webkit-backdrop-filter 0.35s ease;
+}
+
+/* W kroku 0 powitalnym: elegancki blur w tle dookoła wyśrodkowanego okna */
+.tutorial-backdrop-overlay.with-blur {
+  background: rgba(0, 0, 0, 0.72);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* Żywy ghost demonstracyjny live na artboardzie */
+.tutorial-artboard-live-ghost {
+  position: fixed;
+  z-index: 10005;
+  pointer-events: none;
+  border-radius: 4px;
+}
+
+.tutorial-artboard-live-ghost .artboard-ghost-tile {
+  width: 100%;
+  height: 100%;
+  border-radius: 4px;
+  background: #CB6CE6;
+  color: #1a1a1a;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.tutorial-artboard-live-ghost.is-elevated .artboard-ghost-tile {
+  transform: scale(1.08);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.75), 0 0 16px rgba(203, 108, 230, 0.5);
+}
+
+.tutorial-artboard-live-ghost .artboard-ghost-cursor {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10;
+}
+
+.tutorial-artboard-live-ghost .artboard-ghost-tooltip {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  background: #1a1a1a;
+  border: 1px solid #3d3d3d;
+  color: #ffffff;
+  font-family: var(--font-ui, 'IBM Plex Sans', sans-serif);
+  font-size: 11px;
+  font-weight: 500;
+  padding: 4px 8px;
+  border-radius: 4px;
+  white-space: nowrap;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  animation: fadeIn 0.2s ease;
 }
 
 /* Podświetlenie aktywnego elementu w tutorialu */
@@ -3836,6 +3902,31 @@ body {
   flex-direction: column;
   overflow: hidden;
   animation: modalPopIn 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Styl modali w trakcie kroków zapisu i eksportu w tutorialu */
+body.tutorial-modal-step .tutorial-spotlight-helper {
+  display: none !important;
+}
+
+body.tutorial-modal-step #cloudModal,
+body.tutorial-modal-step #exportModal {
+  justify-content: flex-start !important;
+  align-items: center !important;
+  padding-left: clamp(24px, 6vw, 80px) !important;
+}
+
+body.tutorial-modal-step #cloudModal .cloud-modal-dialog,
+body.tutorial-modal-step #exportModal .modal-dialog {
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.9), 0 0 0 2px #f6be00, 0 0 26px rgba(246, 190, 0, 0.45) !important;
+}
+
+body.tutorial-modal-step .tutorial-floating-card {
+  right: 24px !important;
+  bottom: 24px !important;
+  width: 440px !important;
+  max-width: calc(100vw - 48px) !important;
+  z-index: 10005 !important;
 }
 
 /* Kontener demonstracyjny w karcie samouczka */
