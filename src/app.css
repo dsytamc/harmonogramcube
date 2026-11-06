@@ -2850,6 +2850,12 @@ body {
   display: none !important;
 }
 
+/* Ukrycie osiągnięć na ekranie startowym */
+.empty-workspace-state .trophy-square-badge,
+.empty-workspace-state .tutorial-cup-badge {
+  display: none !important;
+}
+
 /* Wideo w tle (filmwtle_25fps) z przyciemnieniem 30% i gaussian blur */
 .empty-state-video-wrap {
   position: absolute;
