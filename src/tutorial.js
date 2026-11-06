@@ -294,8 +294,8 @@ const TUTORIAL_STEPS = [
     targetSelector: null,
     view: 'start',
     isCentered: true,
-    title: 'Witaj w Generatorze Grafiku Fitness Cube!',
-    desc: 'Generator Grafiku Cube to dedykowane narzędzie do projektowania, edycji i publikacji profesjonalnych harmonogramów zajęć dla klubów Cube.<br><br><strong>W aplikacji możesz:</strong><br>• Błyskawicznie układać zajęcia metodą przeciągnij-i-upuść,<br>• Dostosowywać godziny i dodawać rodzaje sal (z opcją łamania linii),<br>• Wstawiać ruchome belki dzielące większe okresy czasu,<br>• Zapisywać harmonogramy na dysku oraz w chmurze Cube,<br>• Importować gotowy plan zajęć bezpośrednio z CMS eFitness,<br>• Eksportować grafiki na Social Media oraz gotowe do druku pliki PDF 300 DPI.<br><br>Zapraszamy do przejścia krótkiego przewodnika, który wyjaśni wszystkie funkcjonalności programu!',
+    title: 'Generator Grafiku Cube',
+    desc: 'Narzędzie do tworzenia, edycji i publikacji grafików zajęć dla klubów Cube.<br><br><strong>Główne możliwości:</strong><br>• Układanie i przenoszenie zajęć (przeciągnij i upuść)<br>• Konfiguracja godzin, sal i belek przerw<br>• Import gotowego planu z systemu eFitness<br>• Zapis na dysku oraz w chmurze klubowej Cube<br>• Eksport na Social Media (PNG) oraz do druku (PDF 300 DPI)<br><br>Kliknij poniżej, aby poznać działanie programu.',
     actionType: 'next',
     nextBtnText: 'Rozpocznij samouczek'
   },
@@ -305,7 +305,7 @@ const TUTORIAL_STEPS = [
     view: 'start',
     padding: 8,
     title: 'Krok 1: Wczytywanie projektów',
-    desc: 'W tym miejscu możesz wczytać wcześniej zapisany grafik – zarówno z pliku <code>.json</code> na Twoim komputerze, jak i z chmury powiązanej z bazą wszystkich klubów Cube.<br><br>Kliknij <strong>Dalej</strong>, aby przejść do kolejnego kroku.',
+    desc: 'Wczytaj wcześniej przygotowany grafik:<br>• <strong>Z dysku:</strong> plik projektu <code>.json</code> z komputera<br>• <strong>Z chmury:</strong> baza zapisów klubów Cube<br><br>Kliknij <strong>Dalej</strong>, aby przejść do kolejnego kroku.',
     actionType: 'next'
   },
   {
@@ -314,7 +314,7 @@ const TUTORIAL_STEPS = [
     view: 'start',
     padding: 8,
     title: 'Krok 2: Import z eFitness',
-    desc: 'Aby zaimportować grafik z systemu eFitness, wystarczy kliknąć ten przycisk i wkleić bezpośredni link do kalendarza zajęć z danej siłowni.<br><br><strong>Ważna uwaga:</strong> aby dane zostały poprawnie zaimportowane, należy dobrze uzupełnić grafik w panelu eFitness. Po imporcie na artboardzie należy również zweryfikować, czy wszystkie zajęcia i kategorie zostały prawidłowo przypisane i ewentualnie nanieść drobne korekty.<br><br>Kliknij <strong>Dalej</strong>, aby przejść do kolejnego kroku.',
+    desc: 'Pobiera grafik bezpośrednio ze strony klubu:<br>1. Wklej link do kalendarza eFitness danej siłowni.<br>2. Kliknij <em>Pobierz grafik ze strony</em>.<br><br><strong>Ważne:</strong> Po imporcie sprawdź na artboardzie przypisane zajęcia i kategorie — w razie potrzeby nanieś korekty.<br><br>Kliknij <strong>Dalej</strong>.',
     actionType: 'next'
   },
   {
@@ -322,8 +322,8 @@ const TUTORIAL_STEPS = [
     targetSelector: '#emptyCreateBlankBtn',
     view: 'start',
     padding: 10,
-    title: 'Krok 3: Pusty wzorzec',
-    desc: 'Aby stworzyć nowy harmonogram od czystego szablonu, kliknij podświetlony przycisk <strong>«lub rozpocznij z pustym wzorcem»</strong>.',
+    title: 'Krok 3: Pusty grafik',
+    desc: 'Kliknij podświetlony przycisk <strong>«lub rozpocznij z pustym wzorcem»</strong>, aby otworzyć czysty arkusz roboczy.',
     actionType: 'target_or_next',
     onAdvance: () => {
       const btn = document.getElementById('emptyCreateBlankBtn');
@@ -336,8 +336,8 @@ const TUTORIAL_STEPS = [
     fallbackSelector: '#headerEditorSection',
     view: 'artboard',
     padding: 8,
-    title: 'Krok 4: Nagłówek i nazwa klubu',
-    desc: 'Wpisz tutaj nazwę swojego klubu Cube. Zmiana nazwy natychmiast aktualizuje się w charakterystycznym firmowym nagłówku na artboardzie w kroju Termina Bold.<br><br>Kliknij <strong>Dalej</strong>, aby przejść do kolejnego kroku.',
+    title: 'Krok 4: Nazwa klubu w nagłówku',
+    desc: 'Wpisz nazwę klubu (np. <em>Cube Fitness Lublin</em>). Zmiana automatycznie zaktualizuje żółty nagłówek na artboardzie.<br><br>Kliknij <strong>Dalej</strong>.',
     actionType: 'next'
   },
   {
@@ -346,8 +346,8 @@ const TUTORIAL_STEPS = [
     fallbackSelector: '#layoutAccordionBody',
     view: 'artboard',
     padding: 10,
-    title: 'Krok 5: Układ & Wygląd (Dni i wersje Slim)',
-    desc: 'W tej sekcji możesz precyzyjnie dostosować strukturę i gęstość harmonogramu:<br><br>• <strong>Dni w grafiku:</strong> klikaj w poszczególne dni (Pon–Nd), aby włączać lub wyłączać je z tabeli (np. grafik tylko od poniedziałku do piątku). Szybkie przyciski <em>«Wszystkie»</em> i <em>«Pon – Pt»</em> ułatwiają natychmiastowe przełączenie.<br>• <strong>Mniejsze dni tygodnia (Slim):</strong> skraca nazwy dni do formatu <code>PON.</code>, <code>WT.</code> itd., oszczędzając wysokość nagłówka.<br>• <strong>Mniejsze godziny (Slim):</strong> zmniejsza kolumnę godzinową i formatuje godziny (np. <code>17</code> zamiast <code>17:00</code>).<br>• <strong>Mniejsze kafelki (Slim):</strong> włącza ultra-kompaktowy styl kafelków z zajęciami, idealny dla bardzo gęstych grafików z dużą liczbą sal.<br><br>Kliknij <strong>Dalej</strong>, aby przejść do kolejnego kroku.',
+    title: 'Krok 5: Układ dni i opcje Slim',
+    desc: 'Dostosuj widok tabeli do swoich potrzeb:<br>• <strong>Dni w grafiku:</strong> włączaj i wyłączaj poszczególne dni (szybkie przyciski <em>«Wszystkie»</em> / <em>«Pon – Pt»</em>).<br>• <strong>Mniejsze dni:</strong> skrócone nazwy (<code>PON.</code>, <code>WT.</code>).<br>• <strong>Mniejsze godziny:</strong> węższa kolumna godzin (<code>17</code> zamiast <code>17:00</code>).<br>• <strong>Mniejsze kafelki:</strong> kompaktowy widok przy dużej liczbie zajęć.<br><br>Kliknij <strong>Dalej</strong>.',
     actionType: 'next',
     onEnter: () => {
       const body = document.getElementById('layoutAccordionBody');
@@ -364,8 +364,8 @@ const TUTORIAL_STEPS = [
     fallbackSelector: '.display-mode-wrap',
     view: 'artboard',
     padding: 8,
-    title: 'Krok 6: Tryb wyświetlania (Podgląd docelowych formatów)',
-    desc: 'Tryb wyświetlania to interaktywny podgląd rzeczywistych proporcji, kompozycji i kolorystyki grafiku w czasie rzeczywistym. Pozwala natychmiast zobaczyć, jak harmonogram zaprezentuje się na ekranach klubowych, w postach na Instagramie (pion 1080x1350 px, kwadrat) lub w wersji do profesjonalnego druku (A4 / A3 300 DPI) zanim jeszcze przejdziesz do ostatecznego eksportu.<br><br>Kliknij <strong>Dalej</strong>, aby przejść do kolejnego kroku.',
+    title: 'Krok 6: Tryb wyświetlania (Podgląd)',
+    desc: 'Przełącza podgląd na żywo w docelowym formacie:<br>• <strong>Social Media:</strong> Instagram Pion (1080×1350) lub Kwadrat (1200×1200)<br>• <strong>Druk:</strong> Arkusz A4 / A3 poziomo (jasne tło, 300 DPI)<br><br>Pozwala sprawdzić czytelność i układ grafiku przed eksportem.<br><br>Kliknij <strong>Dalej</strong>.',
     actionType: 'next'
   },
   {
@@ -374,8 +374,8 @@ const TUTORIAL_STEPS = [
     fallbackSelector: '#addHourRowBtn',
     view: 'artboard',
     padding: 10,
-    title: 'Krok 7: Wiersze godzin i belki podziału dnia',
-    desc: 'W każdym wierszu możesz swobodnie dostosowywać godziny rozpoczęcia oraz dodać dopisek o sali lub miejscu (możesz łamać linie klawiszem Enter). Możesz także wstawiać <strong>belki podziału dnia</strong>, które oddzielają większe bloki czasowe (np. przerwę między zajęciami porannymi a popołudniowymi) i które można płynnie przeciągać między wierszami.<br><br>Kliknij <strong>Dalej</strong>, aby przejść do kolejnego kroku.',
+    title: 'Krok 7: Godziny i belki przerw',
+    desc: 'Zarządzaj wierszami harmonogramu:<br>• <strong>Godzina:</strong> czas bloku i opcjonalny podpis sali (klawisz Enter tworzy nową linię).<br>• <strong>Belka podziału:</strong> linia oddzielająca bloki czasowe (np. przerwę południową). Możesz ją swobodnie przeciągać w górę i w dół.<br><br>Kliknij <strong>Dalej</strong>.',
     actionType: 'next'
   },
   {
@@ -384,8 +384,8 @@ const TUTORIAL_STEPS = [
     fallbackSelector: '#tileEditorSection',
     view: 'artboard',
     padding: 8,
-    title: 'Krok 8: Edycja kafelka z zajęciami',
-    desc: 'Kliknięcie w pole na grafiku aktywuje formularz w lewym panelu, gdzie wpisujesz nazwę treningu, nazwisko instruktora oraz opcjonalną indywidualną godzinę rozpoczęcia.<br><br>Poniższa zapętlona animacja przedstawia ten proces krok po kroku:',
+    title: 'Krok 8: Wprowadzanie zajęć',
+    desc: 'Kliknij dowolny kafelek na tabeli, aby edytować go w lewym panelu:<br>• Nazwa zajęć<br>• Inna godzina startu (np. <code>8:30</code>)<br>• Prowadzący / instruktor<br><br>Zobacz animację poniżej:',
     demoType: 'tile_edit',
     actionType: 'next',
     onEnter: () => {
@@ -409,8 +409,8 @@ const TUTORIAL_STEPS = [
     fallbackSelector: '#categoryPaletteBar',
     view: 'artboard',
     padding: 8,
-    title: 'Krok 9: Kolory i kategorie zajęć (max 2)',
-    desc: 'Każda dyscyplina w Cube posiada unikalny kolor z firmowej palety barw.<br><br><strong>Ważna zasada:</strong> do jednego kafelka możesz przypisać <strong>maksymalnie dwie kategorie</strong> (np. Wzmacniające + Taneczne). W takim przypadku kafelek otrzymuje elegancki <strong>podział ukośny (diagonal split)</strong> dzielący tło kafelka po przekątnej na dwa kolory!<br><br>Kliknij <strong>Dalej</strong>, aby przejść do kolejnego kroku.',
+    title: 'Krok 9: Kategorie i kolory (max 2)',
+    desc: 'Wybierz kategorię treningu z palety barw Cube.<br><br><strong>Zasada:</strong> Do jednych zajęć możesz wybrać <strong>maksymalnie 2 kategorie</strong> — kafelek otrzyma wtedy skośny podział na dwa kolory.<br><br>Kliknij <strong>Dalej</strong>.',
     actionType: 'next'
   },
   {
@@ -419,8 +419,8 @@ const TUTORIAL_STEPS = [
     fallbackSelector: '#artboardWrapper',
     view: 'artboard',
     padding: 8,
-    title: 'Krok 10: Zajęcia w złym miejscu? Przenieś je!',
-    desc: 'Jeśli zajęcia zostały zaplanowane w złej godzinie lub dniu, możesz je błyskawicznie przenieść! Przytrzymaj kafelek przez pół sekundy, aby go unieść, a następnie przeciągnij na właściwe miejsce.<br><br>Zobacz animację poniżej oraz <strong>obserwuj bezpośrednio artboard</strong>, gdzie kafelek płynnie unosi się i przenosi między dniami:',
+    title: 'Krok 10: Przenoszenie zajęć (Drag & Drop)',
+    desc: 'Aby przenieść zajęcia w inny dzień lub godzinę:<br>1. <strong>Przytrzymaj kafelek</strong> myszką przez 0.5 s, aż się uniesie.<br>2. <strong>Przeciągnij</strong> go na nowe pole i upuść.<br><br>Obserwuj demonstrację na artboardzie:',
     demoType: 'drag_drop',
     actionType: 'next',
     onEnter: () => {
@@ -439,8 +439,8 @@ const TUTORIAL_STEPS = [
     fallbackSelector: '#cloudModal',
     view: 'artboard',
     padding: 12,
-    title: 'Krok 11: Wybór metody zapisu (Dysk / Chmura)',
-    desc: 'Oto realne okno zapisu grafiku w aplikacji Cube. Masz do wyboru dwie metody archiwizacji:<br><br>• <strong>Zapisz na dysku:</strong> natychmiast generuje i pobiera plik projektu <code>.json</code> na Twój komputer (kopia offline).<br>• <strong>Zapisz w chmurze:</strong> centralna synchronizacja z bazą klubów Cube.<br><br>Kliknij <strong>Dalej</strong>, aby zobaczyć pełny workflow zapisu w chmurze.',
+    title: 'Krok 11: Zapis grafiku',
+    desc: 'Kliknięcie «Zapisz» otwiera okno wyboru:<br>• <strong>Na dysku:</strong> pobiera plik projektu <code>.json</code> na komputer.<br>• <strong>W chmurze:</strong> zapisuje grafik w bazie klubów Cube.<br><br>Kliknij <strong>Dalej</strong>, aby zobaczyć zapis w chmurze.',
     actionType: 'next',
     onEnter: () => {
       stopArtboardDragDemo();
@@ -460,8 +460,8 @@ const TUTORIAL_STEPS = [
     fallbackSelector: '#cloudSavesWrap',
     view: 'artboard',
     padding: 12,
-    title: 'Krok 12: Workflow zapisu w chmurze Cube',
-    desc: 'Oto dokładny workflow zapisu grafiku w chmurze Cube:<br><br>1. <strong>Wybór klubu:</strong> Wybierz swoje miasto z bazy lokalizacji Cube (np. Lublin, Garwolin). W każdej chwili możesz cofnąć się przyciskiem <em>«Wróć»</em>.<br>2. <strong>Historia wersji:</strong> Wyświetla się lista wcześniejszych wersji grafiku wraz z datami.<br>3. <strong>Nazwa nowego zapisu:</strong> Wpisz nazwę w polu na dole (np. <code>Grafik Marzec 2026</code>) lub kliknij w istniejący plik, aby go nadpisać.<br>4. <strong>Zatwierdzenie:</strong> Kliknij żółty przycisk <strong>«Zapisz»</strong> na dole, aby bezpiecznie zsynchronizować grafik w chmurze.<br><br>Kliknij <strong>Dalej</strong>, aby przejść do opcji eksportu.',
+    title: 'Krok 12: Zapis w chmurze Cube',
+    desc: 'Workflow zapisu w chmurze:<br>1. <strong>Wybierz miasto / klub</strong> z listy lokalizacji.<br>2. <strong>Wpisz nazwę zapisu</strong> (np. <em>Grafik Marzec</em>) lub kliknij istniejący plik, aby go nadpisać.<br>3. <strong>Kliknij «Zapisz»</strong> na dole okna.<br><br>Kliknij <strong>Dalej</strong>, aby przejść do eksportu.',
     actionType: 'next',
     onEnter: () => {
       stopArtboardDragDemo();
@@ -492,8 +492,8 @@ const TUTORIAL_STEPS = [
     fallbackSelector: '#exportModal',
     view: 'artboard',
     padding: 12,
-    title: 'Krok 13: Eksport gotowych plików grafiku',
-    desc: 'Gdy harmonogram jest gotowy, klikasz «Eksportuj». W tym oknie wybierasz formaty produkcyjne:<br><br>• <strong>Social Media:</strong> Instagram Pion (1080x1350 px) oraz Kwadrat (1200x1200 px),<br>• <strong>Wektorowy SVG:</strong> w pełni edytowalne teksty i grupy w programie Adobe Illustrator,<br>• <strong>Druk A4 i A3 (PDF 300 DPI):</strong> spłaszczone, jasne arkusze gotowe do wydruku.<br><br>Zaznacz wybrane formaty i kliknij <strong>Zakończ samouczek</strong>, aby odebrać swoje osiągnięcie!',
+    title: 'Krok 13: Eksport gotowych plików',
+    desc: 'Okno eksportu pozwala wygenerować pliki produkcyjne:<br>• <strong>Social Media:</strong> Instagram Pion (1080×1350) i Kwadrat (1200×1200)<br>• <strong>Wektorowy SVG:</strong> edytowalny plik do Adobe Illustrator<br>• <strong>Druk (PDF 300 DPI):</strong> gotowy arkusz A4 lub A3<br><br>Kliknij <strong>Zakończ samouczek</strong>, aby odebrać swój puchar!',
     actionType: 'finish',
     onEnter: () => {
       stopArtboardDragDemo();
