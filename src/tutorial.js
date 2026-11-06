@@ -9,6 +9,7 @@ let currentStepIndex = 0;
 let isTutorialRunning = false;
 let isReplayMode = false;
 let confettiAnimId = null;
+let currentTargetEl = null;
 
 // Definicja kroków samouczka
 const TUTORIAL_STEPS = [
@@ -16,6 +17,7 @@ const TUTORIAL_STEPS = [
     id: 'step_load',
     targetSelector: '#emptyLoadBtn',
     view: 'start',
+    padding: 8,
     title: 'Wczytywanie projektów',
     desc: 'W tym miejscu możesz wczytać wcześniej zapisany grafik – zarówno z pliku <code>.json</code> na Twoim komputerze, jak i z chmury powiązanej z bazą wszystkich klubów Cube.<br><br>Kliknij <strong>Dalej</strong>, aby przejść do kolejnego kroku.',
     actionType: 'next'
@@ -24,6 +26,7 @@ const TUTORIAL_STEPS = [
     id: 'step_blank',
     targetSelector: '#emptyCreateBlankBtn',
     view: 'start',
+    padding: 10,
     title: 'Rozpoczęcie od pustego wzorca',
     desc: 'Aby stworzyć nowy harmonogram, kliknij podświetlony przycisk <strong>«lub rozpocznij z pustym wzorcem»</strong>.',
     actionType: 'target_or_next',
@@ -35,7 +38,9 @@ const TUTORIAL_STEPS = [
   {
     id: 'step_header',
     targetSelector: '#gymTitleInput',
+    fallbackSelector: '#headerEditorSection',
     view: 'artboard',
+    padding: 8,
     title: 'Nagłówek i nazwa klubu',
     desc: 'Wpisz tutaj nazwę swojego klubu Cube. Zmiana nazwy natychmiast aktualizuje się w charakterystycznym firmowym nagłówku na artboardzie.<br><br>Kliknij <strong>Dalej</strong>, aby przejść do kolejnego kroku.',
     actionType: 'next'
@@ -43,7 +48,9 @@ const TUTORIAL_STEPS = [
   {
     id: 'step_hours',
     targetSelector: '#rowsList',
+    fallbackSelector: '#addHourRowBtn',
     view: 'artboard',
+    padding: 10,
     title: 'Godziny i rodzaj sali',
     desc: 'W każdym wierszu możesz dostosować godzinę rozpoczęcia oraz dodać dopisek o sali lub miejscu (możesz łamać linie klawiszem Enter lub Shift+Enter).<br><br>Kliknij <strong>Dalej</strong>, aby przejść do kolejnego kroku.',
     actionType: 'next'
@@ -52,6 +59,7 @@ const TUTORIAL_STEPS = [
     id: 'step_break_bar',
     targetSelector: '#addBreakRowBtn',
     view: 'artboard',
+    padding: 8,
     title: 'Belka podziału dnia',
     desc: 'Belka to linia oddzielająca większe bloki czasowe w grafiku (np. zajęcia poranne od popołudniowych lub dłuższe przerwy). Możesz ją płynnie przeciągać i upuszczać między godzinami.<br><br>Kliknij <strong>Dalej</strong>, aby przejść do kolejnego kroku.',
     actionType: 'next'
@@ -61,6 +69,7 @@ const TUTORIAL_STEPS = [
     targetSelector: '.schedule-grid-cell:not(.is-empty-placeholder)',
     fallbackSelector: '#artboardContent',
     view: 'artboard',
+    padding: 6,
     title: 'Edycja kafelka z zajęciami',
     desc: 'Kliknij w dowolny kafelek na grafiku, aby edytować nazwę treningu, nazwisko instruktora oraz poziom trudności.<br><br>Kliknij <strong>Dalej</strong>, aby przejść do kolejnego kroku.',
     actionType: 'next'
@@ -70,6 +79,7 @@ const TUTORIAL_STEPS = [
     targetSelector: '#categoryPaletteBar',
     fallbackSelector: '#categoryList',
     view: 'artboard',
+    padding: 8,
     title: 'Kolory i kategorie zajęć',
     desc: 'Każdy rodzaj zajęć ma przypisany dedykowany kolor z palety Cube, co ułatwia klubowiczom szybką orientację w harmonogramie.<br><br>Kliknij <strong>Dalej</strong>, aby przejść do kolejnego kroku.',
     actionType: 'next'
@@ -78,6 +88,7 @@ const TUTORIAL_STEPS = [
     id: 'step_drag_drop',
     targetSelector: '#artboardContent',
     view: 'artboard',
+    padding: 10,
     title: 'Przesuwanie i usuwanie kafelków',
     desc: 'Przytrzymaj kafelek przez pół sekundy, aby go unieść i przenieść w inne miejsce z płynną animacją. Aby usunąć kafelek, zaznacz go i naciśnij Delete lub ikonę kosza.<br><br>Kliknij <strong>Dalej</strong>, aby przejść do kolejnego kroku.',
     actionType: 'next'
@@ -86,6 +97,7 @@ const TUTORIAL_STEPS = [
     id: 'step_save',
     targetSelector: '#topSaveBtn',
     view: 'artboard',
+    padding: 6,
     title: 'Zapis w chmurze i na dysku',
     desc: 'Przycisk «Zapisz» otwiera okno zapisu. Możesz pobrać plik projektu bezpośrednio na komputer lub zapisać go w chmurze przypisanej do konkretnego miasta Cube.<br><br>Kliknij <strong>Dalej</strong>, aby przejść do kolejnego kroku.',
     actionType: 'next'
@@ -94,6 +106,7 @@ const TUTORIAL_STEPS = [
     id: 'step_export',
     targetSelector: '#topExportBtn',
     view: 'artboard',
+    padding: 6,
     title: 'Eksport gotowych plików',
     desc: 'Gdy grafik jest gotowy, kliknij «Eksportuj». Wygenerujesz perfekcyjne pliki na social media (Instagram pion i kwadrat) oraz wektorowy/rastrowy PDF 300 DPI gotowy do druku A4 lub A3.<br><br>Kliknij <strong>Zakończ samouczek</strong>, aby odebrać nagrodę!',
     actionType: 'finish'
@@ -179,6 +192,48 @@ export function updateTrophyBadges() {
   }
 }
 
+// Aktualizacja pozycji maski wycinającej (Spotlight)
+function updateSpotlight(el, padding = 8) {
+  const spotlight = document.getElementById('tutorialSpotlightHelper');
+  if (!spotlight) return;
+
+  if (!el) {
+    spotlight.classList.add('hidden');
+    return;
+  }
+
+  const rect = el.getBoundingClientRect();
+  const pad = padding;
+  const top = Math.max(4, rect.top - pad);
+  const left = Math.max(4, rect.left - pad);
+  const width = Math.min(window.innerWidth - left - 4, rect.width + pad * 2);
+  const height = Math.min(window.innerHeight - top - 4, rect.height + pad * 2);
+
+  spotlight.style.top = `${top}px`;
+  spotlight.style.left = `${left}px`;
+  spotlight.style.width = `${width}px`;
+  spotlight.style.height = `${height}px`;
+  spotlight.classList.remove('hidden');
+}
+
+// Globalny handler blokowania kliknięć poza aktywnym elementem
+function handleTutorialClickBlock(e) {
+  if (!isTutorialRunning) return;
+
+  const card = document.getElementById('tutorialFloatingCard');
+  if (card && card.contains(e.target)) {
+    return; // Kliknięcia w panelu nawigacji tutorialu są zawsze dozwolone
+  }
+
+  if (currentTargetEl && currentTargetEl.contains(e.target)) {
+    return; // Kliknięcie w aktywny podświetlony element jest dozwolone
+  }
+
+  // Kliknięcie w tło blokowane
+  e.preventDefault();
+  e.stopPropagation();
+}
+
 // Start samouczka
 export function startTutorial(isReplay = false) {
   isTutorialRunning = true;
@@ -189,7 +244,7 @@ export function startTutorial(isReplay = false) {
   const floatingHelpBtn = document.getElementById('floatingHelpBtn');
   if (floatingHelpBtn) floatingHelpBtn.classList.add('hidden');
 
-  // Pokaż overlay blokujący kliknięcia
+  // Pokaż overlay
   const overlay = document.getElementById('tutorialBackdropOverlay');
   if (overlay) overlay.classList.remove('hidden');
 
@@ -197,11 +252,14 @@ export function startTutorial(isReplay = false) {
   const card = document.getElementById('tutorialFloatingCard');
   if (card) card.classList.remove('hidden');
 
+  // Dodaj nasłuchiwanie blokady kliknięć
+  window.addEventListener('click', handleTutorialClickBlock, true);
+
   goToStep(0);
 }
 
 // Przejście do konkretnego kroku
-function goToStep(index) {
+export function goToStep(index) {
   if (index < 0 || index >= TUTORIAL_STEPS.length) {
     finishTutorial();
     return;
@@ -210,26 +268,41 @@ function goToStep(index) {
   currentStepIndex = index;
   const step = TUTORIAL_STEPS[index];
 
-  // Jeśli krok wymaga widoku startowego, a jesteśmy na artboardzie (np. powtórka)
+  // Jeśli krok wymaga widoku startowego (kroki 1 i 2)
   if (step.view === 'start') {
     const emptyState = document.getElementById('emptyWorkspaceState');
     const artboardWrapper = document.getElementById('artboardWrapper');
     const appEl = document.getElementById('app');
-    if (emptyState && artboardWrapper && emptyState.classList.contains('hidden')) {
+    if (emptyState && artboardWrapper) {
       emptyState.classList.remove('hidden');
       artboardWrapper.classList.add('hidden');
       if (appEl) appEl.classList.add('is-start-screen');
+    }
+  } else if (step.view === 'artboard') {
+    // Jeśli krok wymaga widoku artboardu (kroki 3-10)
+    const emptyState = document.getElementById('emptyWorkspaceState');
+    const artboardWrapper = document.getElementById('artboardWrapper');
+    const appEl = document.getElementById('app');
+    if (emptyState && artboardWrapper && !emptyState.classList.contains('hidden')) {
+      // Jeśli jesteśmy jeszcze na ekranie powitalnym, uruchom pusty szablon
+      const blankBtn = document.getElementById('emptyCreateBlankBtn');
+      if (blankBtn) blankBtn.click();
+      emptyState.classList.add('hidden');
+      artboardWrapper.classList.remove('hidden');
+      if (appEl) appEl.classList.remove('is-start-screen');
     }
   }
 
   // Wyczyść poprzednie podświetlenie
   clearHighlight();
 
-  // Podświetl element docelowy
+  // Znajdź i podświetl element docelowy
   let targetEl = document.querySelector(step.targetSelector);
   if (!targetEl && step.fallbackSelector) {
     targetEl = document.querySelector(step.fallbackSelector);
   }
+
+  currentTargetEl = targetEl;
 
   if (targetEl) {
     targetEl.classList.add('tutorial-highlight-pulsing');
@@ -237,7 +310,12 @@ function goToStep(index) {
       targetEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     } catch (e) {}
 
-    // Jeśli to krok kliknięcia w element
+    // Ustaw pozycję maski spotlight z odpowiednim marginesem (zero blura na elemencie!)
+    setTimeout(() => {
+      updateSpotlight(targetEl, step.padding || 8);
+    }, 50);
+
+    // Jeśli to krok kliknięcia w element (np. pusty szablon)
     if (step.id === 'step_blank') {
       const clickHandler = () => {
         targetEl.removeEventListener('click', clickHandler);
@@ -247,6 +325,8 @@ function goToStep(index) {
       };
       targetEl.addEventListener('click', clickHandler, { once: true });
     }
+  } else {
+    updateSpotlight(null);
   }
 
   // Zaktualizuj zawartość okna samouczka
@@ -255,6 +335,7 @@ function goToStep(index) {
   const stepTitleEl = document.getElementById('tutorialStepTitle');
   const stepDescEl = document.getElementById('tutorialStepDesc');
   const nextBtn = document.getElementById('tutorialNextBtn');
+  const prevBtn = document.getElementById('tutorialPrevBtn');
 
   const totalSteps = TUTORIAL_STEPS.length;
   const currentNum = index + 1;
@@ -265,6 +346,12 @@ function goToStep(index) {
   if (stepTitleEl) stepTitleEl.textContent = step.title;
   if (stepDescEl) stepDescEl.innerHTML = step.desc;
 
+  // Przycisk "Wstecz" – aktywny od kroku 2 wzwyż
+  if (prevBtn) {
+    prevBtn.disabled = (index === 0);
+  }
+
+  // Przycisk "Dalej" / "Zakończ"
   if (nextBtn) {
     if (step.actionType === 'finish') {
       nextBtn.textContent = 'Zakończ samouczek';
@@ -276,11 +363,14 @@ function goToStep(index) {
   }
 }
 
-// Czyszczenie podświetleń
+// Czyszczenie podświetleń i maski
 function clearHighlight() {
   document.querySelectorAll('.tutorial-highlight-pulsing').forEach(el => {
     el.classList.remove('tutorial-highlight-pulsing');
   });
+  const spotlight = document.getElementById('tutorialSpotlightHelper');
+  if (spotlight) spotlight.classList.add('hidden');
+  currentTargetEl = null;
 }
 
 // Pomiń tutorial
@@ -288,6 +378,8 @@ export function skipTutorial() {
   clearHighlight();
   isTutorialRunning = false;
   setTutorialSkipped();
+
+  window.removeEventListener('click', handleTutorialClickBlock, true);
 
   const overlay = document.getElementById('tutorialBackdropOverlay');
   if (overlay) overlay.classList.add('hidden');
@@ -302,6 +394,8 @@ export function skipTutorial() {
 export function finishTutorial() {
   clearHighlight();
   isTutorialRunning = false;
+
+  window.removeEventListener('click', handleTutorialClickBlock, true);
 
   const overlay = document.getElementById('tutorialBackdropOverlay');
   if (overlay) overlay.classList.add('hidden');
@@ -447,6 +541,16 @@ export function initTutorial() {
     });
   }
 
+  // Przycisk "Wstecz" w oknie samouczka
+  const prevBtn = document.getElementById('tutorialPrevBtn');
+  if (prevBtn) {
+    prevBtn.addEventListener('click', () => {
+      if (currentStepIndex > 0) {
+        goToStep(currentStepIndex - 1);
+      }
+    });
+  }
+
   // Przycisk "Pomiń cały tutorial"
   const skipBtn = document.getElementById('tutorialSkipBtn');
   if (skipBtn) {
@@ -454,6 +558,21 @@ export function initTutorial() {
       skipTutorial();
     });
   }
+
+  // Automatyczne dopasowanie pozycji spotlight przy zmianie rozmiaru okna lub przewijaniu
+  window.addEventListener('resize', () => {
+    if (isTutorialRunning && currentTargetEl) {
+      const step = TUTORIAL_STEPS[currentStepIndex];
+      updateSpotlight(currentTargetEl, (step && step.padding) || 8);
+    }
+  });
+
+  window.addEventListener('scroll', () => {
+    if (isTutorialRunning && currentTargetEl) {
+      const step = TUTORIAL_STEPS[currentStepIndex];
+      updateSpotlight(currentTargetEl, (step && step.padding) || 8);
+    }
+  }, true);
 
   // Zamknięcie modalu osiągnięcia ("Udało mi się!")
   const closeAchievementBtn = document.getElementById('closeAchievementBtn');
@@ -496,7 +615,6 @@ export function initTutorial() {
   const skipped = isTutorialSkipped();
 
   if (completions === 0 && !skipped) {
-    // Opóźnij start o 600ms, aby ekran i wideo w tle zdążyły się zainicjować
     setTimeout(() => {
       startTutorial(false);
     }, 600);

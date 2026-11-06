@@ -662,7 +662,8 @@
   <!-- ==========================================================================
        KOMPONENTY SAMOUCZKA (TUTORIAL KROK PO KROKU)
        ========================================================================== -->
-  <!-- 1. Półprzezroczysty overlay blokujący klikanie innych elementów -->
+  <!-- 1. Maska wycinająca (Spotlight) bez rozmycia blur – element jest w 100% ostry i czysty -->
+  <div id="tutorialSpotlightHelper" class="tutorial-spotlight-helper hidden"></div>
   <div id="tutorialBackdropOverlay" class="tutorial-backdrop-overlay hidden"></div>
 
   <!-- 2. Pływające okno kroków samouczka -->
@@ -685,7 +686,10 @@
     </div>
     <div class="tutorial-card-footer">
       <button type="button" id="tutorialSkipBtn" class="tutorial-skip-btn">Pomiń cały tutorial</button>
-      <button type="button" id="tutorialNextBtn" class="btn btn-primary tutorial-next-btn">Dalej</button>
+      <div class="tutorial-nav-buttons">
+        <button type="button" id="tutorialPrevBtn" class="btn btn-secondary tutorial-prev-btn" disabled>Wstecz</button>
+        <button type="button" id="tutorialNextBtn" class="btn btn-primary tutorial-next-btn">Dalej</button>
+      </div>
     </div>
   </div>
 
